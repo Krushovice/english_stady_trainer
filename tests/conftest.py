@@ -1,4 +1,5 @@
 import os
+import uuid
 
 os.environ.setdefault("JWT_SECRET_KEY", "test-secret-key-32-bytes-minimum-for-hs256")
 os.environ.setdefault(
@@ -61,6 +62,19 @@ async def client():
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
         yield ac
+
+
+@pytest_asyncio.fixture
+async def auth_headers(client: AsyncClient) -> dict[str, str]:
+    """Register and log in a fresh user, returning a bearer-auth header dict."""
+    email = f"user-{uuid.uuid4().hex[:8]}@example.com"
+    password = "correcthorsebattery"
+    await client.post("/api/v1/auth/register", json={"email": email, "password": password})
+    login_response = await client.post(
+        "/api/v1/auth/login", json={"email": email, "password": password}
+    )
+    token = login_response.json()["access_token"]
+    return {"Authorization": f"Bearer {token}"}
 
 
 @pytest_asyncio.fixture(scope="session")
