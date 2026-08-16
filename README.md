@@ -4,7 +4,7 @@ Personal interactive English-learning platform. Product rules, architecture, and
 
 ## Status
 
-Phase 0 (architecture proposal) and Phase 1 (foundation) done: authentication, DB, and test infrastructure are in place. Phase 2 (course engine) is next.
+Phase 0 (architecture proposal), Phase 1 (foundation), and Phase 2 (course engine) are done: authentication, DB, test infrastructure, and the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader are in place. Phase 3 (exercises) is next.
 
 ## Stack
 
@@ -17,7 +17,7 @@ cp .env.example .env   # then edit JWT_SECRET_KEY and POSTGRES_PASSWORD
 docker compose up --build
 ```
 
-This brings up PostgreSQL, Redis, and the API, applies migrations automatically, and serves the API at `http://localhost:8000` (docs at `/docs`, health check at `/health`).
+This brings up PostgreSQL, Redis, and the API, applies migrations, syncs course content from `content/` into the database, and serves the API at `http://localhost:8000` (docs at `/docs`, health check at `/health`).
 
 ## Development (outside Docker)
 
@@ -25,8 +25,13 @@ This brings up PostgreSQL, Redis, and the API, applies migrations automatically,
 uv sync                 # installs into .venv/, never system-wide
 docker compose up -d db redis
 uv run alembic upgrade head
+uv run python -m scripts.sync_content
 uv run uvicorn app.main:app --reload
 ```
+
+## Content
+
+Lessons live as YAML files under `content/` (one file per lesson, containing its level/module/lesson metadata and all eleven lesson blocks), validated against `app/schemas/content.py`. Adding or editing a lesson is a content change, not a code change — re-run `uv run python -m scripts.sync_content` (or restart the `api` container) to load it. The loader upserts by natural key (level code, module/lesson slug, vocabulary headword, grammar topic slug), so re-running it after an edit updates existing rows instead of duplicating them. `content/b1/small-talk/making-small-talk.yaml` is the format reference.
 
 ## Tests
 
