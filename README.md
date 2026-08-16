@@ -4,7 +4,7 @@ Personal interactive English-learning platform. Product rules, architecture, and
 
 ## Status
 
-Phase 0 (architecture proposal), Phase 1 (foundation), and Phase 2 (course engine) are done: authentication, DB, test infrastructure, and the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader are in place. Phase 3 (exercises) is next.
+Phases 0–3 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, and a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress. No frontend exists yet — Phase 3's exercise UI and Phase 2's course pages are both deferred to Phase 6, alongside scaffolding the frontend project itself. Phase 4 (learning intelligence: mistakes, spaced repetition) is next.
 
 ## Stack
 
@@ -32,6 +32,10 @@ uv run uvicorn app.main:app --reload
 ## Content
 
 Lessons live as YAML files under `content/` (one file per lesson, containing its level/module/lesson metadata and all eleven lesson blocks), validated against `app/schemas/content.py`. Adding or editing a lesson is a content change, not a code change — re-run `uv run python -m scripts.sync_content` (or restart the `api` container) to load it. The loader upserts by natural key (level code, module/lesson slug, vocabulary headword, grammar topic slug), so re-running it after an edit updates existing rows instead of duplicating them. `content/b1/small-talk/making-small-talk.yaml` is the format reference.
+
+## Exercises
+
+Exercises are authored inside a lesson's `exercises` block, alongside its other content, and validated against `app/schemas/exercise.py`. Four types are implemented so far: `multiple_choice`, `fill_blank`, `sentence_ordering`, `reading_comprehension` — each has a typed prompt/answer-key shape and a deterministic scorer in `app/services/scoring.py` (no LLM involved). API: `GET /lessons/{slug}/exercises` (prompt only, no answer key), `POST /exercises/{id}/attempts` (submit and get scored feedback), `GET /exercises/{id}/attempts` (a learner's own history), `GET /progress` (per-skill attempt/accuracy counts).
 
 ## Tests
 
