@@ -1,0 +1,459 @@
+# Placement-test item bank — not tied to any lesson (lesson_id stays null,
+# is_placement_item is set true by the loader). See app/schemas/content.py
+# (PlacementBankFile) and docs/decisions.md for the design notes:
+#   - "listening" items are transcript-based reading_comprehension exercises
+#     (no audio asset pipeline until Phase 5/6), tagged skill: listening.
+#   - 2 independent items per skill/level for grammar and vocabulary;
+#     1 passage (2 sub-questions, graded as one item) per level for
+#     reading and listening, since a full passage is proportionately more
+#     authoring effort than a single question.
+items:
+  # --- Grammar ---
+  - slug: placement-grammar-a1-1
+    type: multiple_choice
+    skill: grammar
+    difficulty: A1
+    prompt:
+      question: "She ___ a doctor."
+      options:
+        - { id: a, text: "am" }
+        - { id: b, text: "is" }
+        - { id: c, text: "are" }
+        - { id: d, text: "be" }
+    answer_key: { correct_option_id: b }
+    explanation: "Third person singular (she/he/it) takes 'is'."
+
+  - slug: placement-grammar-a1-2
+    type: multiple_choice
+    skill: grammar
+    difficulty: A1
+    prompt:
+      question: "They ___ from Spain."
+      options:
+        - { id: a, text: "is" }
+        - { id: b, text: "am" }
+        - { id: c, text: "are" }
+        - { id: d, text: "be" }
+    answer_key: { correct_option_id: c }
+    explanation: "Plural subjects (they/we/you) take 'are'."
+
+  - slug: placement-grammar-a2-1
+    type: fill_blank
+    skill: grammar
+    difficulty: A2
+    prompt:
+      text: "Yesterday, we ___ (go) to the cinema."
+    answer_key:
+      blanks: [["went"]]
+    explanation: "Past simple of the irregular verb 'go' is 'went'."
+
+  - slug: placement-grammar-a2-2
+    type: multiple_choice
+    skill: grammar
+    difficulty: A2
+    prompt:
+      question: "This book is ___ than that one."
+      options:
+        - { id: a, text: "interesting" }
+        - { id: b, text: "more interesting" }
+        - { id: c, text: "interestinger" }
+        - { id: d, text: "most interesting" }
+    answer_key: { correct_option_id: b }
+    explanation: "Comparatives for longer adjectives use 'more' + adjective, not an '-er' ending."
+
+  - slug: placement-grammar-b1-1
+    type: fill_blank
+    skill: grammar
+    difficulty: B1
+    prompt:
+      text: "I ___ never ___ (eat) sushi before."
+    answer_key:
+      blanks: [["have"], ["eaten"]]
+    explanation: "Present perfect ('have' + past participle) describes life experience up to now: 'have never eaten'."
+
+  - slug: placement-grammar-b1-2
+    type: multiple_choice
+    skill: grammar
+    difficulty: B1
+    prompt:
+      question: "You're coming to the party, ___ you?"
+      options:
+        - { id: a, text: "aren't" }
+        - { id: b, text: "don't" }
+        - { id: c, text: "won't" }
+        - { id: d, text: "isn't" }
+    answer_key: { correct_option_id: a }
+    explanation: "The statement uses 'are' ('you're'), so the tag must also use a form of 'be': 'aren't you?'."
+
+  - slug: placement-grammar-b2-1
+    type: fill_blank
+    skill: grammar
+    difficulty: B2
+    prompt:
+      text: "If I ___ (have) more time, I would learn another language."
+    answer_key:
+      blanks: [["had"]]
+    explanation: "Second conditional (hypothetical present/future): 'If + past simple, would + infinitive'."
+
+  - slug: placement-grammar-b2-2
+    type: multiple_choice
+    skill: grammar
+    difficulty: B2
+    prompt:
+      question: "The new bridge ___ next year."
+      options:
+        - { id: a, text: "will build" }
+        - { id: b, text: "will be built" }
+        - { id: c, text: "is building" }
+        - { id: d, text: "built" }
+    answer_key: { correct_option_id: b }
+    explanation: "The bridge doesn't build itself — passive future ('will be built') is needed."
+
+  # --- Vocabulary ---
+  - slug: placement-vocabulary-a1-1
+    type: multiple_choice
+    skill: vocabulary
+    difficulty: A1
+    prompt:
+      question: "What do you call the meal you eat in the morning?"
+      options:
+        - { id: a, text: "breakfast" }
+        - { id: b, text: "lunch" }
+        - { id: c, text: "dinner" }
+        - { id: d, text: "snack" }
+    answer_key: { correct_option_id: a }
+    explanation: "\"Breakfast\" is the first meal of the day."
+
+  - slug: placement-vocabulary-a1-2
+    type: multiple_choice
+    skill: vocabulary
+    difficulty: A1
+    prompt:
+      question: "Which word means a common pet that barks?"
+      options:
+        - { id: a, text: "cat" }
+        - { id: b, text: "dog" }
+        - { id: c, text: "bird" }
+        - { id: d, text: "fish" }
+    answer_key: { correct_option_id: b }
+    explanation: "Dogs bark; cats, birds, and fish don't."
+
+  - slug: placement-vocabulary-a2-1
+    type: multiple_choice
+    skill: vocabulary
+    difficulty: A2
+    prompt:
+      question: "If you want to buy stamps and send a letter, where do you go?"
+      options:
+        - { id: a, text: "post office" }
+        - { id: b, text: "bank" }
+        - { id: c, text: "pharmacy" }
+        - { id: d, text: "library" }
+    answer_key: { correct_option_id: a }
+    explanation: "The post office is where you buy stamps and send mail."
+
+  - slug: placement-vocabulary-a2-2
+    type: multiple_choice
+    skill: vocabulary
+    difficulty: A2
+    prompt:
+      question: "What do you call someone who teaches students?"
+      options:
+        - { id: a, text: "teacher" }
+        - { id: b, text: "doctor" }
+        - { id: c, text: "driver" }
+        - { id: d, text: "waiter" }
+    answer_key: { correct_option_id: a }
+    explanation: "A teacher instructs students; the other options are unrelated professions."
+
+  - slug: placement-vocabulary-b1-1
+    type: multiple_choice
+    skill: vocabulary
+    difficulty: B1
+    prompt:
+      question: "What does \"give up\" mean?"
+      options:
+        - { id: a, text: "to stop trying" }
+        - { id: b, text: "to become angry" }
+        - { id: c, text: "to celebrate" }
+        - { id: d, text: "to arrive early" }
+    answer_key: { correct_option_id: a }
+    explanation: "\"Give up\" means to stop trying or quit an effort."
+
+  - slug: placement-vocabulary-b1-2
+    type: multiple_choice
+    skill: vocabulary
+    difficulty: B1
+    prompt:
+      question: "What does it mean to \"look forward to\" something?"
+      options:
+        - { id: a, text: "to feel excited about a future event" }
+        - { id: b, text: "to search for something you lost" }
+        - { id: c, text: "to remember the past" }
+        - { id: d, text: "to avoid a situation" }
+    answer_key: { correct_option_id: a }
+    explanation: "\"Look forward to\" expresses positive anticipation of something coming up."
+
+  - slug: placement-vocabulary-b2-1
+    type: multiple_choice
+    skill: vocabulary
+    difficulty: B2
+    prompt:
+      question: "What does \"reluctant\" mean?"
+      options:
+        - { id: a, text: "unwilling to do something" }
+        - { id: b, text: "very excited" }
+        - { id: c, text: "extremely tired" }
+        - { id: d, text: "completely sure" }
+    answer_key: { correct_option_id: a }
+    explanation: "\"Reluctant\" describes hesitation or unwillingness to do something."
+
+  - slug: placement-vocabulary-b2-2
+    type: multiple_choice
+    skill: vocabulary
+    difficulty: B2
+    prompt:
+      question: "What does it mean if something is \"inevitable\"?"
+      options:
+        - { id: a, text: "certain to happen" }
+        - { id: b, text: "impossible to happen" }
+        - { id: c, text: "very rare" }
+        - { id: d, text: "easy to avoid" }
+    answer_key: { correct_option_id: a }
+    explanation: "\"Inevitable\" means unavoidable — certain to happen."
+
+  # --- Reading ---
+  - slug: placement-reading-a1
+    type: reading_comprehension
+    skill: reading
+    difficulty: A1
+    prompt:
+      passage: >-
+        My name is Anna. I am 25 years old. I live in London with my
+        sister. I work in a small shop. I like coffee and books.
+      questions:
+        - id: q1
+          text: "Where does Anna live?"
+          options:
+            - { id: a, text: "London" }
+            - { id: b, text: "Paris" }
+            - { id: c, text: "Madrid" }
+            - { id: d, text: "Berlin" }
+        - id: q2
+          text: "What does Anna like?"
+          options:
+            - { id: a, text: "coffee and books" }
+            - { id: b, text: "tea and films" }
+            - { id: c, text: "coffee and music" }
+            - { id: d, text: "books and sport" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "The text says Anna \"live[s] in London\" and \"like[s] coffee and books\"."
+
+  - slug: placement-reading-a2
+    type: reading_comprehension
+    skill: reading
+    difficulty: A2
+    prompt:
+      passage: >-
+        Last weekend, Tom went camping with his friends. They drove to
+        the mountains on Saturday morning and set up their tent near a
+        lake. In the evening, they cooked dinner over a fire and told
+        stories. It rained on Sunday, so they packed up early and drove
+        home.
+      questions:
+        - id: q1
+          text: "When did Tom and his friends arrive at the lake?"
+          options:
+            - { id: a, text: "Saturday morning" }
+            - { id: b, text: "Saturday evening" }
+            - { id: c, text: "Sunday morning" }
+            - { id: d, text: "Sunday evening" }
+        - id: q2
+          text: "Why did they leave early?"
+          options:
+            - { id: a, text: "It rained" }
+            - { id: b, text: "They ran out of food" }
+            - { id: c, text: "They were tired" }
+            - { id: d, text: "The car broke down" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "They \"drove to the mountains on Saturday morning\", and left early because \"it rained on Sunday\"."
+
+  - slug: placement-reading-b1
+    type: reading_comprehension
+    skill: reading
+    difficulty: B1
+    prompt:
+      passage: >-
+        Working from home has become common for many people. Some enjoy
+        the flexibility and the time they save by not commuting. Others
+        miss the social contact with colleagues and find it harder to
+        separate work from personal life. Most experts agree that a mix
+        of office and home working suits most people best.
+      questions:
+        - id: q1
+          text: "What do some people miss about working from home?"
+          options:
+            - { id: a, text: "social contact with colleagues" }
+            - { id: b, text: "the flexibility" }
+            - { id: c, text: "saving time" }
+            - { id: d, text: "using computers" }
+        - id: q2
+          text: "What do most experts recommend?"
+          options:
+            - { id: a, text: "a mix of office and home working" }
+            - { id: b, text: "working from home every day" }
+            - { id: c, text: "working in the office every day" }
+            - { id: d, text: "avoiding computers" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "The passage names social contact as what's missed, and says experts favor \"a mix of office and home working\"."
+
+  - slug: placement-reading-b2
+    type: reading_comprehension
+    skill: reading
+    difficulty: B2
+    prompt:
+      passage: >-
+        Although automation has eliminated certain jobs, it has also
+        created entirely new industries that did not exist a generation
+        ago. Critics argue that the transition disproportionately
+        affects workers who lack the resources to retrain, while
+        supporters point to historical precedent: previous waves of
+        technological change ultimately raised living standards, even if
+        the benefits were unevenly distributed at first.
+      questions:
+        - id: q1
+          text: "According to critics, who is most affected by automation?"
+          options:
+            - { id: a, text: "workers who lack resources to retrain" }
+            - { id: b, text: "business owners" }
+            - { id: c, text: "government officials" }
+            - { id: d, text: "technology companies" }
+        - id: q2
+          text: "What do supporters point to as evidence?"
+          options:
+            - { id: a, text: "historical precedent from past technological change" }
+            - { id: b, text: "current unemployment statistics" }
+            - { id: c, text: "government policy" }
+            - { id: d, text: "international trade data" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "Critics point to workers who \"lack the resources to retrain\"; supporters cite \"historical precedent\"."
+
+  # --- Listening (transcript-based; no audio pipeline yet, see decisions.md) ---
+  - slug: placement-listening-a1
+    type: reading_comprehension
+    skill: listening
+    difficulty: A1
+    prompt:
+      passage: >-
+        Transcript — A: Hi! What's your name? B: Hi, I'm Marco. A: Nice
+        to meet you, Marco. Where are you from? B: I'm from Italy.
+      questions:
+        - id: q1
+          text: "What is the man's name?"
+          options:
+            - { id: a, text: "Marco" }
+            - { id: b, text: "Mario" }
+            - { id: c, text: "Marc" }
+            - { id: d, text: "Mark" }
+        - id: q2
+          text: "Where is he from?"
+          options:
+            - { id: a, text: "Italy" }
+            - { id: b, text: "Spain" }
+            - { id: c, text: "France" }
+            - { id: d, text: "Portugal" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "He says \"I'm Marco\" and \"I'm from Italy\"."
+
+  - slug: placement-listening-a2
+    type: reading_comprehension
+    skill: listening
+    difficulty: A2
+    prompt:
+      passage: >-
+        Transcript — A: Excuse me, how do I get to the train station? B:
+        Go straight ahead, then turn left at the bank. It's next to the
+        post office. A: Thank you! B: You're welcome.
+      questions:
+        - id: q1
+          text: "Where should the person turn left?"
+          options:
+            - { id: a, text: "at the bank" }
+            - { id: b, text: "at the post office" }
+            - { id: c, text: "at the train station" }
+            - { id: d, text: "at the shop" }
+        - id: q2
+          text: "Where is the train station?"
+          options:
+            - { id: a, text: "next to the post office" }
+            - { id: b, text: "next to the bank" }
+            - { id: c, text: "opposite the bank" }
+            - { id: d, text: "behind the shop" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "\"Turn left at the bank\"; the station is \"next to the post office\"."
+
+  - slug: placement-listening-b1
+    type: reading_comprehension
+    skill: listening
+    difficulty: B1
+    prompt:
+      passage: >-
+        Transcript — A: Did you hear about the new restaurant downtown?
+        B: Yes, my sister went last week. She said the food was great
+        but a bit expensive. A: Is it worth trying? B: I think so,
+        especially for a special occasion.
+      questions:
+        - id: q1
+          text: "What did the sister think of the food?"
+          options:
+            - { id: a, text: "great but expensive" }
+            - { id: b, text: "bad and cheap" }
+            - { id: c, text: "great and cheap" }
+            - { id: d, text: "bad and expensive" }
+        - id: q2
+          text: "When does the speaker suggest going?"
+          options:
+            - { id: a, text: "for a special occasion" }
+            - { id: b, text: "every week" }
+            - { id: c, text: "for a quick lunch" }
+            - { id: d, text: "never" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "\"The food was great but a bit expensive\"; recommended \"especially for a special occasion\"."
+
+  - slug: placement-listening-b2
+    type: reading_comprehension
+    skill: listening
+    difficulty: B2
+    prompt:
+      passage: >-
+        Transcript — A: I've been thinking about switching careers, but
+        I'm worried it's too risky at this point. B: I understand the
+        concern, but staying in a job you're unhappy with has its own
+        risks — burnout, for one. A: That's true. Maybe I should at
+        least explore my options before deciding. B: That sounds like a
+        reasonable first step.
+      questions:
+        - id: q1
+          text: "What is speaker A considering?"
+          options:
+            - { id: a, text: "switching careers" }
+            - { id: b, text: "asking for a raise" }
+            - { id: c, text: "quitting without a plan" }
+            - { id: d, text: "starting a business" }
+        - id: q2
+          text: "What does speaker B suggest as a first step?"
+          options:
+            - { id: a, text: "exploring options before deciding" }
+            - { id: b, text: "quitting immediately" }
+            - { id: c, text: "staying and doing nothing" }
+            - { id: d, text: "asking for a promotion" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "A is \"thinking about switching careers\"; B agrees that exploring options first \"sounds like a reasonable first step\"."
