@@ -1,0 +1,63 @@
+import os
+
+os.environ.setdefault("JWT_SECRET_KEY", "test-secret-key-32-bytes-minimum-for-hs256")
+os.environ.setdefault(
+    "DATABASE_URL",
+    "postgresql+asyncpg://english_trainer:change-me@localhost:5432/english_trainer_test",
+)
+os.environ.setdefault("REDIS_URL", "redis://localhost:6379/0")
+
+import pytest_asyncio
+from httpx import ASGITransport, AsyncClient
+from sqlalchemy import text
+from sqlalchemy.ext.asyncio import create_async_engine
+
+from app.core.config import get_settings
+
+
+def _admin_database_url(database_url: str) -> str:
+    base, _, _ = database_url.rpartition("/")
+    return f"{base}/postgres"
+
+
+@pytest_asyncio.fixture(scope="session", autouse=True)
+async def _test_database():
+    """Create an isolated `..._test` database and the schema in it, once per test run.
+
+    Keeps integration tests off the dev database instead of reusing it and
+    risking drop_all wiping real data.
+    """
+    settings = get_settings()
+    db_name = settings.database_url.rsplit("/", 1)[-1]
+
+    admin_engine = create_async_engine(
+        _admin_database_url(settings.database_url), isolation_level="AUTOCOMMIT"
+    )
+    async with admin_engine.connect() as conn:
+        exists = await conn.scalar(
+            text("SELECT 1 FROM pg_database WHERE datname = :name"), {"name": db_name}
+        )
+        if not exists:
+            await conn.execute(text(f'CREATE DATABASE "{db_name}"'))
+    await admin_engine.dispose()
+
+    from app.core.db import engine
+    from app.models import Base
+
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+
+    yield
+
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.drop_all)
+    await engine.dispose()
+
+
+@pytest_asyncio.fixture
+async def client():
+    from app.main import app
+
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        yield ac
