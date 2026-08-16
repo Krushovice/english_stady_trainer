@@ -1,10 +1,10 @@
 # English Trainer
 
-Personal interactive English-learning platform. Architecture and product rules are defined in [CLAUDE.md](CLAUDE.md) — read that first.
+Personal interactive English-learning platform. Product rules and phase plan live in a local `CLAUDE.md` (not tracked in this repo). Architecture decisions derived from it are in [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## Status
 
-Phase 0 (architecture proposal) in progress. See [ARCHITECTURE.md](ARCHITECTURE.md) once available and `docs/` for supporting design docs.
+Phase 0 (architecture proposal) in progress. See [ARCHITECTURE.md](ARCHITECTURE.md) and `docs/` for supporting design docs.
 
 ## Stack
 
