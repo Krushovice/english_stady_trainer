@@ -165,6 +165,12 @@ class CourseRepository:
         )
         return result.scalars().all()
 
+    async def list_all_modules(self) -> Sequence[Module]:
+        result = await self._session.execute(
+            select(Module).options(selectinload(Module.level)).order_by(Module.order_index)
+        )
+        return result.scalars().all()
+
     async def list_lessons_by_module_slug(self, slug: str) -> Sequence[Lesson]:
         result = await self._session.execute(
             select(Lesson).join(Module).where(Module.slug == slug).order_by(Lesson.order_index)

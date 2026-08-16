@@ -37,6 +37,7 @@ class ExerciseRepository:
         explanation: str,
         grammar_topic_id: uuid.UUID | None,
         vocabulary_id: uuid.UUID | None,
+        is_placement_item: bool = False,
     ) -> Exercise:
         exercise = (
             await self._session.execute(select(Exercise).where(Exercise.slug == slug))
@@ -54,6 +55,7 @@ class ExerciseRepository:
         exercise.explanation = explanation
         exercise.grammar_topic_id = grammar_topic_id
         exercise.vocabulary_id = vocabulary_id
+        exercise.is_placement_item = is_placement_item
         await self._session.flush()
         return exercise
 
@@ -70,6 +72,12 @@ class ExerciseRepository:
     async def list_by_lesson_slug(self, lesson_slug: str) -> Sequence[Exercise]:
         result = await self._session.execute(
             select(Exercise).join(Lesson).where(Lesson.slug == lesson_slug).order_by(Exercise.slug)
+        )
+        return result.scalars().all()
+
+    async def list_placement_items(self) -> Sequence[Exercise]:
+        result = await self._session.execute(
+            select(Exercise).where(Exercise.is_placement_item.is_(True)).order_by(Exercise.slug)
         )
         return result.scalars().all()
 
