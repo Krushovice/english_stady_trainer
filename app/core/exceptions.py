@@ -12,3 +12,7 @@ class InvalidCredentialsError(DomainError):
 
 class NotAuthenticatedError(DomainError):
     pass
+
+
+class NotFoundError(DomainError):
+    pass
