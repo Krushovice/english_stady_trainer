@@ -93,10 +93,114 @@ blocks:
   - type: exercises
     order_index: 6
     content:
-      note: >
-        Interactive exercises for this lesson (multiple choice, fill in the
-        blank, sentence ordering) are built on the exercise engine landing
-        in Phase 3. This block is intentionally a placeholder until then.
+      items:
+        - slug: making-small-talk-mc-catch-up
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B1
+          vocabulary_headword: "catch up"
+          prompt:
+            question: >-
+              What does "catch up" mean in "Let's catch up over coffee
+              sometime"?
+            options:
+              - id: a
+                text: To run faster than someone
+              - id: b
+                text: To meet and share recent news
+              - id: c
+                text: To finish a task on time
+              - id: d
+                text: To argue about something
+          answer_key:
+            correct_option_id: b
+          explanation: >-
+            "Catch up" here means to meet someone and talk about what's
+            happened recently — it has nothing to do with speed or
+            deadlines.
+
+        - slug: making-small-talk-fill-question-tags
+          type: fill_blank
+          skill: grammar
+          difficulty: B1
+          grammar_topic_slug: question-tags
+          prompt:
+            text: >-
+              Complete the question tags: 1) "It's a nice day, ___ it?"
+              2) "You haven't been here before, ___ you?"
+          answer_key:
+            blanks:
+              - ["isn't"]
+              - ["have"]
+          explanation: >-
+            A positive statement takes a negative tag ("It's" -> "isn't
+            it?"); a negative statement takes a positive tag ("haven't"
+            -> "have you?").
+
+        - slug: making-small-talk-order-catch-up
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B1
+          vocabulary_headword: "catch up"
+          prompt:
+            words: ["catch", "should", "sometime", "up", "We", "properly"]
+          answer_key:
+            correct_order: ["We", "should", "catch", "up", "properly", "sometime"]
+          explanation: >-
+            Standard English word order: subject ("We") + modal ("should")
+            + verb phrase ("catch up properly") + time expression
+            ("sometime").
+
+        - slug: making-small-talk-reading-art-of-small-talk
+          type: reading_comprehension
+          skill: reading
+          difficulty: B1
+          prompt:
+            passage: >-
+              In most English-speaking workplaces, a conversation rarely
+              starts with business straight away. Colleagues usually spend
+              thirty seconds to a minute on small talk first. Skipping this
+              step can come across as cold, even if that isn't the
+              intention. The trick isn't having something interesting to
+              say; it's showing you're willing to listen. Ask a short
+              question, react to the answer, and add a question tag if you
+              want to keep the other person talking.
+            questions:
+              - id: q1
+                text: >-
+                  Why might skipping small talk seem cold, even if that
+                  isn't intended?
+                options:
+                  - id: a
+                    text: Because it makes the conversation too long
+                  - id: b
+                    text: Because it can seem unfriendly, even without meaning to be
+                  - id: c
+                    text: Because small talk is required by company policy
+                  - id: d
+                    text: Because colleagues expect a joke first
+              - id: q2
+                text: >-
+                  According to the text, what's the real trick to small
+                  talk?
+                options:
+                  - id: a
+                    text: Having something interesting to say
+                  - id: b
+                    text: Talking as much as possible
+                  - id: c
+                    text: Showing you're willing to listen
+                  - id: d
+                    text: Avoiding all questions
+          answer_key:
+            answers:
+              q1: b
+              q2: c
+          explanation: >-
+            The passage says skipping small talk "can come across as cold,
+            even if that isn't the intention" (Q1), and that the trick
+            "isn't having something interesting to say; it's showing you're
+            willing to listen" (Q2).
 
   - type: reading
     order_index: 7
