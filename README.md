@@ -1,14 +1,14 @@
 # English Trainer
 
-Personal interactive English-learning platform. Product rules and phase plan live in a local `CLAUDE.md` (not tracked in this repo). Architecture decisions derived from it are in [ARCHITECTURE.md](ARCHITECTURE.md).
+Personal interactive English-learning platform. Product rules, architecture, and the phase-by-phase plan are kept locally (`CLAUDE.md`, `ARCHITECTURE.md`, `docs/`) and are not tracked in this repository.
 
 ## Status
 
-Phase 0 (architecture proposal) in progress. See [ARCHITECTURE.md](ARCHITECTURE.md) and `docs/` for supporting design docs.
+Phase 0 (architecture proposal) done locally. Phase 1 (foundation) is next.
 
 ## Stack
 
-Python / FastAPI / Pydantic v2 / SQLAlchemy 2.x / Alembic / PostgreSQL / Redis / Docker Compose. See ARCHITECTURE.md for the full breakdown and rationale.
+Python / FastAPI / Pydantic v2 / SQLAlchemy 2.x / Alembic / PostgreSQL / Redis / Docker Compose.
 
 ## Development
 
