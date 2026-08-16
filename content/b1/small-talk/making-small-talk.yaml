@@ -1,0 +1,161 @@
+# Format reference lesson for Phase 2 — see docs/database-schema.md and
+# app/schemas/content.py for the shape this file is validated against.
+level:
+  code: B1
+  order_index: 3
+
+module:
+  slug: small-talk
+  title: Small Talk
+  order_index: 1
+
+lesson:
+  slug: making-small-talk
+  title: Making Small Talk
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Start a conversation with someone you don't know well"
+        - "Keep a casual conversation going without awkward silences"
+        - "Use question tags to sound more natural and invite a reply"
+        - "Recognise and use 6 common small-talk expressions"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Small talk is the light, casual conversation people have before or
+        instead of a "real" conversation — at the coffee machine, in a
+        waiting room, at the start of a meeting, or while queueing. It isn't
+        about the content (the weather, the weekend, traffic); it's about
+        signalling that you're friendly and open to talking. Native speakers
+        rely on a small set of safe topics and a few fixed phrases, which
+        makes it very learnable.
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "small talk"
+          translation: "светская беседа, непринуждённый разговор"
+          example_sentence: "I'm not very good at small talk with people I've just met."
+        - headword: "catch up"
+          translation: "наверстать упущенное, обменяться новостями"
+          example_sentence: "Let's catch up over coffee sometime this week."
+        - headword: "how's it going"
+          translation: "как дела"
+          example_sentence: "Hey, how's it going? I haven't seen you in ages."
+        - headword: "awkward silence"
+          translation: "неловкое молчание"
+          example_sentence: "There was an awkward silence after the joke fell flat."
+        - headword: "get along (with someone)"
+          translation: "ладить (с кем-то)"
+          example_sentence: "We get along really well with our new neighbours."
+        - headword: "bring up (a topic)"
+          translation: "поднимать (тему)"
+          example_sentence: "It's best not to bring up politics at a work party."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: question-tags
+          title: Question Tags
+          description: >
+            Short questions added to the end of a statement to invite
+            agreement or keep the other person talking, e.g. "Nice weather,
+            isn't it?", "You're new here, aren't you?", "You don't smoke, do
+            you?". A positive statement takes a negative tag and a negative
+            statement takes a positive tag. Very common in small talk
+            because they turn a flat statement into an opening for a reply.
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: At the coffee machine
+          lines:
+            - speaker: A
+              text: "Hey, how's it going? Long time no see."
+            - speaker: B
+              text: "Good, thanks! Busy week, though. How about you?"
+            - speaker: A
+              text: "Same here. This project isn't getting any easier, is it?"
+            - speaker: B
+              text: "Tell me about it. We should catch up properly sometime — grab lunch?"
+            - speaker: A
+              text: "Sounds good. You're free on Thursday, aren't you?"
+
+  - type: exercises
+    order_index: 6
+    content:
+      note: >
+        Interactive exercises for this lesson (multiple choice, fill in the
+        blank, sentence ordering) are built on the exercise engine landing
+        in Phase 3. This block is intentionally a placeholder until then.
+
+  - type: reading
+    order_index: 7
+    content:
+      title: The Art of Small Talk
+      text: >
+        In most English-speaking workplaces, a conversation rarely starts
+        with business straight away. Colleagues usually spend thirty seconds
+        to a minute on small talk first — the weekend, the weather, a
+        delayed train. Skipping this step can come across as cold, even if
+        that isn't the intention. The trick isn't having something
+        interesting to say; it's showing you're willing to listen. Ask a
+        short question, react to the answer, and add a question tag if you
+        want to keep the other person talking: "You had a good weekend,
+        didn't you?" opens the door far more naturally than "Did you have a
+        good weekend?" on its own.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      transcript: >
+        A: Hey, how's it going? — B: Good, thanks! Busy week, though. How
+        about you? — A: Same here. This project isn't getting any easier,
+        is it? — B: Tell me about it. We should catch up properly sometime —
+        grab lunch? — A: Sounds good. You're free on Thursday, aren't you?
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Imagine you're at a work event and you don't know many people.
+        Practise starting a conversation with someone new: greet them, ask
+        one question about their day or the event, react to their answer,
+        and use at least one question tag. Speak for about 60 seconds.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Write a short dialogue (6–8 lines) between two people making
+            small talk at a bus stop. Use at least 3 vocabulary items from
+            this lesson.
+        - type: vocabulary_recall
+          instructions: >
+            Without looking back at the lesson, write down as many
+            small-talk expressions as you remember, then check your list
+            against the vocabulary block.
+        - type: grammar_practice
+          instructions: >
+            Write 5 sentences about your own life using question tags, e.g.
+            "You work in IT, don't you?"
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the question-tags
+        grammar topic are generated automatically from mistakes and spaced
+        repetition once Phase 4 is implemented — nothing to author here yet.
