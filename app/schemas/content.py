@@ -72,3 +72,14 @@ class LessonFile(BaseModel):
     module: ModuleContent
     lesson: LessonMeta
     blocks: list[LessonBlockContent]
+
+
+class PlacementBankFile(BaseModel):
+    """A flat bank of exercises with no lesson — the placement-test item pool.
+
+    Reuses `ExerciseContent` (same prompt/answer-key validation as lesson
+    exercises); the loader persists these with `lesson_id=None` and
+    `is_placement_item=True`.
+    """
+
+    items: list[ExerciseContent]

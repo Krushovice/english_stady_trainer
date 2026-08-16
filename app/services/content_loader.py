@@ -9,7 +9,15 @@ from app.models.lesson import Lesson
 from app.models.lesson_block import BlockType
 from app.repositories.course_repository import CourseRepository
 from app.repositories.exercise_repository import ExerciseRepository
-from app.schemas.content import ExerciseContent, GrammarTopicItem, LessonFile, VocabularyItem
+from app.schemas.content import (
+    ExerciseContent,
+    GrammarTopicItem,
+    LessonFile,
+    PlacementBankFile,
+    VocabularyItem,
+)
+
+PLACEMENT_BANK_DIR_NAME = "placement_test"
 
 
 class ContentLoaderService:
@@ -22,6 +30,10 @@ class ContentLoaderService:
     code. Exercises removed from a file are left in place rather than
     deleted, so editing a lesson never silently drops a learner's attempt
     history for an exercise that's still in the database.
+
+    Files under a `placement_test/` directory are the placement-item bank —
+    a flat list of exercises with no lesson (see `PlacementBankFile`) —
+    rather than a lesson file, and are synced separately.
     """
 
     def __init__(self, session: AsyncSession) -> None:
@@ -30,7 +42,12 @@ class ContentLoaderService:
         self._exercises = ExerciseRepository(session)
 
     async def sync_directory(self, content_dir: Path) -> list[Lesson]:
-        lessons = [await self.sync_file(path) for path in sorted(content_dir.rglob("*.yaml"))]
+        lessons = []
+        for path in sorted(content_dir.rglob("*.yaml")):
+            if path.parent.name == PLACEMENT_BANK_DIR_NAME:
+                await self.sync_placement_bank_file(path)
+            else:
+                lessons.append(await self.sync_file(path))
         await self._session.commit()
         return lessons
 
@@ -89,11 +106,19 @@ class ContentLoaderService:
             for item in block.content.get("items", [])
         ]
         for item in exercise_items:
-            await self._upsert_exercise(lesson.id, item)
+            await self._upsert_exercise(item, lesson_id=lesson.id, is_placement_item=False)
 
         return lesson
 
-    async def _upsert_exercise(self, lesson_id: uuid.UUID, item: ExerciseContent) -> None:
+    async def sync_placement_bank_file(self, path: Path) -> None:
+        raw = yaml.safe_load(path.read_text())
+        data = PlacementBankFile.model_validate(raw)
+        for item in data.items:
+            await self._upsert_exercise(item, lesson_id=None, is_placement_item=True)
+
+    async def _upsert_exercise(
+        self, item: ExerciseContent, *, lesson_id: uuid.UUID | None, is_placement_item: bool
+    ) -> None:
         grammar_topic_id = None
         if item.grammar_topic_slug is not None:
             topic = await self._repo.get_grammar_topic_by_slug(item.grammar_topic_slug)
@@ -125,4 +150,5 @@ class ContentLoaderService:
             explanation=item.explanation,
             grammar_topic_id=grammar_topic_id,
             vocabulary_id=vocabulary_id,
+            is_placement_item=is_placement_item,
         )
