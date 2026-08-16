@@ -6,7 +6,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.exceptions import NotFoundError
 from app.models.exercise import Exercise
 from app.models.exercise_attempt import AttemptSource, ExerciseAttempt
+from app.models.review_item import ReviewItemType
 from app.repositories.exercise_repository import ExerciseRepository, SkillProgress
+from app.services.mistake_service import MistakeService
+from app.services.review_service import ReviewService
 from app.services.scoring import score_attempt
 
 
@@ -14,6 +17,8 @@ class ExerciseService:
     def __init__(self, session: AsyncSession) -> None:
         self._session = session
         self._repo = ExerciseRepository(session)
+        self._mistakes = MistakeService(session)
+        self._reviews = ReviewService(session)
 
     async def list_lesson_exercises(self, lesson_slug: str) -> list[Exercise]:
         return list(await self._repo.list_by_lesson_slug(lesson_slug))
@@ -39,6 +44,25 @@ class ExerciseService:
             source=source,
         )
         await self._repo.add_attempt(attempt)
+
+        # Every attempt schedules its next review; a grammar-topic-tagged
+        # exercise also updates weak-topic mistake tracking. Same
+        # transaction as the attempt itself — commit below covers all of it.
+        await self._reviews.record_outcome(
+            user_id, ReviewItemType.EXERCISE, exercise.id, result.is_correct
+        )
+        if exercise.vocabulary_id is not None:
+            await self._reviews.record_outcome(
+                user_id, ReviewItemType.VOCABULARY, exercise.vocabulary_id, result.is_correct
+            )
+        if exercise.grammar_topic_id is not None:
+            await self._reviews.record_outcome(
+                user_id, ReviewItemType.GRAMMAR_TOPIC, exercise.grammar_topic_id, result.is_correct
+            )
+            await self._mistakes.record_attempt(
+                user_id, exercise.grammar_topic_id, result.is_correct
+            )
+
         await self._session.commit()
         attempt.exercise = exercise
         return attempt
