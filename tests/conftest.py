@@ -61,3 +61,22 @@ async def client():
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
         yield ac
+
+
+@pytest_asyncio.fixture(scope="session")
+async def synced_lesson(_test_database):
+    """Load the repo's real authored content once per test run.
+
+    Course API tests read against this instead of hand-built fixture rows,
+    so a broken content file fails the test suite the same way it would
+    fail a real `sync_content` run.
+    """
+    from pathlib import Path
+
+    from app.core.db import async_session_factory
+    from app.services.content_loader import ContentLoaderService
+
+    content_dir = Path(__file__).resolve().parent.parent / "content"
+    async with async_session_factory() as session:
+        lessons = await ContentLoaderService(session).sync_directory(content_dir)
+    return lessons[0]
