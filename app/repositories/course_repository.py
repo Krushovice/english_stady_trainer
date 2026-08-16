@@ -182,3 +182,13 @@ class CourseRepository:
             )
         )
         return result.scalar_one_or_none()
+
+    async def get_vocabulary_by_headword(self, headword: str) -> Vocabulary | None:
+        result = await self._session.execute(
+            select(Vocabulary).where(Vocabulary.headword == headword)
+        )
+        return result.scalar_one_or_none()
+
+    async def get_grammar_topic_by_slug(self, slug: str) -> GrammarTopic | None:
+        result = await self._session.execute(select(GrammarTopic).where(GrammarTopic.slug == slug))
+        return result.scalar_one_or_none()

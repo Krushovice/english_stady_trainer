@@ -1,26 +1,33 @@
+import uuid
 from pathlib import Path
 
 import yaml
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.models.exercise import ExerciseType
 from app.models.lesson import Lesson
 from app.models.lesson_block import BlockType
 from app.repositories.course_repository import CourseRepository
-from app.schemas.content import GrammarTopicItem, LessonFile, VocabularyItem
+from app.repositories.exercise_repository import ExerciseRepository
+from app.schemas.content import ExerciseContent, GrammarTopicItem, LessonFile, VocabularyItem
 
 
 class ContentLoaderService:
     """Syncs course content authored as YAML under `content/` into the database.
 
     Upserts by natural key (level code, module slug, lesson slug, vocabulary
-    headword, grammar topic slug), so re-running the loader after editing a
-    file updates existing rows instead of duplicating them. Adding a lesson
-    is a content change; it never requires touching this code.
+    headword, grammar topic slug, exercise slug), so re-running the loader
+    after editing a file updates existing rows instead of duplicating them.
+    Adding a lesson is a content change; it never requires touching this
+    code. Exercises removed from a file are left in place rather than
+    deleted, so editing a lesson never silently drops a learner's attempt
+    history for an exercise that's still in the database.
     """
 
     def __init__(self, session: AsyncSession) -> None:
         self._session = session
         self._repo = CourseRepository(session)
+        self._exercises = ExerciseRepository(session)
 
     async def sync_directory(self, content_dir: Path) -> list[Lesson]:
         lessons = [await self.sync_file(path) for path in sorted(content_dir.rglob("*.yaml"))]
@@ -75,4 +82,47 @@ class ContentLoaderService:
         await self._repo.set_lesson_vocabulary(lesson.id, [v.id for v in vocab_rows])
         await self._repo.set_lesson_grammar_topics(lesson.id, [g.id for g in grammar_rows])
 
+        exercise_items = [
+            ExerciseContent.model_validate(item)
+            for block in data.blocks
+            if block.type == BlockType.EXERCISES
+            for item in block.content.get("items", [])
+        ]
+        for item in exercise_items:
+            await self._upsert_exercise(lesson.id, item)
+
         return lesson
+
+    async def _upsert_exercise(self, lesson_id: uuid.UUID, item: ExerciseContent) -> None:
+        grammar_topic_id = None
+        if item.grammar_topic_slug is not None:
+            topic = await self._repo.get_grammar_topic_by_slug(item.grammar_topic_slug)
+            if topic is None:
+                raise ValueError(
+                    f"Exercise '{item.slug}' references unknown grammar topic "
+                    f"'{item.grammar_topic_slug}'"
+                )
+            grammar_topic_id = topic.id
+
+        vocabulary_id = None
+        if item.vocabulary_headword is not None:
+            vocabulary = await self._repo.get_vocabulary_by_headword(item.vocabulary_headword)
+            if vocabulary is None:
+                raise ValueError(
+                    f"Exercise '{item.slug}' references unknown vocabulary "
+                    f"'{item.vocabulary_headword}'"
+                )
+            vocabulary_id = vocabulary.id
+
+        await self._exercises.upsert_exercise(
+            slug=item.slug,
+            lesson_id=lesson_id,
+            exercise_type=ExerciseType(item.type),
+            skill=item.skill,
+            difficulty=item.difficulty,
+            prompt=item.prompt,
+            answer_key=item.answer_key,
+            explanation=item.explanation,
+            grammar_topic_id=grammar_topic_id,
+            vocabulary_id=vocabulary_id,
+        )
