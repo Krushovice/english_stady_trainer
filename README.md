@@ -4,7 +4,7 @@ Personal interactive English-learning platform. Product rules, architecture, and
 
 ## Status
 
-Phases 0–3 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, and a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress. No frontend exists yet — Phase 3's exercise UI and Phase 2's course pages are both deferred to Phase 6, alongside scaffolding the frontend project itself. Phase 4 (learning intelligence: mistakes, spaced repetition) is next.
+Phases 0–3.5 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, and a placement test that estimates a CEFR level per skill and recommends starting modules. No frontend exists yet — Phase 2's course pages, Phase 3's exercise UI, and the placement test screen are all deferred to Phase 6, alongside scaffolding the frontend project itself. Phase 4 (learning intelligence: mistakes, spaced repetition) is next.
 
 ## Stack
 
@@ -36,6 +36,10 @@ Lessons live as YAML files under `content/` (one file per lesson, containing its
 ## Exercises
 
 Exercises are authored inside a lesson's `exercises` block, alongside its other content, and validated against `app/schemas/exercise.py`. Four types are implemented so far: `multiple_choice`, `fill_blank`, `sentence_ordering`, `reading_comprehension` — each has a typed prompt/answer-key shape and a deterministic scorer in `app/services/scoring.py` (no LLM involved). API: `GET /lessons/{slug}/exercises` (prompt only, no answer key), `POST /exercises/{id}/attempts` (submit and get scored feedback), `GET /exercises/{id}/attempts` (a learner's own history), `GET /progress` (per-skill attempt/accuracy counts).
+
+## Placement test
+
+A 24-item bank (`content/placement_test/bank.yaml`) covering grammar, vocabulary, reading, and listening across A1–B2, distinct from lesson exercises (no `lesson_id`, `is_placement_item=True`). Listening items are transcript-based `reading_comprehension` exercises tagged `skill: listening` — there's no audio pipeline yet. API: `GET /placement-test/items` (the bank, no answer keys), `POST /placement-test/submit` (grades everything, estimates a CEFR level per skill plus an overall level, persists it to the user's `learning_profile`, and returns recommended starting modules), `GET /placement-test/result` (re-reads the persisted result without retaking the test). Scoring and module recommendation are pure, DB-free functions in `app/services/placement_scoring.py`.
 
 ## Tests
 
