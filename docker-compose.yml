@@ -42,10 +42,12 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
-    command: sh -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+    command: sh -c "alembic upgrade head && python -m scripts.sync_content && uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
     volumes:
       - ./app:/app/app
       - ./alembic:/app/alembic
+      - ./content:/app/content
+      - ./scripts:/app/scripts
 
 volumes:
   postgres_data:
