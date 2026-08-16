@@ -31,3 +31,4 @@ class Lesson(Base):
     grammar_topics: Mapped[list["GrammarTopic"]] = relationship(  # noqa: F821
         secondary=lesson_grammar_topics, back_populates="lessons"
     )
+    exercises: Mapped[list["Exercise"]] = relationship(back_populates="lesson")  # noqa: F821
