@@ -16,3 +16,11 @@ class NotAuthenticatedError(DomainError):
 
 class NotFoundError(DomainError):
     pass
+
+
+class AIProviderUnavailableError(DomainError):
+    """Raised when the configured AI provider can't be reached.
+
+    AI features must degrade gracefully instead of crashing — the rest of the
+    platform (lessons, exercises, mistakes, review) never depends on AI.
+    """
