@@ -15,6 +15,12 @@ class Settings(BaseSettings):
     jwt_algorithm: str = "HS256"
     access_token_expire_minutes: int = 60 * 24
 
+    ai_provider: str = "lmstudio"
+    ai_base_url: str = "http://localhost:1234/v1"
+    ai_api_key: str = "not-needed"
+    ai_model: str = "qwen/qwen3.5-9b"
+    ai_max_tokens: int = 1500
+
 
 @lru_cache
 def get_settings() -> Settings:
