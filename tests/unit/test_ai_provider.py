@@ -26,7 +26,9 @@ async def test_mock_provider_records_calls_for_assertions():
 
 
 async def test_lmstudio_provider_wraps_connection_errors(monkeypatch):
-    provider = LMStudioProvider(base_url="http://localhost:1/v1", api_key="x", model="m")
+    provider = LMStudioProvider(
+        base_url="http://localhost:1/v1", api_key="x", model="m", timeout_seconds=5
+    )
 
     async def raise_connection_error(*args, **kwargs):
         raise APIConnectionError(request=httpx2.Request("POST", "http://localhost:1/v1"))

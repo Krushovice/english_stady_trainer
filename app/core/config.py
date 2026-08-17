@@ -20,6 +20,7 @@ class Settings(BaseSettings):
     ai_api_key: str = "not-needed"
     ai_model: str = "qwen/qwen3.5-9b"
     ai_max_tokens: int = 1500
+    ai_timeout_seconds: int = 120
 
 
 @lru_cache

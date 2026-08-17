@@ -1,3 +1,5 @@
+import asyncio
+
 from openai import APIConnectionError, APITimeoutError, AsyncOpenAI
 
 from app.core.exceptions import AIProviderUnavailableError
@@ -11,17 +13,25 @@ class LMStudioProvider:
     provider) — only the base URL/key/model change; the interface stays the same.
     """
 
-    def __init__(self, base_url: str, api_key: str, model: str) -> None:
-        self._client = AsyncOpenAI(base_url=base_url, api_key=api_key)
+    def __init__(self, base_url: str, api_key: str, model: str, timeout_seconds: float) -> None:
+        # The SDK's default read timeout is 600s — observed real generations on
+        # this hardware run into several minutes on complex prompts, which would
+        # hang a request that long instead of failing fast. Explicit and shorter.
+        self._client = AsyncOpenAI(base_url=base_url, api_key=api_key, timeout=timeout_seconds)
         self._model = model
+        # One GPU, one loaded model: concurrent requests would just make each
+        # other slower (and, for a thinking model, blow past max_tokens even
+        # sooner), not run faster. Serialize instead of pretending to parallelize.
+        self._semaphore = asyncio.Semaphore(1)
 
     async def complete(self, messages: list[AIMessage], *, max_tokens: int) -> str:
         try:
-            response = await self._client.chat.completions.create(
-                model=self._model,
-                messages=[{"role": m.role, "content": m.content} for m in messages],
-                max_tokens=max_tokens,
-            )
+            async with self._semaphore:
+                response = await self._client.chat.completions.create(
+                    model=self._model,
+                    messages=[{"role": m.role, "content": m.content} for m in messages],
+                    max_tokens=max_tokens,
+                )
         except (APIConnectionError, APITimeoutError) as exc:
             raise AIProviderUnavailableError(
                 f"AI provider at {self._client.base_url} is unreachable"
