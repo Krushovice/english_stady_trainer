@@ -4,7 +4,7 @@ Personal interactive English-learning platform. Product rules, architecture, and
 
 ## Status
 
-Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. No frontend exists yet — Phase 2's course pages, Phase 3's exercise UI, the placement test screen, and a review/mistakes dashboard are all deferred to Phase 6, alongside scaffolding the frontend project itself. Phase 5 (AI) is next.
+Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. No frontend exists yet — Phase 2's course pages, Phase 3's exercise UI, the placement test screen, and a review/mistakes dashboard are all deferred to Phase 6, alongside scaffolding the frontend project itself. Phase 5 (AI) is in progress: the provider abstraction and a local LM Studio adapter are wired up and verified end to end (see "AI (local model)" below); the `AIService` business layer and actual AI-powered features (writing feedback, homework, conversation) come next.
 
 ## Stack
 
@@ -44,6 +44,18 @@ A 24-item bank (`content/placement_test/bank.yaml`) covering grammar, vocabulary
 ## Learning intelligence
 
 Every submitted attempt (`POST /exercises/{id}/attempts`) automatically schedules its next spaced-repetition review — for the exercise itself, and for its linked vocabulary word / grammar topic if it has one — and, for grammar-topic-tagged exercises, updates that topic's mistake status (`new` → `repeated`/`improving` → `mastered`, `app/services/mistake_classification.py`). Scheduling is a simplified SM-2 (`app/services/spaced_repetition.py`), both pure and unit-tested, deliberately isolated from the API so the algorithm can change later. API: `GET /mistakes` (optionally `?status=`), `GET /review/due`, `POST /review/{id}/complete`. Placement-test answers don't feed either system — see `docs/decisions.md`.
+
+## AI (local model)
+
+AI features (Phase 5, in progress) run against a locally hosted model instead of a cloud API — no per-request cost, everything stays on the machine. Setup:
+
+1. Install [LM Studio](https://lmstudio.ai), update it to the latest version
+2. Download **Qwen3.5-9B** (Q4_K_M or UD-Q4_K_XL quant) from the in-app model catalog
+3. Load it and start the local server (Developer tab, default port `1234`)
+
+`app/integrations/ai/` holds the provider abstraction: `AIProvider` (protocol), `LMStudioProvider` (talks to LM Studio's OpenAI-compatible endpoint via the `openai` SDK), and `MockAIProvider` (canned responses, used by tests — no AI-dependent test hits a real model). Config is `AI_*` in `.env.example`. Outside Docker, `AI_BASE_URL` points straight at `localhost:1234`; `docker compose` overrides it to `host.docker.internal:1234` for the `api` container, since LM Studio runs natively on the host, not in a container.
+
+Qwen3.5 is a "thinking" model and reasons before answering — LM Studio currently doesn't let the API disable that (upstream bug), so `AI_MAX_TOKENS` defaults to a generous `1500` to give it room; only the final answer (`message.content`) is ever returned to callers, the reasoning trace is discarded. See `docs/decisions.md` for the full rationale.
 
 ## Tests
 
