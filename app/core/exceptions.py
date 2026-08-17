@@ -24,3 +24,7 @@ class AIProviderUnavailableError(DomainError):
     AI features must degrade gracefully instead of crashing — the rest of the
     platform (lessons, exercises, mistakes, review) never depends on AI.
     """
+
+
+class AIResponseParsingError(DomainError):
+    """Raised when the AI provider responded, but not in the expected shape."""
