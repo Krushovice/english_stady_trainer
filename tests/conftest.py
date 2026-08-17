@@ -77,6 +77,24 @@ async def auth_headers(client: AsyncClient) -> dict[str, str]:
     return {"Authorization": f"Bearer {token}"}
 
 
+@pytest_asyncio.fixture
+def override_ai_provider():
+    """Swap the app's real AI provider for a test double for the duration of a test.
+
+    Usage: `override_ai_provider(MockAIProvider(response="..."))`. CLAUDE.md
+    forbids automated tests from depending on real AI responses, so any test
+    that exercises an AI endpoint must call this.
+    """
+    from app.integrations.ai.factory import get_ai_provider
+    from app.main import app
+
+    def _override(provider):
+        app.dependency_overrides[get_ai_provider] = lambda: provider
+
+    yield _override
+    app.dependency_overrides.pop(get_ai_provider, None)
+
+
 @pytest_asyncio.fixture(scope="session")
 async def synced_lesson(_test_database):
     """Load the repo's real authored content once per test run.
