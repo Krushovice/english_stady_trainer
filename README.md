@@ -4,7 +4,7 @@ Personal interactive English-learning platform. Product rules, architecture, and
 
 ## Status
 
-Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. No frontend exists yet — Phase 2's course pages, Phase 3's exercise UI, the placement test screen, and a review/mistakes dashboard are all deferred to Phase 6, alongside scaffolding the frontend project itself. Phase 5 (AI) is in progress: the provider abstraction, writing feedback, and homework generation are done and verified end to end against a real local model (see "AI (local model)" and "Writing feedback and homework" below); conversation mode and speaking come next.
+Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. No frontend exists yet — Phase 2's course pages, Phase 3's exercise UI, the placement test screen, and a review/mistakes dashboard are all deferred to Phase 6, alongside scaffolding the frontend project itself. Phase 5 (AI) is in progress: the provider abstraction, writing feedback, homework generation, and conversation mode are done and verified end to end against a real local model (see "AI (local model)", "Writing feedback and homework", and "Conversation mode" below); Speaking is what's left, blocked on choosing an STT provider.
 
 ## Stack
 
@@ -65,6 +65,17 @@ Qwen3.5 is a "thinking" model — LM Studio's API and its chat-parameters sideba
 - **Homework** — `POST /api/v1/homework/generate` builds 3 short writing tasks from the vocabulary/grammar of the user's most recently studied lesson (via their exercise-attempt history), respecting `learning_profiles.level_writing`. `GET /homework/{id}` reads a generated homework back with any submitted attempts. `POST /homework/{id}/tasks/{task_id}/submit` grades a submitted answer — reusing the exact same writing-feedback pipeline, since a homework answer is just English text to give feedback on.
 
 Both are auth-gated and map AI failures to typed HTTP errors: `AIProviderUnavailableError` → 503, `AIResponseParsingError` (the model didn't follow the requested format) → 502.
+
+## Conversation mode
+
+Open-ended chat practice, per CLAUDE.md's "AI Conversation" flow: the AI opens with a question, the learner replies, the AI reacts naturally with no grammar corrections mid-conversation, and an analysis is generated only once the session ends.
+
+- `POST /conversation/sessions` (optional `topic`) — AI generates the opening message.
+- `POST /conversation/sessions/{id}/messages` — send a reply, get the AI's natural (uncorrected) response. 409 if the session already ended.
+- `POST /conversation/sessions/{id}/end` — generates and persists the analysis (recurring mistakes, useful vocabulary, natural alternatives, grammar topics to review, recommended practice — CLAUDE.md's exact list). Idempotent: calling it again just returns the existing analysis, no second AI call.
+- `GET /conversation/sessions/{id}` — the full session: messages plus analysis once ended.
+
+Mid-conversation replies are returned as plain text, not parsed into sections — only the end-of-session analysis uses the same labeled-sections parsing as writing feedback/homework.
 
 ## Tests
 
