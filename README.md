@@ -4,7 +4,7 @@ Personal interactive English-learning platform. Product rules, architecture, and
 
 ## Status
 
-Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. No frontend exists yet — Phase 2's course pages, Phase 3's exercise UI, the placement test screen, and a review/mistakes dashboard are all deferred to Phase 6, alongside scaffolding the frontend project itself. Phase 5 (AI) is in progress: the provider abstraction and a local LM Studio adapter are wired up and verified end to end (see "AI (local model)" below); the `AIService` business layer and actual AI-powered features (writing feedback, homework, conversation) come next.
+Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. No frontend exists yet — Phase 2's course pages, Phase 3's exercise UI, the placement test screen, and a review/mistakes dashboard are all deferred to Phase 6, alongside scaffolding the frontend project itself. Phase 5 (AI) is in progress: the provider abstraction, writing feedback, and homework generation are done and verified end to end against a real local model (see "AI (local model)" and "Writing feedback and homework" below); conversation mode and speaking come next.
 
 ## Stack
 
@@ -55,7 +55,16 @@ AI features (Phase 5, in progress) run against a locally hosted model instead of
 
 `app/integrations/ai/` holds the provider abstraction: `AIProvider` (protocol), `LMStudioProvider` (talks to LM Studio's OpenAI-compatible endpoint via the `openai` SDK), and `MockAIProvider` (canned responses, used by tests — no AI-dependent test hits a real model). Config is `AI_*` in `.env.example`. Outside Docker, `AI_BASE_URL` points straight at `localhost:1234`; `docker compose` overrides it to `host.docker.internal:1234` for the `api` container, since LM Studio runs natively on the host, not in a container.
 
-Qwen3.5 is a "thinking" model and reasons before answering — LM Studio currently doesn't let the API disable that (upstream bug), so `AI_MAX_TOKENS` defaults to a generous `1500` to give it room; only the final answer (`message.content`) is ever returned to callers, the reasoning trace is discarded. See `docs/decisions.md` for the full rationale.
+Qwen3.5 is a "thinking" model — LM Studio's API and its chat-parameters sidebar both ignore attempts to disable that, but its **My Models → (model) → Inference → Custom Fields → Enable Thinking** toggle does work. With it off, responses come back in a few seconds instead of the model exhausting its token budget on reasoning and never answering. `AI_MAX_TOKENS` (default `1500`) is still generous headroom, not a workaround. Only the final answer (`message.content`) is ever returned to callers. See `docs/decisions.md` for the full story.
+
+## Writing feedback and homework
+
+`AIService` (`app/services/ai_service.py`) owns prompts and response parsing on top of `AIProvider`. Prompts are versioned files under `app/integrations/ai/prompts/*_v1.md`, not inline strings.
+
+- **Writing feedback** — `POST /api/v1/writing/feedback` takes free-text English and returns five sections (`good`/`grammar`/`vocabulary`/`natural_version`/`try_again`, per CLAUDE.md's feedback format), parsed from the model's labeled response.
+- **Homework** — `POST /api/v1/homework/generate` builds 3 short writing tasks from the vocabulary/grammar of the user's most recently studied lesson (via their exercise-attempt history), respecting `learning_profiles.level_writing`. `GET /homework/{id}` reads a generated homework back with any submitted attempts. `POST /homework/{id}/tasks/{task_id}/submit` grades a submitted answer — reusing the exact same writing-feedback pipeline, since a homework answer is just English text to give feedback on.
+
+Both are auth-gated and map AI failures to typed HTTP errors: `AIProviderUnavailableError` → 503, `AIResponseParsingError` (the model didn't follow the requested format) → 502.
 
 ## Tests
 
