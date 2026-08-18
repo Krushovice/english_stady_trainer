@@ -28,3 +28,7 @@ class AIProviderUnavailableError(DomainError):
 
 class AIResponseParsingError(DomainError):
     """Raised when the AI provider responded, but not in the expected shape."""
+
+
+class ConversationEndedError(DomainError):
+    """Raised when trying to send a message to a conversation that already ended."""

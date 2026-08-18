@@ -1,5 +1,6 @@
 from app.models.associations import lesson_grammar_topics, lesson_vocabulary
 from app.models.base import Base
+from app.models.conversation import ConversationMessage, ConversationRole, ConversationSession
 from app.models.exercise import Exercise, ExerciseType, Skill
 from app.models.exercise_attempt import AttemptSource, ExerciseAttempt
 from app.models.grammar_topic import GrammarTopic
@@ -19,6 +20,9 @@ __all__ = [
     "Base",
     "BlockType",
     "CEFRLevel",
+    "ConversationMessage",
+    "ConversationRole",
+    "ConversationSession",
     "Exercise",
     "ExerciseAttempt",
     "ExerciseType",
