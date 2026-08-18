@@ -11,6 +11,7 @@ from app.api.routes import (
     mistake,
     placement,
     review,
+    speaking,
 )
 
 api_router = APIRouter()
@@ -24,3 +25,4 @@ api_router.include_router(review.router, prefix="/api/v1")
 api_router.include_router(ai.router, prefix="/api/v1")
 api_router.include_router(homework.router, prefix="/api/v1")
 api_router.include_router(conversation.router, prefix="/api/v1")
+api_router.include_router(speaking.router, prefix="/api/v1")

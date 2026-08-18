@@ -137,6 +137,52 @@ class AIService:
             recommended_practice=sections["Recommended practice"],
         )
 
+    async def generate_speaking_prompt(
+        self,
+        *,
+        lesson_title: str,
+        vocabulary: list[str],
+        grammar_topics: list[str],
+        level: CEFRLevel | None,
+        max_tokens: int,
+    ) -> str:
+        vocabulary_text = ", ".join(vocabulary) if vocabulary else "(нет данных)"
+        grammar_text = ", ".join(grammar_topics) if grammar_topics else "(нет данных)"
+        user_message = (
+            f"Learner level: {level.value if level is not None else 'не определён'}\n"
+            f"Lesson: {lesson_title}\n"
+            f"Vocabulary: {vocabulary_text}\n"
+            f"Grammar topic(s): {grammar_text}\n\n"
+            "Generate the speaking prompt now."
+        )
+        messages = [
+            AIMessage(role="system", content=load_prompt("speaking_prompt_v1")),
+            AIMessage(role="user", content=user_message),
+        ]
+        return await self._provider.complete(messages, max_tokens=max_tokens)
+
+    async def generate_speaking_feedback(
+        self, prompt: str, transcript: str, *, max_tokens: int
+    ) -> WritingFeedback:
+        """Reuses `WritingFeedback`'s shape — same five sections CLAUDE.md's
+        Speaking example uses, just graded from a transcript+task pair instead
+        of raw written text, so it needs its own prompt (`speaking_feedback_v1`),
+        not a new result type."""
+        user_message = f"Speaking task: {prompt}\n\nLearner's transcribed answer: {transcript}"
+        messages = [
+            AIMessage(role="system", content=load_prompt("speaking_feedback_v1")),
+            AIMessage(role="user", content=user_message),
+        ]
+        raw = await self._provider.complete(messages, max_tokens=max_tokens)
+        sections = _parse_labeled_sections(raw, _WRITING_FEEDBACK_HEADERS)
+        return WritingFeedback(
+            good=sections["Good"],
+            grammar=sections["Grammar"],
+            vocabulary=sections["Vocabulary"],
+            natural_version=sections["Natural version"],
+            try_again=sections["Try again"],
+        )
+
 
 def _parse_labeled_sections(raw: str, headers: tuple[str, ...]) -> dict[str, str]:
     """Split `raw` into the given labeled sections (`"Header:\\n...text..."`).

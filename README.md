@@ -4,7 +4,7 @@ Personal interactive English-learning platform. Product rules, architecture, and
 
 ## Status
 
-Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. No frontend exists yet — Phase 2's course pages, Phase 3's exercise UI, the placement test screen, and a review/mistakes dashboard are all deferred to Phase 6, alongside scaffolding the frontend project itself. Phase 5 (AI) is in progress: the provider abstraction, writing feedback, homework generation, and conversation mode are done and verified end to end against a real local model (see "AI (local model)", "Writing feedback and homework", and "Conversation mode" below); the STT provider adapter is also built (see "Speech-to-text (STT)" below), but the Speaking flow itself (endpoint, DB model, prompt/retry loop) isn't built yet.
+Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. No frontend exists yet — Phase 2's course pages, Phase 3's exercise UI, the placement test screen, and a review/mistakes dashboard are all deferred to Phase 6, alongside scaffolding the frontend project itself. Phase 5 (AI) is done: the provider abstraction, writing feedback, homework generation, conversation mode, and the Speaking flow (prompt → recording → STT → evaluation → feedback → retry) are all built and verified end to end against real local models — see "AI (local model)", "Writing feedback and homework", "Conversation mode", "Speech-to-text (STT)", and "Speaking" below.
 
 ## Stack
 
@@ -83,7 +83,21 @@ The Speaking flow (CLAUDE.md's prompt → recording → STT → evaluation → f
 
 Unlike LM Studio, Speaches is an ordinary Docker container — it's the `stt` service in `docker-compose.yml` (`ghcr.io/speaches-ai/speaches:latest-cpu`, model `Systran/faster-whisper-medium`, CPU rather than GPU to avoid contending with the LLM for the 8GB VRAM budget). `api` doesn't wait on `stt`'s health to start, only its container start — an STT outage shouldn't block the rest of the platform from booting, same principle as the typed-exception degradation on the AI side. See `docs/decisions.md` for why Speaches was chosen over Voxtral.
 
-Only the provider adapter exists so far — no `SpeakingSession` model, service, or API route yet.
+Speaches downloads its model on first use, not at image build time — on a fresh `speaches_models` volume, pull it once before using Speaking for real:
+
+```bash
+curl -X POST http://localhost:8001/v1/models/Systran/faster-whisper-medium
+```
+
+It's cached in the `speaches_models` volume after that, so this is a one-time step per volume, not per container restart.
+
+## Speaking
+
+`POST /speaking/prompts` generates a short spoken-English task from the user's most recently studied lesson (same "recently studied" definition as homework), respecting `learning_profiles.level_speaking`, and creates a `SpeakingAttempt`. `POST /speaking/attempts/{id}/submit` (multipart, field `audio`) transcribes the recording via the STT provider and grades it — reusing `WritingFeedback`'s five-section shape (Good/Grammar/Vocabulary/Natural version/Try again) through a dedicated speaking prompt, since CLAUDE.md's own Speaking feedback example matches that shape exactly. `GET /speaking/attempts/{id}` reads an attempt back.
+
+An attempt can only be submitted once — 409 on a second submit; CLAUDE.md's "retry" is a new `POST /speaking/prompts` call, not resubmitting audio. A blank/silent transcript returns 422 rather than sending empty text to the feedback prompt. Pronunciation is deliberately not assessed: a text transcript carries no pronunciation signal, and the prompt explicitly tells the model not to guess at it. Both AI and STT failures map to typed HTTP errors, same as writing feedback/homework/conversation.
+
+Verified live end to end against real LM Studio + Speaches: a synthesized clip with deliberate past-tense mistakes ("I go to work", "I says", "she say", "We has") came back transcribed verbatim (STT doesn't "fix" the learner's grammar) and the AI feedback correctly caught and corrected all of them.
 
 ## Tests
 

@@ -11,6 +11,7 @@ from app.models.lesson_block import BlockType, LessonBlock
 from app.models.level import Level
 from app.models.module import Module
 from app.models.review_item import ReviewItem, ReviewItemType
+from app.models.speaking import SpeakingAttempt
 from app.models.user import User
 from app.models.user_mistake import MistakeStatus, UserMistake
 from app.models.vocabulary import Vocabulary
@@ -38,6 +39,7 @@ __all__ = [
     "ReviewItem",
     "ReviewItemType",
     "Skill",
+    "SpeakingAttempt",
     "User",
     "UserMistake",
     "Vocabulary",

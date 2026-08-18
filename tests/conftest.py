@@ -95,6 +95,23 @@ def override_ai_provider():
     app.dependency_overrides.pop(get_ai_provider, None)
 
 
+@pytest_asyncio.fixture
+def override_stt_provider():
+    """Swap the app's real STT provider for a test double for the duration of a test.
+
+    Usage: `override_stt_provider(MockSTTProvider(transcript="..."))`. Same
+    "never hit a real model in tests" rule as `override_ai_provider`.
+    """
+    from app.integrations.stt.factory import get_stt_provider
+    from app.main import app
+
+    def _override(provider):
+        app.dependency_overrides[get_stt_provider] = lambda: provider
+
+    yield _override
+    app.dependency_overrides.pop(get_stt_provider, None)
+
+
 @pytest_asyncio.fixture(scope="session")
 async def synced_lesson(_test_database):
     """Load the repo's real authored content once per test run.

@@ -213,6 +213,73 @@ async def test_generate_conversation_analysis_parses_provider_response():
     )
 
 
+async def test_generate_speaking_prompt_sends_system_prompt_and_lesson_context():
+    provider = MockAIProvider(response="Расскажи о своём обычном дне, используя Present Simple.")
+    service = AIService(provider)
+
+    prompt = await service.generate_speaking_prompt(
+        lesson_title="Daily routine",
+        vocabulary=["commute", "usually"],
+        grammar_topics=["Present Simple"],
+        level=CEFRLevel.A2,
+        max_tokens=500,
+    )
+
+    assert prompt == "Расскажи о своём обычном дне, используя Present Simple."
+    [messages] = provider.received_calls
+    assert messages[0].role == "system"
+    assert messages[1].role == "user"
+    assert "Daily routine" in messages[1].content
+    assert "commute" in messages[1].content
+    assert "Present Simple" in messages[1].content
+    assert "A2" in messages[1].content
+
+
+async def test_generate_speaking_prompt_handles_missing_level_and_context():
+    provider = MockAIProvider(response="Расскажи о чём-нибудь.")
+    service = AIService(provider)
+
+    prompt = await service.generate_speaking_prompt(
+        lesson_title="Daily routine", vocabulary=[], grammar_topics=[], level=None, max_tokens=500
+    )
+
+    assert prompt == "Расскажи о чём-нибудь."
+
+
+async def test_generate_speaking_feedback_parses_provider_response():
+    provider = MockAIProvider(response=_WELL_FORMED_RESPONSE)
+    service = AIService(provider)
+
+    feedback = await service.generate_speaking_feedback(
+        "Tell me about your day.", "Yesterday I go to shop.", max_tokens=1500
+    )
+
+    assert feedback == WritingFeedback(
+        good="Ты чётко объяснил свою мысль.",
+        grammar='Ошибка: "she don\'t" вместо "she doesn\'t" — подлежащее третьего лица '
+        "единственного числа.",
+        vocabulary='Вместо "very good" попробуй "great" или "excellent".',
+        natural_version="She doesn't like coffee, but she loves tea.",
+        try_again='Напиши 2 предложения о том, что не любит твой друг, используя "doesn\'t".',
+    )
+
+
+async def test_generate_speaking_feedback_sends_prompt_and_transcript_in_user_message():
+    provider = MockAIProvider(response=_WELL_FORMED_RESPONSE)
+    service = AIService(provider)
+
+    await service.generate_speaking_feedback(
+        "Tell me about your day.", "Yesterday I go to shop.", max_tokens=1500
+    )
+
+    [messages] = provider.received_calls
+    assert messages[0].role == "system"
+    assert "Good:" in messages[0].content
+    assert messages[1].role == "user"
+    assert "Tell me about your day." in messages[1].content
+    assert "Yesterday I go to shop." in messages[1].content
+
+
 def test_parse_labeled_sections_tolerates_markdown_bold_headers():
     raw = (
         "**Good:**\nNice try.\n\n"

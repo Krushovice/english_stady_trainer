@@ -41,3 +41,11 @@ class STTProviderUnavailableError(DomainError):
     a distinct type since Speaking depends on a second, independent vendor —
     text AI being up says nothing about STT being up, and vice versa.
     """
+
+
+class SpeakingAttemptAlreadySubmittedError(DomainError):
+    """Raised when submitting audio to a speaking attempt that already has one."""
+
+
+class EmptyTranscriptError(DomainError):
+    """Raised when STT returns no usable speech (silence, noise-only audio)."""
