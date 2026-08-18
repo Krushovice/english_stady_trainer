@@ -3,6 +3,7 @@ from app.models.base import Base
 from app.models.exercise import Exercise, ExerciseType, Skill
 from app.models.exercise_attempt import AttemptSource, ExerciseAttempt
 from app.models.grammar_topic import GrammarTopic
+from app.models.homework import Homework, HomeworkAttempt
 from app.models.learning_profile import CEFRLevel, LearningProfile
 from app.models.lesson import Lesson
 from app.models.lesson_block import BlockType, LessonBlock
@@ -22,6 +23,8 @@ __all__ = [
     "ExerciseAttempt",
     "ExerciseType",
     "GrammarTopic",
+    "Homework",
+    "HomeworkAttempt",
     "LearningProfile",
     "Lesson",
     "LessonBlock",
