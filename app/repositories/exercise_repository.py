@@ -5,7 +5,7 @@ from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.exercise import Exercise, ExerciseType, Skill
-from app.models.exercise_attempt import ExerciseAttempt
+from app.models.exercise_attempt import AttemptSource, ExerciseAttempt
 from app.models.learning_profile import CEFRLevel
 from app.models.lesson import Lesson
 
@@ -90,6 +90,26 @@ class ExerciseRepository:
             .order_by(ExerciseAttempt.attempted_at.desc())
         )
         return result.scalars().all()
+
+    async def get_most_recently_studied_lesson_id(self, user_id: uuid.UUID) -> uuid.UUID | None:
+        """Lesson behind the user's most recent non-placement attempt, if any.
+
+        Homework generation reinforces "recently studied material" (CLAUDE.md)
+        — this is the concrete definition of "recent": the lesson the user was
+        last actually practicing, not just enrolled in.
+        """
+        result = await self._session.execute(
+            select(Exercise.lesson_id)
+            .join(ExerciseAttempt, ExerciseAttempt.exercise_id == Exercise.id)
+            .where(
+                ExerciseAttempt.user_id == user_id,
+                ExerciseAttempt.source != AttemptSource.PLACEMENT_TEST,
+                Exercise.lesson_id.is_not(None),
+            )
+            .order_by(ExerciseAttempt.attempted_at.desc())
+            .limit(1)
+        )
+        return result.scalar_one_or_none()
 
     async def get_skill_progress(self, user_id: uuid.UUID) -> Sequence[SkillProgress]:
         result = await self._session.execute(

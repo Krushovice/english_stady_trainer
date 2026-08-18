@@ -189,6 +189,14 @@ class CourseRepository:
         )
         return result.scalar_one_or_none()
 
+    async def get_lesson_by_id(self, lesson_id: uuid.UUID) -> Lesson | None:
+        result = await self._session.execute(
+            select(Lesson)
+            .where(Lesson.id == lesson_id)
+            .options(selectinload(Lesson.vocabulary), selectinload(Lesson.grammar_topics))
+        )
+        return result.scalar_one_or_none()
+
     async def get_vocabulary_by_headword(self, headword: str) -> Vocabulary | None:
         result = await self._session.execute(
             select(Vocabulary).where(Vocabulary.headword == headword)
