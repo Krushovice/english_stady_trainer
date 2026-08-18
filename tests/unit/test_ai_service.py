@@ -2,10 +2,12 @@ import pytest
 
 from app.core.exceptions import AIResponseParsingError
 from app.integrations.ai.mock_provider import MockAIProvider
+from app.integrations.ai.provider import AIMessage
 from app.models.learning_profile import CEFRLevel
 from app.services.ai_service import (
     _WRITING_FEEDBACK_HEADERS,
     AIService,
+    ConversationAnalysis,
     HomeworkTask,
     WritingFeedback,
     _parse_labeled_sections,
@@ -133,6 +135,82 @@ async def test_generate_homework_tasks_handles_missing_level_and_context():
     )
 
     assert len(tasks) == 3
+
+
+_WELL_FORMED_ANALYSIS_RESPONSE = """
+Recurring mistakes:
+Несколько раз пропущено окончание -s в третьем лице (he go вместо he goes).
+
+Useful vocabulary:
+Попробуй "commute" и "get along with".
+
+Natural alternatives:
+"I very like it" лучше сказать "I really like it".
+
+Grammar topics to review:
+Present Simple, третье лицо единственного числа.
+
+Recommended practice:
+Напиши 3-4 предложения о своём друге, используя "he/she" в Present Simple.
+"""
+
+
+async def test_start_conversation_sends_system_and_kickoff_user_message():
+    provider = MockAIProvider(response="Hi! How's your day going?")
+    service = AIService(provider)
+
+    opening = await service.start_conversation("small talk", max_tokens=500)
+
+    assert opening == "Hi! How's your day going?"
+    [messages] = provider.received_calls
+    assert messages[0].role == "system"
+    assert messages[1].role == "user"
+    assert "small talk" in messages[1].content
+
+
+async def test_start_conversation_without_topic_still_sends_a_user_message():
+    provider = MockAIProvider(response="Hey, how are you?")
+    service = AIService(provider)
+
+    await service.start_conversation(None, max_tokens=500)
+
+    [messages] = provider.received_calls
+    assert messages[1].role == "user"
+
+
+async def test_continue_conversation_prepends_system_prompt_to_history():
+    provider = MockAIProvider(response="That sounds fun!")
+    service = AIService(provider)
+    history = [
+        AIMessage(role="assistant", content="How's your day going?"),
+        AIMessage(role="user", content="Pretty good, thanks!"),
+    ]
+
+    reply = await service.continue_conversation(history, max_tokens=500)
+
+    assert reply == "That sounds fun!"
+    [messages] = provider.received_calls
+    assert messages[0].role == "system"
+    assert messages[1:] == history
+
+
+async def test_generate_conversation_analysis_parses_provider_response():
+    provider = MockAIProvider(response=_WELL_FORMED_ANALYSIS_RESPONSE)
+    service = AIService(provider)
+
+    analysis = await service.generate_conversation_analysis(
+        "Learner: I very like it.\nPartner: Nice!", max_tokens=1500
+    )
+
+    assert analysis == ConversationAnalysis(
+        recurring_mistakes="Несколько раз пропущено окончание -s в третьем лице "
+        "(he go вместо he goes).",
+        useful_vocabulary='Попробуй "commute" и "get along with".',
+        natural_alternatives='"I very like it" лучше сказать "I really like it".',
+        grammar_topics_to_review="Present Simple, третье лицо единственного числа.",
+        recommended_practice='Напиши 3-4 предложения о своём друге, используя "he/she" '
+        "в Present Simple.",
+    )
 
 
 def test_parse_labeled_sections_tolerates_markdown_bold_headers():

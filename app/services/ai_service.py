@@ -8,6 +8,13 @@ from app.models.learning_profile import CEFRLevel
 
 _WRITING_FEEDBACK_HEADERS = ("Good", "Grammar", "Vocabulary", "Natural version", "Try again")
 _HOMEWORK_TASK_HEADERS = ("Task 1", "Task 2", "Task 3")
+_CONVERSATION_ANALYSIS_HEADERS = (
+    "Recurring mistakes",
+    "Useful vocabulary",
+    "Natural alternatives",
+    "Grammar topics to review",
+    "Recommended practice",
+)
 
 
 @dataclass(frozen=True)
@@ -23,6 +30,15 @@ class WritingFeedback:
 class HomeworkTask:
     id: str
     instruction: str
+
+
+@dataclass(frozen=True)
+class ConversationAnalysis:
+    recurring_mistakes: str
+    useful_vocabulary: str
+    natural_alternatives: str
+    grammar_topics_to_review: str
+    recommended_practice: str
 
 
 class AIService:
@@ -81,6 +97,45 @@ class AIService:
             HomeworkTask(id=f"task-{i}", instruction=sections[header])
             for i, header in enumerate(_HOMEWORK_TASK_HEADERS, start=1)
         ]
+
+    async def start_conversation(self, topic: str | None, *, max_tokens: int) -> str:
+        """Returns the AI's opening line — CLAUDE.md's flow starts with "AI asks"."""
+        kickoff = (
+            f"[Topic: {topic}. Begin the conversation with your opening question or remark.]"
+            if topic
+            else (
+                "[Begin the conversation with your opening question or remark, "
+                "about a natural everyday topic of your choice.]"
+            )
+        )
+        messages = [
+            AIMessage(role="system", content=load_prompt("conversation_v1")),
+            AIMessage(role="user", content=kickoff),
+        ]
+        return await self._provider.complete(messages, max_tokens=max_tokens)
+
+    async def continue_conversation(self, history: list[AIMessage], *, max_tokens: int) -> str:
+        """`history` is the full turn sequence so far, ending with the learner's
+        latest message — the AI's natural, uncorrected reply to it."""
+        messages = [AIMessage(role="system", content=load_prompt("conversation_v1")), *history]
+        return await self._provider.complete(messages, max_tokens=max_tokens)
+
+    async def generate_conversation_analysis(
+        self, transcript: str, *, max_tokens: int
+    ) -> ConversationAnalysis:
+        messages = [
+            AIMessage(role="system", content=load_prompt("conversation_analysis_v1")),
+            AIMessage(role="user", content=transcript),
+        ]
+        raw = await self._provider.complete(messages, max_tokens=max_tokens)
+        sections = _parse_labeled_sections(raw, _CONVERSATION_ANALYSIS_HEADERS)
+        return ConversationAnalysis(
+            recurring_mistakes=sections["Recurring mistakes"],
+            useful_vocabulary=sections["Useful vocabulary"],
+            natural_alternatives=sections["Natural alternatives"],
+            grammar_topics_to_review=sections["Grammar topics to review"],
+            recommended_practice=sections["Recommended practice"],
+        )
 
 
 def _parse_labeled_sections(raw: str, headers: tuple[str, ...]) -> dict[str, str]:
