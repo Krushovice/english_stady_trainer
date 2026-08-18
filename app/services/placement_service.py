@@ -15,6 +15,7 @@ from app.repositories.learning_profile_repository import LearningProfileReposito
 from app.services.placement_scoring import (
     ModuleCandidate,
     PlacementItemResult,
+    effective_recommendation_level,
     estimate_overall_level,
     estimate_skill_level,
     recommend_modules,
@@ -100,7 +101,9 @@ class PlacementService:
 
         await self._session.commit()
 
-        recommended = await self._recommend_modules(overall_level, profile.priority_goals)
+        recommended = await self._recommend_modules(
+            overall_level, skill_levels.get(Skill.GRAMMAR), profile.priority_goals
+        )
 
         skills = [
             SkillResult(
@@ -125,7 +128,9 @@ class PlacementService:
 
         skill_levels = {skill: getattr(profile, f"level_{skill.value}", None) for skill in Skill}
         overall_level = estimate_overall_level(skill_levels.values())
-        recommended = await self._recommend_modules(overall_level, profile.priority_goals)
+        recommended = await self._recommend_modules(
+            overall_level, skill_levels.get(Skill.GRAMMAR), profile.priority_goals
+        )
 
         # correct/total aren't meaningful here — this reads a previously
         # persisted profile, not a fresh grading pass. Left unset rather
@@ -143,7 +148,10 @@ class PlacementService:
         )
 
     async def _recommend_modules(
-        self, overall_level: CEFRLevel | None, priority_goals: list[str]
+        self,
+        overall_level: CEFRLevel | None,
+        grammar_level: CEFRLevel | None,
+        priority_goals: list[str],
     ) -> list[Module]:
         modules = await self._course.list_all_modules()
         candidates = [
@@ -156,7 +164,8 @@ class PlacementService:
             )
             for module in modules
         ]
-        ranked = recommend_modules(candidates, overall_level, priority_goals)
+        target_level = effective_recommendation_level(overall_level, grammar_level)
+        ranked = recommend_modules(candidates, target_level, priority_goals)
         ranked_ids = [candidate.id for candidate in ranked[:RECOMMENDED_MODULE_LIMIT]]
         modules_by_id = {module.id: module for module in modules}
         return [modules_by_id[module_id] for module_id in ranked_ids]

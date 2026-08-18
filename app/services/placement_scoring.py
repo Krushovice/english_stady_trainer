@@ -63,6 +63,24 @@ def estimate_overall_level(skill_levels: Iterable[CEFRLevel | None]) -> CEFRLeve
     return LEVEL_ORDER[average_index]
 
 
+def effective_recommendation_level(
+    overall_level: CEFRLevel | None, grammar_level: CEFRLevel | None
+) -> CEFRLevel | None:
+    """The level module recommendations should target.
+
+    Grammar lagging behind the blended overall estimate is weighted more than
+    the average alone would show — e.g. overall B1 with Grammar at A2 should
+    still recommend A2-level content, not B1 content the learner can't
+    parse. Same conservative bias as `estimate_overall_level`'s round-down:
+    prefer starting a specifically weak skill too easy over too hard.
+    """
+    if overall_level is None:
+        return grammar_level
+    if grammar_level is None:
+        return overall_level
+    return min(overall_level, grammar_level, key=LEVEL_ORDER.index)
+
+
 @dataclass(frozen=True)
 class ModuleCandidate:
     id: uuid.UUID

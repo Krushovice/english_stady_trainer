@@ -4,6 +4,7 @@ from app.models.learning_profile import CEFRLevel
 from app.services.placement_scoring import (
     ModuleCandidate,
     PlacementItemResult,
+    effective_recommendation_level,
     estimate_overall_level,
     estimate_skill_level,
     recommend_modules,
@@ -56,6 +57,22 @@ def test_estimate_overall_level_ignores_missing_skills() -> None:
 
 def test_estimate_overall_level_with_no_data_returns_none() -> None:
     assert estimate_overall_level([None, None]) is None
+
+
+def test_effective_recommendation_level_prefers_weaker_grammar() -> None:
+    # Overall B1 but grammar specifically lags at A2 -> target the weaker one.
+    assert effective_recommendation_level(CEFRLevel.B1, CEFRLevel.A2) == CEFRLevel.A2
+
+
+def test_effective_recommendation_level_does_not_downgrade_below_overall_unnecessarily() -> None:
+    # Grammar stronger than the overall blend -> overall still the ceiling.
+    assert effective_recommendation_level(CEFRLevel.A2, CEFRLevel.B1) == CEFRLevel.A2
+
+
+def test_effective_recommendation_level_falls_back_to_whichever_is_present() -> None:
+    assert effective_recommendation_level(None, CEFRLevel.A2) == CEFRLevel.A2
+    assert effective_recommendation_level(CEFRLevel.B1, None) == CEFRLevel.B1
+    assert effective_recommendation_level(None, None) is None
 
 
 def _module(slug: str, title: str, level: CEFRLevel, order_index: int = 1) -> ModuleCandidate:
