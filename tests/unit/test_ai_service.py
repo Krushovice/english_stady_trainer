@@ -2,7 +2,14 @@ import pytest
 
 from app.core.exceptions import AIResponseParsingError
 from app.integrations.ai.mock_provider import MockAIProvider
-from app.services.ai_service import AIService, WritingFeedback, _parse_writing_feedback
+from app.models.learning_profile import CEFRLevel
+from app.services.ai_service import (
+    _WRITING_FEEDBACK_HEADERS,
+    AIService,
+    HomeworkTask,
+    WritingFeedback,
+    _parse_labeled_sections,
+)
 
 _WELL_FORMED_RESPONSE = """
 Good:
@@ -19,6 +26,17 @@ She doesn't like coffee, but she loves tea.
 
 Try again:
 Напиши 2 предложения о том, что не любит твой друг, используя "doesn't".
+"""
+
+_WELL_FORMED_HOMEWORK_RESPONSE = """
+Task 1:
+Напиши предложение о том, что ты делал вчера, используя слово "commute".
+
+Task 2:
+Опиши свой обычный рабочий день, используя Present Simple.
+
+Task 3:
+Напиши, чем ты занимаешься по выходным, используя слово "usually".
 """
 
 
@@ -51,7 +69,73 @@ async def test_generate_writing_feedback_sends_system_prompt_and_user_text():
     assert messages[1].content == "She don't like coffee."
 
 
-def test_parse_writing_feedback_tolerates_markdown_bold_headers():
+async def test_generate_homework_tasks_parses_provider_response():
+    provider = MockAIProvider(response=_WELL_FORMED_HOMEWORK_RESPONSE)
+    service = AIService(provider)
+
+    tasks = await service.generate_homework_tasks(
+        lesson_title="Daily routine",
+        vocabulary=["commute", "usually"],
+        grammar_topics=["Present Simple"],
+        level=CEFRLevel.A2,
+        max_tokens=1500,
+    )
+
+    assert tasks == [
+        HomeworkTask(
+            id="task-1",
+            instruction='Напиши предложение о том, что ты делал вчера, используя слово "commute".',
+        ),
+        HomeworkTask(
+            id="task-2", instruction="Опиши свой обычный рабочий день, используя Present Simple."
+        ),
+        HomeworkTask(
+            id="task-3",
+            instruction='Напиши, чем ты занимаешься по выходным, используя слово "usually".',
+        ),
+    ]
+
+
+async def test_generate_homework_tasks_sends_system_prompt_and_lesson_context():
+    provider = MockAIProvider(response=_WELL_FORMED_HOMEWORK_RESPONSE)
+    service = AIService(provider)
+
+    await service.generate_homework_tasks(
+        lesson_title="Daily routine",
+        vocabulary=["commute", "usually"],
+        grammar_topics=["Present Simple"],
+        level=CEFRLevel.A2,
+        max_tokens=1500,
+    )
+
+    [messages] = provider.received_calls
+    assert messages[0].role == "system"
+    assert "Task 1:" in messages[0].content
+    # Lesson specifics go in the user turn, not the system prompt — some chat
+    # templates (this model's included) reject a request with no user message.
+    assert messages[1].role == "user"
+    assert "Daily routine" in messages[1].content
+    assert "commute" in messages[1].content
+    assert "Present Simple" in messages[1].content
+    assert "A2" in messages[1].content
+
+
+async def test_generate_homework_tasks_handles_missing_level_and_context():
+    provider = MockAIProvider(response=_WELL_FORMED_HOMEWORK_RESPONSE)
+    service = AIService(provider)
+
+    tasks = await service.generate_homework_tasks(
+        lesson_title="Daily routine",
+        vocabulary=[],
+        grammar_topics=[],
+        level=None,
+        max_tokens=1500,
+    )
+
+    assert len(tasks) == 3
+
+
+def test_parse_labeled_sections_tolerates_markdown_bold_headers():
     raw = (
         "**Good:**\nNice try.\n\n"
         "**Grammar:**\nNo mistakes.\n\n"
@@ -60,32 +144,36 @@ def test_parse_writing_feedback_tolerates_markdown_bold_headers():
         "**Try again:**\nWrite one more sentence."
     )
 
-    feedback = _parse_writing_feedback(raw)
+    sections = _parse_labeled_sections(raw, _WRITING_FEEDBACK_HEADERS)
 
-    assert feedback.good == "Nice try."
-    assert feedback.try_again == "Write one more sentence."
+    assert sections["Good"] == "Nice try."
+    assert sections["Try again"] == "Write one more sentence."
 
 
-def test_parse_writing_feedback_is_case_insensitive_on_headers():
+def test_parse_labeled_sections_is_case_insensitive_on_headers():
     raw = (
         "GOOD:\nfine\n\ngrammar:\nfine\n\nVOCABULARY:\nfine\n\n"
         "natural version:\nfine\n\nTRY AGAIN:\nfine"
     )
 
-    feedback = _parse_writing_feedback(raw)
+    sections = _parse_labeled_sections(raw, _WRITING_FEEDBACK_HEADERS)
 
-    assert feedback == WritingFeedback(
-        good="fine", grammar="fine", vocabulary="fine", natural_version="fine", try_again="fine"
-    )
+    assert sections == {
+        "Good": "fine",
+        "Grammar": "fine",
+        "Vocabulary": "fine",
+        "Natural version": "fine",
+        "Try again": "fine",
+    }
 
 
-def test_parse_writing_feedback_raises_on_missing_section():
+def test_parse_labeled_sections_raises_on_missing_section():
     raw = "Good:\nNice.\n\nGrammar:\nFine.\n\nVocabulary:\nFine.\n\nNatural version:\nAll good."
 
     with pytest.raises(AIResponseParsingError):
-        _parse_writing_feedback(raw)
+        _parse_labeled_sections(raw, _WRITING_FEEDBACK_HEADERS)
 
 
-def test_parse_writing_feedback_raises_on_unstructured_text():
+def test_parse_labeled_sections_raises_on_unstructured_text():
     with pytest.raises(AIResponseParsingError):
-        _parse_writing_feedback("Sorry, I can't help with that.")
+        _parse_labeled_sections("Sorry, I can't help with that.", _WRITING_FEEDBACK_HEADERS)
