@@ -4,7 +4,7 @@ Personal interactive English-learning platform. Product rules, architecture, and
 
 ## Status
 
-Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. No frontend exists yet — Phase 2's course pages, Phase 3's exercise UI, the placement test screen, and a review/mistakes dashboard are all deferred to Phase 6, alongside scaffolding the frontend project itself. Phase 5 (AI) is in progress: the provider abstraction, writing feedback, homework generation, and conversation mode are done and verified end to end against a real local model (see "AI (local model)", "Writing feedback and homework", and "Conversation mode" below); Speaking is what's left, blocked on choosing an STT provider.
+Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. No frontend exists yet — Phase 2's course pages, Phase 3's exercise UI, the placement test screen, and a review/mistakes dashboard are all deferred to Phase 6, alongside scaffolding the frontend project itself. Phase 5 (AI) is in progress: the provider abstraction, writing feedback, homework generation, and conversation mode are done and verified end to end against a real local model (see "AI (local model)", "Writing feedback and homework", and "Conversation mode" below); the STT provider adapter is also built (see "Speech-to-text (STT)" below), but the Speaking flow itself (endpoint, DB model, prompt/retry loop) isn't built yet.
 
 ## Stack
 
@@ -76,6 +76,14 @@ Open-ended chat practice, per CLAUDE.md's "AI Conversation" flow: the AI opens w
 - `GET /conversation/sessions/{id}` — the full session: messages plus analysis once ended.
 
 Mid-conversation replies are returned as plain text, not parsed into sections — only the end-of-session analysis uses the same labeled-sections parsing as writing feedback/homework.
+
+## Speech-to-text (STT)
+
+The Speaking flow (CLAUDE.md's prompt → recording → STT → evaluation → feedback → retry) needs transcription; `app/integrations/stt/` mirrors the AI provider abstraction — `STTProvider` (protocol), `SpeachesProvider` (talks to [Speaches](https://github.com/speaches-ai/speaches)'s OpenAI-compatible `/v1/audio/transcriptions` endpoint via the `openai` SDK), `MockSTTProvider` (canned transcript, used by tests). Config is `STT_*` in `.env.example`.
+
+Unlike LM Studio, Speaches is an ordinary Docker container — it's the `stt` service in `docker-compose.yml` (`ghcr.io/speaches-ai/speaches:latest-cpu`, model `Systran/faster-whisper-medium`, CPU rather than GPU to avoid contending with the LLM for the 8GB VRAM budget). `api` doesn't wait on `stt`'s health to start, only its container start — an STT outage shouldn't block the rest of the platform from booting, same principle as the typed-exception degradation on the AI side. See `docs/decisions.md` for why Speaches was chosen over Voxtral.
+
+Only the provider adapter exists so far — no `SpeakingSession` model, service, or API route yet.
 
 ## Tests
 

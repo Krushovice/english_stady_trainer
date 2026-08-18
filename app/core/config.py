@@ -22,6 +22,12 @@ class Settings(BaseSettings):
     ai_max_tokens: int = 1500
     ai_timeout_seconds: int = 120
 
+    stt_provider: str = "speaches"
+    stt_base_url: str = "http://localhost:8001/v1"
+    stt_api_key: str = "not-needed"
+    stt_model: str = "Systran/faster-whisper-medium"
+    stt_timeout_seconds: int = 60
+
 
 @lru_cache
 def get_settings() -> Settings:

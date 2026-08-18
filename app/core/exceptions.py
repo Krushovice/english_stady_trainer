@@ -32,3 +32,12 @@ class AIResponseParsingError(DomainError):
 
 class ConversationEndedError(DomainError):
     """Raised when trying to send a message to a conversation that already ended."""
+
+
+class STTProviderUnavailableError(DomainError):
+    """Raised when the configured speech-to-text provider can't be reached.
+
+    Same graceful-degradation contract as AIProviderUnavailableError, kept as
+    a distinct type since Speaking depends on a second, independent vendor —
+    text AI being up says nothing about STT being up, and vice versa.
+    """

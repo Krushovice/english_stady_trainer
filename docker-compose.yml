@@ -27,6 +27,20 @@ services:
       timeout: 5s
       retries: 10
 
+  stt:
+    image: ghcr.io/speaches-ai/speaches:latest-cpu
+    restart: unless-stopped
+    ports:
+      - "${STT_PORT:-8001}:8000"
+    volumes:
+      - speaches_models:/home/ubuntu/.cache/huggingface/hub
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
   api:
     build: .
     restart: unless-stopped
@@ -38,6 +52,9 @@ services:
       # LM Studio runs natively on the host (it's a GUI app, not containerized),
       # so the api container reaches it via Docker Desktop's host gateway.
       AI_BASE_URL: http://host.docker.internal:1234/v1
+      # Speaches, unlike LM Studio, runs as an ordinary container in this same
+      # Compose project, so the api container reaches it by service name.
+      STT_BASE_URL: http://stt:8000/v1
     ports:
       - "${API_PORT:-8000}:8000"
     depends_on:
@@ -45,6 +62,12 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+      # Not health-gated like db/redis: STT is a Phase 5 add-on, not something
+      # the rest of the platform depends on to boot (CLAUDE.md: "AI outages
+      # must not break the rest of the learning platform"). This only orders
+      # container start, so `api` doesn't wait on a cold model download.
+      stt:
+        condition: service_started
     command: sh -c "alembic upgrade head && python -m scripts.sync_content && uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
     volumes:
       - ./app:/app/app
@@ -54,3 +77,4 @@ services:
 
 volumes:
   postgres_data:
+  speaches_models:
