@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from app.api.routes import ai, auth, course, exercise, health, mistake, placement, review
+from app.api.routes import ai, auth, course, exercise, health, homework, mistake, placement, review
 
 api_router = APIRouter()
 api_router.include_router(health.router)
@@ -11,3 +11,4 @@ api_router.include_router(placement.router, prefix="/api/v1")
 api_router.include_router(mistake.router, prefix="/api/v1")
 api_router.include_router(review.router, prefix="/api/v1")
 api_router.include_router(ai.router, prefix="/api/v1")
+api_router.include_router(homework.router, prefix="/api/v1")
