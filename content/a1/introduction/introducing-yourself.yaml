@@ -1,0 +1,253 @@
+level:
+  code: A1
+  order_index: 0
+
+module:
+  slug: introduction
+  title: Introduction
+  order_index: 1
+
+lesson:
+  slug: introducing-yourself
+  title: Introducing Yourself
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Поздороваться и представиться по-английски"
+        - "Спросить и сказать, как кого-то зовут и откуда он"
+        - "Использовать глагол to be (am/is/are) в простых предложениях"
+        - "Использовать 8 базовых фраз для знакомства"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Это самый первый урок курса. Мы начнём с того, что нужно почти
+        в любом разговоре — поздороваться и представиться. По-английски это
+        делают с помощью глагола to be ("быть"), у которого есть три формы
+        в настоящем времени: am (я), is (он/она/оно), are (ты/мы/они).
+        Например: "I am Anna", "She is from Spain", "You are welcome".
+        Дальше в уроке эти формы встретятся в словаре, грамматике и
+        упражнениях — не нужно запоминать всё сразу, достаточно узнавать их
+        в контексте.
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "hello / hi"
+          translation: "привет, здравствуйте"
+          example_sentence: "Hello! Hi, how are you?"
+        - headword: "nice to meet you"
+          translation: "приятно познакомиться"
+          example_sentence: "Nice to meet you, Anna."
+        - headword: "my name is"
+          translation: "меня зовут"
+          example_sentence: "My name is Tom."
+        - headword: "what's your name"
+          translation: "как тебя зовут"
+          example_sentence: "Hi, what's your name?"
+        - headword: "I'm from"
+          translation: "я из"
+          example_sentence: "I'm from Poland."
+        - headword: "where are you from"
+          translation: "откуда ты"
+          example_sentence: "Where are you from?"
+        - headword: "how are you"
+          translation: "как дела"
+          example_sentence: "How are you today?"
+        - headword: "goodbye / bye"
+          translation: "до свидания, пока"
+          example_sentence: "Goodbye! See you tomorrow."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: to-be-present
+          title: Глагол to be (am / is / are)
+          description: >
+            Глагол to be — самый частый глагол в английском, он значит
+            "быть", но в настоящем времени на русский обычно не переводится:
+            "I am Tom" = "Я Том". Формы: I am (сокращённо I'm); he/she/it is
+            (he's/she's/it's); you/we/they are (you're/we're/they're).
+            Примеры: "I am from Russia.", "She is a teacher.", "They are
+            students.". Отрицание — is/am/are + not: "I am not from Spain."
+            Вопрос — is/am/are в начале: "Are you from Italy?"
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Meeting someone new
+          lines:
+            - speaker: A
+              text: "Hi! I'm Tom."
+            - speaker: B
+              text: "Hello, Tom. Nice to meet you. My name is Anna."
+            - speaker: A
+              text: "Nice to meet you too, Anna. Where are you from?"
+            - speaker: B
+              text: "I'm from Poland. And you?"
+            - speaker: A
+              text: "I'm from Canada."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: introducing-yourself-mc-greeting
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "nice to meet you"
+          prompt:
+            question: >-
+              Вы знакомитесь с новым человеком. Что вы скажете после того,
+              как он представился?
+            options:
+              - id: a
+                text: "Nice to meet you."
+              - id: b
+                text: "Goodbye."
+              - id: c
+                text: "How old are you?"
+              - id: d
+                text: "I don't know."
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Nice to meet you" — стандартная вежливая фраза сразу после
+            знакомства, аналог русского "приятно познакомиться".
+
+        - slug: introducing-yourself-fill-to-be
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: to-be-present
+          prompt:
+            text: >-
+              Заполните пропуски формой глагола to be (am / is / are):
+              1) "I ___ Anna." 2) "She ___ from Spain." 3) "They ___
+              students."
+          answer_key:
+            blanks:
+              - ["am"]
+              - ["is"]
+              - ["are"]
+          explanation: >-
+            I всегда идёт с am; he/she/it — с is; you/we/they — с are.
+            "I am Anna", "She is from Spain", "They are students".
+
+        - slug: introducing-yourself-order-question
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: to-be-present
+          prompt:
+            words: ["your", "is", "What", "name"]
+          answer_key:
+            correct_order: ["What", "is", "your", "name"]
+          explanation: >-
+            В вопросах с to be глагол ставится перед подлежащим: "What is
+            your name?", а не "What your name is?".
+
+        - slug: introducing-yourself-reading-new-friend
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              Hi! My name is Tom. I am from Canada. I am a teacher. This is
+              my friend, Anna. She is from Poland. She is a student. We are
+              in London now.
+            questions:
+              - id: q1
+                text: "Where is Tom from?"
+                options:
+                  - id: a
+                    text: "Canada"
+                  - id: b
+                    text: "Poland"
+                  - id: c
+                    text: "London"
+                  - id: d
+                    text: "Spain"
+              - id: q2
+                text: "What is Anna?"
+                options:
+                  - id: a
+                    text: "A teacher"
+                  - id: b
+                    text: "A student"
+                  - id: c
+                    text: "A doctor"
+                  - id: d
+                    text: "A friend of Tom's sister"
+          answer_key:
+            answers:
+              q1: a
+              q2: b
+          explanation: >-
+            Текст: "My name is Tom. I am from Canada." (Q1 — Canada); "This
+            is my friend, Anna... She is a student." (Q2 — a student).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: A New Friend
+      text: >
+        Hi! My name is Tom. I am from Canada. I am a teacher. This is my
+        friend, Anna. She is from Poland. She is a student. We are in
+        London now. Nice to meet you!
+      summary_ru: >
+        Привет! Меня зовут Том. Я из Канады. Я учитель. Это моя подруга
+        Анна. Она из Польши. Она студентка. Сейчас мы в Лондоне. Приятно
+        познакомиться!
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      transcript: >
+        A: Hi! I'm Tom. — B: Hello, Tom. Nice to meet you. My name is
+        Anna. — A: Nice to meet you too, Anna. Where are you from? — B:
+        I'm from Poland. And you? — A: I'm from Canada.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Представьте, что вы встречаете нового человека. Поздоровайтесь,
+        назовите своё имя и страну, спросите, как зовут его. Говорите около
+        30 секунд.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Напишите короткий диалог (4-6 строк) о знакомстве двух новых
+            людей. Используйте не менее 3 фраз из словаря этого урока.
+        - type: vocabulary_recall
+          instructions: >
+            Не заглядывая в урок, запишите как можно больше фраз для
+            знакомства, которые вы запомнили, затем сверьте список со
+            словарным блоком.
+        - type: grammar_practice
+          instructions: >
+            Напишите 5 предложений о себе и своих друзьях, используя am /
+            is / are, например "My friend is from Italy."
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the to-be-present
+        grammar topic are generated automatically from mistakes and spaced
+        repetition — nothing to author here.

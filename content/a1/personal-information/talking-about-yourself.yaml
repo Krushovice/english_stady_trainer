@@ -1,0 +1,255 @@
+level:
+  code: A1
+  order_index: 0
+
+module:
+  slug: personal-information
+  title: Personal Information
+  order_index: 2
+
+lesson:
+  slug: talking-about-yourself
+  title: Talking About Yourself
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Рассказать базовую информацию о себе: возраст, профессия, город"
+        - "Спросить у собеседника то же самое"
+        - "Использовать притяжательные местоимения my/your/his/her"
+        - "Использовать 8 новых слов по теме личной информации"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        В прошлом уроке вы научились здороваться и говорить, откуда вы. В
+        этом уроке — как рассказать о себе чуть подробнее: сколько вам лет,
+        кем вы работаете, где живёте. Для этого пригодятся притяжательные
+        местоимения: my (мой), your (твой), his (его), her (её). Например:
+        "My name is Tom. His name is Alex. Her job is a doctor." Обратите
+        внимание: в вопросе о возрасте по-английски используется глагол to
+        be, а не "иметь", как в русском — "How old are you?" дословно "Как
+        стар ты?", а не "Сколько тебе лет?".
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "age"
+          translation: "возраст"
+          example_sentence: "What is your age?"
+        - headword: "how old are you"
+          translation: "сколько тебе лет"
+          example_sentence: "How old are you? — I'm 25."
+        - headword: "job"
+          translation: "работа, профессия"
+          example_sentence: "My job is a teacher."
+        - headword: "what do you do"
+          translation: "кем ты работаешь"
+          example_sentence: "What do you do? — I'm a teacher."
+        - headword: "live (in)"
+          translation: "жить (в)"
+          example_sentence: "I live in Berlin."
+        - headword: "country"
+          translation: "страна"
+          example_sentence: "Spain is a beautiful country."
+        - headword: "married / single"
+          translation: "женат/замужем / холост, не замужем"
+          example_sentence: "I'm single. My brother is married."
+        - headword: "phone number"
+          translation: "номер телефона"
+          example_sentence: "What's your phone number?"
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: possessive-adjectives
+          title: Притяжательные местоимения (my / your / his / her)
+          description: >
+            Притяжательные местоимения показывают, кому что принадлежит, и
+            ставятся перед существительным: my (мой/моя/моё), your (твой),
+            his (его), her (её), our (наш), their (их). Важно: his
+            используется для мужского рода, her — для женского, независимо
+            от рода самого существительного в русском. Примеры: "My name is
+            Anna.", "His job is a doctor.", "Her country is Poland.", "Their
+            phone number is..." Не путайте her (её, притяжательное) с she
+            (она, подлежащее): "She is a doctor. Her job is interesting."
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Getting to know each other
+          lines:
+            - speaker: A
+              text: "So, what do you do, Anna?"
+            - speaker: B
+              text: "I'm a student. And you?"
+            - speaker: A
+              text: "I'm a teacher. Where do you live?"
+            - speaker: B
+              text: "I live in Warsaw. How old are you, if you don't mind me asking?"
+            - speaker: A
+              text: "I'm 28. And this is my friend Mark — he's a doctor."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: talking-about-yourself-mc-job
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "what do you do"
+          prompt:
+            question: >-
+              Вы хотите спросить, кем работает собеседник. Что вы спросите?
+            options:
+              - id: a
+                text: "What do you do?"
+              - id: b
+                text: "How old are you?"
+              - id: c
+                text: "Where are you from?"
+              - id: d
+                text: "What's your phone number?"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "What do you do?" — стандартный вопрос о профессии/роде занятий,
+            в отличие от вопросов о возрасте, происхождении или телефоне.
+
+        - slug: talking-about-yourself-fill-possessive
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: possessive-adjectives
+          prompt:
+            text: >-
+              Заполните пропуски притяжательными местоимениями (my / his /
+              her): 1) "___ name is Tom. (I)" 2) "___ job is a doctor. (he)"
+              3) "___ country is Poland. (she)"
+          answer_key:
+            blanks:
+              - ["my", "My"]
+              - ["his", "His"]
+              - ["her", "Her"]
+          explanation: >-
+            I -> my, he -> his, she -> her: "My name is Tom.", "His job is a
+            doctor.", "Her country is Poland."
+
+        - slug: talking-about-yourself-order-question
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          vocabulary_headword: "how old are you"
+          prompt:
+            words: ["you", "old", "are", "How"]
+          answer_key:
+            correct_order: ["How", "old", "are", "you"]
+          explanation: >-
+            Вопрос строится так же, как с to be: вопросительное слово (How
+            old) + глагол (are) + подлежащее (you) — "How old are you?".
+
+        - slug: talking-about-yourself-reading-profile
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              My name is Mark. I am 30 years old. I am a doctor and I live
+              in London. I am single. My best friend is Anna. She is 28.
+              Her job is a teacher, and her country is Poland.
+            questions:
+              - id: q1
+                text: "How old is Mark?"
+                options:
+                  - id: a
+                    text: "28"
+                  - id: b
+                    text: "30"
+                  - id: c
+                    text: "25"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "What is Anna's job?"
+                options:
+                  - id: a
+                    text: "Doctor"
+                  - id: b
+                    text: "Student"
+                  - id: c
+                    text: "Teacher"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: b
+              q2: c
+          explanation: >-
+            Текст: "I am 30 years old." (Q1 — Mark is 30); "Her job is a
+            teacher" — her относится к Anna (Q2 — teacher).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: A Short Profile
+      text: >
+        My name is Mark. I am 30 years old. I am a doctor and I live in
+        London. I am single. My best friend is Anna. She is 28. Her job is
+        a teacher, and her country is Poland.
+      summary_ru: >
+        Меня зовут Марк. Мне 30 лет. Я врач и живу в Лондоне. Я не женат.
+        Моя лучшая подруга — Анна. Ей 28 лет. Она учитель, а её страна —
+        Польша.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      transcript: >
+        A: So, what do you do, Anna? — B: I'm a student. And you? — A: I'm
+        a teacher. Where do you live? — B: I live in Warsaw. How old are
+        you, if you don't mind me asking? — A: I'm 28. And this is my
+        friend Mark — he's a doctor.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Расскажите о себе за 30-40 секунд: как вас зовут, сколько вам лет,
+        кем вы работаете и где живёте. Затем спросите то же самое у
+        воображаемого собеседника.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Напишите короткий текст (4-6 предложений) о себе или о
+            вымышленном человеке: имя, возраст, профессия, город. Используйте
+            не менее 3 слов из словаря этого урока.
+        - type: vocabulary_recall
+          instructions: >
+            Не заглядывая в урок, запишите как можно больше слов по теме
+            личной информации, затем сверьте список со словарным блоком.
+        - type: grammar_practice
+          instructions: >
+            Напишите 5 предложений о своих друзьях или родственниках,
+            используя his/her, например "Her name is Olga. His job is a
+            driver."
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        possessive-adjectives grammar topic are generated automatically from
+        mistakes and spaced repetition — nothing to author here.

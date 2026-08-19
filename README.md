@@ -66,6 +66,8 @@ Verified live end to end with headless-browser scripts against the real API — 
 
 Lessons live as YAML files under `content/` (one file per lesson, containing its level/module/lesson metadata and all eleven lesson blocks), validated against `app/schemas/content.py`. Adding or editing a lesson is a content change, not a code change — re-run `uv run python -m scripts.sync_content` (or restart the `api` container) to load it. The loader upserts by natural key (level code, module/lesson slug, vocabulary headword, grammar topic slug), so re-running it after an edit updates existing rows instead of duplicating them. `content/b1/small-talk/making-small-talk.yaml` is the format reference.
 
+A1 content has started against the 15-topic structure from `CLAUDE.md`: `content/a1/introduction/introducing-yourself.yaml` and `content/a1/personal-information/talking-about-yourself.yaml`, each with 4 exercises and grammar recycled from the previous lesson (to-be present → possessive adjectives). Remaining A1 topics and progress are tracked in `docs/roadmap.md`.
+
 **Language immersion convention** (see `docs/decisions.md`): A1-A2 lessons author `context`/`grammar` blocks in Russian directly. B1 keeps them in English but adds an optional `summary_ru: >` key to long text blocks (`context`, `reading`) — a short Russian gloss, not a full translation, rendered client-side as a collapsed toggle the learner opens on demand. B2 drops `summary_ru` entirely. No schema change needed for this — `context`/`reading`/`examples` blocks are free-form `content: dict` already.
 
 ## Exercises
