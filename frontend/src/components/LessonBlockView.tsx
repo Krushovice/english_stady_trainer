@@ -8,6 +8,21 @@ import type { LessonBlock } from "../api/types";
 // with proper submit/feedback UI, not from this read-only block content.
 const SKIPPED_TYPES = new Set(["vocabulary", "grammar", "exercises"]);
 
+// Immersion is graded by level in content authoring (A1-A2 blocks author
+// in Russian directly, B2 drops this field) — this is only the B1 middle
+// ground: the English text stays primary, a short Russian gloss is a click
+// away instead of shown inline, so it's a safety net, not a crutch. See
+// docs/decisions.md.
+function RuSummary({ text }: { text: string }) {
+  if (!text) return null;
+  return (
+    <details className="ru-summary">
+      <summary>Кратко на русском</summary>
+      <p>{text}</p>
+    </details>
+  );
+}
+
 export function LessonBlockView({ block }: { block: LessonBlock }) {
   if (SKIPPED_TYPES.has(block.block_type)) return null;
 
@@ -33,6 +48,7 @@ export function LessonBlockView({ block }: { block: LessonBlock }) {
         <section className="lesson-block">
           <h2>Context</h2>
           <p>{asString(content.text)}</p>
+          <RuSummary text={asString(content.summary_ru)} />
         </section>
       );
 
@@ -63,6 +79,7 @@ export function LessonBlockView({ block }: { block: LessonBlock }) {
         <section className="lesson-block">
           <h2>{asString(content.title) || "Reading"}</h2>
           <p>{asString(content.text)}</p>
+          <RuSummary text={asString(content.summary_ru)} />
         </section>
       );
 

@@ -44,15 +44,23 @@ Needs the API running (either `docker compose up` from the repo root, or the "De
 `frontend/src/`:
 - `api/` — a small hand-written `fetch` wrapper (`client.ts`, handles the bearer token + typed `ApiError`) plus one module per resource (`auth.ts`, `course.ts`, `exercises.ts`) and hand-kept-in-sync TS types (`types.ts`) mirroring `app/schemas/*.py`. No codegen yet — see `docs/decisions.md`.
 - `auth/` — `AuthContext` (JWT in `localStorage`, hydrated via `GET /auth/me` on load) and `ProtectedRoute`.
-- `pages/` — one per route: `LoginPage`, `RegisterPage`, `LevelsPage`, `ModulesPage`, `LessonsPage`, `LessonPage`.
-- `components/LessonBlockView.tsx` — renders each of the 11 lesson block types (goals, context, examples, reading, listening, speaking, homework, review, ...); unknown block types fall back to a raw JSON dump instead of silently disappearing.
-- `components/exercises/` — one input component per scored exercise type (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) plus `ExerciseCard`, which submits an attempt and shows the scored result. "Try again" remounts the input component (via a bumped `key`) so old answers don't linger.
+- `pages/` — one per route: `LoginPage`, `RegisterPage`, `LevelsPage`, `ModulesPage`, `LessonsPage`, `LessonPage`, `ProgressPage`, `DailyQuizPage`.
+- `components/layout/Header.tsx` — nav (Lessons / Daily quiz / Progress) with active-state styling via `react-router-dom`'s `NavLink`.
+- `components/LessonBlockView.tsx` — renders each of the 11 lesson block types (goals, context, examples, reading, listening, speaking, homework, review, ...); unknown block types fall back to a raw JSON dump instead of silently disappearing. `context`/`reading` blocks additionally render a collapsed "Кратко на русском" toggle when the block's content has a `summary_ru` key — see "Content" below.
+- `components/exercises/` — one input component per scored exercise type (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) plus `ExerciseCard`, which submits an attempt and shows the scored result. "Try again" remounts the input component (via a bumped `key`) so old answers don't linger; a successful submit also invalidates the `progress`/`daily-quiz` react-query caches so those pages don't show stale data.
 
-Verified live end to end with a headless-browser script (register → levels → modules → lessons → lesson → submit all 4 exercise types → logout) against the real API — zero console errors.
+Verified live end to end with a headless-browser script (register → levels → modules → lessons → lesson → submit all 4 exercise types → check progress/daily quiz update → logout) against the real API — zero console errors.
+
+## Progress and Daily quiz
+
+- `GET /progress` (existing, Phase 3) — per-skill attempt/accuracy counts, shown as a card per skill on `ProgressPage`. Deliberately not reduced to one aggregate number, per CLAUDE.md.
+- `GET /practice/daily-quiz` — up to 8 exercises drawn from lessons the learner has already studied (any skill mix), stable for the whole day (seeded by user + date, nothing persisted), graded through the same `POST /exercises/{id}/attempts` as lesson exercises. Deliberately a separate feature from the spaced-repetition review queue (`GET /review/due`, Phase 4) — see `docs/decisions.md`.
 
 ## Content
 
 Lessons live as YAML files under `content/` (one file per lesson, containing its level/module/lesson metadata and all eleven lesson blocks), validated against `app/schemas/content.py`. Adding or editing a lesson is a content change, not a code change — re-run `uv run python -m scripts.sync_content` (or restart the `api` container) to load it. The loader upserts by natural key (level code, module/lesson slug, vocabulary headword, grammar topic slug), so re-running it after an edit updates existing rows instead of duplicating them. `content/b1/small-talk/making-small-talk.yaml` is the format reference.
+
+**Language immersion convention** (see `docs/decisions.md`): A1-A2 lessons author `context`/`grammar` blocks in Russian directly. B1 keeps them in English but adds an optional `summary_ru: >` key to long text blocks (`context`, `reading`) — a short Russian gloss, not a full translation, rendered client-side as a collapsed toggle the learner opens on demand. B2 drops `summary_ru` entirely. No schema change needed for this — `context`/`reading`/`examples` blocks are free-form `content: dict` already.
 
 ## Exercises
 

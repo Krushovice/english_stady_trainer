@@ -137,3 +137,10 @@ export interface AttemptResult {
   answer_key: Record<string, unknown>;
   attempted_at: string;
 }
+
+export interface SkillProgress {
+  skill: Skill;
+  attempts_count: number;
+  correct_count: number;
+  accuracy: number;
+}

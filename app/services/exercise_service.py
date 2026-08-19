@@ -1,16 +1,20 @@
+import random
 import uuid
 from collections.abc import Sequence
+from datetime import date
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.exceptions import NotFoundError
-from app.models.exercise import Exercise
+from app.models.exercise import Exercise, Skill
 from app.models.exercise_attempt import AttemptSource, ExerciseAttempt
 from app.models.review_item import ReviewItemType
 from app.repositories.exercise_repository import ExerciseRepository, SkillProgress
 from app.services.mistake_service import MistakeService
 from app.services.review_service import ReviewService
 from app.services.scoring import score_attempt
+
+DAILY_QUIZ_SIZE = 8
 
 
 class ExerciseService:
@@ -74,3 +78,30 @@ class ExerciseService:
 
     async def get_progress(self, user_id: uuid.UUID) -> Sequence[SkillProgress]:
         return await self._repo.get_skill_progress(user_id)
+
+    async def get_daily_quiz(self, user_id: uuid.UUID, *, today: date) -> list[Exercise]:
+        """A quiz mixing exercises across the skills the user has already
+        practiced, not a spaced-repetition review queue (see docs/decisions.md
+        — the two are deliberately separate features). Stable for the whole
+        day: seeded by (user, date) instead of persisted anywhere.
+        """
+        candidates = list(await self._repo.list_studied_exercises(user_id))
+        if not candidates:
+            return []
+
+        rng = random.Random(f"{user_id}:{today.isoformat()}")
+        rng.shuffle(candidates)
+
+        by_skill: dict[Skill, list[Exercise]] = {}
+        for exercise in candidates:
+            by_skill.setdefault(exercise.skill, []).append(exercise)
+
+        skills = list(by_skill.keys())
+        picked: list[Exercise] = []
+        i = 0
+        while len(picked) < DAILY_QUIZ_SIZE and any(by_skill.values()):
+            skill = skills[i % len(skills)]
+            if by_skill[skill]:
+                picked.append(by_skill[skill].pop())
+            i += 1
+        return picked

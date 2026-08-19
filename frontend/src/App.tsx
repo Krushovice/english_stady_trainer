@@ -2,11 +2,13 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { ProtectedRoute } from "./auth/ProtectedRoute";
 import { useAuth } from "./auth/AuthContext";
 import { Header } from "./components/layout/Header";
+import { DailyQuizPage } from "./pages/DailyQuizPage";
 import { LessonPage } from "./pages/LessonPage";
 import { LessonsPage } from "./pages/LessonsPage";
 import { LevelsPage } from "./pages/LevelsPage";
 import { LoginPage } from "./pages/LoginPage";
 import { ModulesPage } from "./pages/ModulesPage";
+import { ProgressPage } from "./pages/ProgressPage";
 import { RegisterPage } from "./pages/RegisterPage";
 
 function App() {
@@ -48,6 +50,22 @@ function App() {
             element={
               <ProtectedRoute>
                 <LessonPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/daily-quiz"
+            element={
+              <ProtectedRoute>
+                <DailyQuizPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/progress"
+            element={
+              <ProtectedRoute>
+                <ProgressPage />
               </ProtectedRoute>
             }
           />

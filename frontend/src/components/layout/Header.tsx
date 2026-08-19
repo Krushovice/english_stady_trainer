@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useAuth } from "../../auth/AuthContext";
 
 export function Header() {
@@ -6,16 +6,29 @@ export function Header() {
 
   return (
     <header className="site-header">
-      <Link to="/levels" className="brand">
+      <NavLink to="/levels" className="brand">
         English Trainer
-      </Link>
+      </NavLink>
       {user && (
-        <div className="site-header-user">
-          <span>{user.email}</span>
-          <button type="button" className="link-button" onClick={logout}>
-            Log out
-          </button>
-        </div>
+        <>
+          <nav className="site-nav">
+            <NavLink to="/levels" className="site-nav-link">
+              Lessons
+            </NavLink>
+            <NavLink to="/daily-quiz" className="site-nav-link">
+              Daily quiz
+            </NavLink>
+            <NavLink to="/progress" className="site-nav-link">
+              Progress
+            </NavLink>
+          </nav>
+          <div className="site-header-user">
+            <span>{user.email}</span>
+            <button type="button" className="link-button" onClick={logout}>
+              Log out
+            </button>
+          </div>
+        </>
       )}
     </header>
   );

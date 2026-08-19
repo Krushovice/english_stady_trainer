@@ -35,6 +35,12 @@ blocks:
         signalling that you're friendly and open to talking. Native speakers
         rely on a small set of safe topics and a few fixed phrases, which
         makes it very learnable.
+      summary_ru: >
+        Small talk — лёгкий разговор ни о чём (погода, выходные, пробки)
+        перед серьёзным разговором или вместо него. Его цель — не содержание,
+        а сигнал «я дружелюбен и открыт к общению». Носители языка используют
+        небольшой набор безопасных тем и несколько устойчивых фраз, поэтому
+        этому легко научиться.
 
   - type: vocabulary
     order_index: 3
@@ -217,6 +223,13 @@ blocks:
         want to keep the other person talking: "You had a good weekend,
         didn't you?" opens the door far more naturally than "Did you have a
         good weekend?" on its own.
+      summary_ru: >
+        В англоязычных компаниях разговор редко начинается сразу с дела —
+        сначала 30-60 секунд small talk. Пропустить этот шаг — значит
+        показаться холодным, даже не желая этого. Секрет не в том, чтобы
+        сказать что-то интересное, а в том, чтобы показать готовность
+        слушать: задать короткий вопрос, отреагировать на ответ и добавить
+        question tag, если хочешь продолжить разговор.
 
   - type: listening
     order_index: 8

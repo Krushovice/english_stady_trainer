@@ -1,3 +1,4 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { submitAttempt } from "../../api/exercises";
 import type { AttemptResult, Exercise, SubmittedAnswer } from "../../api/types";
@@ -16,6 +17,7 @@ const SKILL_LABELS: Record<string, string> = {
 };
 
 export function ExerciseCard({ exercise }: { exercise: Exercise }) {
+  const queryClient = useQueryClient();
   const [answer, setAnswer] = useState<SubmittedAnswer | null>(null);
   const [result, setResult] = useState<AttemptResult | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -31,6 +33,11 @@ export function ExerciseCard({ exercise }: { exercise: Exercise }) {
     setError(null);
     try {
       setResult(await submitAttempt(exercise.id, answer));
+      // An attempt changes both the per-skill breakdown and the pool the
+      // daily quiz draws from — without this, either page would keep
+      // showing pre-attempt data for the rest of `staleTime`.
+      queryClient.invalidateQueries({ queryKey: ["progress"] });
+      queryClient.invalidateQueries({ queryKey: ["daily-quiz"] });
     } catch {
       setError("Couldn't submit your answer. Please try again.");
     } finally {

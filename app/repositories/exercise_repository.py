@@ -111,6 +111,20 @@ class ExerciseRepository:
         )
         return result.scalar_one_or_none()
 
+    async def list_studied_exercises(self, user_id: uuid.UUID) -> Sequence[Exercise]:
+        """Distinct exercises the user has attempted via real practice (not
+        placement) — the candidate pool for the daily quiz."""
+        result = await self._session.execute(
+            select(Exercise)
+            .join(ExerciseAttempt, ExerciseAttempt.exercise_id == Exercise.id)
+            .where(
+                ExerciseAttempt.user_id == user_id,
+                ExerciseAttempt.source != AttemptSource.PLACEMENT_TEST,
+            )
+            .distinct()
+        )
+        return result.scalars().all()
+
     async def get_skill_progress(self, user_id: uuid.UUID) -> Sequence[SkillProgress]:
         result = await self._session.execute(
             select(

@@ -1,10 +1,12 @@
 import uuid
+from datetime import date
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_user, get_db_session
 from app.core.exceptions import NotFoundError
+from app.models.exercise import Exercise
 from app.models.exercise_attempt import ExerciseAttempt
 from app.models.user import User
 from app.schemas.exercise import (
@@ -67,6 +69,14 @@ async def list_attempts(
     current_user: User = Depends(get_current_user),
 ) -> list:
     return await ExerciseService(session).list_attempts(current_user.id, exercise_id)
+
+
+@router.get("/practice/daily-quiz", response_model=list[ExercisePublicResponse])
+async def get_daily_quiz(
+    session: AsyncSession = Depends(get_db_session),
+    current_user: User = Depends(get_current_user),
+) -> list[Exercise]:
+    return await ExerciseService(session).get_daily_quiz(current_user.id, today=date.today())
 
 
 @router.get("/progress", response_model=list[SkillProgressResponse])
