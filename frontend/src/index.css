@@ -1,0 +1,473 @@
+:root {
+  --bg: #f6f7fa;
+  --surface: #ffffff;
+  --border: #e1e5ec;
+  --text: #1b222c;
+  --text-muted: #5c6672;
+  --accent: #1f7a6c;
+  --accent-hover: #175f54;
+  --accent-soft: #e7f4f1;
+  --success-bg: #eafaf1;
+  --success-text: #187a4c;
+  --success-border: #b7ecd0;
+  --error-bg: #fdecec;
+  --error-text: #b3261e;
+  --error-border: #f6c9c6;
+  --radius: 10px;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14181f;
+    --surface: #1b212b;
+    --border: #2a313d;
+    --text: #e7ebf1;
+    --text-muted: #98a2b1;
+    --accent: #38b39e;
+    --accent-hover: #4fcbb5;
+    --accent-soft: #17332e;
+    --success-bg: #123724;
+    --success-text: #58d78f;
+    --success-border: #1f5c3d;
+    --error-bg: #3a1a1a;
+    --error-text: #ff8a80;
+    --error-border: #6b2a2a;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+}
+
+a {
+  color: var(--accent);
+}
+
+button {
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.site-header-user {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.page h1 {
+  margin-top: 0;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--text-muted);
+}
+
+.status {
+  color: var(--text-muted);
+}
+
+.status-error {
+  color: var(--error-text);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.card {
+  display: block;
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.15s ease;
+}
+
+.card:hover {
+  border-color: var(--accent);
+}
+
+.card-title {
+  font-weight: 600;
+}
+
+/* --- Auth forms --- */
+
+.auth-page {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+.auth-form {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.auth-form h1 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.auth-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.auth-form input {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 1rem;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.auth-form button {
+  padding: 0.6rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+}
+
+.auth-form button:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.auth-form button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.auth-switch {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.form-error {
+  margin: 0;
+  color: var(--error-text);
+  font-size: 0.9rem;
+}
+
+/* --- Lesson content --- */
+
+.lesson-block {
+  margin: 1.75rem 0;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.lesson-block:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.lesson-block h2 {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.dialogue {
+  margin-bottom: 1rem;
+}
+
+.dialogue-line {
+  margin: 0.25rem 0;
+}
+
+.note {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.transcript {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+.vocabulary-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.vocabulary-item {
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.vocabulary-item dt {
+  font-weight: 600;
+}
+
+.vocabulary-item dd {
+  margin: 0.15rem 0 0;
+  color: var(--text-muted);
+}
+
+.vocabulary-item .example {
+  font-style: italic;
+}
+
+.grammar-topic {
+  margin-bottom: 1rem;
+}
+
+.raw-content {
+  white-space: pre-wrap;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  font-size: 0.85rem;
+}
+
+/* --- Exercises --- */
+
+.exercise-card {
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.exercise-card.correct {
+  border-color: var(--success-border);
+}
+
+.exercise-card.incorrect {
+  border-color: var(--error-border);
+}
+
+.exercise-meta {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.badge-muted {
+  background: var(--bg);
+  color: var(--text-muted);
+}
+
+.exercise-prompt {
+  border: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.exercise-prompt legend {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  padding: 0;
+}
+
+.option-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0;
+}
+
+.fill-blank {
+  line-height: 2.2;
+}
+
+.blank-input {
+  margin: 0 0.25rem;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font: inherit;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.sentence-ordering .word-slot-row {
+  min-height: 2.5rem;
+  padding: 0.5rem;
+  margin-bottom: 0.75rem;
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.placeholder {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.word-bank {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.word-chip {
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.word-chip.chosen {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.word-chip:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.reading-comprehension .passage {
+  padding: 0.9rem 1rem;
+  margin-bottom: 1rem;
+  background: var(--bg);
+  border-radius: var(--radius);
+}
+
+.reading-comprehension fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.exercise-card button[type="button"]:not(.link-button):not(.word-chip),
+.exercise-card button[type="submit"] {
+  padding: 0.5rem 1.1rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+}
+
+.exercise-card button:disabled:not(.word-chip) {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.exercise-result {
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius);
+}
+
+.exercise-card.correct .exercise-result {
+  background: var(--success-bg);
+}
+
+.exercise-card.incorrect .exercise-result {
+  background: var(--error-bg);
+}
+
+.result-verdict {
+  margin: 0 0 0.35rem;
+  font-weight: 700;
+}
+
+.exercise-card.correct .result-verdict {
+  color: var(--success-text);
+}
+
+.exercise-card.incorrect .result-verdict {
+  color: var(--error-text);
+}
+
+.result-explanation {
+  margin: 0 0 0.6rem;
+  color: var(--text);
+}

@@ -4,11 +4,13 @@ Personal interactive English-learning platform. Product rules, architecture, and
 
 ## Status
 
-Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. No frontend exists yet — Phase 2's course pages, Phase 3's exercise UI, the placement test screen, and a review/mistakes dashboard are all deferred to Phase 6, alongside scaffolding the frontend project itself. Phase 5 (AI) is done: the provider abstraction, writing feedback, homework generation, conversation mode, and the Speaking flow (prompt → recording → STT → evaluation → feedback → retry) are all built and verified end to end against real local models — see "AI (local model)", "Writing feedback and homework", "Conversation mode", "Speech-to-text (STT)", and "Speaking" below.
+Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. Phase 5 (AI) is done: the provider abstraction, writing feedback, homework generation, conversation mode, and the Speaking flow (prompt → recording → STT → evaluation → feedback → retry) are all built and verified end to end against real local models — see "AI (local model)", "Writing feedback and homework", "Conversation mode", "Speech-to-text (STT)", and "Speaking" below. Phase 6 (UX) is in progress: the frontend project now exists (`frontend/`) with the core learning loop — register/login, browse levels → modules → lessons, read a lesson, and do all four exercise types with scored feedback — verified live end to end; the dashboard, progress screen, review center, and Speaking UI aren't built yet (see "Frontend" below).
 
 ## Stack
 
-Python / FastAPI / Pydantic v2 / SQLAlchemy 2.x / Alembic / PostgreSQL / Redis / Docker Compose. Dependencies are managed with [uv](https://docs.astral.sh/uv/) into a local `.venv` — never installed system-wide.
+Backend: Python / FastAPI / Pydantic v2 / SQLAlchemy 2.x / Alembic / PostgreSQL / Redis / Docker Compose. Dependencies are managed with [uv](https://docs.astral.sh/uv/) into a local `.venv` — never installed system-wide.
+
+Frontend: React 19 / TypeScript / Vite, `react-router-dom` for routing, `@tanstack/react-query` for data fetching. Dependencies are managed with npm into `frontend/node_modules/` — never installed system-wide.
 
 ## Running it
 
@@ -28,6 +30,25 @@ uv run alembic upgrade head
 uv run python -m scripts.sync_content
 uv run uvicorn app.main:app --reload
 ```
+
+## Frontend
+
+```bash
+cd frontend
+npm install       # if npm hangs at "audit bulk request", re-run with --no-audit
+npm run dev        # serves at http://localhost:5173
+```
+
+Needs the API running (either `docker compose up` from the repo root, or the "Development (outside Docker)" steps above) — the API's `CORS_ORIGINS` setting already allows `http://localhost:5173` by default.
+
+`frontend/src/`:
+- `api/` — a small hand-written `fetch` wrapper (`client.ts`, handles the bearer token + typed `ApiError`) plus one module per resource (`auth.ts`, `course.ts`, `exercises.ts`) and hand-kept-in-sync TS types (`types.ts`) mirroring `app/schemas/*.py`. No codegen yet — see `docs/decisions.md`.
+- `auth/` — `AuthContext` (JWT in `localStorage`, hydrated via `GET /auth/me` on load) and `ProtectedRoute`.
+- `pages/` — one per route: `LoginPage`, `RegisterPage`, `LevelsPage`, `ModulesPage`, `LessonsPage`, `LessonPage`.
+- `components/LessonBlockView.tsx` — renders each of the 11 lesson block types (goals, context, examples, reading, listening, speaking, homework, review, ...); unknown block types fall back to a raw JSON dump instead of silently disappearing.
+- `components/exercises/` — one input component per scored exercise type (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) plus `ExerciseCard`, which submits an attempt and shows the scored result. "Try again" remounts the input component (via a bumped `key`) so old answers don't linger.
+
+Verified live end to end with a headless-browser script (register → levels → modules → lessons → lesson → submit all 4 exercise types → logout) against the real API — zero console errors.
 
 ## Content
 

@@ -15,6 +15,10 @@ class Settings(BaseSettings):
     jwt_algorithm: str = "HS256"
     access_token_expire_minutes: int = 60 * 24
 
+    # Vite's default dev-server port. A prod frontend origin gets added here
+    # (or via CORS_ORIGINS) once one exists — see docs/decisions.md.
+    cors_origins: list[str] = ["http://localhost:5173"]
+
     ai_provider: str = "lmstudio"
     ai_base_url: str = "http://localhost:1234/v1"
     ai_api_key: str = "not-needed"
