@@ -44,17 +44,23 @@ Needs the API running (either `docker compose up` from the repo root, or the "De
 `frontend/src/`:
 - `api/` — a small hand-written `fetch` wrapper (`client.ts`, handles the bearer token + typed `ApiError`) plus one module per resource (`auth.ts`, `course.ts`, `exercises.ts`) and hand-kept-in-sync TS types (`types.ts`) mirroring `app/schemas/*.py`. No codegen yet — see `docs/decisions.md`.
 - `auth/` — `AuthContext` (JWT in `localStorage`, hydrated via `GET /auth/me` on load) and `ProtectedRoute`.
-- `pages/` — one per route: `LoginPage`, `RegisterPage`, `LevelsPage`, `ModulesPage`, `LessonsPage`, `LessonPage`, `ProgressPage`, `DailyQuizPage`.
-- `components/layout/Header.tsx` — nav (Lessons / Daily quiz / Progress) with active-state styling via `react-router-dom`'s `NavLink`.
+- `pages/` — one per route: `LoginPage`, `RegisterPage`, `LevelsPage`, `ModulesPage`, `LessonsPage`, `LessonPage`, `ProgressPage`, `DailyQuizPage`, `PlacementTestPage`, `ReviewPage`.
+- `components/layout/Header.tsx` — nav (Lessons / Daily quiz / Review / Progress) with active-state styling via `react-router-dom`'s `NavLink`.
 - `components/LessonBlockView.tsx` — renders each of the 11 lesson block types (goals, context, examples, reading, listening, speaking, homework, review, ...); unknown block types fall back to a raw JSON dump instead of silently disappearing. `context`/`reading` blocks additionally render a collapsed "Кратко на русском" toggle when the block's content has a `summary_ru` key — see "Content" below.
-- `components/exercises/` — one input component per scored exercise type (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) plus `ExerciseCard`, which submits an attempt and shows the scored result. "Try again" remounts the input component (via a bumped `key`) so old answers don't linger; a successful submit also invalidates the `progress`/`daily-quiz` react-query caches so those pages don't show stale data.
+- `components/exercises/` — one input component per scored exercise type (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension), each a plain controlled input that reports an answer via `onChange` with no submission logic of its own — reused as-is by both `ExerciseCard` (lesson/review/daily-quiz submission) and `PlacementTestPage` (batched submission, no per-item feedback). `ExerciseCard` submits an attempt and shows the scored result; "Try again" remounts the input component (via a bumped `key`) so old answers don't linger; a successful submit also invalidates the `progress`/`daily-quiz`/`review-due` react-query caches so those pages don't show stale data.
+- `components/ReviewFlashcard.tsx` — front/back self-rated card for vocabulary and grammar-topic review items (no exercise attached to quiz on): reveal, then Remembered/Forgot calls `POST /review/{id}/complete`.
 
-Verified live end to end with a headless-browser script (register → levels → modules → lessons → lesson → submit all 4 exercise types → check progress/daily quiz update → logout) against the real API — zero console errors.
+Verified live end to end with headless-browser scripts against the real API — zero console errors: (1) register → levels → modules → lessons → lesson → submit all 4 exercise types → progress/daily quiz update → logout; (2) register → placement test intro → answer all ~24 items → submit → result → banner gone on `/levels` → revisiting `/placement-test` shows the saved result instead of the intro; (3) with review items backdated to due, `/review` renders exercise/vocabulary/grammar items correctly and rating a flashcard removes it from the list.
 
-## Progress and Daily quiz
+## Progress, Daily quiz, and Review
 
 - `GET /progress` (existing, Phase 3) — per-skill attempt/accuracy counts, shown as a card per skill on `ProgressPage`. Deliberately not reduced to one aggregate number, per CLAUDE.md.
-- `GET /practice/daily-quiz` — up to 8 exercises drawn from lessons the learner has already studied (any skill mix), stable for the whole day (seeded by user + date, nothing persisted), graded through the same `POST /exercises/{id}/attempts` as lesson exercises. Deliberately a separate feature from the spaced-repetition review queue (`GET /review/due`, Phase 4) — see `docs/decisions.md`.
+- `GET /practice/daily-quiz` — up to 8 exercises drawn from lessons the learner has already studied (any skill mix), stable for the whole day (seeded by user + date, nothing persisted), graded through the same `POST /exercises/{id}/attempts` as lesson exercises. Deliberately a separate feature from the spaced-repetition review queue below — see `docs/decisions.md`.
+- `GET /review/due` (existing, Phase 4) — `ReviewPage` at `/review`. Nothing is due the same day an item is first studied (spaced repetition's minimum interval is 1 day even on a correct first answer), so this is expected to be empty right after finishing a fresh lesson — the empty state says so rather than looking broken. Fills in automatically from a day later onward.
+
+## Placement test
+
+`PlacementTestPage` at `/placement-test`: intro (skippable) → all ~24 bank items answered in one pass, no per-item feedback → single batched `POST /placement-test/submit` → result (per-skill CEFR level + overall estimate + recommended starting modules, matching CLAUDE.md's example format). New users land here right after registering (`RegisterPage` → `/placement-test` instead of `/levels`); `LevelsPage` shows a banner linking to it for anyone who skipped. Revisiting the page after completion shows the saved result (`GET /placement-test/result`) instead of the intro. Backend has existed since Phase 3.5; this was the missing UI.
 
 ## Content
 

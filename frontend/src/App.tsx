@@ -8,8 +8,10 @@ import { LessonsPage } from "./pages/LessonsPage";
 import { LevelsPage } from "./pages/LevelsPage";
 import { LoginPage } from "./pages/LoginPage";
 import { ModulesPage } from "./pages/ModulesPage";
+import { PlacementTestPage } from "./pages/PlacementTestPage";
 import { ProgressPage } from "./pages/ProgressPage";
 import { RegisterPage } from "./pages/RegisterPage";
+import { ReviewPage } from "./pages/ReviewPage";
 
 function App() {
   const { user, loading } = useAuth();
@@ -62,10 +64,26 @@ function App() {
             }
           />
           <Route
+            path="/review"
+            element={
+              <ProtectedRoute>
+                <ReviewPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="/progress"
             element={
               <ProtectedRoute>
                 <ProgressPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/placement-test"
+            element={
+              <ProtectedRoute>
+                <PlacementTestPage />
               </ProtectedRoute>
             }
           />

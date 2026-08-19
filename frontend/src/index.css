@@ -122,6 +122,24 @@ button {
   text-decoration: underline;
 }
 
+.btn-primary {
+  padding: 0.55rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
 main {
   max-width: 760px;
   margin: 0 auto;
@@ -148,6 +166,17 @@ main {
   color: var(--error-text);
 }
 
+.banner {
+  display: block;
+  padding: 0.85rem 1.1rem;
+  margin-bottom: 1.25rem;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 600;
+}
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -155,7 +184,9 @@ main {
 }
 
 .card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
   padding: 1.25rem;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -567,4 +598,57 @@ main {
 .result-explanation {
   margin: 0 0 0.6rem;
   color: var(--text);
+}
+
+/* --- Placement test --- */
+
+.placement-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.placement-result {
+  margin-top: 1rem;
+}
+
+.placement-overall {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.placement-skill-rows {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.placement-skill-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+/* --- Review flashcards --- */
+
+.flashcard-front {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.flashcard-back {
+  padding: 0.7rem 1rem;
+  margin: 0 0 1rem;
+  background: var(--accent-soft);
+  border-radius: var(--radius);
+}
+
+.flashcard-actions {
+  display: flex;
+  gap: 0.75rem;
 }

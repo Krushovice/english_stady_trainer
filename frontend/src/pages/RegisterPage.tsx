@@ -17,7 +17,7 @@ export function RegisterPage() {
     setSubmitting(true);
     try {
       await register(email, password);
-      navigate("/levels");
+      navigate("/placement-test");
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "Something went wrong.");
     } finally {

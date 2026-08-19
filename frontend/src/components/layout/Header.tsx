@@ -18,6 +18,9 @@ export function Header() {
             <NavLink to="/daily-quiz" className="site-nav-link">
               Daily quiz
             </NavLink>
+            <NavLink to="/review" className="site-nav-link">
+              Review
+            </NavLink>
             <NavLink to="/progress" className="site-nav-link">
               Progress
             </NavLink>

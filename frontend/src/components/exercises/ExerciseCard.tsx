@@ -33,11 +33,13 @@ export function ExerciseCard({ exercise }: { exercise: Exercise }) {
     setError(null);
     try {
       setResult(await submitAttempt(exercise.id, answer));
-      // An attempt changes both the per-skill breakdown and the pool the
-      // daily quiz draws from — without this, either page would keep
+      // An attempt changes the per-skill breakdown, the pool the daily quiz
+      // draws from, and (for an exercise-type review item) reschedules it
+      // out of the due queue — without this, those pages/lists would keep
       // showing pre-attempt data for the rest of `staleTime`.
       queryClient.invalidateQueries({ queryKey: ["progress"] });
       queryClient.invalidateQueries({ queryKey: ["daily-quiz"] });
+      queryClient.invalidateQueries({ queryKey: ["review-due"] });
     } catch {
       setError("Couldn't submit your answer. Please try again.");
     } finally {

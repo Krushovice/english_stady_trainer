@@ -144,3 +144,41 @@ export interface SkillProgress {
   correct_count: number;
   accuracy: number;
 }
+
+// --- Placement test ---
+
+export interface SkillLevelResult {
+  skill: Skill;
+  level: CEFRLevel | null;
+  correct: number | null;
+  total: number | null;
+}
+
+export interface RecommendedModule {
+  id: string;
+  slug: string;
+  title: string;
+  level_code: CEFRLevel;
+}
+
+export interface PlacementResult {
+  overall_level: CEFRLevel | null;
+  skills: SkillLevelResult[];
+  recommended_modules: RecommendedModule[];
+  placement_completed_at: string | null;
+}
+
+// --- Review ---
+
+export type ReviewItemType = "vocabulary" | "grammar_topic" | "exercise";
+
+export interface ReviewItem {
+  id: string;
+  item_type: ReviewItemType;
+  due_at: string;
+  interval_days: number;
+  review_count: number;
+  vocabulary: Vocabulary | null;
+  grammar_topic: GrammarTopic | null;
+  exercise: Exercise | null;
+}
