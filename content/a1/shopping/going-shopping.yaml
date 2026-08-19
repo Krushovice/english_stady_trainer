@@ -1,0 +1,358 @@
+level:
+  code: A1
+  order_index: 0
+
+module:
+  slug: shopping
+  title: Shopping
+  order_index: 7
+
+lesson:
+  slug: going-shopping
+  title: Going Shopping
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Говорить о том, что есть и чего нет в магазине, используя there is / there are"
+        - "Спросить цену и понять ответ"
+        - "Использовать this / that / these / those, указывая на вещи"
+        - "Использовать 8 новых слов по теме покупки"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Чтобы сказать, что где-то что-то есть (или нет), по-английски
+        используют there is (для одного предмета или неисчисляемого) и
+        there are (для нескольких): "There is a shop near my house.",
+        "There are three shops on this street." Отрицание: "There isn't a
+        shop here.", "There aren't any shops here." Также в магазине
+        пригодятся указательные местоимения: this/these — для того, что
+        рядом ("this shirt", "these shoes"), that/those — для того, что
+        подальше ("that jacket", "those bags").
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "shop / store"
+          translation: "магазин"
+          example_sentence: "There is a good shop near the station."
+        - headword: "how much is it"
+          translation: "сколько это стоит"
+          example_sentence: "How much is this jacket?"
+        - headword: "price"
+          translation: "цена"
+          example_sentence: "The price is 20 dollars."
+        - headword: "expensive / cheap"
+          translation: "дорогой / дешёвый"
+          example_sentence: "This shop is expensive, but that one is cheap."
+        - headword: "size"
+          translation: "размер"
+          example_sentence: "What size are these shoes?"
+        - headword: "try on"
+          translation: "примерять"
+          example_sentence: "Can I try on this shirt?"
+        - headword: "pay"
+          translation: "платить"
+          example_sentence: "Can I pay by card?"
+        - headword: "receipt"
+          translation: "чек"
+          example_sentence: "Here is your receipt."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: there-is-there-are
+          title: There is / There are
+          description: >
+            There is + существительное в единственном числе или
+            неисчисляемое: "There is a shop.", "There is some bread."
+            There are + множественное число: "There are two shops."
+            Отрицание: "There isn't a shop.", "There aren't any shops."
+            Вопрос: "Is there a shop near here?", "Are there any shops on
+            this street?" Легко перепутать с have/has — there is/are
+            говорит о существовании чего-то в месте, а have/has — о
+            принадлежности кому-то.
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: In a shop
+          lines:
+            - speaker: A
+              text: "Excuse me, how much is this jacket?"
+            - speaker: B
+              text: "That one is 45 dollars. Would you like to try it on?"
+            - speaker: A
+              text: "Yes, please. Is there a bigger size?"
+            - speaker: B
+              text: "Yes, there are three sizes left."
+            - speaker: A
+              text: "Great, I'll take it. Can I pay by card?"
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: going-shopping-mc-expensive
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "expensive / cheap"
+          prompt:
+            question: >-
+              Куртка стоит 300 долларов. Это...
+            options:
+              - id: a
+                text: "expensive"
+              - id: b
+                text: "cheap"
+              - id: c
+                text: "a receipt"
+              - id: d
+                text: "a size"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            300 долларов — это дорого, значит "expensive"; "cheap" —
+            противоположное значение (дёшево).
+
+        - slug: going-shopping-fill-there-is-are
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: there-is-there-are
+          prompt:
+            text: >-
+              Заполните пропуски (is / are): 1) "There ___ a good shop
+              near here." 2) "There ___ three shops on this street." 3)
+              "___ there any cheap shoes here?"
+          answer_key:
+            blanks:
+              - ["is"]
+              - ["are"]
+              - ["Are"]
+          explanation: >-
+            Единственное число -> is ("There is a good shop"); множественное
+            -> are ("There are three shops", "Are there any...?").
+
+        - slug: going-shopping-order-negative
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: there-is-there-are
+          prompt:
+            words: ["shops", "aren't", "any", "There", "here"]
+          answer_key:
+            correct_order: ["There", "aren't", "any", "shops", "here"]
+          explanation: >-
+            Отрицание во множественном числе: There + aren't + any +
+            существительное — "There aren't any shops here."
+
+        - slug: going-shopping-reading-market
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              There is a big market near my house. There are a lot of
+              cheap vegetables there, but the fruit is expensive. There
+              aren't any clothes shops at the market, only food.
+            questions:
+              - id: q1
+                text: "Is the fruit cheap or expensive at the market?"
+                options:
+                  - id: a
+                    text: "Cheap"
+                  - id: b
+                    text: "Expensive"
+                  - id: c
+                    text: "We don't know"
+                  - id: d
+                    text: "Free"
+              - id: q2
+                text: "Are there any clothes shops at the market?"
+                options:
+                  - id: a
+                    text: "Yes, many"
+                  - id: b
+                    text: "Yes, one"
+                  - id: c
+                    text: "No"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: b
+              q2: c
+          explanation: >-
+            "The fruit is expensive." (Q1). "There aren't any clothes
+            shops at the market." (Q2 — No).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: The Local Market
+      text: >
+        There is a big market near my house. There are a lot of cheap
+        vegetables there, but the fruit is expensive. There aren't any
+        clothes shops at the market, only food. I usually go there on
+        Saturdays.
+      summary_ru: >
+        Рядом с моим домом есть большой рынок. Там много дешёвых овощей, но
+        фрукты дорогие. На рынке нет магазинов одежды, только еда. Я обычно
+        хожу туда по субботам.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      transcript: >
+        A: Excuse me, how much is this jacket? — B: That one is 45
+        dollars. Would you like to try it on? — A: Yes, please. Is there a
+        bigger size? — B: Yes, there are three sizes left. — A: Great,
+        I'll take it. Can I pay by card?
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Опишите магазин или рынок рядом с вашим домом: что там есть, чего
+        нет, что дорого, а что дёшево. Используйте there is / there are.
+        Говорите 30-40 секунд.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Напишите короткий диалог (6-8 строк) в магазине одежды:
+            покупатель спрашивает цену и размер, продавец отвечает.
+        - type: vocabulary_recall
+          instructions: >
+            Не заглядывая в урок, запишите как можно больше слов по теме
+            покупки, затем сверьте список со словарным блоком.
+        - type: grammar_practice
+          instructions: >
+            Напишите 5 предложений с there is / there are о вашем районе.
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        there-is-there-are grammar topic are generated automatically from
+        mistakes and spaced repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: going-shopping-mini-mc-size
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "size"
+          prompt:
+            question: "Вы хотите примерить куртку побольше. Что вы спросите?"
+            options:
+              - id: a
+                text: "Is there a bigger size?"
+              - id: b
+                text: "How much is it?"
+              - id: c
+                text: "Can I pay by card?"
+              - id: d
+                text: "Here is your receipt."
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Is there a bigger size?" — вопрос о размере; остальные фразы
+            о цене, оплате и чеке.
+
+        - slug: going-shopping-mini-fill-there-is-are-3
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: there-is-there-are
+          prompt:
+            text: >-
+              Заполните пропуски (is / are): 1) "There ___ a cheap shop
+              near here." 2) "There ___ two sizes left." 3) "___ there any
+              shoes here?"
+          answer_key:
+            blanks:
+              - ["is"]
+              - ["are"]
+              - ["Are"]
+          explanation: >-
+            Единственное число -> is; множественное -> are.
+
+        - slug: going-shopping-mini-order-question
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: there-is-there-are
+          prompt:
+            words: ["shops", "any", "there", "cheap", "Are"]
+          answer_key:
+            correct_order: ["Are", "there", "any", "cheap", "shops"]
+          explanation: >-
+            Вопрос во множественном числе: Are + there + any +
+            существительное — "Are there any cheap shops?".
+
+        - slug: going-shopping-mini-mc-try-on-2
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "try on"
+          prompt:
+            question: "Что можно сделать с курткой перед покупкой?"
+            options:
+              - id: a
+                text: "try it on"
+              - id: b
+                text: "pay it"
+              - id: c
+                text: "receipt it"
+              - id: d
+                text: "price it"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Try on" — примерить одежду перед покупкой.
+
+        - slug: going-shopping-mini-reading-price
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              There is a small shop near my house. The clothes are cheap,
+              but the shoes are expensive. There are three sizes of this
+              jacket left.
+            questions:
+              - id: q1
+                text: "Are the shoes cheap or expensive?"
+                options:
+                  - id: a
+                    text: "Cheap"
+                  - id: b
+                    text: "Expensive"
+                  - id: c
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: b
+          explanation: >-
+            "The shoes are expensive."
+          explanation: >-
+            "She has some cheese and an apple."

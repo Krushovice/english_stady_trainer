@@ -1,0 +1,352 @@
+level:
+  code: A1
+  order_index: 0
+
+module:
+  slug: city
+  title: City
+  order_index: 9
+
+lesson:
+  slug: around-the-city
+  title: Around the City
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Назвать места в городе: банк, аптека, парк, вокзал и другие"
+        - "Использовать can для возможности: «здесь можно найти...»"
+        - "Спросить и объяснить, где что находится в городе"
+        - "Использовать 8 новых слов по теме город"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Модальный глагол can (мочь, уметь) — один из самых полезных в
+        английском. С ним не нужны do/does даже в вопросах и отрицаниях:
+        "You can find a pharmacy near the station.", "You can't park here."
+        (нельзя), "Can I help you?" После can всегда идёт глагол без to и
+        без -s, даже с he/she/it: "She can speak English." (не "cans" и не
+        "to speak"). В теме про город can часто используется, чтобы
+        сказать, что где-то можно (или нельзя) что-то сделать.
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "bank"
+          translation: "банк"
+          example_sentence: "You can find a bank next to the post office."
+        - headword: "pharmacy"
+          translation: "аптека"
+          example_sentence: "Is there a pharmacy near here?"
+        - headword: "park"
+          translation: "парк"
+          example_sentence: "We can walk in the park."
+        - headword: "train station"
+          translation: "вокзал"
+          example_sentence: "The train station is in the city centre."
+        - headword: "city centre"
+          translation: "центр города"
+          example_sentence: "I live near the city centre."
+        - headword: "library"
+          translation: "библиотека"
+          example_sentence: "You can study in the library."
+        - headword: "crowded / quiet"
+          translation: "многолюдный / тихий"
+          example_sentence: "The centre is crowded, but the park is quiet."
+        - headword: "excuse me"
+          translation: "извините"
+          example_sentence: "Excuse me, where is the nearest bank?"
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: modal-can
+          title: Модальный глагол can
+          description: >
+            Can значит "мочь" (возможность) или "уметь" (навык): "You can
+            find a pharmacy here." (здесь можно найти), "She can speak
+            English." (она умеет). Форма не меняется с he/she/it: "He can
+            help you." (не "cans"). Отрицание — can't (cannot): "You can't
+            park here." Вопрос — can в начале: "Can I help you?", "Can you
+            speak English?" После can всегда идёт глагол в начальной форме
+            без to.
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Asking for directions
+          lines:
+            - speaker: A
+              text: "Excuse me, can you help me? I'm looking for a pharmacy."
+            - speaker: B
+              text: "Sure! You can find one near the train station."
+            - speaker: A
+              text: "Is it far from here?"
+            - speaker: B
+              text: "No, you can walk there in five minutes."
+            - speaker: A
+              text: "Great, thank you!"
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: around-the-city-mc-pharmacy
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "pharmacy"
+          prompt:
+            question: >-
+              Вам нужно купить лекарство. Куда вы пойдёте?
+            options:
+              - id: a
+                text: "the pharmacy"
+              - id: b
+                text: "the bank"
+              - id: c
+                text: "the library"
+              - id: d
+                text: "the park"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Pharmacy" — аптека, место, где продают лекарства. Остальные
+            места не подходят для этой цели.
+
+        - slug: around-the-city-fill-can
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: modal-can
+          prompt:
+            text: >-
+              Заполните пропуски (can / can't): 1) "You ___ find a bank
+              near here. (+)" 2) "You ___ park here. (-, sign says No
+              Parking)" 3) "___ you help me? (?)"
+          answer_key:
+            blanks:
+              - ["can"]
+              - ["can't"]
+              - ["Can"]
+          explanation: >-
+            Утверждение -> can; отрицание -> can't; вопрос начинается с
+            Can.
+
+        - slug: around-the-city-order-question
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: modal-can
+          prompt:
+            words: ["me", "you", "help", "Can"]
+          answer_key:
+            correct_order: ["Can", "you", "help", "me"]
+          explanation: >-
+            Вопрос с can: Can + подлежащее (you) + глагол (help) +
+            остальное — "Can you help me?".
+
+        - slug: around-the-city-reading-directions
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              The city centre is crowded, but the park next to it is quiet.
+              You can find a bank and a pharmacy near the train station.
+              The library is between the bank and the park. You can't park
+              your car in the city centre.
+            questions:
+              - id: q1
+                text: "Where is the library?"
+                options:
+                  - id: a
+                    text: "Next to the train station"
+                  - id: b
+                    text: "Between the bank and the park"
+                  - id: c
+                    text: "In the park"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "Can you park your car in the city centre?"
+                options:
+                  - id: a
+                    text: "Yes"
+                  - id: b
+                    text: "No"
+                  - id: c
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: b
+              q2: b
+          explanation: >-
+            "The library is between the bank and the park." (Q1). "You
+            can't park your car in the city centre." (Q2 — No).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: Finding Your Way
+      text: >
+        The city centre is crowded, but the park next to it is quiet. You
+        can find a bank and a pharmacy near the train station. The library
+        is between the bank and the park. You can't park your car in the
+        city centre, but there is a car park near the station.
+      summary_ru: >
+        Центр города многолюдный, но парк рядом с ним тихий. Возле вокзала
+        можно найти банк и аптеку. Библиотека находится между банком и
+        парком. В центре нельзя парковать машину, но рядом с вокзалом есть
+        парковка.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      transcript: >
+        A: Excuse me, can you help me? I'm looking for a pharmacy. — B:
+        Sure! You can find one near the train station. — A: Is it far
+        from here? — B: No, you can walk there in five minutes. — A:
+        Great, thank you!
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Опишите свой район: что там можно найти (банк, аптеку, парк) и
+        чего там нет. Используйте can/can't. Говорите 40-60 секунд.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Напишите короткий диалог (6-8 строк), в котором один человек
+            спрашивает дорогу до аптеки, а второй объясняет.
+        - type: vocabulary_recall
+          instructions: >
+            Не заглядывая в урок, запишите как можно больше слов по теме
+            город, затем сверьте список со словарным блоком.
+        - type: grammar_practice
+          instructions: >
+            Напишите 5 предложений с can/can't о том, что можно и нельзя
+            делать в вашем городе.
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the modal-can
+        grammar topic are generated automatically from mistakes and spaced
+        repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: around-the-city-mini-mc-pharmacy-2
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "pharmacy"
+          prompt:
+            question: "Where do you buy medicine?"
+            options:
+              - id: a
+                text: "at the pharmacy"
+              - id: b
+                text: "at the library"
+              - id: c
+                text: "at the bank"
+              - id: d
+                text: "in the park"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Pharmacy" — аптека, место, где продают лекарства.
+
+        - slug: around-the-city-mini-fill-can-2
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: modal-can
+          prompt:
+            text: >-
+              Заполните пропуски (can / can't): 1) "You ___ find a
+              library near the park. (+)" 2) "You ___ park here. (-)"
+          answer_key:
+            blanks:
+              - ["can"]
+              - ["can't"]
+          explanation: >-
+            Утверждение -> can; отрицание -> can't.
+
+        - slug: around-the-city-mini-order-can
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: modal-can
+          prompt:
+            words: ["speak", "she", "English", "Can"]
+          answer_key:
+            correct_order: ["Can", "she", "speak", "English"]
+          explanation: >-
+            Вопрос с can: Can + подлежащее (she) + глагол (speak) +
+            остальное — "Can she speak English?".
+
+        - slug: around-the-city-mini-mc-crowded
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "crowded / quiet"
+          prompt:
+            question: "The city centre has a lot of people. It's..."
+            options:
+              - id: a
+                text: "crowded"
+              - id: b
+                text: "quiet"
+              - id: c
+                text: "cheap"
+              - id: d
+                text: "tidy"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Crowded" — многолюдный (много людей); "quiet" — тихий,
+            противоположное значение.
+
+        - slug: around-the-city-mini-reading-directions-2
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              You can find the bank next to the train station. The library
+              is quiet, but the city centre is crowded. You can't park
+              near the library.
+            questions:
+              - id: q1
+                text: "Can you park near the library?"
+                options:
+                  - id: a
+                    text: "Yes"
+                  - id: b
+                    text: "No"
+                  - id: c
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: b
+          explanation: >-
+            "You can't park near the library."

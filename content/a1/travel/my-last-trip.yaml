@@ -1,0 +1,357 @@
+level:
+  code: A1
+  order_index: 0
+
+module:
+  slug: travel
+  title: Travel
+  order_index: 14
+
+lesson:
+  slug: my-last-trip
+  title: My Last Trip
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Рассказать о прошлой поездке в Past Simple"
+        - "Использовать правильные (-ed) и неправильные глаголы в прошедшем времени"
+        - "Спросить и ответить о прошлых событиях"
+        - "Использовать 8 новых слов по теме путешествия"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Past Simple используется для законченных действий в прошлом.
+        Правильные глаголы получают окончание -ed: visit -> visited, stay
+        -> stayed, travel -> travelled. Неправильные глаголы меняют форму
+        полностью и их нужно запоминать: go -> went, see -> saw, buy ->
+        bought, have -> had. В утверждении форма одна для всех лиц: "I
+        visited Paris.", "She went to Rome." В отрицании и вопросе
+        используется did + глагол в начальной форме (без -ed и без
+        изменений): "I didn't visit Rome.", "Did you go to Paris?"
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "trip / journey"
+          translation: "поездка / путешествие"
+          example_sentence: "We had a great trip last summer."
+        - headword: "abroad"
+          translation: "за границу, за границей"
+          example_sentence: "I went abroad for the first time last year."
+        - headword: "hotel"
+          translation: "отель"
+          example_sentence: "We stayed in a small hotel near the beach."
+        - headword: "suitcase"
+          translation: "чемодан"
+          example_sentence: "I packed my suitcase the night before."
+        - headword: "flight"
+          translation: "перелёт, рейс"
+          example_sentence: "The flight was long, but comfortable."
+        - headword: "souvenir"
+          translation: "сувенир"
+          example_sentence: "I bought a souvenir for my sister."
+        - headword: "beach"
+          translation: "пляж"
+          example_sentence: "We spent every day on the beach."
+        - headword: "last year / last summer"
+          translation: "в прошлом году / прошлым летом"
+          example_sentence: "I visited Italy last summer."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: past-simple
+          title: Past Simple (regular и irregular verbs)
+          description: >
+            Правильные глаголы + -ed: visit -> visited, stay -> stayed,
+            travel -> travelled, want -> wanted. Неправильные глаголы
+            меняют форму: go -> went, see -> saw, buy -> bought, have ->
+            had, be -> was/were. Форма одна для всех лиц: "I/he/they
+            visited." Отрицание — did not (didn't) + глагол в начальной
+            форме: "I didn't go to Rome." Вопрос — Did + подлежащее +
+            глагол в начальной форме: "Did you visit Paris?" Частая ошибка
+            — добавлять -ed ещё и после did: "Did you visited?" —
+            неправильно, нужно "Did you visit?".
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: How was your trip?
+          lines:
+            - speaker: A
+              text: "How was your trip to Italy?"
+            - speaker: B
+              text: "It was amazing! We visited Rome and stayed near the beach."
+            - speaker: A
+              text: "Did you buy any souvenirs?"
+            - speaker: B
+              text: "Yes, I bought a small painting for my living room."
+            - speaker: A
+              text: "Nice! Did you go abroad by plane or by train?"
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: my-last-trip-mc-abroad
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "abroad"
+          prompt:
+            question: >-
+              Что значит поехать "abroad"?
+            options:
+              - id: a
+                text: "Поехать в другую страну"
+              - id: b
+                text: "Остаться дома"
+              - id: c
+                text: "Купить сувенир"
+              - id: d
+                text: "Забронировать отель"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Abroad" значит "за границу/за границей" — в другую страну.
+
+        - slug: my-last-trip-fill-past-simple
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: past-simple
+          prompt:
+            text: >-
+              Заполните пропуски правильной формой глагола в прошедшем
+              времени: 1) "We ___ (visit) Rome last year." 2) "I ___ (buy)
+              a souvenir." 3) "They ___ (go) to the beach every day."
+          answer_key:
+            blanks:
+              - ["visited"]
+              - ["bought"]
+              - ["went"]
+          explanation: >-
+            visit — правильный глагол (+ -ed): visited; buy и go —
+            неправильные: buy -> bought, go -> went.
+
+        - slug: my-last-trip-order-question
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: past-simple
+          prompt:
+            words: ["you", "Italy", "visit", "Did"]
+          answer_key:
+            correct_order: ["Did", "you", "visit", "Italy"]
+          explanation: >-
+            Вопрос: Did + подлежащее (you) + глагол в начальной форме
+            (visit) — "Did you visit Italy?".
+
+        - slug: my-last-trip-reading-vacation
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              Last summer, Tom and his wife went abroad for the first
+              time. They visited Spain and stayed in a small hotel near
+              the beach. They didn't buy many souvenirs, but they bought a
+              few postcards. The flight was long, but the trip was
+              amazing.
+            questions:
+              - id: q1
+                text: "Where did Tom and his wife go?"
+                options:
+                  - id: a
+                    text: "Italy"
+                  - id: b
+                    text: "Spain"
+                  - id: c
+                    text: "France"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "Did they buy many souvenirs?"
+                options:
+                  - id: a
+                    text: "Yes, a lot"
+                  - id: b
+                    text: "No, just a few postcards"
+                  - id: c
+                    text: "No, nothing"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: b
+              q2: b
+          explanation: >-
+            "They visited Spain" (Q1). "They didn't buy many souvenirs,
+            but they bought a few postcards" (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: A Trip to Remember
+      text: >
+        Last summer, Tom and his wife went abroad for the first time.
+        They visited Spain and stayed in a small hotel near the beach.
+        They didn't buy many souvenirs, but they bought a few postcards.
+        The flight was long, but the trip was amazing.
+      summary_ru: >
+        Прошлым летом Том с женой впервые поехали за границу. Они посетили
+        Испанию и остановились в небольшом отеле рядом с пляжем. Они не
+        купили много сувениров, но купили несколько открыток. Перелёт был
+        долгим, но поездка получилась потрясающей.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      transcript: >
+        A: How was your trip to Italy? — B: It was amazing! We visited
+        Rome and stayed near the beach. — A: Did you buy any souvenirs? —
+        B: Yes, I bought a small painting for my living room. — A: Nice!
+        Did you go abroad by plane or by train?
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Расскажите о своей последней поездке: куда вы ездили, где
+        остановились, что делали, купили ли сувениры. Используйте Past
+        Simple. Говорите 40-60 секунд.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Напишите 6-8 предложений о своей последней поездке (реальной
+            или вымышленной) в Past Simple.
+        - type: vocabulary_recall
+          instructions: >
+            Не заглядывая в урок, запишите как можно больше слов по теме
+            путешествия, затем сверьте список со словарным блоком.
+        - type: grammar_practice
+          instructions: >
+            Напишите 5 вопросов о прошлой поездке друга, используя Did you
+            ...?
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the past-simple
+        grammar topic are generated automatically from mistakes and spaced
+        repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: my-last-trip-mini-mc-suitcase
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "suitcase"
+          prompt:
+            question: "What do you pack your clothes in before a trip?"
+            options:
+              - id: a
+                text: "a suitcase"
+              - id: b
+                text: "a souvenir"
+              - id: c
+                text: "a flight"
+              - id: d
+                text: "a beach"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            Вещи для поездки складывают в чемодан (suitcase).
+
+        - slug: my-last-trip-mini-fill-past-simple-2
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: past-simple
+          prompt:
+            text: >-
+              Заполните пропуски: 1) "She ___ (stay) in a hotel." 2) "We
+              ___ (have) a great trip."
+          answer_key:
+            blanks:
+              - ["stayed"]
+              - ["had"]
+          explanation: >-
+            stay — правильный глагол (+ -ed); have — неправильный (have ->
+            had).
+
+        - slug: my-last-trip-mini-order-negative
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: past-simple
+          prompt:
+            words: ["go", "didn't", "abroad", "We"]
+          answer_key:
+            correct_order: ["We", "didn't", "go", "abroad"]
+          explanation: >-
+            Отрицание: подлежащее (We) + didn't + глагол в начальной
+            форме (go).
+
+        - slug: my-last-trip-mini-mc-hotel
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "hotel"
+          prompt:
+            question: "Where do you usually stay during a trip?"
+            options:
+              - id: a
+                text: "a hotel"
+              - id: b
+                text: "a suitcase"
+              - id: c
+                text: "a flight"
+              - id: d
+                text: "a season"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            Во время поездки обычно останавливаются в отеле (hotel).
+
+        - slug: my-last-trip-mini-reading-postcards
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              Anna went to Portugal last summer. She stayed in a hotel
+              near the beach and bought a few souvenirs for her family.
+            questions:
+              - id: q1
+                text: "Where did Anna go last summer?"
+                options:
+                  - id: a
+                    text: "Spain"
+                  - id: b
+                    text: "Portugal"
+                  - id: c
+                    text: "Italy"
+          answer_key:
+            answers:
+              q1: b
+          explanation: >-
+            "Anna went to Portugal last summer."

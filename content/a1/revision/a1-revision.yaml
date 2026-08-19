@@ -1,0 +1,272 @@
+level:
+  code: A1
+  order_index: 0
+
+module:
+  slug: revision
+  title: Revision
+  order_index: 15
+
+lesson:
+  slug: a1-revision
+  title: A1 Revision
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Повторить всю грамматику уровня A1 в одном уроке"
+        - "Увидеть, как разные времена и конструкции работают вместе в тексте"
+        - "Проверить себя перед итоговым экзаменом A1"
+        - "Освежить ключевые слова из всех 14 предыдущих уроков"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Это заключительный урок уровня A1. Здесь нет новой грамматики —
+        только повторение того, что вы уже изучили: to be, притяжательные
+        местоимения, have/has, время, Present Simple, some/any, there
+        is/are, предлоги места, can, сравнительная степень, Present
+        Continuous, глаголы + -ing после like/love/hate, going to и Past
+        Simple. В упражнениях ниже эти темы встречаются вперемешку — так
+        же, как в реальной речи. После этого урока доступен итоговый
+        экзамен A1: 20 вопросов по всем темам, нужно набрать 70%, чтобы
+        открыть уровень A2.
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "so far"
+          translation: "пока что, на данный момент"
+          example_sentence: "So far, this course is going well."
+        - headword: "review"
+          translation: "повторение, обзор"
+          example_sentence: "This lesson is a review of everything so far."
+        - headword: "mistake"
+          translation: "ошибка"
+          example_sentence: "It's OK to make mistakes when you learn."
+        - headword: "improve"
+          translation: "улучшать(ся)"
+          example_sentence: "My English is improving every week."
+        - headword: "practice"
+          translation: "практика"
+          example_sentence: "Practice is the best way to remember grammar."
+        - headword: "confident"
+          translation: "уверенный"
+          example_sentence: "I feel more confident speaking English now."
+        - headword: "next level"
+          translation: "следующий уровень"
+          example_sentence: "After this exam, I can start the next level."
+        - headword: "well done"
+          translation: "молодец, отлично сделано"
+          example_sentence: "You finished all 15 lessons — well done!"
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: a1-grammar-review
+          title: Обзор грамматики A1
+          description: >
+            Весь путь A1 одной цепочкой: to be (am/is/are) -> притяжательные
+            местоимения (my/his/her) -> have/has -> время (o'clock, half
+            past) -> Present Simple с -s (he/she/it) -> some/any -> there
+            is/are -> предлоги места (in/on/under/next to) -> can ->
+            сравнительная степень (faster than) -> Present Continuous
+            (am/is/are + -ing) -> like/love/hate + -ing -> going to
+            (будущее) -> Past Simple (regular/irregular). Каждая из этих
+            тем ещё встретится в упражнениях уровня A2 — грамматика не
+            заканчивается здесь, а продолжает использоваться и усложняться.
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: A full conversation, many tenses
+          lines:
+            - speaker: A
+              text: "Hi! What are you doing this weekend?"
+            - speaker: B
+              text: "I'm going to visit my parents. They live in a small town near the coast."
+            - speaker: A
+              text: "Nice! Last year I went there too. There's a great market with cheap fruit."
+            - speaker: B
+              text: "I know! I love going there. Can you recommend a good restaurant?"
+            - speaker: A
+              text: "Yes, there's one next to the train station — it's better than the one in the centre."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: a1-revision-mc-mixed-vocabulary
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "improve"
+          prompt:
+            question: >-
+              Ваш английский становится лучше с каждой неделей. Что
+              происходит?
+            options:
+              - id: a
+                text: "It's improving."
+              - id: b
+                text: "It's expensive."
+              - id: c
+                text: "It's crowded."
+              - id: d
+                text: "It's a mistake."
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Improve" значит "улучшаться"; остальные слова не описывают
+            прогресс в изучении языка.
+
+        - slug: a1-revision-fill-mixed-tenses
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: past-simple
+          prompt:
+            text: >-
+              Заполните пропуски правильной формой: 1) "Yesterday, we ___
+              (visit) a museum." 2) "Right now, she ___ (write) an email."
+              3) "Next weekend, I ___ (go) to the beach. (plan, going to)"
+          answer_key:
+            blanks:
+              - ["visited"]
+              - ["is writing"]
+              - ["am going to go"]
+          explanation: >-
+            "Yesterday" -> Past Simple (visited); "right now" -> Present
+            Continuous (is writing); план на будущее -> going to (am
+            going to go).
+
+        - slug: a1-revision-order-comparatives
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: comparatives
+          prompt:
+            words: ["bus", "than", "is", "the", "faster", "The", "train"]
+          answer_key:
+            correct_order: ["The", "train", "is", "faster", "than", "the", "bus"]
+          explanation: >-
+            Подлежащее (The train) + is + сравнительная форма (faster) +
+            than + второй предмет (the bus).
+
+        - slug: a1-revision-reading-a-busy-week
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              My name is Elena. I usually work in an office, but today I'm
+              working from home. Last weekend, I visited my parents — they
+              live in a small town with a nice park. There isn't a train
+              station near their house, so we went by car. Next month,
+              I'm going to travel abroad for the first time. I'm a little
+              nervous, but also excited.
+            questions:
+              - id: q1
+                text: "What is Elena doing today?"
+                options:
+                  - id: a
+                    text: "Working from home"
+                  - id: b
+                    text: "Travelling abroad"
+                  - id: c
+                    text: "Visiting her parents"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "How did Elena and her parents travel last weekend?"
+                options:
+                  - id: a
+                    text: "By train"
+                  - id: b
+                    text: "By car"
+                  - id: c
+                    text: "On foot"
+                  - id: d
+                    text: "By bus"
+          answer_key:
+            answers:
+              q1: a
+              q2: b
+          explanation: >-
+            "today I'm working from home" (Q1). "There isn't a train
+            station near their house, so we went by car" (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: Elena's Week
+      text: >
+        My name is Elena. I usually work in an office, but today I'm
+        working from home. Last weekend, I visited my parents — they live
+        in a small town with a nice park. There isn't a train station near
+        their house, so we went by car. Next month, I'm going to travel
+        abroad for the first time. I'm a little nervous, but also excited.
+      summary_ru: >
+        Меня зовут Елена. Обычно я работаю в офисе, но сегодня работаю из
+        дома. В прошлые выходные я навещала родителей — они живут в
+        небольшом городке с красивым парком. Рядом с их домом нет вокзала,
+        поэтому мы ехали на машине. В следующем месяце я впервые поеду за
+        границу. Немного нервничаю, но и радуюсь тоже.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      transcript: >
+        A: Hi! What are you doing this weekend? — B: I'm going to visit my
+        parents. They live in a small town near the coast. — A: Nice!
+        Last year I went there too. There's a great market with cheap
+        fruit. — B: I know! I love going there. Can you recommend a good
+        restaurant? — A: Yes, there's one next to the train station —
+        it's better than the one in the centre.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Расскажите о себе за 60 секунд, используя как можно больше разных
+        тем из этого курса: кто вы, что обычно делаете, что делаете
+        сейчас, что делали в прошлом, какие у вас планы. Постарайтесь
+        использовать хотя бы 4 разные грамматические темы.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Напишите текст о себе (8-10 предложений), используя минимум 5
+            разных грамматических тем из курса A1 (to be, have/has,
+            Present Simple, some/any, there is/are, can, сравнительная
+            степень, Present Continuous, like+ing, going to, Past Simple).
+        - type: vocabulary_recall
+          instructions: >
+            Выберите любые 3 урока из курса A1 и запишите по 5 слов из
+            каждого, не заглядывая в материалы.
+        - type: grammar_practice
+          instructions: >
+            Подготовьтесь к итоговому экзамену A1: пройдите Review Center
+            и повторите темы, где чаще всего ошибались (см. раздел
+            Progress).
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        This is the final A1 lesson — after it, the A1 exit exam (20
+        questions drawn from all 15 lessons, 70% to pass) is available and
+        unlocks A2. Review items for this lesson's vocabulary and the
+        a1-grammar-review topic are still generated automatically from
+        mistakes and spaced repetition.

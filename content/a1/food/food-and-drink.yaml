@@ -1,0 +1,358 @@
+level:
+  code: A1
+  order_index: 0
+
+module:
+  slug: food
+  title: Food
+  order_index: 6
+
+lesson:
+  slug: food-and-drink
+  title: Food and Drink
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Говорить о еде и напитках, которые вы любите и едите каждый день"
+        - "Использовать some и any с исчисляемыми и неисчисляемыми существительными"
+        - "Спросить, что есть в холодильнике или в меню"
+        - "Использовать 8 новых слов по теме еда"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        В английском существительные делятся на исчисляемые (countable) —
+        их можно посчитать: an apple, two apples — и неисчисляемые
+        (uncountable) — их нельзя посчитать по одной штуке: water, bread,
+        rice. Неисчисляемые не имеют множественного числа и не берут a/an.
+        Some и any помогают говорить о количестве без точного числа: some —
+        в утвердительных предложениях ("I have some bread"), any — в
+        отрицаниях и вопросах ("I don't have any bread.", "Do you have any
+        bread?"). Это работает одинаково для исчисляемых и неисчисляемых
+        существительных.
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "bread"
+          translation: "хлеб"
+          example_sentence: "I usually have some bread for breakfast."
+        - headword: "rice"
+          translation: "рис"
+          example_sentence: "We don't have any rice at home."
+        - headword: "vegetables"
+          translation: "овощи"
+          example_sentence: "Do you eat a lot of vegetables?"
+        - headword: "fruit"
+          translation: "фрукты"
+          example_sentence: "I have some fruit for lunch every day."
+        - headword: "water"
+          translation: "вода"
+          example_sentence: "Can I have some water, please?"
+        - headword: "meat"
+          translation: "мясо"
+          example_sentence: "She doesn't eat meat."
+        - headword: "hungry / thirsty"
+          translation: "голодный / хочется пить"
+          example_sentence: "I'm hungry. Are you thirsty too?"
+        - headword: "would like"
+          translation: "хотел(а) бы"
+          example_sentence: "I'd like some tea, please."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: some-any
+          title: Some и any
+          description: >
+            Some используется в утвердительных предложениях: "I have some
+            apples.", "There is some water." Any используется в
+            отрицаниях и вопросах: "I don't have any apples.", "Is there
+            any water?", "Do you have any bread?" Оба слова работают и с
+            исчисляемыми (apples, eggs), и с неисчисляемыми (water, bread)
+            существительными — разница не в этом, а в утверждении/
+            отрицании/вопросе.
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: At the fridge
+          lines:
+            - speaker: A
+              text: "I'm hungry. Is there any bread?"
+            - speaker: B
+              text: "Yes, there's some bread and some cheese too."
+            - speaker: A
+              text: "Great. Do we have any fruit?"
+            - speaker: B
+              text: "No, we don't have any fruit. Sorry."
+            - speaker: A
+              text: "That's OK. I'd like some tea, please."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: food-and-drink-mc-uncountable
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "rice"
+          prompt:
+            question: >-
+              Какое из этих слов НЕЛЬЗЯ посчитать по одной штуке (то есть
+              оно неисчисляемое)?
+            options:
+              - id: a
+                text: "rice"
+              - id: b
+                text: "apple"
+              - id: c
+                text: "egg"
+              - id: d
+                text: "sandwich"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Rice" (рис) — неисчисляемое существительное, у него нет
+            множественного числа ("two rices" не говорят). "Apple", "egg" и
+            "sandwich" можно посчитать: two apples, two eggs.
+
+        - slug: food-and-drink-fill-some-any
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: some-any
+          prompt:
+            text: >-
+              Заполните пропуски (some / any): 1) "I have ___ bread. (+)"
+              2) "We don't have ___ meat. (-)" 3) "Is there ___ water? (?)"
+          answer_key:
+            blanks:
+              - ["some"]
+              - ["any"]
+              - ["any"]
+          explanation: >-
+            Утверждение -> some ("I have some bread"); отрицание и вопрос
+            -> any ("don't have any meat", "Is there any water?").
+
+        - slug: food-and-drink-order-question
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: some-any
+          prompt:
+            words: ["fruit", "you", "any", "have", "Do"]
+          answer_key:
+            correct_order: ["Do", "you", "have", "any", "fruit"]
+          explanation: >-
+            Вопрос: Do + подлежащее (you) + have + any + существительное
+            (fruit) — "Do you have any fruit?".
+
+        - slug: food-and-drink-reading-kitchen
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              There isn't any bread in the kitchen, but there is some rice
+              and some vegetables. There aren't any eggs, but there is some
+              cheese. Tom is hungry, so he makes rice with vegetables and
+              cheese.
+            questions:
+              - id: q1
+                text: "Is there any bread?"
+                options:
+                  - id: a
+                    text: "Yes, there is"
+                  - id: b
+                    text: "No, there isn't"
+                  - id: c
+                    text: "We don't know"
+                  - id: d
+                    text: "Only a little"
+              - id: q2
+                text: "What does Tom make?"
+                options:
+                  - id: a
+                    text: "Bread with cheese"
+                  - id: b
+                    text: "Rice with vegetables and cheese"
+                  - id: c
+                    text: "Eggs with vegetables"
+                  - id: d
+                    text: "Just rice"
+          answer_key:
+            answers:
+              q1: b
+              q2: b
+          explanation: >-
+            "There isn't any bread" (Q1 — No). "He makes rice with
+            vegetables and cheese." (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: What's in the Kitchen?
+      text: >
+        There isn't any bread in the kitchen, but there is some rice and
+        some vegetables. There aren't any eggs, but there is some cheese.
+        Tom is hungry, so he makes rice with vegetables and cheese. It's
+        not fancy, but it's good.
+      summary_ru: >
+        На кухне нет хлеба, но есть рис и овощи. Нет яиц, но есть сыр. Том
+        голоден, поэтому готовит рис с овощами и сыром. Не изысканно, но
+        вкусно.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      transcript: >
+        A: I'm hungry. Is there any bread? — B: Yes, there's some bread and
+        some cheese too. — A: Great. Do we have any fruit? — B: No, we
+        don't have any fruit. Sorry. — A: That's OK. I'd like some tea,
+        please.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Расскажите, что обычно есть у вас на кухне, а чего нет. Используйте
+        some и any хотя бы по два раза каждое. Говорите 30-40 секунд.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Напишите список продуктов, которые есть и которых нет у вас
+            дома (5-6 пунктов), используя "There is some...", "There isn't
+            any...".
+        - type: vocabulary_recall
+          instructions: >
+            Не заглядывая в урок, запишите как можно больше слов по теме
+            еда, затем сверьте список со словарным блоком.
+        - type: grammar_practice
+          instructions: >
+            Напишите 5 предложений с some/any о содержимом вашего
+            холодильника.
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the some-any grammar
+        topic are generated automatically from mistakes and spaced
+        repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: food-and-drink-mini-mc-hungry
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "hungry / thirsty"
+          prompt:
+            question: "Вы не ели весь день. Что вы скажете?"
+            options:
+              - id: a
+                text: "I'm hungry."
+              - id: b
+                text: "I'm thirsty."
+              - id: c
+                text: "I'd like some water."
+              - id: d
+                text: "I have some rice."
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Hungry" — голодный (хочется есть); "thirsty" — хочется пить,
+            остальные варианты не отвечают на вопрос о самочувствии.
+
+        - slug: food-and-drink-mini-fill-some-any-3
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: some-any
+          prompt:
+            text: >-
+              Заполните пропуски (some / any): 1) "There is ___ cheese in
+              the fridge. (+)" 2) "We don't have ___ rice. (-)"
+          answer_key:
+            blanks:
+              - ["some"]
+              - ["any"]
+          explanation: >-
+            Утверждение -> some; отрицание -> any.
+
+        - slug: food-and-drink-mini-order-would-like-2
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          vocabulary_headword: "would like"
+          prompt:
+            words: ["tea", "like", "some", "I'd"]
+          answer_key:
+            correct_order: ["I'd", "like", "some", "tea"]
+          explanation: >-
+            "I'd like" + some + существительное — вежливая просьба.
+
+        - slug: food-and-drink-mini-mc-vegetables-2
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "vegetables"
+          prompt:
+            question: "Морковь, картофель и лук — это..."
+            options:
+              - id: a
+                text: "vegetables"
+              - id: b
+                text: "meat"
+              - id: c
+                text: "bread"
+              - id: d
+                text: "fruit"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            Морковь, картофель и лук — овощи (vegetables).
+
+        - slug: food-and-drink-mini-reading-fridge-2
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              There isn't any meat in the fridge, but there is some fruit
+              and some bread. Tom is hungry, so he has some bread with
+              cheese.
+            questions:
+              - id: q1
+                text: "What does Tom eat?"
+                options:
+                  - id: a
+                    text: "Meat"
+                  - id: b
+                    text: "Bread with cheese"
+                  - id: c
+                    text: "Just fruit"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: b
+          explanation: >-
+            "He has some bread with cheese."

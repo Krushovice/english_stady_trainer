@@ -1,0 +1,358 @@
+level:
+  code: A1
+  order_index: 0
+
+module:
+  slug: home
+  title: Home
+  order_index: 8
+
+lesson:
+  slug: my-home
+  title: My Home
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Назвать комнаты и мебель в доме"
+        - "Использовать предлоги места: in, on, under, next to, between"
+        - "Описать, где что находится в квартире"
+        - "Использовать 8 новых слов по теме дом"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Чтобы описать, где что-то находится, нужны предлоги места: in
+        (в) — "The keys are in the bag."; on (на) — "The book is on the
+        table."; under (под) — "The cat is under the bed."; next to
+        (рядом с) — "The lamp is next to the sofa."; between (между) —
+        "The chair is between the table and the window." Эти предлоги
+        часто используются вместе с there is / there are: "There is a
+        lamp next to the sofa."
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "kitchen / bathroom / bedroom"
+          translation: "кухня / ванная / спальня"
+          example_sentence: "The kitchen is next to the bathroom."
+        - headword: "living room"
+          translation: "гостиная"
+          example_sentence: "We watch TV in the living room."
+        - headword: "table / chair"
+          translation: "стол / стул"
+          example_sentence: "There is a table and four chairs."
+        - headword: "bed / sofa"
+          translation: "кровать / диван"
+          example_sentence: "The sofa is in the living room."
+        - headword: "fridge"
+          translation: "холодильник"
+          example_sentence: "The fridge is in the kitchen."
+        - headword: "window / door"
+          translation: "окно / дверь"
+          example_sentence: "The window is next to the door."
+        - headword: "upstairs / downstairs"
+          translation: "наверху / внизу (в доме)"
+          example_sentence: "The bedrooms are upstairs."
+        - headword: "messy / tidy"
+          translation: "неубранный / убранный"
+          example_sentence: "My room is tidy, but the kitchen is messy."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: prepositions-of-place
+          title: Предлоги места (in, on, under, next to, between)
+          description: >
+            in — внутри чего-то: "The milk is in the fridge."; on — на
+            поверхности: "The keys are on the table."; under — под чем-то:
+            "The shoes are under the bed."; next to — рядом с чем-то: "The
+            lamp is next to the bed."; between — между двумя предметами:
+            "The chair is between the table and the sofa." Эти предлоги
+            часто идут после there is/are или после to be: "The cat is
+            under the table."
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Where is it?
+          lines:
+            - speaker: A
+              text: "Where are my keys?"
+            - speaker: B
+              text: "They're on the table, next to your bag."
+            - speaker: A
+              text: "I don't see them."
+            - speaker: B
+              text: "Look under the newspaper. Ah, there they are!"
+            - speaker: A
+              text: "Thanks! My room is so messy today."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: my-home-mc-messy-tidy
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "messy / tidy"
+          prompt:
+            question: >-
+              В комнате всё разбросано и не убрано. Какое слово это
+              описывает?
+            options:
+              - id: a
+                text: "messy"
+              - id: b
+                text: "tidy"
+              - id: c
+                text: "upstairs"
+              - id: d
+                text: "next to"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Messy" — неубранный, беспорядок; "tidy" — противоположное
+            значение (убранный).
+
+        - slug: my-home-fill-prepositions
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: prepositions-of-place
+          prompt:
+            text: >-
+              Заполните пропуски (in / on / under): 1) "The milk is ___
+              the fridge." 2) "The book is ___ the table." 3) "The cat is
+              ___ the bed."
+          answer_key:
+            blanks:
+              - ["in"]
+              - ["on"]
+              - ["under"]
+          explanation: >-
+            in — внутри (fridge), on — на поверхности (table), under —
+            под чем-то (bed).
+
+        - slug: my-home-order-question
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: prepositions-of-place
+          prompt:
+            words: ["are", "keys", "my", "Where"]
+          answer_key:
+            correct_order: ["Where", "are", "my", "keys"]
+          explanation: >-
+            Вопрос: Where + are + подлежащее (my keys) — "Where are my
+            keys?".
+
+        - slug: my-home-reading-apartment
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              My apartment is small but tidy. The kitchen is next to the
+              living room. There is a sofa between two windows. My bedroom
+              is upstairs, and the bathroom is next to it.
+            questions:
+              - id: q1
+                text: "Is the apartment tidy or messy?"
+                options:
+                  - id: a
+                    text: "Tidy"
+                  - id: b
+                    text: "Messy"
+                  - id: c
+                    text: "We don't know"
+                  - id: d
+                    text: "Both"
+              - id: q2
+                text: "Where is the sofa?"
+                options:
+                  - id: a
+                    text: "In the kitchen"
+                  - id: b
+                    text: "Between two windows"
+                  - id: c
+                    text: "Upstairs"
+                  - id: d
+                    text: "Next to the bathroom"
+          answer_key:
+            answers:
+              q1: a
+              q2: b
+          explanation: >-
+            "My apartment is small but tidy." (Q1). "There is a sofa
+            between two windows." (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: My Apartment
+      text: >
+        My apartment is small but tidy. The kitchen is next to the living
+        room. There is a sofa between two windows. My bedroom is upstairs,
+        and the bathroom is next to it. I like my home — it's not big, but
+        it's cosy.
+      summary_ru: >
+        Моя квартира маленькая, но убранная. Кухня рядом с гостиной. Между
+        двумя окнами стоит диван. Моя спальня наверху, а ванная рядом с
+        ней. Мне нравится мой дом — он небольшой, но уютный.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      transcript: >
+        A: Where are my keys? — B: They're on the table, next to your bag.
+        — A: I don't see them. — B: Look under the newspaper. Ah, there
+        they are! — A: Thanks! My room is so messy today.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Опишите свою квартиру или дом: сколько комнат, что где находится.
+        Используйте предлоги места (in, on, under, next to, between).
+        Говорите 40-60 секунд.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Опишите письменно свою комнату (5-6 предложений), используя
+            предлоги места и мебель из словаря.
+        - type: vocabulary_recall
+          instructions: >
+            Не заглядывая в урок, запишите как можно больше слов по теме
+            дом, затем сверьте список со словарным блоком.
+        - type: grammar_practice
+          instructions: >
+            Напишите 5 предложений о том, где находятся вещи в вашей
+            комнате, используя in / on / under / next to / between.
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        prepositions-of-place grammar topic are generated automatically
+        from mistakes and spaced repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: my-home-mini-mc-messy-tidy-2
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "messy / tidy"
+          prompt:
+            question: "Everything is on the floor and nothing is in its place. The room is..."
+            options:
+              - id: a
+                text: "messy"
+              - id: b
+                text: "tidy"
+              - id: c
+                text: "upstairs"
+              - id: d
+                text: "quiet"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Messy" — неубранный, беспорядок; "tidy" — противоположное
+            значение.
+
+        - slug: my-home-mini-fill-prepositions-2
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: prepositions-of-place
+          prompt:
+            text: >-
+              Заполните пропуски (in / on / next to): 1) "The keys are ___
+              the table." 2) "The lamp is ___ the sofa." 3) "The bread is
+              ___ the fridge."
+          answer_key:
+            blanks:
+              - ["on"]
+              - ["next to"]
+              - ["in"]
+          explanation: >-
+            on — на поверхности (table), next to — рядом с чем-то (sofa),
+            in — внутри чего-то (fridge).
+
+        - slug: my-home-mini-order-question-2
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: prepositions-of-place
+          prompt:
+            words: ["is", "the", "Where", "fridge"]
+          answer_key:
+            correct_order: ["Where", "is", "the", "fridge"]
+          explanation: >-
+            Вопрос: Where + is + подлежащее (the fridge) — "Where is the
+            fridge?".
+
+        - slug: my-home-mini-mc-upstairs
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "upstairs / downstairs"
+          prompt:
+            question: "Спальни обычно находятся..."
+            options:
+              - id: a
+                text: "upstairs"
+              - id: b
+                text: "in the kitchen"
+              - id: c
+                text: "next to the fridge"
+              - id: d
+                text: "under the table"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            В двухэтажных домах спальни часто "upstairs" (наверху).
+
+        - slug: my-home-mini-reading-flat
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              There is a table between two chairs in the kitchen. The sofa
+              is next to the window in the living room. The bedroom is
+              upstairs, and it's very tidy.
+            questions:
+              - id: q1
+                text: "Where is the table?"
+                options:
+                  - id: a
+                    text: "Between two chairs"
+                  - id: b
+                    text: "Next to the window"
+                  - id: c
+                    text: "Upstairs"
+          answer_key:
+            answers:
+              q1: a
+          explanation: >-
+            "There is a table between two chairs in the kitchen."
+          explanation: >-
+            "There aren't any clothes."

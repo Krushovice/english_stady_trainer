@@ -1,0 +1,358 @@
+level:
+  code: A1
+  order_index: 0
+
+module:
+  slug: work
+  title: Work
+  order_index: 11
+
+lesson:
+  slug: talking-about-work
+  title: Talking About Work
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Говорить о своей работе и рабочих задачах"
+        - "Использовать Present Continuous для действий прямо сейчас"
+        - "Отличать Present Simple (обычно) от Present Continuous (сейчас)"
+        - "Использовать 8 новых слов по теме работа"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Present Continuous описывает действие, которое происходит прямо
+        сейчас: am/is/are + глагол-ing. "I am working now.", "She is
+        writing an email.", "They are having a meeting." Это отличается от
+        Present Simple, который описывает привычки и факты: "I work in an
+        office." (обычно) vs "I am working on a report right now."
+        (именно сейчас). Слова-маркеры Present Continuous: now, right now,
+        at the moment. Слова-маркеры Present Simple: usually, every day,
+        always.
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "meeting"
+          translation: "встреча, совещание"
+          example_sentence: "I have a meeting at ten o'clock."
+        - headword: "email"
+          translation: "электронное письмо"
+          example_sentence: "She is writing an email right now."
+        - headword: "boss"
+          translation: "начальник"
+          example_sentence: "My boss is in a meeting at the moment."
+        - headword: "colleague"
+          translation: "коллега"
+          example_sentence: "I work with three colleagues."
+        - headword: "deadline"
+          translation: "дедлайн, крайний срок"
+          example_sentence: "The deadline is on Friday."
+        - headword: "busy / free"
+          translation: "занят / свободен"
+          example_sentence: "I'm busy now, but I'm free after lunch."
+        - headword: "office"
+          translation: "офис"
+          example_sentence: "I work in an office in the city centre."
+        - headword: "right now / at the moment"
+          translation: "прямо сейчас / в данный момент"
+          example_sentence: "I'm working on a report right now."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: present-continuous
+          title: Present Continuous (am/is/are + -ing)
+          description: >
+            Present Continuous описывает действие, происходящее прямо
+            сейчас: am/is/are + глагол-ing. "I am working.", "He is
+            reading.", "They are talking." Отрицание: "I am not
+            working.", "She isn't working." Вопрос: "Are you working?",
+            "Is she working?" Отличие от Present Simple: Present Simple —
+            привычка/факт ("I work every day"), Present Continuous —
+            действие сейчас ("I am working right now"). Оба используют
+            одинаковый глагол, но разную форму и разный смысл.
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: On the phone
+          lines:
+            - speaker: A
+              text: "Hi, are you busy right now?"
+            - speaker: B
+              text: "Yes, I'm working on a report at the moment. Can I call you later?"
+            - speaker: A
+              text: "Sure. What time do you usually finish work?"
+            - speaker: B
+              text: "I usually finish at six, but today I'm working late."
+            - speaker: A
+              text: "OK, talk to you later!"
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: talking-about-work-mc-deadline
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "deadline"
+          prompt:
+            question: >-
+              Вам нужно закончить отчёт до пятницы. Пятница — это ваш...
+            options:
+              - id: a
+                text: "deadline"
+              - id: b
+                text: "colleague"
+              - id: c
+                text: "meeting"
+              - id: d
+                text: "office"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Deadline" — крайний срок сдачи чего-либо; остальные слова
+            обозначают другие понятия из темы работа.
+
+        - slug: talking-about-work-fill-present-continuous
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: present-continuous
+          prompt:
+            text: >-
+              Заполните пропуски (Present Continuous): 1) "I ___ (work) on
+              a report right now." 2) "She ___ (write) an email at the
+              moment." 3) "They ___ (have) a meeting now."
+          answer_key:
+            blanks:
+              - ["am working"]
+              - ["is writing"]
+              - ["are having"]
+          explanation: >-
+            I -> am + -ing; she -> is + -ing; they -> are + -ing: "I am
+            working", "She is writing", "They are having".
+
+        - slug: talking-about-work-order-question
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: present-continuous
+          prompt:
+            words: ["now", "working", "you", "Are"]
+          answer_key:
+            correct_order: ["Are", "you", "working", "now"]
+          explanation: >-
+            Вопрос в Present Continuous: Are + подлежащее (you) + глагол-ing
+            (working) + остальное.
+
+        - slug: talking-about-work-reading-busy-day
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              Anna usually starts work at nine, but today she is working
+              from home. Right now, she is writing an email to a
+              colleague. Her boss is in a meeting, so Anna can't ask him a
+              question at the moment.
+            questions:
+              - id: q1
+                text: "What is Anna doing right now?"
+                options:
+                  - id: a
+                    text: "Having a meeting"
+                  - id: b
+                    text: "Writing an email"
+                  - id: c
+                    text: "Talking to her boss"
+                  - id: d
+                    text: "Working in the office"
+              - id: q2
+                text: "Where is Anna's boss?"
+                options:
+                  - id: a
+                    text: "At home"
+                  - id: b
+                    text: "In a meeting"
+                  - id: c
+                    text: "On the phone"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: b
+              q2: b
+          explanation: >-
+            "Right now, she is writing an email" (Q1). "Her boss is in a
+            meeting" (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: A Busy Day
+      text: >
+        Anna usually starts work at nine, but today she is working from
+        home. Right now, she is writing an email to a colleague. Her boss
+        is in a meeting, so Anna can't ask him a question at the moment.
+        The deadline for her report is tomorrow, so she is a little busy
+        today.
+      summary_ru: >
+        Анна обычно начинает работать в девять, но сегодня работает из
+        дома. Прямо сейчас она пишет письмо коллеге. Её начальник на
+        совещании, поэтому Анна не может задать ему вопрос в данный
+        момент. Дедлайн по её отчёту завтра, поэтому сегодня она немного
+        занята.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      transcript: >
+        A: Hi, are you busy right now? — B: Yes, I'm working on a report
+        at the moment. Can I call you later? — A: Sure. What time do you
+        usually finish work? — B: I usually finish at six, but today I'm
+        working late. — A: OK, talk to you later!
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Расскажите, чем вы обычно занимаетесь на работе/учёбе (Present
+        Simple) и чем занимаетесь прямо сейчас (Present Continuous).
+        Говорите 40-60 секунд.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Напишите 6-8 предложений о своём обычном рабочем дне (Present
+            Simple) и о том, чем вы занимаетесь прямо сейчас (Present
+            Continuous).
+        - type: vocabulary_recall
+          instructions: >
+            Не заглядывая в урок, запишите как можно больше слов по теме
+            работа, затем сверьте список со словарным блоком.
+        - type: grammar_practice
+          instructions: >
+            Напишите 5 предложений в Present Continuous о том, что делают
+            сейчас члены вашей семьи.
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        present-continuous grammar topic are generated automatically from
+        mistakes and spaced repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: talking-about-work-mini-mc-busy-free
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "busy / free"
+          prompt:
+            question: "You have no meetings and no work to do right now. You are..."
+            options:
+              - id: a
+                text: "free"
+              - id: b
+                text: "busy"
+              - id: c
+                text: "a colleague"
+              - id: d
+                text: "a deadline"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Free" — свободен; "busy" — противоположное значение (занят).
+
+        - slug: talking-about-work-mini-fill-present-continuous-2
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: present-continuous
+          prompt:
+            text: >-
+              Заполните пропуски: 1) "He ___ (read) an email right now."
+              2) "We ___ (have) lunch at the moment."
+          answer_key:
+            blanks:
+              - ["is reading"]
+              - ["are having"]
+          explanation: >-
+            he -> is + -ing; we -> are + -ing.
+
+        - slug: talking-about-work-mini-order-negative
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: present-continuous
+          prompt:
+            words: ["working", "isn't", "She", "now"]
+          answer_key:
+            correct_order: ["She", "isn't", "working", "now"]
+          explanation: >-
+            Отрицание: подлежащее (She) + isn't + глагол-ing (working) +
+            остальное.
+
+        - slug: talking-about-work-mini-mc-office
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "office"
+          prompt:
+            question: "Where do many people go to work every day?"
+            options:
+              - id: a
+                text: "an office"
+              - id: b
+                text: "a deadline"
+              - id: c
+                text: "a meeting"
+              - id: d
+                text: "an email"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Office" — место, куда ходят на работу.
+
+        - slug: talking-about-work-mini-reading-meeting
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              Tom is in a meeting right now, so he can't answer his phone.
+              His colleague is writing an email at the moment.
+            questions:
+              - id: q1
+                text: "What is Tom doing right now?"
+                options:
+                  - id: a
+                    text: "Writing an email"
+                  - id: b
+                    text: "In a meeting"
+                  - id: c
+                    text: "Answering his phone"
+          answer_key:
+            answers:
+              q1: b
+          explanation: >-
+            "Tom is in a meeting right now."

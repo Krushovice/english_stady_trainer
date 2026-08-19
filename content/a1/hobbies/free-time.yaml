@@ -1,0 +1,354 @@
+level:
+  code: A1
+  order_index: 0
+
+module:
+  slug: hobbies
+  title: Hobbies
+  order_index: 12
+
+lesson:
+  slug: free-time
+  title: Free Time
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Говорить о своих увлечениях и о том, что вам нравится делать"
+        - "Использовать like/love/hate + глагол-ing"
+        - "Спросить у собеседника о его увлечениях"
+        - "Использовать 8 новых слов по теме хобби"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Чтобы сказать, что вам нравится (или не нравится) делать, после
+        like, love, hate, enjoy используется глагол с -ing (герундий), а
+        не инфинитив с to: "I like reading.", "She loves cooking.", "We
+        hate cleaning." (не "to read", "to cook"). Это отличается от
+        русского, где после "нравится" ставится инфинитив ("мне нравится
+        читать"). Чтобы спросить о хобби: "What do you like doing in your
+        free time?"
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "free time"
+          translation: "свободное время"
+          example_sentence: "What do you do in your free time?"
+        - headword: "read"
+          translation: "читать"
+          example_sentence: "I like reading books in the evening."
+        - headword: "cook"
+          translation: "готовить"
+          example_sentence: "He loves cooking on weekends."
+        - headword: "play sport"
+          translation: "заниматься спортом"
+          example_sentence: "We play sport every Sunday."
+        - headword: "watch movies"
+          translation: "смотреть фильмы"
+          example_sentence: "I enjoy watching movies at home."
+        - headword: "listen to music"
+          translation: "слушать музыку"
+          example_sentence: "She listens to music every day."
+        - headword: "draw / paint"
+          translation: "рисовать (карандашом) / рисовать (красками)"
+          example_sentence: "My son likes drawing animals."
+        - headword: "boring / interesting"
+          translation: "скучный / интересный"
+          example_sentence: "This hobby is interesting, not boring."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: like-love-hate-gerund
+          title: Like / love / hate + глагол-ing
+          description: >
+            После like, love, hate, enjoy глагол принимает форму -ing, а
+            не to + глагол: "I like reading.", "She loves cooking.", "He
+            hates cleaning.", "We enjoy playing sport." Отрицание: "I don't
+            like cleaning." Вопрос: "Do you like reading?", "What do you
+            like doing in your free time?" Правило то же самое для всех
+            лиц (I/you/he/she/we/they) — меняется только сам глагол like/
+            love/hate по обычным правилам Present Simple (likes для
+            he/she/it).
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Talking about hobbies
+          lines:
+            - speaker: A
+              text: "What do you like doing in your free time?"
+            - speaker: B
+              text: "I love reading and listening to music. What about you?"
+            - speaker: A
+              text: "I enjoy cooking, but I hate cleaning the kitchen after!"
+            - speaker: B
+              text: "Ha! Does your sister like cooking too?"
+            - speaker: A
+              text: "No, she prefers drawing. She's really good at it."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: free-time-mc-boring-interesting
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "boring / interesting"
+          prompt:
+            question: >-
+              Фильм очень скучный, вы засыпаете. Какое слово это описывает?
+            options:
+              - id: a
+                text: "boring"
+              - id: b
+                text: "interesting"
+              - id: c
+                text: "free time"
+              - id: d
+                text: "cheap"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Boring" — скучный; "interesting" — противоположное значение
+            (интересный).
+
+        - slug: free-time-fill-gerund
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: like-love-hate-gerund
+          prompt:
+            text: >-
+              Заполните пропуски правильной формой глагола: 1) "I like
+              ___ (read) books." 2) "She loves ___ (cook)." 3) "They hate
+              ___ (clean)."
+          answer_key:
+            blanks:
+              - ["reading"]
+              - ["cooking"]
+              - ["cleaning"]
+          explanation: >-
+            После like/love/hate — глагол с -ing: read -> reading, cook ->
+            cooking, clean -> cleaning.
+
+        - slug: free-time-order-question
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: like-love-hate-gerund
+          prompt:
+            words: ["you", "doing", "like", "What", "do"]
+          answer_key:
+            correct_order: ["What", "do", "you", "like", "doing"]
+          explanation: >-
+            Вопрос: What + do + подлежащее (you) + like + doing — "What do
+            you like doing?".
+
+        - slug: free-time-reading-weekend
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              On weekends, Mark likes playing sport with his friends. His
+              wife prefers reading books at home. Their daughter loves
+              drawing, but she hates cleaning her room. In the evening,
+              they often watch a movie together.
+            questions:
+              - id: q1
+                text: "What does Mark's wife like doing?"
+                options:
+                  - id: a
+                    text: "Playing sport"
+                  - id: b
+                    text: "Reading books"
+                  - id: c
+                    text: "Drawing"
+                  - id: d
+                    text: "Cleaning"
+              - id: q2
+                text: "What does the daughter hate doing?"
+                options:
+                  - id: a
+                    text: "Drawing"
+                  - id: b
+                    text: "Watching movies"
+                  - id: c
+                    text: "Cleaning her room"
+                  - id: d
+                    text: "Playing sport"
+          answer_key:
+            answers:
+              q1: b
+              q2: c
+          explanation: >-
+            "His wife prefers reading books" (Q1). "she hates cleaning her
+            room" (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: Weekend Hobbies
+      text: >
+        On weekends, Mark likes playing sport with his friends. His wife
+        prefers reading books at home. Their daughter loves drawing, but
+        she hates cleaning her room. In the evening, they often watch a
+        movie together — it's their favourite way to relax.
+      summary_ru: >
+        По выходным Марк любит заниматься спортом с друзьями. Его жена
+        предпочитает читать книги дома. Их дочь обожает рисовать, но
+        ненавидит убирать в своей комнате. Вечером они часто вместе
+        смотрят фильм — это их любимый способ отдохнуть.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      transcript: >
+        A: What do you like doing in your free time? — B: I love reading
+        and listening to music. What about you? — A: I enjoy cooking, but
+        I hate cleaning the kitchen after! — B: Ha! Does your sister like
+        cooking too? — A: No, she prefers drawing. She's really good at
+        it.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Расскажите о трёх ваших хобби, используя like/love/enjoy + -ing.
+        Скажите также, что вы не любите делать. Говорите 40-60 секунд.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Напишите 5-6 предложений о хобби своей семьи или друзей,
+            используя like/love/hate + -ing.
+        - type: vocabulary_recall
+          instructions: >
+            Не заглядывая в урок, запишите как можно больше слов по теме
+            хобби, затем сверьте список со словарным блоком.
+        - type: grammar_practice
+          instructions: >
+            Напишите 5 вопросов, чтобы узнать о хобби нового знакомого,
+            используя "Do you like...?" и "What do you like doing...?".
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        like-love-hate-gerund grammar topic are generated automatically
+        from mistakes and spaced repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: free-time-mini-mc-listen-to-music
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "listen to music"
+          prompt:
+            question: "What do you do with headphones on the bus?"
+            options:
+              - id: a
+                text: "listen to music"
+              - id: b
+                text: "cook"
+              - id: c
+                text: "draw"
+              - id: d
+                text: "play sport"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            С наушниками обычно слушают музыку (listen to music).
+
+        - slug: free-time-mini-fill-gerund-2
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: like-love-hate-gerund
+          prompt:
+            text: >-
+              Заполните пропуски: 1) "We enjoy ___ (watch) movies." 2) "He
+              hates ___ (cook)."
+          answer_key:
+            blanks:
+              - ["watching"]
+              - ["cooking"]
+          explanation: >-
+            После enjoy/hate — глагол с -ing.
+
+        - slug: free-time-mini-order-negative
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: like-love-hate-gerund
+          prompt:
+            words: ["cleaning", "like", "don't", "I"]
+          answer_key:
+            correct_order: ["I", "don't", "like", "cleaning"]
+          explanation: >-
+            Отрицание: подлежащее (I) + don't + like + глагол-ing
+            (cleaning).
+
+        - slug: free-time-mini-mc-draw-paint
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "draw / paint"
+          prompt:
+            question: "What do you do with a pencil to make a picture?"
+            options:
+              - id: a
+                text: "draw"
+              - id: b
+                text: "cook"
+              - id: c
+                text: "read"
+              - id: d
+                text: "listen"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            С карандашом рисуют — "draw".
+
+        - slug: free-time-mini-reading-hobbies
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              Anna loves reading and listening to music. She hates playing
+              sport, but she enjoys cooking on weekends.
+            questions:
+              - id: q1
+                text: "What does Anna hate doing?"
+                options:
+                  - id: a
+                    text: "Reading"
+                  - id: b
+                    text: "Playing sport"
+                  - id: c
+                    text: "Cooking"
+          answer_key:
+            answers:
+              q1: b
+          explanation: >-
+            "She hates playing sport."

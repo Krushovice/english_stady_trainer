@@ -42,16 +42,45 @@ class ContentLoaderService:
         self._exercises = ExerciseRepository(session)
 
     async def sync_directory(self, content_dir: Path) -> list[Lesson]:
-        lessons = []
+        # Two passes: metadata (level/module/lesson/vocabulary/grammar) for
+        # every file first, then exercises for every file second. A single
+        # pass in path-sorted order would make an exercise's
+        # grammar_topic_slug/vocabulary_headword reference fail whenever it
+        # points at a lesson that happens to sort later (e.g. a revision
+        # lesson recycling grammar from lessons taught after it
+        # alphabetically but before it pedagogically).
+        lesson_files = []
+        placement_files = []
         for path in sorted(content_dir.rglob("*.yaml")):
             if path.parent.name == PLACEMENT_BANK_DIR_NAME:
-                await self.sync_placement_bank_file(path)
+                placement_files.append(path)
             else:
-                lessons.append(await self.sync_file(path))
+                lesson_files.append(path)
+
+        pending = [await self._sync_lesson_metadata(path) for path in lesson_files]
+        lessons = []
+        for lesson, data in pending:
+            await self._sync_lesson_exercises(lesson, data)
+            lessons.append(lesson)
+        for path in placement_files:
+            await self.sync_placement_bank_file(path)
+
         await self._session.commit()
         return lessons
 
     async def sync_file(self, path: Path) -> Lesson:
+        """Sync a single lesson file end to end (metadata + exercises).
+
+        Convenience wrapper for scripts/tests syncing one known-self-contained
+        file; `sync_directory` uses the split two-pass path instead so
+        cross-file grammar/vocabulary references resolve regardless of
+        alphabetical file order.
+        """
+        lesson, data = await self._sync_lesson_metadata(path)
+        await self._sync_lesson_exercises(lesson, data)
+        return lesson
+
+    async def _sync_lesson_metadata(self, path: Path) -> tuple[Lesson, LessonFile]:
         raw = yaml.safe_load(path.read_text())
         data = LessonFile.model_validate(raw)
 
@@ -99,6 +128,9 @@ class ContentLoaderService:
         await self._repo.set_lesson_vocabulary(lesson.id, [v.id for v in vocab_rows])
         await self._repo.set_lesson_grammar_topics(lesson.id, [g.id for g in grammar_rows])
 
+        return lesson, data
+
+    async def _sync_lesson_exercises(self, lesson: Lesson, data: LessonFile) -> None:
         exercise_items = [
             ExerciseContent.model_validate(item)
             for block in data.blocks
@@ -122,8 +154,6 @@ class ContentLoaderService:
             await self._upsert_exercise(
                 item, lesson_id=lesson.id, is_placement_item=False, is_mini_test_item=True
             )
-
-        return lesson
 
     async def sync_placement_bank_file(self, path: Path) -> None:
         raw = yaml.safe_load(path.read_text())

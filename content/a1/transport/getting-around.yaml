@@ -1,0 +1,356 @@
+level:
+  code: A1
+  order_index: 0
+
+module:
+  slug: transport
+  title: Transport
+  order_index: 10
+
+lesson:
+  slug: getting-around
+  title: Getting Around
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Назвать виды транспорта: bus, train, taxi, bike и другие"
+        - "Сравнивать виды транспорта: faster, cheaper, more comfortable"
+        - "Спросить, как добраться куда-либо"
+        - "Использовать 8 новых слов по теме транспорт"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Чтобы сравнить два вида транспорта, используются сравнительные
+        прилагательные (comparatives). У коротких прилагательных (1
+        слог) добавляется -er: fast -> faster, cheap -> cheaper. У
+        прилагательных с -y на конце -y меняется на -ier: easy -> easier.
+        У длинных прилагательных (2+ слогов) добавляется more: comfortable
+        -> more comfortable. После сравнения используется than: "The train
+        is faster than the bus." Некоторые формы особые: good -> better,
+        bad -> worse.
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "bus / train / taxi"
+          translation: "автобус / поезд / такси"
+          example_sentence: "I usually take the bus to work."
+        - headword: "bike"
+          translation: "велосипед"
+          example_sentence: "She goes to work by bike."
+        - headword: "on foot"
+          translation: "пешком"
+          example_sentence: "I go to the shop on foot."
+        - headword: "ticket"
+          translation: "билет"
+          example_sentence: "How much is a ticket to the city centre?"
+        - headword: "fast / slow"
+          translation: "быстрый / медленный"
+          example_sentence: "The train is fast, but the bus is slow."
+        - headword: "comfortable"
+          translation: "удобный"
+          example_sentence: "This seat is very comfortable."
+        - headword: "how do I get to"
+          translation: "как мне добраться до"
+          example_sentence: "How do I get to the station?"
+        - headword: "traffic"
+          translation: "трафик, пробки"
+          example_sentence: "There is a lot of traffic in the morning."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: comparatives
+          title: Сравнительная степень прилагательных
+          description: >
+            Короткие прилагательные (1 слог): + -er — fast -> faster,
+            cheap -> cheaper. С -y на конце: -y меняется на -ier — easy ->
+            easier. Длинные прилагательные (2+ слогов): more + прилагательное
+            — comfortable -> more comfortable, expensive -> more expensive.
+            Особые формы: good -> better, bad -> worse. После сравнения —
+            than: "The train is faster than the bus.", "A taxi is more
+            expensive than a bus."
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Which is better?
+          lines:
+            - speaker: A
+              text: "How do I get to the airport?"
+            - speaker: B
+              text: "You can take a taxi or the train."
+            - speaker: A
+              text: "Which is faster?"
+            - speaker: B
+              text: "The train is faster than a taxi, and it's cheaper too."
+            - speaker: A
+              text: "Great, I'll take the train then."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: getting-around-mc-traffic
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "traffic"
+          prompt:
+            question: >-
+              Утром на дорогах очень много машин и все едут медленно. Как
+              это назвать одним словом?
+            options:
+              - id: a
+                text: "traffic"
+              - id: b
+                text: "ticket"
+              - id: c
+                text: "comfortable"
+              - id: d
+                text: "on foot"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Traffic" — трафик, пробки на дорогах; остальные слова не
+            связаны с этой ситуацией.
+
+        - slug: getting-around-fill-comparatives
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: comparatives
+          prompt:
+            text: >-
+              Заполните пропуски сравнительной формой: 1) "The train is
+              ___ than the bus. (fast)" 2) "A taxi is ___ than a bus.
+              (expensive)" 3) "This seat is ___ than that one.
+              (comfortable)"
+          answer_key:
+            blanks:
+              - ["faster"]
+              - ["more expensive"]
+              - ["more comfortable"]
+          explanation: >-
+            Короткое прилагательное -> -er (fast -> faster); длинные ->
+            more (expensive -> more expensive, comfortable -> more
+            comfortable).
+
+        - slug: getting-around-order-question
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          vocabulary_headword: "how do I get to"
+          prompt:
+            words: ["I", "the", "get", "do", "station", "How", "to"]
+          answer_key:
+            correct_order: ["How", "do", "I", "get", "to", "the", "station"]
+          explanation: >-
+            Вопрос с do: How + do + I + get to + место — "How do I get to
+            the station?".
+
+        - slug: getting-around-reading-commute
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              I usually take the train to work because it's faster than
+              the bus. My friend takes the bus because it's cheaper than
+              the train, even though it's slower. On sunny days, I go on
+              foot — it's slow, but it's free and I like walking.
+            questions:
+              - id: q1
+                text: "Why does the writer take the train?"
+                options:
+                  - id: a
+                    text: "It's cheaper"
+                  - id: b
+                    text: "It's faster than the bus"
+                  - id: c
+                    text: "It's more comfortable"
+                  - id: d
+                    text: "It's free"
+              - id: q2
+                text: "Why does the friend take the bus?"
+                options:
+                  - id: a
+                    text: "It's cheaper"
+                  - id: b
+                    text: "It's faster"
+                  - id: c
+                    text: "It's free"
+                  - id: d
+                    text: "It's more comfortable"
+          answer_key:
+            answers:
+              q1: b
+              q2: a
+          explanation: >-
+            "I usually take the train... because it's faster than the
+            bus" (Q1). "My friend takes the bus because it's cheaper" (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: How I Get to Work
+      text: >
+        I usually take the train to work because it's faster than the bus.
+        My friend takes the bus because it's cheaper than the train, even
+        though it's slower. On sunny days, I go on foot — it's slow, but
+        it's free and I like walking.
+      summary_ru: >
+        Я обычно езжу на работу на поезде, потому что он быстрее автобуса.
+        Мой друг ездит на автобусе, потому что он дешевле поезда, хотя и
+        медленнее. В солнечные дни я иду пешком — медленно, зато бесплатно,
+        и мне нравится гулять.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      transcript: >
+        A: How do I get to the airport? — B: You can take a taxi or the
+        train. — A: Which is faster? — B: The train is faster than a
+        taxi, and it's cheaper too. — A: Great, I'll take the train then.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Сравните два вида транспорта, которыми вы пользуетесь (например,
+        автобус и метро). Что быстрее, что дешевле, что удобнее?
+        Используйте сравнительную степень. Говорите 40-60 секунд.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Напишите короткий текст (5-6 предложений), сравнивая два
+            способа добраться до работы или учёбы.
+        - type: vocabulary_recall
+          instructions: >
+            Не заглядывая в урок, запишите как можно больше слов по теме
+            транспорт, затем сверьте список со словарным блоком.
+        - type: grammar_practice
+          instructions: >
+            Напишите 5 предложений, сравнивающих разные виды транспорта,
+            используя сравнительную степень.
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the comparatives
+        grammar topic are generated automatically from mistakes and spaced
+        repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: getting-around-mini-mc-fast-slow
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "fast / slow"
+          prompt:
+            question: "A bike is usually... than walking."
+            options:
+              - id: a
+                text: "faster"
+              - id: b
+                text: "slower"
+              - id: c
+                text: "cheaper"
+              - id: d
+                text: "more comfortable"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            Велосипед обычно быстрее ходьбы пешком — "faster".
+
+        - slug: getting-around-mini-fill-comparatives-2
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: comparatives
+          prompt:
+            text: >-
+              Заполните пропуски: 1) "A taxi is ___ than a bus.
+              (expensive)" 2) "This bus is ___ than that one. (fast)"
+          answer_key:
+            blanks:
+              - ["more expensive"]
+              - ["faster"]
+          explanation: >-
+            Длинное прилагательное -> more; короткое -> -er.
+
+        - slug: getting-around-mini-order-how-do-i-get
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          vocabulary_headword: "how do I get to"
+          prompt:
+            words: ["airport", "get", "the", "I", "do", "How", "to"]
+          answer_key:
+            correct_order: ["How", "do", "I", "get", "to", "the", "airport"]
+          explanation: >-
+            How + do + I + get to + место — "How do I get to the
+            airport?".
+
+        - slug: getting-around-mini-mc-ticket
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "ticket"
+          prompt:
+            question: "What do you need to travel by train?"
+            options:
+              - id: a
+                text: "a ticket"
+              - id: b
+                text: "traffic"
+              - id: c
+                text: "a receipt"
+              - id: d
+                text: "a size"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            Для поездки на поезде нужен билет (ticket).
+
+        - slug: getting-around-mini-reading-two-ways
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              The train is faster than the bus, but the bus is cheaper.
+              A taxi is the most comfortable, but it's also expensive.
+            questions:
+              - id: q1
+                text: "Which is cheaper, the train or the bus?"
+                options:
+                  - id: a
+                    text: "The train"
+                  - id: b
+                    text: "The bus"
+                  - id: c
+                    text: "They're the same"
+          answer_key:
+            answers:
+              q1: b
+          explanation: >-
+            "the bus is cheaper" than the train.

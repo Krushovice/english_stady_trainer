@@ -1,0 +1,354 @@
+level:
+  code: A1
+  order_index: 0
+
+module:
+  slug: weather
+  title: Weather
+  order_index: 13
+
+lesson:
+  slug: talking-about-weather
+  title: Talking About Weather
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Описывать погоду: sunny, rainy, cold, hot и другие"
+        - "Использовать going to для планов и прогнозов"
+        - "Понимать прогноз погоды и говорить о планах на день"
+        - "Использовать 8 новых слов по теме погода"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Going to используется для планов и прогнозов, которые мы уже
+        решили или видим признаки: am/is/are + going to + глагол. "It's
+        going to rain." (по тучам видно), "I'm going to visit my parents
+        this weekend." (уже решено). Это отличается от обычного будущего
+        предположения — going to показывает, что решение уже принято или
+        есть явные признаки, а не просто предсказание "может быть".
+        Отрицание: "It isn't going to rain." Вопрос: "Is it going to
+        rain?"
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "sunny / rainy"
+          translation: "солнечно / дождливо"
+          example_sentence: "It's sunny today, but it's going to be rainy tomorrow."
+        - headword: "cold / hot"
+          translation: "холодно / жарко"
+          example_sentence: "It's cold in winter and hot in summer."
+        - headword: "windy / cloudy"
+          translation: "ветрено / облачно"
+          example_sentence: "It's windy and cloudy today."
+        - headword: "snow"
+          translation: "снег"
+          example_sentence: "It's going to snow tonight."
+        - headword: "weather forecast"
+          translation: "прогноз погоды"
+          example_sentence: "Have you seen the weather forecast?"
+        - headword: "umbrella"
+          translation: "зонт"
+          example_sentence: "Take an umbrella — it's going to rain."
+        - headword: "degrees"
+          translation: "градусы"
+          example_sentence: "It's 20 degrees today."
+        - headword: "season"
+          translation: "время года, сезон"
+          example_sentence: "Summer is my favourite season."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: going-to-future
+          title: Going to (будущее время)
+          description: >
+            am/is/are + going to + глагол в начальной форме: "I'm going to
+            visit my parents.", "It's going to rain.", "They're going to
+            travel next month." Используется для планов, которые уже
+            решены, и прогнозов с явными признаками (тучи -> дождь).
+            Отрицание: "I'm not going to work today.", "It isn't going to
+            snow." Вопрос: "Are you going to visit them?", "Is it going to
+            rain?"
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Checking the forecast
+          lines:
+            - speaker: A
+              text: "Have you seen the weather forecast? Is it going to rain tomorrow?"
+            - speaker: B
+              text: "Yes, it's going to be cloudy and rainy all day."
+            - speaker: A
+              text: "Oh no. I'm going to visit my parents tomorrow."
+            - speaker: B
+              text: "Take an umbrella, then! Today is sunny, at least."
+            - speaker: A
+              text: "True. It's twenty degrees — perfect weather."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: talking-about-weather-mc-umbrella
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "umbrella"
+          prompt:
+            question: >-
+              Идёт дождь. Что вам нужно взять с собой?
+            options:
+              - id: a
+                text: "an umbrella"
+              - id: b
+                text: "a ticket"
+              - id: c
+                text: "a receipt"
+              - id: d
+                text: "a size"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Umbrella" (зонт) защищает от дождя; остальные слова не
+            связаны с дождём.
+
+        - slug: talking-about-weather-fill-going-to
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: going-to-future
+          prompt:
+            text: >-
+              Заполните пропуски (going to): 1) "It ___ (rain) tomorrow."
+              2) "I ___ (visit) my parents this weekend." 3) "They ___
+              (not/travel) next month."
+          answer_key:
+            blanks:
+              - ["is going to rain"]
+              - ["am going to visit"]
+              - ["are not going to travel", "aren't going to travel"]
+          explanation: >-
+            it -> is going to; I -> am going to; they (отрицание) -> are
+            not / aren't going to.
+
+        - slug: talking-about-weather-order-question
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: going-to-future
+          prompt:
+            words: ["rain", "it", "to", "going", "Is"]
+          answer_key:
+            correct_order: ["Is", "it", "going", "to", "rain"]
+          explanation: >-
+            Вопрос: Is + it + going to + глагол — "Is it going to rain?".
+
+        - slug: talking-about-weather-reading-forecast
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              Today is sunny and warm, about 22 degrees. Tomorrow is going
+              to be cloudy and cold, with some rain in the evening. This
+              weekend is going to be windy, so it's not a good time for a
+              picnic.
+            questions:
+              - id: q1
+                text: "What is the weather like today?"
+                options:
+                  - id: a
+                    text: "Sunny and warm"
+                  - id: b
+                    text: "Cloudy and cold"
+                  - id: c
+                    text: "Rainy"
+                  - id: d
+                    text: "Windy"
+              - id: q2
+                text: "Why isn't this weekend good for a picnic?"
+                options:
+                  - id: a
+                    text: "It's going to be too hot"
+                  - id: b
+                    text: "It's going to be windy"
+                  - id: c
+                    text: "It's going to snow"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: b
+          explanation: >-
+            "Today is sunny and warm" (Q1). "This weekend is going to be
+            windy, so it's not a good time for a picnic" (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: This Week's Weather
+      text: >
+        Today is sunny and warm, about 22 degrees. Tomorrow is going to be
+        cloudy and cold, with some rain in the evening. This weekend is
+        going to be windy, so it's not a good time for a picnic. Take an
+        umbrella if you go out on Saturday.
+      summary_ru: >
+        Сегодня солнечно и тепло, около 22 градусов. Завтра будет облачно
+        и холодно, вечером возможен дождь. Эти выходные будут ветреными,
+        так что не лучшее время для пикника. Возьмите зонт, если выйдете в
+        субботу.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      transcript: >
+        A: Have you seen the weather forecast? Is it going to rain
+        tomorrow? — B: Yes, it's going to be cloudy and rainy all day. —
+        A: Oh no. I'm going to visit my parents tomorrow. — B: Take an
+        umbrella, then! Today is sunny, at least. — A: True. It's twenty
+        degrees — perfect weather.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Расскажите о погоде сегодня и о том, какая погода ожидается
+        завтра. Скажите, какие у вас планы на выходные (going to).
+        Говорите 40-60 секунд.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Напишите короткий прогноз погоды на неделю (5-6 предложений),
+            используя going to.
+        - type: vocabulary_recall
+          instructions: >
+            Не заглядывая в урок, запишите как можно больше слов по теме
+            погода, затем сверьте список со словарным блоком.
+        - type: grammar_practice
+          instructions: >
+            Напишите 5 предложений о своих планах на следующей неделе,
+            используя going to.
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the going-to-future
+        grammar topic are generated automatically from mistakes and spaced
+        repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: talking-about-weather-mini-mc-cold-hot
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "cold / hot"
+          prompt:
+            question: "It's 35 degrees outside. The weather is..."
+            options:
+              - id: a
+                text: "hot"
+              - id: b
+                text: "cold"
+              - id: c
+                text: "snowy"
+              - id: d
+                text: "cloudy"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            35 градусов — это жарко (hot); "cold" — противоположное
+            значение.
+
+        - slug: talking-about-weather-mini-fill-going-to-2
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: going-to-future
+          prompt:
+            text: >-
+              Заполните пропуски: 1) "We ___ (visit) my parents on
+              Sunday." 2) "It ___ (snow) tonight."
+          answer_key:
+            blanks:
+              - ["are going to visit"]
+              - ["is going to snow"]
+          explanation: >-
+            we -> are going to; it -> is going to.
+
+        - slug: talking-about-weather-mini-order-negative
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: going-to-future
+          prompt:
+            words: ["rain", "isn't", "going", "It", "to"]
+          answer_key:
+            correct_order: ["It", "isn't", "going", "to", "rain"]
+          explanation: >-
+            Отрицание: It + isn't + going to + глагол.
+
+        - slug: talking-about-weather-mini-mc-windy
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "windy / cloudy"
+          prompt:
+            question: "There is a strong wind today. The weather is..."
+            options:
+              - id: a
+                text: "windy"
+              - id: b
+                text: "sunny"
+              - id: c
+                text: "hot"
+              - id: d
+                text: "dry"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            Сильный ветер — "windy".
+
+        - slug: talking-about-weather-mini-reading-forecast-2
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              Today is cold and cloudy. Tomorrow is going to be sunny and
+              warm, about 18 degrees.
+            questions:
+              - id: q1
+                text: "What is tomorrow's weather going to be like?"
+                options:
+                  - id: a
+                    text: "Cold and cloudy"
+                  - id: b
+                    text: "Sunny and warm"
+                  - id: c
+                    text: "Rainy"
+          answer_key:
+            answers:
+              q1: b
+          explanation: >-
+            "Tomorrow is going to be sunny and warm."
