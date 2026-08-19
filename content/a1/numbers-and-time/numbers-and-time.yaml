@@ -1,0 +1,254 @@
+level:
+  code: A1
+  order_index: 0
+
+module:
+  slug: numbers-and-time
+  title: Numbers and Time
+  order_index: 4
+
+lesson:
+  slug: numbers-and-time
+  title: Numbers and Time
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Считать от 1 до 100 по-английски"
+        - "Спросить и сказать который час"
+        - "Использовать предлог at для времени (at 5 o'clock)"
+        - "Использовать 8 новых слов по теме числа и время"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Числа и время — то, что нужно почти каждый день: назвать номер
+        телефона, возраст, цену или договориться о встрече. Который час
+        по-английски спрашивают так: "What time is it?" или "What's the
+        time?", а отвечают через it's (it is): "It's three o'clock.",
+        "It's half past four." (половина пятого — дословно "половина
+        после четырёх"). Для конкретного времени встречи используется
+        предлог at: "The meeting is at 5 o'clock."
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "o'clock"
+          translation: "час (ровно)"
+          example_sentence: "It's seven o'clock."
+        - headword: "half past"
+          translation: "половина (следующего часа)"
+          example_sentence: "It's half past two. (2:30)"
+        - headword: "quarter past / quarter to"
+          translation: "четверть после / без четверти"
+          example_sentence: "It's quarter past five. It's quarter to six."
+        - headword: "what time is it"
+          translation: "который час"
+          example_sentence: "What time is it? — It's nine o'clock."
+        - headword: "at (time)"
+          translation: "в (о времени)"
+          example_sentence: "The film starts at eight o'clock."
+        - headword: "morning / afternoon / evening / night"
+          translation: "утро / день / вечер / ночь"
+          example_sentence: "I have breakfast in the morning."
+        - headword: "early / late"
+          translation: "рано / поздно"
+          example_sentence: "The train is early. The bus is late."
+        - headword: "number"
+          translation: "число, номер"
+          example_sentence: "What's your phone number?"
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: telling-time
+          title: Который час (it's + время)
+          description: >
+            Время называют через "It's" (It is): "It's four o'clock."
+            (ровно 4), "It's half past four." (4:30), "It's quarter past
+            four." (4:15), "It's quarter to five." (4:45 — "без четверти
+            пять"). Вопрос: "What time is it?". Для конкретного момента
+            времени используется предлог at, а не in или on: "at 5
+            o'clock", "at night" (но "in the morning/afternoon/evening").
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Asking the time
+          lines:
+            - speaker: A
+              text: "Excuse me, what time is it?"
+            - speaker: B
+              text: "It's quarter past nine."
+            - speaker: A
+              text: "Thanks. What time does the shop open?"
+            - speaker: B
+              text: "It opens at ten o'clock."
+            - speaker: A
+              text: "Great, we have time for coffee."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: numbers-and-time-mc-question
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "what time is it"
+          prompt:
+            question: >-
+              Вы хотите узнать, который час. Что вы спросите?
+            options:
+              - id: a
+                text: "What time is it?"
+              - id: b
+                text: "How old are you?"
+              - id: c
+                text: "What's your number?"
+              - id: d
+                text: "Where is it?"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "What time is it?" — стандартный вопрос о времени; остальные
+            варианты спрашивают о возрасте, номере телефона и месте.
+
+        - slug: numbers-and-time-fill-half-past
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: telling-time
+          prompt:
+            text: >-
+              Заполните пропуски: 1) "It's five ___. (5:00)" 2) "It's
+              ___ past six. (6:30)" 3) "The train is ___ nine o'clock.
+              (departs at 9:00, preposition)"
+          answer_key:
+            blanks:
+              - ["o'clock"]
+              - ["half"]
+              - ["at"]
+          explanation: >-
+            Ровно час — o'clock ("five o'clock"); 30 минут — half past
+            ("half past six"); конкретное время — предлог at ("at nine
+            o'clock").
+
+        - slug: numbers-and-time-order-question
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: telling-time
+          prompt:
+            words: ["shop", "open", "does", "time", "the", "What"]
+          answer_key:
+            correct_order: ["What", "time", "does", "the", "shop", "open"]
+          explanation: >-
+            Вопрос с Present Simple (does): вопросительное слово (What
+            time) + does + подлежащее (the shop) + глагол (open).
+
+        - slug: numbers-and-time-reading-timetable
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              The shop opens at nine o'clock in the morning and closes at
+              half past six in the evening. The coffee shop next door opens
+              earlier — at quarter past seven. It's very popular before
+              work.
+            questions:
+              - id: q1
+                text: "What time does the shop open?"
+                options:
+                  - id: a
+                    text: "Seven o'clock"
+                  - id: b
+                    text: "Half past six"
+                  - id: c
+                    text: "Nine o'clock"
+                  - id: d
+                    text: "Quarter past seven"
+              - id: q2
+                text: "Which place opens earlier, the shop or the coffee shop?"
+                options:
+                  - id: a
+                    text: "The shop"
+                  - id: b
+                    text: "The coffee shop"
+                  - id: c
+                    text: "They open at the same time"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: c
+              q2: b
+          explanation: >-
+            "The shop opens at nine o'clock" (Q1). The coffee shop opens
+            "at quarter past seven", earlier than nine o'clock (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: Opening Times
+      text: >
+        The shop opens at nine o'clock in the morning and closes at half
+        past six in the evening. The coffee shop next door opens earlier —
+        at quarter past seven. It's very popular before work. On Sundays,
+        both places open later and close earlier.
+      summary_ru: >
+        Магазин открывается в девять утра и закрывается в половине седьмого
+        вечера. Кофейня по соседству открывается раньше — в четверть
+        восьмого. Она очень популярна перед работой. По воскресеньям оба
+        места открываются позже и закрываются раньше.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      transcript: >
+        A: Excuse me, what time is it? — B: It's quarter past nine. — A:
+        Thanks. What time does the shop open? — B: It opens at ten
+        o'clock. — A: Great, we have time for coffee.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Расскажите, во сколько вы обычно завтракаете, во сколько начинаете
+        работать/учиться и во сколько ложитесь спать. Используйте at и
+        o'clock/half past.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Напишите расписание своего дня (5-6 пунктов) с указанием
+            времени, например "7:00 — I have breakfast."
+        - type: vocabulary_recall
+          instructions: >
+            Не заглядывая в урок, запишите как можно больше способов
+            назвать время (o'clock, half past, quarter to...), затем
+            сверьте список со словарным блоком.
+        - type: grammar_practice
+          instructions: >
+            Напишите 5 предложений о времени открытия/закрытия мест рядом с
+            вами, например "The supermarket opens at eight o'clock."
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the telling-time
+        grammar topic are generated automatically from mistakes and spaced
+        repetition — nothing to author here.

@@ -1,0 +1,255 @@
+level:
+  code: A1
+  order_index: 0
+
+module:
+  slug: family
+  title: Family
+  order_index: 3
+
+lesson:
+  slug: talking-about-family
+  title: Talking About Family
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Называть членов семьи по-английски"
+        - "Рассказать о своей семье с помощью have / has"
+        - "Использовать притяжательные местоимения с семьёй (my mother, his sister)"
+        - "Использовать 8 новых слов по теме семьи"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        В этом уроке — семья. Чтобы сказать, что у вас есть (кто-то),
+        по-английски используется глагол have (иметь): "I have a sister."
+        С he/she/it глагол меняет форму на has: "She has two brothers." Это
+        первое знакомство с окончанием -s у глагола для he/she/it — оно ещё
+        встретится в уроке про распорядок дня. Здесь же пригодятся
+        притяжательные местоимения my/his/her из прошлого урока: "This is
+        my mother. Her name is Elena."
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "family"
+          translation: "семья"
+          example_sentence: "I have a big family."
+        - headword: "mother / father"
+          translation: "мама / папа"
+          example_sentence: "My mother is a doctor. My father is a driver."
+        - headword: "brother / sister"
+          translation: "брат / сестра"
+          example_sentence: "I have one brother and two sisters."
+        - headword: "parents"
+          translation: "родители"
+          example_sentence: "My parents live in Moscow."
+        - headword: "children / kids"
+          translation: "дети"
+          example_sentence: "They have three children."
+        - headword: "son / daughter"
+          translation: "сын / дочь"
+          example_sentence: "Their son is 10 and their daughter is 7."
+        - headword: "grandmother / grandfather"
+          translation: "бабушка / дедушка"
+          example_sentence: "My grandmother lives with us."
+        - headword: "husband / wife"
+          translation: "муж / жена"
+          example_sentence: "This is my husband, Tom."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: have-has-possession
+          title: Глагол have / has (обладание)
+          description: >
+            Чтобы сказать, что у кого-то есть что-то, используется глагол
+            have: I/you/we/they + have; he/she/it + has (обратите внимание
+            на -s в конце — как и у to be, у he/she/it особая форма).
+            Примеры: "I have a sister.", "You have two children.", "She has
+            a big family.", "He has one brother." Отрицание — с don't/doesn't:
+            "I don't have a car.", "She doesn't have children." Вопрос:
+            "Do you have a sister?", "Does he have children?"
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Talking about family
+          lines:
+            - speaker: A
+              text: "Do you have brothers or sisters?"
+            - speaker: B
+              text: "Yes, I have one sister. She's a teacher. What about you?"
+            - speaker: A
+              text: "I don't have any brothers or sisters. But I have two children."
+            - speaker: B
+              text: "Really? How old are they?"
+            - speaker: A
+              text: "My son is 5 and my daughter is 3."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: talking-about-family-mc-parents
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "parents"
+          prompt:
+            question: >-
+              Как по-английски сказать "мама и папа" одним словом?
+            options:
+              - id: a
+                text: "children"
+              - id: b
+                text: "parents"
+              - id: c
+                text: "grandparents"
+              - id: d
+                text: "family"
+          answer_key:
+            correct_option_id: b
+          explanation: >-
+            "Parents" — это мама и папа вместе; "grandparents" — бабушка и
+            дедушка; "family" — вся семья, более широкое слово.
+
+        - slug: talking-about-family-fill-have-has
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: have-has-possession
+          prompt:
+            text: >-
+              Заполните пропуски have или has: 1) "I ___ one brother. (I)"
+              2) "She ___ two children. (she)" 3) "They ___ a big family.
+              (they)"
+          answer_key:
+            blanks:
+              - ["have"]
+              - ["has"]
+              - ["have"]
+          explanation: >-
+            I/you/we/they -> have; he/she/it -> has: "I have one brother.",
+            "She has two children.", "They have a big family."
+
+        - slug: talking-about-family-order-question
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: have-has-possession
+          prompt:
+            words: ["sisters", "you", "brothers", "or", "Do", "have"]
+          answer_key:
+            correct_order: ["Do", "you", "have", "brothers", "or", "sisters"]
+          explanation: >-
+            Вопрос с have строится с do: "Do you have...?" — do в начале,
+            затем подлежащее (you), затем have и остальное.
+
+        - slug: talking-about-family-reading-my-family
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              This is my family. My father's name is Mark. My mother's name
+              is Anna. I have one sister, Kate. She is a student. I don't
+              have brothers. My grandmother lives with us too. Her name is
+              Olga.
+            questions:
+              - id: q1
+                text: "Does the writer have brothers?"
+                options:
+                  - id: a
+                    text: "Yes, one"
+                  - id: b
+                    text: "Yes, two"
+                  - id: c
+                    text: "No"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "Who lives with the writer's family?"
+                options:
+                  - id: a
+                    text: "The grandfather"
+                  - id: b
+                    text: "The grandmother"
+                  - id: c
+                    text: "Kate's husband"
+                  - id: d
+                    text: "No one else"
+          answer_key:
+            answers:
+              q1: c
+              q2: b
+          explanation: >-
+            "I don't have brothers" (Q1 — No). "My grandmother lives with
+            us too. Her name is Olga." (Q2 — the grandmother).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: My Family
+      text: >
+        This is my family. My father's name is Mark. My mother's name is
+        Anna. I have one sister, Kate. She is a student. I don't have
+        brothers. My grandmother lives with us too. Her name is Olga. We
+        are a small, happy family.
+      summary_ru: >
+        Это моя семья. Моего отца зовут Марк. Мою маму зовут Анна. У меня
+        есть одна сестра, Кейт. Она студентка. У меня нет братьев. Моя
+        бабушка тоже живёт с нами. Её зовут Ольга. Мы небольшая, счастливая
+        семья.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      transcript: >
+        A: Do you have brothers or sisters? — B: Yes, I have one sister.
+        She's a teacher. What about you? — A: I don't have any brothers or
+        sisters. But I have two children. — B: Really? How old are they? —
+        A: My son is 5 and my daughter is 3.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Расскажите о своей семье за 30-40 секунд: сколько у вас братьев и
+        сестёр (или нет), как зовут родителей, есть ли дети. Используйте
+        have / has.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Напишите короткий текст (4-6 предложений) о своей семье или о
+            вымышленной семье. Используйте не менее 3 слов из словаря этого
+            урока и глагол have/has хотя бы дважды.
+        - type: vocabulary_recall
+          instructions: >
+            Не заглядывая в урок, запишите как можно больше слов по теме
+            семьи, затем сверьте список со словарным блоком.
+        - type: grammar_practice
+          instructions: >
+            Напишите 5 предложений о семьях своих друзей, используя
+            have/has, например "My friend has two sisters."
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        have-has-possession grammar topic are generated automatically from
+        mistakes and spaced repetition — nothing to author here.

@@ -1,0 +1,265 @@
+level:
+  code: A1
+  order_index: 0
+
+module:
+  slug: daily-routine
+  title: Daily Routine
+  order_index: 5
+
+lesson:
+  slug: my-daily-routine
+  title: My Daily Routine
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Рассказать о типичном дне: подъём, работа/учёба, сон"
+        - "Использовать Present Simple с окончанием -s (he/she/it)"
+        - "Использовать слова usually и every day для описания привычек"
+        - "Использовать 8 новых глаголов по теме распорядок дня"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Это ключевая грамматика для A1 — Present Simple для описания
+        привычных действий: "I wake up at seven." Но с he/she/it к глаголу
+        добавляется -s (совсем как has у have в уроке про семью): "He wakes
+        up at seven.", "She works from home.". В отрицании и вопросе
+        появляется does вместо do: "He doesn't wake up early.", "Does she
+        work from home?" — и тогда сам глагол теряет -s: "Does she work..."
+        (не "works"). Слова usually (обычно) и every day (каждый день)
+        показывают, что действие повторяется, а не происходит один раз.
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "wake up"
+          translation: "просыпаться"
+          example_sentence: "I wake up at seven every day."
+        - headword: "get up"
+          translation: "вставать (с кровати)"
+          example_sentence: "She gets up at half past seven."
+        - headword: "have breakfast/lunch/dinner"
+          translation: "завтракать/обедать/ужинать"
+          example_sentence: "He has breakfast at eight o'clock."
+        - headword: "go to work / go to school"
+          translation: "идти на работу / в школу"
+          example_sentence: "She goes to work by bus."
+        - headword: "come home"
+          translation: "приходить домой"
+          example_sentence: "I come home at six in the evening."
+        - headword: "go to bed"
+          translation: "ложиться спать"
+          example_sentence: "The children go to bed at nine."
+        - headword: "usually"
+          translation: "обычно"
+          example_sentence: "I usually have coffee in the morning."
+        - headword: "every day"
+          translation: "каждый день"
+          example_sentence: "He checks his email every day."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: present-simple-third-person
+          title: "Present Simple: he/she/it + -s"
+          description: >
+            В Present Simple с he/she/it к глаголу добавляется -s: work ->
+            works, live -> lives, go -> goes, have -> has (особая форма,
+            как в уроке про семью). С I/you/we/they -s не добавляется: "I
+            work", "They live". Отрицание — does not (doesn't) + глагол без
+            -s: "He doesn't work on Sundays." Вопрос — Does + подлежащее +
+            глагол без -s: "Does she live in London?" Частая ошибка —
+            добавлять -s ещё и после does: "Does she works?" — неправильно,
+            нужно "Does she work?".
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: A typical day
+          lines:
+            - speaker: A
+              text: "What's your daily routine like?"
+            - speaker: B
+              text: "I usually wake up at seven and have breakfast at half past seven."
+            - speaker: A
+              text: "Does she go to work with you?"
+            - speaker: B
+              text: "No, she doesn't. My wife works from home. She starts at nine."
+            - speaker: A
+              text: "And what time do you come home?"
+            - speaker: B
+              text: "Usually at six. Then we have dinner together."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: my-daily-routine-mc-usually
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "usually"
+          prompt:
+            question: >-
+              Какое слово показывает, что действие происходит регулярно, а
+              не один раз?
+            options:
+              - id: a
+                text: "usually"
+              - id: b
+                text: "yesterday"
+              - id: c
+                text: "now"
+              - id: d
+                text: "today"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Usually" (обычно) описывает привычное, повторяющееся действие;
+            "yesterday", "now" и "today" указывают на конкретный момент.
+
+        - slug: my-daily-routine-fill-third-person-s
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: present-simple-third-person
+          prompt:
+            text: >-
+              Заполните пропуски правильной формой глагола: 1) "She ___ up
+              at seven. (wake)" 2) "He ___ to work by car. (go)" 3) "My
+              sister ___ two children. (have)"
+          answer_key:
+            blanks:
+              - ["wakes"]
+              - ["goes"]
+              - ["has"]
+          explanation: >-
+            he/she/it + -s: wake -> wakes, go -> goes (после -o добавляется
+            -es), have -> has (особая форма).
+
+        - slug: my-daily-routine-order-question
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: present-simple-third-person
+          prompt:
+            words: ["work", "she", "does", "from", "home", "Does"]
+          answer_key:
+            correct_order: ["Does", "she", "work", "from", "home"]
+          explanation: >-
+            Вопрос с does строится так: Does + подлежащее (she) + глагол
+            без -s (work) + остальное — "Does she work from home?".
+
+        - slug: my-daily-routine-reading-a-day
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              Anna usually wakes up at half past six. She has breakfast and
+              goes to work at eight o'clock. She works in an office in the
+              city. She doesn't have lunch at home — she has lunch with her
+              colleagues. She comes home at six and has dinner with her
+              family. She goes to bed at eleven every night.
+            questions:
+              - id: q1
+                text: "What time does Anna wake up?"
+                options:
+                  - id: a
+                    text: "Six o'clock"
+                  - id: b
+                    text: "Half past six"
+                  - id: c
+                    text: "Eight o'clock"
+                  - id: d
+                    text: "Eleven o'clock"
+              - id: q2
+                text: "Where does Anna have lunch?"
+                options:
+                  - id: a
+                    text: "At home"
+                  - id: b
+                    text: "With her colleagues"
+                  - id: c
+                    text: "With her family"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: b
+              q2: b
+          explanation: >-
+            "Anna usually wakes up at half past six." (Q1). "She has lunch
+            with her colleagues" (Q2), not at home.
+
+  - type: reading
+    order_index: 7
+    content:
+      title: Anna's Day
+      text: >
+        Anna usually wakes up at half past six. She has breakfast and goes
+        to work at eight o'clock. She works in an office in the city. She
+        doesn't have lunch at home — she has lunch with her colleagues. She
+        comes home at six and has dinner with her family. She goes to bed
+        at eleven every night.
+      summary_ru: >
+        Анна обычно просыпается в половине седьмого. Она завтракает и идёт
+        на работу в восемь часов. Она работает в офисе в городе. Она не
+        обедает дома — она обедает с коллегами. Она приходит домой в шесть
+        и ужинает с семьёй. Она ложится спать в одиннадцать каждую ночь.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      transcript: >
+        A: What's your daily routine like? — B: I usually wake up at seven
+        and have breakfast at half past seven. — A: Does she go to work
+        with you? — B: No, she doesn't. My wife works from home. She
+        starts at nine. — A: And what time do you come home? — B: Usually
+        at six. Then we have dinner together.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Расскажите о своём типичном дне за 40-60 секунд: во сколько
+        встаёте, что делаете утром, во сколько идёте на работу/учёбу и во
+        сколько ложитесь спать. Используйте usually и every day.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Напишите текст (6-8 предложений) о распорядке дня друга или
+            родственника от третьего лица (he/she), используя не менее 4
+            глаголов с -s.
+        - type: vocabulary_recall
+          instructions: >
+            Не заглядывая в урок, запишите как можно больше глаголов
+            распорядка дня (wake up, get up...), затем сверьте список со
+            словарным блоком.
+        - type: grammar_practice
+          instructions: >
+            Напишите 5 вопросов с Does о распорядке дня знакомого, например
+            "Does he go to work by car?"
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        present-simple-third-person grammar topic are generated
+        automatically from mistakes and spaced repetition — nothing to
+        author here.
