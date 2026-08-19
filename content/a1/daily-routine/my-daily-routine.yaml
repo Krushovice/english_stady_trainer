@@ -263,3 +263,120 @@ blocks:
         present-simple-third-person grammar topic are generated
         automatically from mistakes and spaced repetition — nothing to
         author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: my-daily-routine-mini-mc-go-to-bed
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "go to bed"
+          prompt:
+            question: "Как сказать «ложиться спать» по-английски?"
+            options:
+              - id: a
+                text: "go to bed"
+              - id: b
+                text: "wake up"
+              - id: c
+                text: "get up"
+              - id: d
+                text: "come home"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Go to bed" — ложиться спать; остальные фразы означают
+            просыпаться, вставать и приходить домой.
+
+        - slug: my-daily-routine-mini-fill-third-person-s-2
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: present-simple-third-person
+          prompt:
+            text: >-
+              Заполните пропуски: 1) "He ___ home at six. (come)" 2) "My
+              father ___ breakfast at eight. (have)"
+          answer_key:
+            blanks:
+              - ["comes"]
+              - ["has"]
+          explanation: >-
+            he/she/it + -s: come -> comes, have -> has (особая форма).
+
+        - slug: my-daily-routine-mini-order-negative
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: present-simple-third-person
+          prompt:
+            words: ["work", "doesn't", "on", "She", "Sundays"]
+          answer_key:
+            correct_order: ["She", "doesn't", "work", "on", "Sundays"]
+          explanation: >-
+            Отрицание с he/she/it: подлежащее (She) + doesn't + глагол без
+            -s (work) + остальное ("She doesn't work on Sundays.").
+
+        - slug: my-daily-routine-mini-mc-every-day
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "every day"
+          prompt:
+            question: "Какое выражение значит «каждый день»?"
+            options:
+              - id: a
+                text: "every day"
+              - id: b
+                text: "usually"
+              - id: c
+                text: "at night"
+              - id: d
+                text: "half past"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Every day" — «каждый день»; "usually" — «обычно» (близко по
+            смыслу, но не то же самое), остальные не о частоте.
+
+        - slug: my-daily-routine-mini-reading-two-days
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              Tom usually gets up at seven. He goes to work by bus. He
+              doesn't have lunch at home. His wife, Sarah, works from home,
+              so she has lunch at home every day.
+            questions:
+              - id: q1
+                text: "How does Tom go to work?"
+                options:
+                  - id: a
+                    text: "By car"
+                  - id: b
+                    text: "By bus"
+                  - id: c
+                    text: "On foot"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "Where does Sarah have lunch?"
+                options:
+                  - id: a
+                    text: "At the office"
+                  - id: b
+                    text: "With Tom"
+                  - id: c
+                    text: "At home"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: b
+              q2: c
+          explanation: >-
+            "He goes to work by bus." (Q1). "She has lunch at home every
+            day." (Q2 — Sarah).

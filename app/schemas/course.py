@@ -12,6 +12,7 @@ class LevelResponse(BaseModel):
     id: uuid.UUID
     code: CEFRLevel
     order_index: int
+    unlocked: bool
 
 
 class ModuleResponse(BaseModel):

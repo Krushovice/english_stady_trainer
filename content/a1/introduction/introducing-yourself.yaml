@@ -251,3 +251,120 @@ blocks:
         Review items for this lesson's vocabulary and the to-be-present
         grammar topic are generated automatically from mistakes and spaced
         repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: introducing-yourself-mini-mc-hello
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "hello / hi"
+          prompt:
+            question: "Вы видите знакомого утром. Что вы скажете?"
+            options:
+              - id: a
+                text: "Hi! How are you?"
+              - id: b
+                text: "Goodbye!"
+              - id: c
+                text: "What's your name?"
+              - id: d
+                text: "I'm not from here."
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Hi! How are you?" — обычное приветствие при встрече; остальные
+            варианты не подходят для начала разговора.
+
+        - slug: introducing-yourself-mini-fill-to-be-2
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: to-be-present
+          prompt:
+            text: >-
+              Заполните пропуски: 1) "We ___ from Italy. (we)" 2) "He ___ a
+              teacher. (he)"
+          answer_key:
+            blanks:
+              - ["are"]
+              - ["is"]
+          explanation: >-
+            we/you/they -> are; he/she/it -> is: "We are from Italy.", "He
+            is a teacher."
+
+        - slug: introducing-yourself-mini-order-where-from
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          vocabulary_headword: "where are you from"
+          prompt:
+            words: ["from", "Where", "you", "are"]
+          answer_key:
+            correct_order: ["Where", "are", "you", "from"]
+          explanation: >-
+            Вопрос с to be: вопросительное слово (Where) + глагол (are) +
+            подлежащее (you) + остальное (from).
+
+        - slug: introducing-yourself-mini-mc-bye
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "goodbye / bye"
+          prompt:
+            question: "Разговор закончился. Что вы скажете на прощание?"
+            options:
+              - id: a
+                text: "Nice to meet you."
+              - id: b
+                text: "Goodbye! See you tomorrow."
+              - id: c
+                text: "How are you?"
+              - id: d
+                text: "I'm from Canada."
+          answer_key:
+            correct_option_id: b
+          explanation: >-
+            "Goodbye! See you tomorrow." прощание в конце разговора; другие
+            варианты — для начала знакомства или расспросов.
+
+        - slug: introducing-yourself-mini-reading-hello-again
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              Hi! I'm Mark. I am from the USA. Nice to meet you. This is my
+              friend Kate. She is from France.
+            questions:
+              - id: q1
+                text: "What is the man's name?"
+                options:
+                  - id: a
+                    text: "Mark"
+                  - id: b
+                    text: "Kate"
+                  - id: c
+                    text: "Tom"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "Where is Kate from?"
+                options:
+                  - id: a
+                    text: "The USA"
+                  - id: b
+                    text: "Canada"
+                  - id: c
+                    text: "France"
+                  - id: d
+                    text: "Poland"
+          answer_key:
+            answers:
+              q1: a
+              q2: c
+          explanation: >-
+            "I'm Mark." (Q1). "This is my friend Kate. She is from
+            France." (Q2).

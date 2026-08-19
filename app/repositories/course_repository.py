@@ -197,6 +197,47 @@ class CourseRepository:
         )
         return result.scalar_one_or_none()
 
+    async def get_previous_lesson_in_level(self, lesson_id: uuid.UUID) -> Lesson | None:
+        """The lesson immediately before this one, ordered by
+        (module.order_index, lesson.order_index) within the same level.
+
+        Backs the post-lesson mini-test: "quick review of the previous
+        topic" only makes sense within one level's own sequence, not across
+        a level boundary (a B1 lesson doesn't quiz A1 material).
+        """
+        current = (
+            await self._session.execute(
+                select(Lesson)
+                .join(Module)
+                .where(Lesson.id == lesson_id)
+                .options(selectinload(Lesson.module))
+            )
+        ).scalar_one_or_none()
+        if current is None:
+            return None
+
+        result = await self._session.execute(
+            select(Lesson)
+            .join(Module)
+            .where(Module.level_id == current.module.level_id)
+            .where(
+                (Module.order_index < current.module.order_index)
+                | (
+                    (Module.order_index == current.module.order_index)
+                    & (Lesson.order_index < current.order_index)
+                )
+            )
+            .order_by(Module.order_index.desc(), Lesson.order_index.desc())
+            .limit(1)
+        )
+        return result.scalar_one_or_none()
+
+    async def get_level_by_lesson_slug(self, slug: str) -> Level | None:
+        result = await self._session.execute(
+            select(Level).join(Module).join(Lesson).where(Lesson.slug == slug)
+        )
+        return result.scalar_one_or_none()
+
     async def get_vocabulary_by_headword(self, headword: str) -> Vocabulary | None:
         result = await self._session.execute(
             select(Vocabulary).where(Vocabulary.headword == headword)

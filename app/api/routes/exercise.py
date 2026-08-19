@@ -13,6 +13,7 @@ from app.schemas.exercise import (
     AttemptHistoryResponse,
     AttemptResultResponse,
     ExercisePublicResponse,
+    MiniTestResponse,
     SkillProgressResponse,
     SubmitAttemptRequest,
 )
@@ -29,6 +30,21 @@ async def list_lesson_exercises(
     _: User = Depends(get_current_user),
 ) -> list:
     return await ExerciseService(session).list_lesson_exercises(lesson_slug)
+
+
+@router.get("/lessons/{lesson_slug}/mini-test", response_model=MiniTestResponse)
+async def get_mini_test(
+    lesson_slug: str,
+    session: AsyncSession = Depends(get_db_session),
+    _: User = Depends(get_current_user),
+) -> MiniTestResponse:
+    try:
+        result = await ExerciseService(session).get_mini_test_for_lesson(lesson_slug)
+    except NotFoundError as exc:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
+    return MiniTestResponse(
+        previous_lesson_title=result.previous_lesson_title, exercises=result.exercises
+    )
 
 
 @router.post("/exercises/{exercise_id}/attempts", response_model=AttemptResultResponse)

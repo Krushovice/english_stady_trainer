@@ -253,3 +253,120 @@ blocks:
         Review items for this lesson's vocabulary and the
         possessive-adjectives grammar topic are generated automatically from
         mistakes and spaced repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: talking-about-yourself-mini-mc-age
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "how old are you"
+          prompt:
+            question: "Вы хотите спросить возраст собеседника. Что вы спросите?"
+            options:
+              - id: a
+                text: "How old are you?"
+              - id: b
+                text: "What do you do?"
+              - id: c
+                text: "Where do you live?"
+              - id: d
+                text: "Are you married?"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "How old are you?" — вопрос о возрасте; остальные варианты
+            спрашивают о профессии, месте жительства и семейном положении.
+
+        - slug: talking-about-yourself-mini-fill-possessive-2
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: possessive-adjectives
+          prompt:
+            text: >-
+              Заполните пропуски (my / his / her): 1) "___ job is a
+              teacher. (she)" 2) "___ country is Canada. (I)"
+          answer_key:
+            blanks:
+              - ["her", "Her"]
+              - ["my", "My"]
+          explanation: >-
+            she -> her, I -> my: "Her job is a teacher.", "My country is
+            Canada."
+
+        - slug: talking-about-yourself-mini-order-live
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          vocabulary_headword: "live (in)"
+          prompt:
+            words: ["in", "live", "Berlin", "I"]
+          answer_key:
+            correct_order: ["I", "live", "in", "Berlin"]
+          explanation: >-
+            Подлежащее (I) + глагол (live) + предлог (in) + место (Berlin).
+
+        - slug: talking-about-yourself-mini-mc-married
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "married / single"
+          prompt:
+            question: "Как сказать, что вы не замужем/не женаты?"
+            options:
+              - id: a
+                text: "I'm single."
+              - id: b
+                text: "I'm married."
+              - id: c
+                text: "I'm a doctor."
+              - id: d
+                text: "I'm 25."
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Single" значит "не в браке"; "married" — противоположное
+            значение, остальные варианты не о семейном положении.
+
+        - slug: talking-about-yourself-mini-reading-profile-2
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              My name is Olga. I am 24 years old. I am a student and I live
+              in Kyiv. I am single. My brother is Dima. He is 27. His job
+              is an engineer, and his country is Ukraine too.
+            questions:
+              - id: q1
+                text: "How old is Olga?"
+                options:
+                  - id: a
+                    text: "27"
+                  - id: b
+                    text: "24"
+                  - id: c
+                    text: "25"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "What is Dima's job?"
+                options:
+                  - id: a
+                    text: "Student"
+                  - id: b
+                    text: "Doctor"
+                  - id: c
+                    text: "Engineer"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: b
+              q2: c
+          explanation: >-
+            "I am 24 years old." (Q1 — Olga). "His job is an engineer"
+            refers to Dima (Q2).

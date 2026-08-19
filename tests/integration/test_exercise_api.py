@@ -209,3 +209,45 @@ async def test_progress_reflects_attempts(
     by_skill = {row["skill"]: row for row in response.json()}
     assert "reading" in by_skill
     assert by_skill["reading"]["attempts_count"] >= 1
+
+
+async def test_mini_test_requires_auth(client: AsyncClient, synced_lesson: Lesson) -> None:
+    response = await client.get("/api/v1/lessons/talking-about-yourself/mini-test")
+    assert response.status_code == 401
+
+
+async def test_mini_test_is_empty_for_the_first_lesson_in_a_level(
+    client: AsyncClient, synced_lesson: Lesson, auth_headers: dict[str, str]
+) -> None:
+    response = await client.get(
+        "/api/v1/lessons/introducing-yourself/mini-test", headers=auth_headers
+    )
+    assert response.status_code == 200
+    body = response.json()
+    assert body["previous_lesson_title"] is None
+    assert body["exercises"] == []
+
+
+async def test_mini_test_draws_from_the_previous_lesson_in_the_level(
+    client: AsyncClient, synced_lesson: Lesson, auth_headers: dict[str, str]
+) -> None:
+    response = await client.get(
+        "/api/v1/lessons/talking-about-yourself/mini-test", headers=auth_headers
+    )
+    assert response.status_code == 200
+    body = response.json()
+    assert body["previous_lesson_title"] == "Introducing Yourself"
+    assert len(body["exercises"]) == 5
+    for exercise in body["exercises"]:
+        assert "answer_key" not in exercise
+        assert "explanation" not in exercise
+
+
+async def test_mini_test_items_are_not_mixed_into_the_owning_lesson_exercises(
+    client: AsyncClient, synced_lesson: Lesson, auth_headers: dict[str, str]
+) -> None:
+    response = await client.get(
+        "/api/v1/lessons/introducing-yourself/exercises", headers=auth_headers
+    )
+    assert response.status_code == 200
+    assert len(response.json()) == 4

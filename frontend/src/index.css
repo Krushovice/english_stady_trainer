@@ -652,3 +652,42 @@ main {
   display: flex;
   gap: 0.75rem;
 }
+
+/* --- Mini-test (post-lesson quick review) --- */
+
+.mini-test {
+  padding: 1rem;
+  background: var(--accent-soft);
+  border-radius: var(--radius);
+}
+
+/* --- Locked level card --- */
+
+.card-locked {
+  opacity: 0.75;
+  border-style: dashed;
+}
+
+/* --- Level exit exam --- */
+
+.exam-timer {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.exam-result {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.exam-result-verdict {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.exam-result-score {
+  font-variant-numeric: tabular-nums;
+}

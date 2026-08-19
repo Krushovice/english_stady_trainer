@@ -3,6 +3,7 @@ import { ProtectedRoute } from "./auth/ProtectedRoute";
 import { useAuth } from "./auth/AuthContext";
 import { Header } from "./components/layout/Header";
 import { DailyQuizPage } from "./pages/DailyQuizPage";
+import { ExamPage } from "./pages/ExamPage";
 import { LessonPage } from "./pages/LessonPage";
 import { LessonsPage } from "./pages/LessonsPage";
 import { LevelsPage } from "./pages/LevelsPage";
@@ -36,6 +37,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <ModulesPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/levels/:levelCode/exam"
+            element={
+              <ProtectedRoute>
+                <ExamPage />
               </ProtectedRoute>
             }
           />

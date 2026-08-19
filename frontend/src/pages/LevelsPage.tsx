@@ -2,6 +2,16 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { listLevels } from "../api/course";
 import { getPlacementResult } from "../api/placement";
+import type { CEFRLevel } from "../api/types";
+
+// Mirrors app/services/placement_scoring.py's LEVEL_ORDER — used only to
+// name which level's exam unlocks a locked one, not to drive any scoring.
+const LEVEL_ORDER: CEFRLevel[] = ["A1", "A2", "B1", "B2"];
+
+function precedingLevel(level: CEFRLevel): CEFRLevel | null {
+  const index = LEVEL_ORDER.indexOf(level);
+  return index > 0 ? LEVEL_ORDER[index - 1] : null;
+}
 
 export function LevelsPage() {
   const { data, isLoading, error } = useQuery({
@@ -25,11 +35,26 @@ export function LevelsPage() {
         </Link>
       )}
       <div className="card-grid">
-        {data!.map((level) => (
-          <Link key={level.id} to={`/levels/${level.code}/modules`} className="card">
-            <span className="card-title">{level.code}</span>
-          </Link>
-        ))}
+        {data!.map((level) => {
+          if (level.unlocked) {
+            return (
+              <Link key={level.id} to={`/levels/${level.code}/modules`} className="card">
+                <span className="card-title">{level.code}</span>
+              </Link>
+            );
+          }
+          const gate = precedingLevel(level.code);
+          return (
+            <Link
+              key={level.id}
+              to={gate ? `/levels/${gate}/exam` : "/levels"}
+              className="card card-locked"
+            >
+              <span className="card-title">🔒 {level.code}</span>
+              <span className="status">Pass the {gate} exam to unlock</span>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

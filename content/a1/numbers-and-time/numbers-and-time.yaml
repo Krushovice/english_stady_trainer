@@ -252,3 +252,120 @@ blocks:
         Review items for this lesson's vocabulary and the telling-time
         grammar topic are generated automatically from mistakes and spaced
         repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: numbers-and-time-mini-mc-early-late
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "early / late"
+          prompt:
+            question: "Поезд должен был приехать в 9:00, а приехал в 9:20. Он..."
+            options:
+              - id: a
+                text: "late"
+              - id: b
+                text: "early"
+              - id: c
+                text: "at night"
+              - id: d
+                text: "o'clock"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            Поезд опоздал (приехал позже расписания), значит он "late"
+            (поздно), а не "early" (рано).
+
+        - slug: numbers-and-time-mini-fill-quarter
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: telling-time
+          prompt:
+            text: >-
+              Заполните пропуски: 1) "It's ___ to eight. (7:45)" 2) "The
+              shop opens ___ nine o'clock. (preposition)"
+          answer_key:
+            blanks:
+              - ["quarter"]
+              - ["at"]
+          explanation: >-
+            45 минут — quarter to ("quarter to eight" = 7:45); конкретное
+            время — предлог at ("at nine o'clock").
+
+        - slug: numbers-and-time-mini-order-time-question
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: telling-time
+          prompt:
+            words: ["it", "time", "is", "What"]
+          answer_key:
+            correct_order: ["What", "time", "is", "it"]
+          explanation: >-
+            Вопрос о времени: What time + is + it — "What time is it?".
+
+        - slug: numbers-and-time-mini-mc-morning-evening
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "morning / afternoon / evening / night"
+          prompt:
+            question: "Вы завтракаете обычно..."
+            options:
+              - id: a
+                text: "in the morning"
+              - id: b
+                text: "at night"
+              - id: c
+                text: "in the evening"
+              - id: d
+                text: "at o'clock"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            Завтрак обычно утром — "in the morning"; остальные варианты не
+            подходят или грамматически неверны ("at o'clock" не существует).
+
+        - slug: numbers-and-time-mini-reading-cafe-hours
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              The cafe opens at half past seven in the morning. It closes
+              at quarter to six in the evening. On Sundays, it opens later,
+              at nine o'clock.
+            questions:
+              - id: q1
+                text: "What time does the cafe open on a normal day?"
+                options:
+                  - id: a
+                    text: "Half past seven"
+                  - id: b
+                    text: "Quarter to six"
+                  - id: c
+                    text: "Nine o'clock"
+                  - id: d
+                    text: "Seven o'clock"
+              - id: q2
+                text: "What time does the cafe open on Sundays?"
+                options:
+                  - id: a
+                    text: "Half past seven"
+                  - id: b
+                    text: "Quarter to six"
+                  - id: c
+                    text: "Nine o'clock"
+                  - id: d
+                    text: "Eight o'clock"
+          answer_key:
+            answers:
+              q1: a
+              q2: c
+          explanation: >-
+            "The cafe opens at half past seven" (Q1). "On Sundays, it opens
+            later, at nine o'clock" (Q2).

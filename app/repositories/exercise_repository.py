@@ -8,6 +8,8 @@ from app.models.exercise import Exercise, ExerciseType, Skill
 from app.models.exercise_attempt import AttemptSource, ExerciseAttempt
 from app.models.learning_profile import CEFRLevel
 from app.models.lesson import Lesson
+from app.models.level import Level
+from app.models.module import Module
 
 
 class SkillProgress:
@@ -38,6 +40,7 @@ class ExerciseRepository:
         grammar_topic_id: uuid.UUID | None,
         vocabulary_id: uuid.UUID | None,
         is_placement_item: bool = False,
+        is_mini_test_item: bool = False,
     ) -> Exercise:
         exercise = (
             await self._session.execute(select(Exercise).where(Exercise.slug == slug))
@@ -56,6 +59,7 @@ class ExerciseRepository:
         exercise.grammar_topic_id = grammar_topic_id
         exercise.vocabulary_id = vocabulary_id
         exercise.is_placement_item = is_placement_item
+        exercise.is_mini_test_item = is_mini_test_item
         await self._session.flush()
         return exercise
 
@@ -71,7 +75,35 @@ class ExerciseRepository:
 
     async def list_by_lesson_slug(self, lesson_slug: str) -> Sequence[Exercise]:
         result = await self._session.execute(
-            select(Exercise).join(Lesson).where(Lesson.slug == lesson_slug).order_by(Exercise.slug)
+            select(Exercise)
+            .join(Lesson)
+            .where(Lesson.slug == lesson_slug, Exercise.is_mini_test_item.is_(False))
+            .order_by(Exercise.slug)
+        )
+        return result.scalars().all()
+
+    async def list_mini_test_by_lesson_id(self, lesson_id: uuid.UUID) -> Sequence[Exercise]:
+        result = await self._session.execute(
+            select(Exercise)
+            .where(Exercise.lesson_id == lesson_id, Exercise.is_mini_test_item.is_(True))
+            .order_by(Exercise.slug)
+        )
+        return result.scalars().all()
+
+    async def list_by_level(self, level_code: CEFRLevel) -> Sequence[Exercise]:
+        """Non-mini-test, non-placement exercises belonging to lessons in a
+        level — the candidate pool for that level's exit exam."""
+        result = await self._session.execute(
+            select(Exercise)
+            .join(Lesson)
+            .join(Lesson.module)
+            .join(Module.level)
+            .where(
+                Level.code == level_code,
+                Exercise.is_mini_test_item.is_(False),
+                Exercise.is_placement_item.is_(False),
+            )
+            .order_by(Lesson.order_index, Exercise.slug)
         )
         return result.scalars().all()
 

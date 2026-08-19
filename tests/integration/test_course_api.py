@@ -43,8 +43,8 @@ async def test_get_lesson_detail_includes_blocks_vocabulary_and_grammar(
 
     body = response.json()
     assert body["slug"] == "making-small-talk"
-    assert len(body["blocks"]) == 11
-    assert [block["order_index"] for block in body["blocks"]] == list(range(1, 12))
+    assert len(body["blocks"]) == 12
+    assert [block["order_index"] for block in body["blocks"]] == list(range(1, 13))
 
     headwords = {item["headword"] for item in body["vocabulary"]}
     assert "small talk" in headwords

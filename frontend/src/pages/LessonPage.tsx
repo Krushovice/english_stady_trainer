@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
 import { getLesson } from "../api/course";
-import { listLessonExercises } from "../api/exercises";
+import { getMiniTest, listLessonExercises } from "../api/exercises";
 import { ExerciseCard } from "../components/exercises/ExerciseCard";
 import { LessonBlockView } from "../components/LessonBlockView";
 
@@ -16,6 +16,11 @@ export function LessonPage() {
   const exercisesQuery = useQuery({
     queryKey: ["lesson-exercises", lessonSlug],
     queryFn: () => listLessonExercises(lessonSlug!),
+    enabled: !!lessonSlug,
+  });
+  const miniTestQuery = useQuery({
+    queryKey: ["mini-test", lessonSlug],
+    queryFn: () => getMiniTest(lessonSlug!),
     enabled: !!lessonSlug,
   });
 
@@ -79,6 +84,18 @@ export function LessonPage() {
           <ExerciseCard key={exercise.id} exercise={exercise} />
         ))}
       </section>
+
+      {miniTestQuery.data && miniTestQuery.data.exercises.length > 0 && (
+        <section className="lesson-block mini-test">
+          <h2>🔁 Quick review: {miniTestQuery.data.previous_lesson_title}</h2>
+          <p className="status">
+            Five questions on the previous topic before you move on.
+          </p>
+          {miniTestQuery.data.exercises.map((exercise) => (
+            <ExerciseCard key={exercise.id} exercise={exercise} />
+          ))}
+        </section>
+      )}
     </div>
   );
 }

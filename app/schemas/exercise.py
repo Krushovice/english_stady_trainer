@@ -133,6 +133,11 @@ class ExercisePublicResponse(BaseModel):
     prompt: dict
 
 
+class MiniTestResponse(BaseModel):
+    previous_lesson_title: str | None
+    exercises: list[ExercisePublicResponse]
+
+
 class SubmitAttemptRequest(BaseModel):
     submitted_answer: dict
     source: AttemptSource = AttemptSource.LESSON_PRACTICE

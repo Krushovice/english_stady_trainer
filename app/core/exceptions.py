@@ -49,3 +49,27 @@ class SpeakingAttemptAlreadySubmittedError(DomainError):
 
 class EmptyTranscriptError(DomainError):
     """Raised when STT returns no usable speech (silence, noise-only audio)."""
+
+
+class LevelLockedError(DomainError):
+    """Raised when accessing a level whose prerequisite exit exam isn't passed yet."""
+
+
+class ExamAlreadyPassedError(DomainError):
+    """Raised when starting a new attempt at an exam already passed."""
+
+
+class ExamOnCooldownError(DomainError):
+    """Raised when starting a new attempt while the 3-attempts-in-a-row cooldown is active."""
+
+    def __init__(self, message: str, *, retry_at: object) -> None:
+        super().__init__(message)
+        self.retry_at = retry_at
+
+
+class ExamAttemptNotFoundError(DomainError):
+    """Raised when submitting to an exam attempt that doesn't exist or isn't the user's."""
+
+
+class ExamAttemptAlreadySubmittedError(DomainError):
+    """Raised when submitting an exam attempt that was already graded."""

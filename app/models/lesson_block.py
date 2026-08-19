@@ -15,6 +15,7 @@ class BlockType(enum.StrEnum):
     GRAMMAR = "grammar"
     EXAMPLES = "examples"
     EXERCISES = "exercises"
+    MINI_TEST = "mini_test"
     READING = "reading"
     LISTENING = "listening"
     SPEAKING = "speaking"

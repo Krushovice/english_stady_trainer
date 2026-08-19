@@ -1,6 +1,7 @@
 import random
 import uuid
 from collections.abc import Sequence
+from dataclasses import dataclass
 from datetime import date
 
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -9,6 +10,7 @@ from app.core.exceptions import NotFoundError
 from app.models.exercise import Exercise, Skill
 from app.models.exercise_attempt import AttemptSource, ExerciseAttempt
 from app.models.review_item import ReviewItemType
+from app.repositories.course_repository import CourseRepository
 from app.repositories.exercise_repository import ExerciseRepository, SkillProgress
 from app.services.mistake_service import MistakeService
 from app.services.review_service import ReviewService
@@ -17,15 +19,39 @@ from app.services.scoring import score_attempt
 DAILY_QUIZ_SIZE = 8
 
 
+@dataclass(frozen=True)
+class MiniTestResult:
+    previous_lesson_title: str | None
+    exercises: list[Exercise]
+
+
 class ExerciseService:
     def __init__(self, session: AsyncSession) -> None:
         self._session = session
         self._repo = ExerciseRepository(session)
+        self._course = CourseRepository(session)
         self._mistakes = MistakeService(session)
         self._reviews = ReviewService(session)
 
     async def list_lesson_exercises(self, lesson_slug: str) -> list[Exercise]:
         return list(await self._repo.list_by_lesson_slug(lesson_slug))
+
+    async def get_mini_test_for_lesson(self, lesson_slug: str) -> MiniTestResult:
+        """5-question quick review of the *previous* lesson's topic, shown
+        on the current lesson's page — immediate, same-visit reinforcement
+        distinct from the next-day spaced-repetition Review Center (which
+        can't cover this moment; see docs/decisions.md).
+        """
+        lesson = await self._course.get_lesson_by_slug(lesson_slug)
+        if lesson is None:
+            raise NotFoundError(f"Lesson '{lesson_slug}' not found")
+
+        previous_lesson = await self._course.get_previous_lesson_in_level(lesson.id)
+        if previous_lesson is None:
+            return MiniTestResult(previous_lesson_title=None, exercises=[])
+
+        exercises = list(await self._repo.list_mini_test_by_lesson_id(previous_lesson.id))
+        return MiniTestResult(previous_lesson_title=previous_lesson.title, exercises=exercises)
 
     async def submit_attempt(
         self,

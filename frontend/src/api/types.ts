@@ -13,6 +13,7 @@ export interface Level {
   id: string;
   code: CEFRLevel;
   order_index: number;
+  unlocked: boolean;
 }
 
 export interface Module {
@@ -36,6 +37,7 @@ export type BlockType =
   | "grammar"
   | "examples"
   | "exercises"
+  | "mini_test"
   | "reading"
   | "listening"
   | "speaking"
@@ -181,4 +183,38 @@ export interface ReviewItem {
   vocabulary: Vocabulary | null;
   grammar_topic: GrammarTopic | null;
   exercise: Exercise | null;
+}
+
+// --- Mini-test (post-lesson reinforcement of the previous topic) ---
+
+export interface MiniTest {
+  previous_lesson_title: string | null;
+  exercises: Exercise[];
+}
+
+// --- Level exit exam ---
+
+export interface ExamStatus {
+  level: CEFRLevel;
+  exam_available: boolean;
+  passed: boolean;
+  attempts_used_in_window: number;
+  attempts_per_window: number;
+  cooldown_until: string | null;
+  in_progress_attempt_id: string | null;
+  in_progress_expires_at: string | null;
+}
+
+export interface ExamAttempt {
+  attempt_id: string;
+  expires_at: string;
+  exercises: Exercise[];
+}
+
+export interface ExamResult {
+  attempt_id: string;
+  score: number;
+  passed: boolean;
+  correct_count: number;
+  total_count: number;
 }

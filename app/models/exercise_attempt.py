@@ -14,6 +14,7 @@ class AttemptSource(enum.StrEnum):
     LESSON_PRACTICE = "lesson_practice"
     PLACEMENT_TEST = "placement_test"
     REVIEW = "review"
+    LEVEL_EXAM = "level_exam"
 
 
 attempt_source_type = Enum(AttemptSource, name="exercise_attempt_source")

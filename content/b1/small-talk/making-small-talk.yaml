@@ -276,3 +276,113 @@ blocks:
         Review items for this lesson's vocabulary and the question-tags
         grammar topic are generated automatically from mistakes and spaced
         repetition once Phase 4 is implemented — nothing to author here yet.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: making-small-talk-mini-mc-awkward-silence
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B1
+          vocabulary_headword: "awkward silence"
+          prompt:
+            question: >-
+              What does "awkward silence" describe?
+            options:
+              - id: a
+                text: An uncomfortable pause when no one is talking
+              - id: b
+                text: A loud argument
+              - id: c
+                text: A planned moment of quiet in a meeting
+              - id: d
+                text: A quiet, relaxing evening at home
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            An "awkward silence" is an uncomfortable pause in conversation
+            — not a loud argument, a planned pause, or a relaxing evening.
+
+        - slug: making-small-talk-mini-fill-question-tags-2
+          type: fill_blank
+          skill: grammar
+          difficulty: B1
+          grammar_topic_slug: question-tags
+          prompt:
+            text: >-
+              Complete the question tags: 1) "You're new here, ___ you?"
+              2) "She doesn't work here, ___ she?"
+          answer_key:
+            blanks:
+              - ["aren't"]
+              - ["does"]
+          explanation: >-
+            A positive statement takes a negative tag ("You're" -> "aren't
+            you?"); a negative statement takes a positive tag ("doesn't" ->
+            "does she?").
+
+        - slug: making-small-talk-mini-order-get-along
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B1
+          vocabulary_headword: "get along (with someone)"
+          prompt:
+            words: ["along", "get", "really", "We", "well"]
+          answer_key:
+            correct_order: ["We", "get", "along", "really", "well"]
+          explanation: >-
+            Subject ("We") + verb phrase ("get along") + intensifier +
+            adverb ("really well").
+
+        - slug: making-small-talk-mini-mc-bring-up
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B1
+          vocabulary_headword: "bring up (a topic)"
+          prompt:
+            question: >-
+              What does "bring up a topic" mean?
+            options:
+              - id: a
+                text: To raise or start talking about a subject
+              - id: b
+                text: To avoid a subject completely
+              - id: c
+                text: To finish a conversation
+              - id: d
+                text: To speak more loudly
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Bring up" means to introduce a topic into a conversation — not
+            avoid it, end it, or speak louder.
+
+        - slug: making-small-talk-mini-reading-recap
+          type: reading_comprehension
+          skill: reading
+          difficulty: B1
+          prompt:
+            passage: >-
+              Small talk isn't about the content — it's a signal that
+              you're friendly and open to talking. Native speakers rely on
+              a small set of safe topics and a few fixed phrases, which
+              makes it very learnable.
+            questions:
+              - id: q1
+                text: "What does small talk mainly signal?"
+                options:
+                  - id: a
+                    text: That you are friendly and open to talking
+                  - id: b
+                    text: That you have important news
+                  - id: c
+                    text: That the conversation is over
+                  - id: d
+                    text: That you disagree with someone
+          answer_key:
+            answers:
+              q1: a
+          explanation: >-
+            The passage says small talk's purpose "isn't about the
+            content" but signalling "you're friendly and open to talking".

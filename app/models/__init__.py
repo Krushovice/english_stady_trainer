@@ -9,6 +9,7 @@ from app.models.learning_profile import CEFRLevel, LearningProfile
 from app.models.lesson import Lesson
 from app.models.lesson_block import BlockType, LessonBlock
 from app.models.level import Level
+from app.models.level_exam_attempt import LevelExamAttempt
 from app.models.module import Module
 from app.models.review_item import ReviewItem, ReviewItemType
 from app.models.speaking import SpeakingAttempt
@@ -34,6 +35,7 @@ __all__ = [
     "Lesson",
     "LessonBlock",
     "Level",
+    "LevelExamAttempt",
     "MistakeStatus",
     "Module",
     "ReviewItem",

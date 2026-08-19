@@ -108,6 +108,21 @@ class ContentLoaderService:
         for item in exercise_items:
             await self._upsert_exercise(item, lesson_id=lesson.id, is_placement_item=False)
 
+        # Mini-test items belong to (and are authored alongside) the lesson
+        # whose material they test — they're surfaced later, on the *next*
+        # lesson's page, as "quick review of the previous topic". See
+        # app/services/exercise_service.py's get_mini_test_for_lesson.
+        mini_test_items = [
+            ExerciseContent.model_validate(item)
+            for block in data.blocks
+            if block.type == BlockType.MINI_TEST
+            for item in block.content.get("items", [])
+        ]
+        for item in mini_test_items:
+            await self._upsert_exercise(
+                item, lesson_id=lesson.id, is_placement_item=False, is_mini_test_item=True
+            )
+
         return lesson
 
     async def sync_placement_bank_file(self, path: Path) -> None:
@@ -117,7 +132,12 @@ class ContentLoaderService:
             await self._upsert_exercise(item, lesson_id=None, is_placement_item=True)
 
     async def _upsert_exercise(
-        self, item: ExerciseContent, *, lesson_id: uuid.UUID | None, is_placement_item: bool
+        self,
+        item: ExerciseContent,
+        *,
+        lesson_id: uuid.UUID | None,
+        is_placement_item: bool,
+        is_mini_test_item: bool = False,
     ) -> None:
         grammar_topic_id = None
         if item.grammar_topic_slug is not None:
@@ -151,4 +171,5 @@ class ContentLoaderService:
             grammar_topic_id=grammar_topic_id,
             vocabulary_id=vocabulary_id,
             is_placement_item=is_placement_item,
+            is_mini_test_item=is_mini_test_item,
         )

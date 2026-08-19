@@ -253,3 +253,121 @@ blocks:
         Review items for this lesson's vocabulary and the
         have-has-possession grammar topic are generated automatically from
         mistakes and spaced repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: talking-about-family-mini-mc-siblings
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "brother / sister"
+          prompt:
+            question: "Как одним словом назвать брата или сестру?"
+            options:
+              - id: a
+                text: "sibling"
+              - id: b
+                text: "parent"
+              - id: c
+                text: "child"
+              - id: d
+                text: "cousin"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Sibling" — общее слово для брата или сестры; "parent" — родитель,
+            "child" — ребёнок, "cousin" — двоюродный брат/сестра.
+
+        - slug: talking-about-family-mini-fill-have-has-2
+          type: fill_blank
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: have-has-possession
+          prompt:
+            text: >-
+              Заполните пропуски (have / has): 1) "We ___ a small family.
+              (we)" 2) "My grandmother ___ four grandchildren. (she)"
+          answer_key:
+            blanks:
+              - ["have"]
+              - ["has"]
+          explanation: >-
+            we/you/they -> have; he/she/it -> has: "We have a small
+            family.", "My grandmother has four grandchildren."
+
+        - slug: talking-about-family-mini-order-negative
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A1
+          grammar_topic_slug: have-has-possession
+          prompt:
+            words: ["have", "don't", "I", "children"]
+          answer_key:
+            correct_order: ["I", "don't", "have", "children"]
+          explanation: >-
+            Отрицание с have: подлежащее (I) + don't + have + остальное
+            ("I don't have children.").
+
+        - slug: talking-about-family-mini-mc-husband-wife
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A1
+          vocabulary_headword: "husband / wife"
+          prompt:
+            question: "Как назвать мужа жены — то есть саму жену?"
+            options:
+              - id: a
+                text: "wife"
+              - id: b
+                text: "sister"
+              - id: c
+                text: "daughter"
+              - id: d
+                text: "mother"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Wife" — жена; остальные слова обозначают других родственниц,
+            не супругу.
+
+        - slug: talking-about-family-mini-reading-two-families
+          type: reading_comprehension
+          skill: reading
+          difficulty: A1
+          prompt:
+            passage: >-
+              Tom has a big family. He has two brothers and one sister. His
+              parents live in London. Tom's wife, Sarah, has one sister
+              too, but she doesn't have brothers.
+            questions:
+              - id: q1
+                text: "How many brothers does Tom have?"
+                options:
+                  - id: a
+                    text: "One"
+                  - id: b
+                    text: "Two"
+                  - id: c
+                    text: "Three"
+                  - id: d
+                    text: "None"
+              - id: q2
+                text: "Does Sarah have brothers?"
+                options:
+                  - id: a
+                    text: "Yes"
+                  - id: b
+                    text: "No"
+                  - id: c
+                    text: "We don't know"
+                  - id: d
+                    text: "Only one"
+          answer_key:
+            answers:
+              q1: b
+              q2: b
+          explanation: >-
+            "He has two brothers" (Q1 — Tom). "She doesn't have brothers"
+            (Q2 — Sarah).
