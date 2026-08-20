@@ -2,8 +2,10 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { ProtectedRoute } from "./auth/ProtectedRoute";
 import { useAuth } from "./auth/AuthContext";
 import { Header } from "./components/layout/Header";
+import { ConversationPage } from "./pages/ConversationPage";
 import { DailyQuizPage } from "./pages/DailyQuizPage";
 import { ExamPage } from "./pages/ExamPage";
+import { HomeworkPage } from "./pages/HomeworkPage";
 import { LessonPage } from "./pages/LessonPage";
 import { LessonsPage } from "./pages/LessonsPage";
 import { LevelsPage } from "./pages/LevelsPage";
@@ -13,6 +15,7 @@ import { PlacementTestPage } from "./pages/PlacementTestPage";
 import { ProgressPage } from "./pages/ProgressPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { ReviewPage } from "./pages/ReviewPage";
+import { SpeakingPage } from "./pages/SpeakingPage";
 
 function App() {
   const { user, loading } = useAuth();
@@ -93,6 +96,30 @@ function App() {
             element={
               <ProtectedRoute>
                 <PlacementTestPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/homework"
+            element={
+              <ProtectedRoute>
+                <HomeworkPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/speaking"
+            element={
+              <ProtectedRoute>
+                <SpeakingPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/conversation"
+            element={
+              <ProtectedRoute>
+                <ConversationPage />
               </ProtectedRoute>
             }
           />

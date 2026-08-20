@@ -691,3 +691,202 @@ main {
 .exam-result-score {
   font-variant-numeric: tabular-nums;
 }
+
+/* --- AI writing feedback (shared by Homework and Speaking) --- */
+
+.feedback-card {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  margin: 0.75rem 0 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.feedback-section h4 {
+  margin: 0 0 0.25rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+}
+
+.feedback-section p {
+  margin: 0;
+}
+
+.feedback-good {
+  color: var(--success-text);
+}
+
+.feedback-try-again {
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* --- Homework --- */
+
+.homework-task {
+  padding: 1.1rem;
+  margin-bottom: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.homework-instruction {
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+}
+
+.homework-task textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 0.6rem;
+  margin-bottom: 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+  resize: vertical;
+}
+
+.homework-submitted-text {
+  padding: 0.7rem 1rem;
+  margin: 0 0 0.75rem;
+  background: var(--bg);
+  border-radius: var(--radius);
+  font-style: italic;
+}
+
+/* --- Speaking --- */
+
+.speaking-prompt {
+  padding: 1.1rem;
+  margin-bottom: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.speaking-prompt-text {
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.speaking-transcript {
+  padding: 0.7rem 1rem;
+  margin: 0 0 1rem;
+  background: var(--bg);
+  border-radius: var(--radius);
+}
+
+.speaking-transcript h3 {
+  margin: 0 0 0.35rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+}
+
+.audio-recorder-active {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.audio-recorder-timer {
+  font-variant-numeric: tabular-nums;
+  color: var(--error-text);
+  font-weight: 600;
+}
+
+.audio-recorder-preview {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.audio-recorder-preview audio {
+  width: 100%;
+}
+
+.audio-recorder-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* --- AI Conversation --- */
+
+.conversation-start {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.conversation-start input {
+  flex: 1;
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.chat-message {
+  max-width: 70%;
+  margin: 0;
+  padding: 0.55rem 0.85rem;
+  border-radius: 14px;
+  line-height: 1.4;
+}
+
+.chat-message-user {
+  align-self: flex-end;
+  background: var(--accent);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.chat-message-assistant {
+  align-self: flex-start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-bottom-left-radius: 4px;
+}
+
+.chat-input-row {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.chat-input-row input {
+  flex: 1;
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.conversation-analysis {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}

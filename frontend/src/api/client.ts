@@ -65,3 +65,32 @@ export async function apiRequest<T>(path: string, options: RequestOptions = {}):
   }
   return (await response.json()) as T;
 }
+
+// For multipart/form-data uploads (audio recordings) — the browser sets its
+// own Content-Type with the multipart boundary, so no header is set here.
+export async function apiUpload<T>(path: string, formData: FormData): Promise<T> {
+  const headers: Record<string, string> = {};
+  const token = getToken();
+  if (token) {
+    headers["Authorization"] = `Bearer ${token}`;
+  }
+
+  const response = await fetch(`${BASE_URL}${path}`, {
+    method: "POST",
+    headers,
+    body: formData,
+  });
+
+  if (!response.ok) {
+    let detail = response.statusText;
+    try {
+      const data = await response.json();
+      detail = typeof data.detail === "string" ? data.detail : detail;
+    } catch {
+      // response wasn't JSON — keep the status text
+    }
+    throw new ApiError(response.status, detail);
+  }
+
+  return (await response.json()) as T;
+}

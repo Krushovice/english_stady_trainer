@@ -4,7 +4,7 @@ Personal interactive English-learning platform. Product rules, architecture, and
 
 ## Status
 
-Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. Phase 5 (AI) is done: the provider abstraction, writing feedback, homework generation, conversation mode, and the Speaking flow (prompt → recording → STT → evaluation → feedback → retry) are all built and verified end to end against real local models — see "AI (local model)", "Writing feedback and homework", "Conversation mode", "Speech-to-text (STT)", and "Speaking" below. Phase 6 (UX) is in progress: the frontend project now exists (`frontend/`) with the core learning loop — register/login, browse levels → modules → lessons, read a lesson, and do all four exercise types with scored feedback — verified live end to end; the dashboard, progress screen, review center, and Speaking UI aren't built yet (see "Frontend" below).
+Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. Phase 5 (AI) is done: the provider abstraction, writing feedback, homework generation, conversation mode, and the Speaking flow (prompt → recording → STT → evaluation → feedback → retry) are all built and verified end to end against real local models — see "AI (local model)", "Writing feedback and homework", "Conversation mode", "Speech-to-text (STT)", and "Speaking" below. Content authoring is also done: all 43 planned lessons across A1/A2/B1/B2 are written (see "Content" below); C1/C2 stay explicitly out of scope. Phase 6 (UX) is in progress: the core learning loop, dashboard-equivalent nav (Lessons/Daily quiz/Review/Homework/Speaking/Talk/Progress), progress screen, review center, placement test UI, level exit exams, and — as of 2026-08-20 — frontend for Homework/Speaking/AI Conversation are all built; gamification (titles/grades), the completion certificate, and a course-wide final exam are designed but not yet built (see `docs/decisions.md`).
 
 ## Stack
 
@@ -42,13 +42,15 @@ npm run dev        # serves at http://localhost:5173
 Needs the API running (either `docker compose up` from the repo root, or the "Development (outside Docker)" steps above) — the API's `CORS_ORIGINS` setting already allows `http://localhost:5173` by default.
 
 `frontend/src/`:
-- `api/` — a small hand-written `fetch` wrapper (`client.ts`, handles the bearer token + typed `ApiError`) plus one module per resource (`auth.ts`, `course.ts`, `exercises.ts`) and hand-kept-in-sync TS types (`types.ts`) mirroring `app/schemas/*.py`. No codegen yet — see `docs/decisions.md`.
+- `api/` — a small hand-written `fetch` wrapper (`client.ts`, handles the bearer token + typed `ApiError`, plus `apiUpload` for multipart requests) and one module per resource (`auth.ts`, `course.ts`, `exercises.ts`, `homework.ts`, `speaking.ts`, `conversation.ts`, ...) and hand-kept-in-sync TS types (`types.ts`) mirroring `app/schemas/*.py`. No codegen yet — see `docs/decisions.md`.
 - `auth/` — `AuthContext` (JWT in `localStorage`, hydrated via `GET /auth/me` on load) and `ProtectedRoute`.
-- `pages/` — one per route: `LoginPage`, `RegisterPage`, `LevelsPage`, `ModulesPage`, `LessonsPage`, `LessonPage`, `ProgressPage`, `DailyQuizPage`, `PlacementTestPage`, `ReviewPage`.
-- `components/layout/Header.tsx` — nav (Lessons / Daily quiz / Review / Progress) with active-state styling via `react-router-dom`'s `NavLink`.
-- `components/LessonBlockView.tsx` — renders each of the 11 lesson block types (goals, context, examples, reading, listening, speaking, homework, review, ...); unknown block types fall back to a raw JSON dump instead of silently disappearing. `context`/`reading` blocks additionally render a collapsed "Кратко на русском" toggle when the block's content has a `summary_ru` key — see "Content" below.
+- `pages/` — one per route: `LoginPage`, `RegisterPage`, `LevelsPage`, `ModulesPage`, `LessonsPage`, `LessonPage`, `ProgressPage`, `DailyQuizPage`, `PlacementTestPage`, `ReviewPage`, `ExamPage`, `HomeworkPage`, `SpeakingPage`, `ConversationPage`.
+- `components/layout/Header.tsx` — nav (Lessons / Daily quiz / Review / Homework / Speaking / Talk / Progress) with active-state styling via `react-router-dom`'s `NavLink`.
+- `components/LessonBlockView.tsx` — renders each lesson block type (goals, context, examples, reading, listening, speaking, homework, review, ...); unknown block types fall back to a raw JSON dump instead of silently disappearing. `context`/`reading` blocks additionally render a collapsed "Кратко на русском" toggle when the block's content has a `summary_ru` key — see "Content" below. Note: a lesson's `speaking`/`homework` blocks are static author-written prompts, unrelated to the AI-driven `HomeworkPage`/`SpeakingPage` below — the two systems don't share content, only a name.
 - `components/exercises/` — one input component per scored exercise type (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension), each a plain controlled input that reports an answer via `onChange` with no submission logic of its own — reused as-is by both `ExerciseCard` (lesson/review/daily-quiz submission) and `PlacementTestPage` (batched submission, no per-item feedback). `ExerciseCard` submits an attempt and shows the scored result; "Try again" remounts the input component (via a bumped `key`) so old answers don't linger; a successful submit also invalidates the `progress`/`daily-quiz`/`review-due` react-query caches so those pages don't show stale data.
 - `components/ReviewFlashcard.tsx` — front/back self-rated card for vocabulary and grammar-topic review items (no exercise attached to quiz on): reveal, then Remembered/Forgot calls `POST /review/{id}/complete`.
+- `components/WritingFeedbackCard.tsx` — renders the 5-section AI feedback shape (Good / Grammar / Vocabulary / Natural version / Try again) shared by Homework-task and Speaking feedback.
+- `components/AudioRecorder.tsx` — `getUserMedia`/`MediaRecorder` wrapper for the Speaking flow: record with a live timer → stop → preview playback with a re-record option → submit. Requires a secure context (`https:`, or `localhost`/`127.0.0.1`) per browser spec — `navigator.mediaDevices` is `undefined` otherwise.
 
 Verified live end to end with headless-browser scripts against the real API — zero console errors: (1) register → levels → modules → lessons → lesson → submit all 4 exercise types → progress/daily quiz update → logout; (2) register → placement test intro → answer all ~24 items → submit → result → banner gone on `/levels` → revisiting `/placement-test` shows the saved result instead of the intro; (3) with review items backdated to due, `/review` renders exercise/vocabulary/grammar items correctly and rating a flashcard removes it from the list.
 
@@ -57,6 +59,31 @@ Verified live end to end with headless-browser scripts against the real API — 
 - `GET /progress` (existing, Phase 3) — per-skill attempt/accuracy counts, shown as a card per skill on `ProgressPage`. Deliberately not reduced to one aggregate number, per CLAUDE.md.
 - `GET /practice/daily-quiz` — up to 8 exercises drawn from lessons the learner has already studied (any skill mix), stable for the whole day (seeded by user + date, nothing persisted), graded through the same `POST /exercises/{id}/attempts` as lesson exercises. Deliberately a separate feature from the spaced-repetition review queue below — see `docs/decisions.md`.
 - `GET /review/due` (existing, Phase 4) — `ReviewPage` at `/review`. Nothing is due the same day an item is first studied (spaced repetition's minimum interval is 1 day even on a correct first answer), so this is expected to be empty right after finishing a fresh lesson — the empty state says so rather than looking broken. Fills in automatically from a day later onward.
+
+## Homework, Speaking, and AI Conversation frontend
+
+Frontend for the three AI-driven Phase-5 backends that previously had none:
+
+- `HomeworkPage` at `/homework` — "Generate homework" calls `POST /homework/generate`
+  (3 AI-written tasks from the user's most recently studied lesson); each task takes a
+  `<textarea>` submission and shows `WritingFeedbackCard` once graded.
+- `SpeakingPage` at `/speaking` — "Get a speaking prompt" calls `POST /speaking/prompts`;
+  `AudioRecorder` records the answer, then `submitSpeakingAttempt` uploads it (multipart)
+  and shows the STT transcript + `WritingFeedbackCard`.
+- `ConversationPage` at `/conversation` (nav label "Talk") — optional topic → chat UI
+  (`POST /conversation/sessions`/`/messages`) → "End conversation" → the 5-section
+  end-of-session analysis (`ConversationAnalysisResponse`).
+
+None of the three backends have a "list mine"/"current" endpoint — each `generate`/`start`
+call creates a new row — so each page persists its current id in `localStorage`
+(`et_homework_id` / `et_speaking_attempt_id` / `et_conversation_id`) to resume unfinished
+work across a reload, the same problem `ExamPage` already solves for exit-exam attempts.
+
+Verified live with Playwright inside an isolated Docker container against the real dev
+stack (registration, nav, all three intro states, and the AI-provider-unavailable 503
+error path all confirmed correct) — see `docs/decisions.md` for the exact setup and its
+one known gap (recording itself couldn't be exercised through that specific test
+hostname, a secure-context browser restriction unrelated to the shipped code).
 
 ## Placement test
 

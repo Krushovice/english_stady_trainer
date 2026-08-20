@@ -21,6 +21,15 @@ export function Header() {
             <NavLink to="/review" className="site-nav-link">
               Review
             </NavLink>
+            <NavLink to="/homework" className="site-nav-link">
+              Homework
+            </NavLink>
+            <NavLink to="/speaking" className="site-nav-link">
+              Speaking
+            </NavLink>
+            <NavLink to="/conversation" className="site-nav-link">
+              Talk
+            </NavLink>
             <NavLink to="/progress" className="site-nav-link">
               Progress
             </NavLink>

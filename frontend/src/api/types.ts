@@ -218,3 +218,76 @@ export interface ExamResult {
   correct_count: number;
   total_count: number;
 }
+
+// --- AI feedback (shared by Homework and Speaking) ---
+
+export interface WritingFeedback {
+  good: string;
+  grammar: string;
+  vocabulary: string;
+  natural_version: string;
+  try_again: string;
+}
+
+// --- Homework ---
+
+export interface HomeworkTask {
+  id: string;
+  instruction: string;
+}
+
+export interface HomeworkAttempt {
+  id: string;
+  task_id: string;
+  submitted_text: string;
+  feedback: WritingFeedback;
+  submitted_at: string;
+}
+
+export interface Homework {
+  id: string;
+  lesson_title: string;
+  tasks: HomeworkTask[];
+  attempts: HomeworkAttempt[];
+  generated_at: string;
+}
+
+// --- Speaking ---
+
+export interface SpeakingAttempt {
+  id: string;
+  lesson_title: string;
+  prompt: string;
+  transcript: string | null;
+  feedback: WritingFeedback | null;
+  generated_at: string;
+  submitted_at: string | null;
+}
+
+// --- AI Conversation ---
+
+export type ConversationRole = "user" | "assistant";
+
+export interface ConversationMessage {
+  id: string;
+  role: ConversationRole;
+  content: string;
+  created_at: string;
+}
+
+export interface ConversationAnalysis {
+  recurring_mistakes: string;
+  useful_vocabulary: string;
+  natural_alternatives: string;
+  grammar_topics_to_review: string;
+  recommended_practice: string;
+}
+
+export interface ConversationSession {
+  id: string;
+  topic: string | null;
+  started_at: string;
+  ended_at: string | null;
+  messages: ConversationMessage[];
+  analysis: ConversationAnalysis | null;
+}
