@@ -1,0 +1,370 @@
+level:
+  code: A2
+  order_index: 1
+
+module:
+  slug: everyday-problems
+  title: Everyday Problems
+  order_index: 4
+
+lesson:
+  slug: everyday-problems
+  title: Everyday Problems
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Описать бытовую проблему (сломанная техника, опоздание, потеря вещи)"
+        - "Дать совет и сказать об обязанности, используя should и have to"
+        - "Попросить помощи и предложить решение"
+        - "Использовать 8 новых слов по теме бытовых проблем"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        "Should" даёт совет (не обязанность): "You should call a plumber."
+        — стоило бы, я советую. "Have to" (и его синоним "must") выражает
+        обязанность, что-то, что необходимо сделать: "I have to fix the
+        washing machine today." Отрицание разное по смыслу: "You shouldn't
+        worry" (не стоит) — совет не делать, а "You don't have to come"
+        (не обязательно) — не обязанность, но можно. "You mustn't touch
+        that" (нельзя) — запрет, это не то же самое, что "don't have to".
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "broken / out of order"
+          translation: "сломанный / не работает"
+          example_sentence: "The washing machine is broken again."
+        - headword: "leak"
+          translation: "протечка, течь"
+          example_sentence: "There's a leak under the kitchen sink."
+        - headword: "plumber / electrician"
+          translation: "сантехник / электрик"
+          example_sentence: "We need to call a plumber."
+        - headword: "run out of"
+          translation: "закончиться (о запасе чего-либо)"
+          example_sentence: "We've run out of milk."
+        - headword: "lose (lost)"
+          translation: "терять (потерял)"
+          example_sentence: "I lost my keys again this morning."
+        - headword: "stuck in traffic"
+          translation: "застрять в пробке"
+          example_sentence: "Sorry I'm late, I was stuck in traffic."
+        - headword: "fix / repair"
+          translation: "чинить, ремонтировать"
+          example_sentence: "Can you fix the printer, please?"
+        - headword: "power cut"
+          translation: "отключение электричества"
+          example_sentence: "There was a power cut last night."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: have-to-should
+          title: "Obligation and advice: have to / must / should"
+          description: >
+            "Have to" (обязанность извне, правило, необходимость): "I
+            have to work on Saturday." Вопрос: "Do you have to work?";
+            отрицание "don't have to" = не обязательно, но можно: "You
+            don't have to come, but you can." "Must" похоже на "have to",
+            но чаще про личное чувство долга или строгое правило: "I must
+            call the plumber today." Отрицание "mustn't" = нельзя,
+            запрет: "You mustn't leave the door open." "Should" — совет,
+            не обязанность: "You should get some sleep." Отрицание
+            "shouldn't" — не стоит. Частая ошибка — путать "don't have
+            to" (не обязательно) с "mustn't" (нельзя) — это
+            противоположные по силе значения.
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: The washing machine is broken
+          lines:
+            - speaker: A
+              text: "The washing machine is broken again. There's water everywhere!"
+            - speaker: B
+              text: "Oh no. You should turn off the water first."
+            - speaker: A
+              text: "I already did. Do we have to call a plumber?"
+            - speaker: B
+              text: "I think so, yes. It's a leak, we can't fix it ourselves."
+            - speaker: A
+              text: "OK. You don't have to stay, I'll call him and wait."
+            - speaker: B
+              text: "Are you sure? You shouldn't be alone if there's a power cut too."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: everyday-problems-mc-leak
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A2
+          vocabulary_headword: "leak"
+          prompt:
+            question: >-
+              What is a "leak"?
+            options:
+              - id: a
+                text: "Water escaping from a pipe or machine"
+              - id: b
+                text: "A loud noise from the street"
+              - id: c
+                text: "A person who fixes electricity"
+              - id: d
+                text: "A type of traffic jam"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Leak" — протечка, вытекание воды из трубы или техники.
+
+        - slug: everyday-problems-fill-have-to-should
+          type: fill_blank
+          skill: grammar
+          difficulty: A2
+          grammar_topic_slug: have-to-should
+          prompt:
+            text: >-
+              Заполните пропуски: 1) "You ___ (совет) call an electrician
+              — the lights don't work." (should) 2) "I ___ (обязанность)
+              fix the leak today, it's getting worse." (have to) 3) "You
+              ___ (не обязательно) come with me, I can do it alone."
+              (don't have to)
+          answer_key:
+            blanks:
+              - ["should"]
+              - ["have to"]
+              - ["don't have to"]
+          explanation: >-
+            "Should" — совет; "have to" — обязанность; "don't have to" —
+            необязательно, но можно.
+
+        - slug: everyday-problems-order-mustnt
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A2
+          grammar_topic_slug: have-to-should
+          prompt:
+            words: ["the", "mustn't", "You", "door", "open", "leave"]
+          answer_key:
+            correct_order: ["You", "mustn't", "leave", "the", "door", "open"]
+          explanation: >-
+            Запрет: подлежащее ("You") + "mustn't" + глагол ("leave") +
+            дополнение ("the door open").
+
+        - slug: everyday-problems-reading-power-cut
+          type: reading_comprehension
+          skill: reading
+          difficulty: A2
+          prompt:
+            passage: >-
+              There was a power cut in David's building last night. He
+              didn't have to go to work today because his company closed
+              the office. He should have bought candles earlier, but he
+              didn't, so he used his phone light instead. He has to call
+              the electricity company tomorrow to ask what happened,
+              because this is the third power cut this month.
+            questions:
+              - id: q1
+                text: "Did David have to go to work?"
+                options:
+                  - id: a
+                    text: "Yes, he did"
+                  - id: b
+                    text: "No, the office was closed"
+                  - id: c
+                    text: "We don't know"
+                  - id: d
+                    text: "He worked from home"
+              - id: q2
+                text: "What does David have to do tomorrow?"
+                options:
+                  - id: a
+                    text: "Buy candles"
+                  - id: b
+                    text: "Call the electricity company"
+                  - id: c
+                    text: "Fix the leak"
+                  - id: d
+                    text: "Call a plumber"
+          answer_key:
+            answers:
+              q1: b
+              q2: b
+          explanation: >-
+            "He didn't have to go to work today because his company
+            closed the office" (Q1). "He has to call the electricity
+            company tomorrow" (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: A Bad Night
+      text: >
+        There was a power cut in David's building last night. He didn't
+        have to go to work today because his company closed the office.
+        He should have bought candles earlier, but he didn't, so he used
+        his phone light instead. He has to call the electricity company
+        tomorrow to ask what happened, because this is the third power
+        cut this month.
+      summary_ru: >
+        Прошлой ночью в доме Дэвида отключили электричество. Ему не
+        пришлось идти на работу, потому что офис закрыли. Ему стоило бы
+        заранее купить свечи, но он этого не сделал, поэтому пользовался
+        светом телефона. Завтра ему нужно позвонить в энергокомпанию и
+        спросить, что случилось, ведь это уже третье отключение за месяц.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      transcript: >
+        A: The washing machine is broken again. There's water
+        everywhere! — B: Oh no. You should turn off the water first. —
+        A: I already did. Do we have to call a plumber? — B: I think so,
+        yes. It's a leak, we can't fix it ourselves. — A: OK. You don't
+        have to stay, I'll call him and wait. — B: Are you sure? You
+        shouldn't be alone if there's a power cut too.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Расскажите о бытовой проблеме, которая у вас была недавно (что-то
+        сломалось, вы что-то потеряли, застряли в пробке). Скажите, что
+        вам пришлось сделать (have to) и что стоило бы сделать иначе
+        (should). Говорите 40-60 секунд.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Опишите бытовую проблему (5-6 предложений), используя
+            минимум 2 предложения с have to/must и 2 со should.
+        - type: vocabulary_recall
+          instructions: >
+            Не заглядывая в урок, запишите как можно больше слов по теме
+            бытовых проблем, затем сверьте список со словарным блоком.
+        - type: grammar_practice
+          instructions: >
+            Напишите 5 советов другу, у которого сломалась техника дома,
+            используя should/shouldn't.
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the have-to-should
+        grammar topic are generated automatically from mistakes and
+        spaced repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: everyday-problems-mini-mc-plumber
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A2
+          vocabulary_headword: "plumber / electrician"
+          prompt:
+            question: "Who do you call to fix a water leak?"
+            options:
+              - id: a
+                text: "a plumber"
+              - id: b
+                text: "an electrician"
+              - id: c
+                text: "a waiter"
+              - id: d
+                text: "a receptionist"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            Протечку воды чинит сантехник (plumber).
+
+        - slug: everyday-problems-mini-fill-have-to-should-2
+          type: fill_blank
+          skill: grammar
+          difficulty: A2
+          grammar_topic_slug: have-to-should
+          prompt:
+            text: >-
+              Заполните пропуски: 1) "You ___ (запрет) touch that wire,
+              it's dangerous." (mustn't) 2) "We ___ (обязанность) buy
+              milk, we've run out." (have to)
+          answer_key:
+            blanks:
+              - ["mustn't"]
+              - ["have to"]
+          explanation: >-
+            "Mustn't" — запрет; "have to" — обязанность.
+
+        - slug: everyday-problems-mini-order-run-out
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A2
+          vocabulary_headword: "run out of"
+          prompt:
+            words: ["out", "run", "We've", "milk", "of"]
+          answer_key:
+            correct_order: ["We've", "run", "out", "of", "milk"]
+          explanation: >-
+            "Run out of" + существительное: "We've run out of milk."
+
+        - slug: everyday-problems-mini-mc-stuck
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A2
+          vocabulary_headword: "stuck in traffic"
+          prompt:
+            question: "\"I was stuck in traffic\" means..."
+            options:
+              - id: a
+                text: "I couldn't move because of heavy traffic"
+              - id: b
+                text: "I lost my car keys"
+              - id: c
+                text: "I had a power cut"
+              - id: d
+                text: "I fixed my car"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Stuck in traffic" — застрять в пробке, не мочь двигаться.
+
+        - slug: everyday-problems-mini-reading-leak
+          type: reading_comprehension
+          skill: reading
+          difficulty: A2
+          prompt:
+            passage: >-
+              There is a leak in the kitchen. We have to call a plumber
+              today, but we don't have to pay him now — he'll send a
+              bill later.
+            questions:
+              - id: q1
+                text: "Do they have to pay the plumber immediately?"
+                options:
+                  - id: a
+                    text: "Yes, right away"
+                  - id: b
+                    text: "No, he'll send a bill later"
+                  - id: c
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: b
+          explanation: >-
+            "We don't have to pay him now — he'll send a bill later."

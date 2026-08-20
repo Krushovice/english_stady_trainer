@@ -14,9 +14,15 @@ Design, matching what was agreed before implementation:
   - Passing a level's exam unlocks the *next* level. A level with no
     exercises of its own (nothing authored there yet) is never gated —
     there'd be nothing to test, and gating on missing content would just
-    be a bug wearing a feature's clothes. This is also what keeps existing
-    B1 content open: gating only ever looks at the *immediately preceding*
-    level, and A2 has no content yet, so B1 stays ungated until it does.
+    be a bug wearing a feature's clothes. Gating only ever looks at the
+    *immediately preceding* level.
+  - Grandfathering: a user who has ever attempted an exercise inside a
+    level already has access to it, regardless of whether the preceding
+    level's exam is passed. This matters once a level that used to be
+    ungated (its preceding level had no content yet) gains a gate
+    retroactively — real progress must never be locked out after the
+    fact. Without this, authoring A2 content would have retroactively
+    locked the real user out of B1, which they'd already been studying.
 """
 
 import random
@@ -70,6 +76,8 @@ class LevelExamService:
     async def is_level_unlocked(self, user_id: uuid.UUID, level: CEFRLevel) -> bool:
         index = LEVEL_ORDER.index(level)
         if index == 0:
+            return True
+        if await self._exercises.has_any_attempt_in_level(user_id, level):
             return True
         preceding = LEVEL_ORDER[index - 1]
         preceding_pool = await self._exercises.list_by_level(preceding)

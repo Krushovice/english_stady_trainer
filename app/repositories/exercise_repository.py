@@ -107,6 +107,24 @@ class ExerciseRepository:
         )
         return result.scalars().all()
 
+    async def has_any_attempt_in_level(self, user_id: uuid.UUID, level_code: CEFRLevel) -> bool:
+        """Whether the user has ever attempted an exercise belonging to this level.
+
+        Used to grandfather users who studied a level before its exit exam
+        gate existed (or before the *preceding* level had content to gate
+        on) — their access must never be revoked retroactively.
+        """
+        result = await self._session.execute(
+            select(ExerciseAttempt.id)
+            .join(Exercise, ExerciseAttempt.exercise_id == Exercise.id)
+            .join(Lesson)
+            .join(Lesson.module)
+            .join(Module.level)
+            .where(ExerciseAttempt.user_id == user_id, Level.code == level_code)
+            .limit(1)
+        )
+        return result.first() is not None
+
     async def list_placement_items(self) -> Sequence[Exercise]:
         result = await self._session.execute(
             select(Exercise).where(Exercise.is_placement_item.is_(True)).order_by(Exercise.slug)

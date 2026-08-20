@@ -1,0 +1,375 @@
+level:
+  code: A2
+  order_index: 1
+
+module:
+  slug: technology
+  title: Technology
+  order_index: 5
+
+lesson:
+  slug: technology
+  title: Technology
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Обсудить, как изменились технологии, с помощью used to"
+        - "Сравнить прошлые привычки и сегодняшнюю жизнь"
+        - "Говорить о гаджетах и повседневном использовании технологий"
+        - "Использовать 8 новых слов по теме технологий"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        "Used to + глагол" описывает привычку или состояние в прошлом,
+        которого больше нет: "I used to write letters, now I send emails."
+        Это не то же самое, что Past Simple — "used to" подчёркивает
+        контраст с настоящим (было так, а теперь по-другому). Отрицание:
+        "didn't use to" (без -d!): "We didn't use to have smartphones."
+        Вопрос: "Did you use to...?". "Used to" нельзя использовать для
+        разового действия в прошлом ("I used to visit Paris last year" —
+        неправильно, здесь нужен Past Simple, так как указано конкретное
+        время).
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "device / gadget"
+          translation: "устройство, гаджет"
+          example_sentence: "I have too many devices charging at once."
+        - headword: "download / upload"
+          translation: "скачать / загрузить (в сеть)"
+          example_sentence: "Can you download that app for me?"
+        - headword: "battery"
+          translation: "батарея, аккумулятор"
+          example_sentence: "My phone battery dies really fast."
+        - headword: "screen"
+          translation: "экран"
+          example_sentence: "The screen is cracked."
+        - headword: "connect to the internet"
+          translation: "подключиться к интернету"
+          example_sentence: "I can't connect to the internet here."
+        - headword: "invent"
+          translation: "изобретать"
+          example_sentence: "Who invented the smartphone?"
+        - headword: "update"
+          translation: "обновление, обновлять"
+          example_sentence: "There's a new update for this app."
+        - headword: "outdated / old-fashioned"
+          translation: "устаревший"
+          example_sentence: "This computer feels really outdated now."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: used-to
+          title: "Used to for past habits and states"
+          description: >
+            "Used to + глагол в начальной форме" — привычка или
+            состояние в прошлом, которого сейчас нет: "I used to write
+            letters." (раньше писал, сейчас нет). Отрицание — "didn't
+            use to" (без -d в use): "I didn't use to have a smartphone."
+            Вопрос — "Did you use to...?": "Did you use to play video
+            games as a child?" Не путать с "be used to" (привыкнуть к
+            чему-то, другая конструкция) — здесь речь только про
+            "used to + глагол" как привычку в прошлом. Частая ошибка —
+            добавлять -d в отрицании и вопросе: "Did you used to...?" —
+            неправильно, нужно "Did you use to...?".
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: How things have changed
+          lines:
+            - speaker: A
+              text: "Did you use to have a smartphone as a teenager?"
+            - speaker: B
+              text: "No, we didn't use to have them. We used to call each other on landlines!"
+            - speaker: A
+              text: "That's so different. I used to download music from the computer, very slowly."
+            - speaker: B
+              text: "Now everything is so fast. My battery dies faster than the download used to take, though."
+            - speaker: A
+              text: "True. This phone already feels outdated, and I only bought it last year."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: technology-mc-outdated
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A2
+          vocabulary_headword: "outdated / old-fashioned"
+          prompt:
+            question: >-
+              What does "outdated" mean?
+            options:
+              - id: a
+                text: "No longer modern or useful"
+              - id: b
+                text: "Very new and fashionable"
+              - id: c
+                text: "Broken and cannot be fixed"
+              - id: d
+                text: "Expensive to buy"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Outdated" — устаревший, больше не современный, даже если
+            технически работает.
+
+        - slug: technology-fill-used-to
+          type: fill_blank
+          skill: grammar
+          difficulty: A2
+          grammar_topic_slug: used-to
+          prompt:
+            text: >-
+              Заполните пропуски: 1) "We ___ ___ (call — привычка) each
+              other on landlines." (used to call) 2) "She ___ ___ ___
+              (иметь — привычка, отрицание) a smartphone." (didn't use to
+              have) 3) "___ you ___ ___ (играть — привычка, вопрос) video
+              games as a child?" (Did / use to play)
+          answer_key:
+            blanks:
+              - ["used to call"]
+              - ["didn't use to have"]
+              - ["Did", "use to play"]
+          explanation: >-
+            Утверждение — "used to + глагол"; отрицание — "didn't use
+            to + глагол" (без -d); вопрос — "Did + subject + use to +
+            глагол".
+
+        - slug: technology-order-used-to-write
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A2
+          grammar_topic_slug: used-to
+          prompt:
+            words: ["to", "letters", "used", "write", "I"]
+          answer_key:
+            correct_order: ["I", "used", "to", "write", "letters"]
+          explanation: >-
+            Подлежащее ("I") + "used to" + глагол ("write") + дополнение
+            ("letters").
+
+        - slug: technology-reading-old-computer
+          type: reading_comprehension
+          skill: reading
+          difficulty: A2
+          prompt:
+            passage: >-
+              Twenty years ago, people used to wait minutes for a website
+              to load. They didn't use to have smartphones, so they used
+              maps and phone books instead of apps. Today, most devices
+              connect to the internet instantly, and children have never
+              used a landline phone. Some people say technology used to
+              feel simpler, even though it was much slower.
+            questions:
+              - id: q1
+                text: "What did people use instead of apps?"
+                options:
+                  - id: a
+                    text: "Maps and phone books"
+                  - id: b
+                    text: "Smartphones"
+                  - id: c
+                    text: "Landline phones only"
+                  - id: d
+                    text: "Nothing, they didn't need directions"
+              - id: q2
+                text: "According to the text, how do most devices connect to the internet today?"
+                options:
+                  - id: a
+                    text: "Slowly, after a few minutes"
+                  - id: b
+                    text: "Instantly"
+                  - id: c
+                    text: "Only at home"
+                  - id: d
+                    text: "They don't connect at all"
+          answer_key:
+            answers:
+              q1: a
+              q2: b
+          explanation: >-
+            "They used maps and phone books instead of apps" (Q1). "Most
+            devices connect to the internet instantly" (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: How Technology Has Changed
+      text: >
+        Twenty years ago, people used to wait minutes for a website to
+        load. They didn't use to have smartphones, so they used maps and
+        phone books instead of apps. Today, most devices connect to the
+        internet instantly, and children have never used a landline
+        phone. Some people say technology used to feel simpler, even
+        though it was much slower.
+      summary_ru: >
+        Двадцать лет назад люди по несколько минут ждали загрузки
+        сайта. У них не было смартфонов, поэтому вместо приложений
+        пользовались картами и телефонными справочниками. Сегодня
+        большинство устройств подключаются к интернету мгновенно, а
+        дети никогда не пользовались стационарным телефоном. Некоторые
+        говорят, что раньше технологии казались проще, хотя работали
+        намного медленнее.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      transcript: >
+        A: Did you use to have a smartphone as a teenager? — B: No, we
+        didn't use to have them. We used to call each other on
+        landlines! — A: That's so different. I used to download music
+        from the computer, very slowly. — B: Now everything is so fast.
+        My battery dies faster than the download used to take, though. —
+        A: True. This phone already feels outdated, and I only bought it
+        last year.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Расскажите, как изменилась ваша жизнь с технологиями за
+        последние 10 лет. Что вы раньше делали (used to), чего у вас
+        не было (didn't use to have), и что изменилось сейчас. Говорите
+        40-60 секунд.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Напишите 5-6 предложений о том, как изменились технологии за
+            последние годы, используя used to / didn't use to.
+        - type: vocabulary_recall
+          instructions: >
+            Не заглядывая в урок, запишите как можно больше слов по теме
+            технологий, затем сверьте список со словарным блоком.
+        - type: grammar_practice
+          instructions: >
+            Напишите 5 вопросов другу о том, что он раньше делал в
+            детстве, используя "Did you use to...?".
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the used-to
+        grammar topic are generated automatically from mistakes and
+        spaced repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: technology-mini-mc-battery
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A2
+          vocabulary_headword: "battery"
+          prompt:
+            question: "What loses power and needs charging?"
+            options:
+              - id: a
+                text: "a battery"
+              - id: b
+                text: "a screen"
+              - id: c
+                text: "an update"
+              - id: d
+                text: "a device"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            Батарея (battery) теряет заряд и требует подзарядки.
+
+        - slug: technology-mini-fill-used-to-2
+          type: fill_blank
+          skill: grammar
+          difficulty: A2
+          grammar_topic_slug: used-to
+          prompt:
+            text: >-
+              Заполните пропуски: 1) "We ___ ___ (иметь — привычка) a
+              really slow computer." (used to have) 2) "___ they ___ ___
+              (жить — вопрос) in the city?" (Did / use to live)
+          answer_key:
+            blanks:
+              - ["used to have"]
+              - ["Did", "use to live"]
+          explanation: >-
+            "Used to + глагол" в утверждении; "Did + use to + глагол" в
+            вопросе.
+
+        - slug: technology-mini-order-download
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A2
+          vocabulary_headword: "download / upload"
+          prompt:
+            words: ["the", "download", "Can", "you", "app"]
+          answer_key:
+            correct_order: ["Can", "you", "download", "the", "app"]
+          explanation: >-
+            Вопрос: "Can" + подлежащее ("you") + глагол ("download") +
+            дополнение ("the app").
+
+        - slug: technology-mini-mc-invent
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A2
+          vocabulary_headword: "invent"
+          prompt:
+            question: "\"Who invented the smartphone?\" is asking about..."
+            options:
+              - id: a
+                text: "Who created it for the first time"
+              - id: b
+                text: "Who bought it first"
+              - id: c
+                text: "Who fixed it"
+              - id: d
+                text: "Who sold it"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Invent" — изобретать, создавать что-то впервые.
+
+        - slug: technology-mini-reading-old-phones
+          type: reading_comprehension
+          skill: reading
+          difficulty: A2
+          prompt:
+            passage: >-
+              Old phones used to have small screens and short battery
+              life. People didn't use to send photos as easily as today.
+            questions:
+              - id: q1
+                text: "What did old phones have?"
+                options:
+                  - id: a
+                    text: "Small screens"
+                  - id: b
+                    text: "Fast internet"
+                  - id: c
+                    text: "Long battery life"
+          answer_key:
+            answers:
+              q1: a
+          explanation: >-
+            "Old phones used to have small screens and short battery
+            life."

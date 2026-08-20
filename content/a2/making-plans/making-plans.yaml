@@ -1,0 +1,374 @@
+level:
+  code: A2
+  order_index: 1
+
+module:
+  slug: making-plans
+  title: Making Plans
+  order_index: 6
+
+lesson:
+  slug: making-plans
+  title: Making Plans
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Обсудить будущие планы и спонтанные решения"
+        - "Различать going to (план) и will (решение прямо сейчас)"
+        - "Предложить встречу и договориться о времени"
+        - "Использовать 8 новых слов по теме планирования"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        "Going to" используют для планов, которые уже решены заранее: "I'm
+        going to visit my parents this weekend" (уже решил). "Will"
+        используют для решений прямо в момент разговора, спонтанно: "It's
+        raining — I'll take an umbrella." (решил только что). Ещё "will"
+        используют для обещаний и предсказаний без доказательств:
+        "I'll help you.", "I think it will rain tomorrow." А "going to" — для
+        предсказаний на основе того, что видно сейчас: "Look at those
+        clouds — it's going to rain."
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "arrange (a meeting)"
+          translation: "договориться, организовать (встречу)"
+          example_sentence: "Let's arrange a meeting for next week."
+        - headword: "available (free)"
+          translation: "свободен (по времени)"
+          example_sentence: "Are you available on Friday afternoon?"
+        - headword: "postpone / cancel"
+          translation: "отложить / отменить"
+          example_sentence: "We had to postpone the trip because of the weather."
+        - headword: "get together"
+          translation: "собраться, встретиться (с друзьями)"
+          example_sentence: "Let's get together this weekend."
+        - headword: "confirm"
+          translation: "подтвердить"
+          example_sentence: "Can you confirm the time by email?"
+        - headword: "in advance"
+          translation: "заранее"
+          example_sentence: "You should book the restaurant in advance."
+        - headword: "day off"
+          translation: "выходной день"
+          example_sentence: "I have a day off on Monday."
+        - headword: "look forward to"
+          translation: "с нетерпением ждать"
+          example_sentence: "I'm looking forward to the trip."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: going-to-vs-will
+          title: "Going to vs will for future plans and decisions"
+          description: >
+            "Be going to + глагол" — план, решённый заранее: "I'm going
+            to meet Anna tomorrow." Также используется для предсказаний
+            на основе видимых признаков: "Look at those clouds, it's
+            going to rain." "Will + глагол" — спонтанное решение в
+            момент речи: "I'm hungry. I'll make a sandwich." Также для
+            обещаний ("I'll call you tonight") и предсказаний-мнений без
+            доказательств ("I think it will be a good year"). Частая
+            ошибка — использовать "will" для уже решённого плана
+            ("I'll visit my parents this weekend, I decided last week" —
+            здесь план уже принят заранее, правильнее "I'm going to
+            visit").
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Planning the weekend
+          lines:
+            - speaker: A
+              text: "What are you going to do this weekend?"
+            - speaker: B
+              text: "I'm going to visit my sister — we arranged it last week."
+            - speaker: A
+              text: "Nice! I haven't planned anything yet... actually, I'll come with you, if that's OK?"
+            - speaker: B
+              text: "Sure! I'll text her now to confirm."
+            - speaker: A
+              text: "Great, I'm looking forward to it. Is she available on Saturday?"
+            - speaker: B
+              text: "I think so, but let me check and I'll let you know."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: making-plans-mc-postpone
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A2
+          vocabulary_headword: "postpone / cancel"
+          prompt:
+            question: >-
+              "We had to postpone the trip" means...
+            options:
+              - id: a
+                text: "We moved the trip to a later date"
+              - id: b
+                text: "We cancelled the trip completely"
+              - id: c
+                text: "We arrived earlier than planned"
+              - id: d
+                text: "We confirmed the trip"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Postpone" — отложить на более поздний срок, а не отменить
+            совсем (это "cancel").
+
+        - slug: making-plans-fill-going-to-will
+          type: fill_blank
+          skill: grammar
+          difficulty: A2
+          grammar_topic_slug: going-to-vs-will
+          prompt:
+            text: >-
+              Заполните пропуски: 1) "I ___ ___ (уже решено заранее)
+              visit my parents this weekend — we arranged it last week."
+              (am going to) 2) "The phone is ringing — I ___ (спонтанное
+              решение) answer it." (will) 3) "Look at those clouds, it
+              ___ ___ (предсказание по признакам) rain." (is going to)
+          answer_key:
+            blanks:
+              - ["am going to"]
+              - ["will"]
+              - ["is going to"]
+          explanation: >-
+            План, решённый заранее — "going to"; спонтанное решение —
+            "will"; предсказание по видимым признакам — "going to".
+
+        - slug: making-plans-order-look-forward
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A2
+          vocabulary_headword: "look forward to"
+          prompt:
+            words: ["to", "trip", "forward", "the", "I'm", "looking"]
+          answer_key:
+            correct_order: ["I'm", "looking", "forward", "to", "the", "trip"]
+          explanation: >-
+            "Look forward to" + существительное: "I'm looking forward to
+            the trip."
+
+        - slug: making-plans-reading-weekend-plans
+          type: reading_comprehension
+          skill: reading
+          difficulty: A2
+          prompt:
+            passage: >-
+              Emma is going to have a busy weekend. She arranged to meet
+              her old friend on Saturday morning, and they're going to
+              have lunch together. On Sunday, she's going to help her
+              parents move some furniture. She hasn't decided what to do
+              in the evening yet — she says she'll probably just relax
+              and watch a film.
+            questions:
+              - id: q1
+                text: "What did Emma arrange for Saturday morning?"
+                options:
+                  - id: a
+                    text: "To meet her old friend"
+                  - id: b
+                    text: "To help her parents move furniture"
+                  - id: c
+                    text: "To watch a film"
+                  - id: d
+                    text: "To go to work"
+              - id: q2
+                text: "Has Emma decided what to do on Sunday evening?"
+                options:
+                  - id: a
+                    text: "Yes, exactly"
+                  - id: b
+                    text: "No, not exactly — probably relax and watch a film"
+                  - id: c
+                    text: "She's going to work"
+                  - id: d
+                    text: "She's going to visit her friend again"
+          answer_key:
+            answers:
+              q1: a
+              q2: b
+          explanation: >-
+            "She arranged to meet her old friend on Saturday morning"
+            (Q1). "She hasn't decided... she says she'll probably just
+            relax" (Q2) — this is a spontaneous, undecided plan, so
+            "will" is used.
+
+  - type: reading
+    order_index: 7
+    content:
+      title: A Busy Weekend
+      text: >
+        Emma is going to have a busy weekend. She arranged to meet her
+        old friend on Saturday morning, and they're going to have lunch
+        together. On Sunday, she's going to help her parents move some
+        furniture. She hasn't decided what to do in the evening yet —
+        she says she'll probably just relax and watch a film.
+      summary_ru: >
+        У Эммы будут насыщенные выходные. Она договорилась встретиться со
+        старой подругой в субботу утром, и они собираются вместе
+        пообедать. В воскресенье она поможет родителям передвинуть
+        мебель. Что делать вечером, она ещё не решила — говорит, что,
+        наверное, просто отдохнёт и посмотрит фильм.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      transcript: >
+        A: What are you going to do this weekend? — B: I'm going to
+        visit my sister — we arranged it last week. — A: Nice! I haven't
+        planned anything yet... actually, I'll come with you, if that's
+        OK? — B: Sure! I'll text her now to confirm. — A: Great, I'm
+        looking forward to it. Is she available on Saturday? — B: I
+        think so, but let me check and I'll let you know.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Расскажите о своих планах на следующие выходные, используя
+        "going to" для уже решённого и "will" хотя бы для одного
+        спонтанного решения или обещания. Говорите 40-60 секунд.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Напишите 5-6 предложений о планах на следующую неделю,
+            используя going to для решённых планов.
+        - type: vocabulary_recall
+          instructions: >
+            Не заглядывая в урок, запишите как можно больше слов по теме
+            планирования встреч, затем сверьте список со словарным
+            блоком.
+        - type: grammar_practice
+          instructions: >
+            Напишите 3 предложения с going to (план) и 3 предложения с
+            will (спонтанное решение/обещание).
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        going-to-vs-will grammar topic are generated automatically from
+        mistakes and spaced repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: making-plans-mini-mc-confirm
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A2
+          vocabulary_headword: "confirm"
+          prompt:
+            question: "\"Can you confirm the time by email?\" means..."
+            options:
+              - id: a
+                text: "Say for certain that the time is correct"
+              - id: b
+                text: "Cancel the meeting"
+              - id: c
+                text: "Guess the time"
+              - id: d
+                text: "Postpone the meeting"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Confirm" — подтвердить, окончательно согласовать.
+
+        - slug: making-plans-mini-fill-going-to-will-2
+          type: fill_blank
+          skill: grammar
+          difficulty: A2
+          grammar_topic_slug: going-to-vs-will
+          prompt:
+            text: >-
+              Заполните пропуски: 1) "We ___ ___ (уже решено) meet at
+              6pm, we arranged it yesterday." (are going to) 2) "I'm
+              tired — I ___ (спонтанное решение) go to bed early
+              tonight." (will)
+          answer_key:
+            blanks:
+              - ["are going to"]
+              - ["will"]
+          explanation: >-
+            Уже решённый план — "going to"; спонтанное решение прямо
+            сейчас — "will".
+
+        - slug: making-plans-mini-order-day-off
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A2
+          vocabulary_headword: "day off"
+          prompt:
+            words: ["a", "have", "day", "I", "off", "Monday", "on"]
+          answer_key:
+            correct_order: ["I", "have", "a", "day", "off", "on", "Monday"]
+          explanation: >-
+            Подлежащее ("I") + глагол ("have") + дополнение ("a day
+            off") + время ("on Monday").
+
+        - slug: making-plans-mini-mc-in-advance
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A2
+          vocabulary_headword: "in advance"
+          prompt:
+            question: "\"Book the restaurant in advance\" means..."
+            options:
+              - id: a
+                text: "Book it ahead of time, before you need it"
+              - id: b
+                text: "Book it at the last minute"
+              - id: c
+                text: "Cancel the booking"
+              - id: d
+                text: "Book a table for one person"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "In advance" — заранее, до того, как это понадобится.
+
+        - slug: making-plans-mini-reading-plans
+          type: reading_comprehension
+          skill: reading
+          difficulty: A2
+          prompt:
+            passage: >-
+              Mark is going to travel to Berlin next month. He arranged
+              his flight already, but he hasn't decided on a hotel yet.
+            questions:
+              - id: q1
+                text: "Has Mark decided on a hotel?"
+                options:
+                  - id: a
+                    text: "Yes, already"
+                  - id: b
+                    text: "No, not yet"
+                  - id: c
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: b
+          explanation: >-
+            "He hasn't decided on a hotel yet."

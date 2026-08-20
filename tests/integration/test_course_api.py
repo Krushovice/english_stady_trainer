@@ -18,9 +18,9 @@ async def test_list_levels_returns_seeded_level(
 
 
 async def test_list_modules_for_level(
-    client: AsyncClient, synced_lesson: Lesson, auth_headers: dict[str, str]
+    client: AsyncClient, synced_lesson: Lesson, b1_studied_headers: dict[str, str]
 ) -> None:
-    response = await client.get("/api/v1/levels/B1/modules", headers=auth_headers)
+    response = await client.get("/api/v1/levels/B1/modules", headers=b1_studied_headers)
     assert response.status_code == 200
     slugs = [module["slug"] for module in response.json()]
     assert "small-talk" in slugs
@@ -36,9 +36,9 @@ async def test_list_lessons_for_module(
 
 
 async def test_get_lesson_detail_includes_blocks_vocabulary_and_grammar(
-    client: AsyncClient, synced_lesson: Lesson, auth_headers: dict[str, str]
+    client: AsyncClient, synced_lesson: Lesson, b1_studied_headers: dict[str, str]
 ) -> None:
-    response = await client.get("/api/v1/lessons/making-small-talk", headers=auth_headers)
+    response = await client.get("/api/v1/lessons/making-small-talk", headers=b1_studied_headers)
     assert response.status_code == 200
 
     body = response.json()

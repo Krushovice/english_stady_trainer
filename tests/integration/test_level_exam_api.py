@@ -92,15 +92,24 @@ async def test_a2_is_locked_until_a1_exam_is_passed(
     assert response.status_code == 403
 
 
-async def test_b1_stays_unlocked_since_a2_has_no_content_yet(
+async def test_b1_is_locked_for_a_brand_new_user_now_that_a2_has_content(
     client: AsyncClient, synced_lesson: Lesson, auth_headers: dict[str, str]
 ) -> None:
-    """Regression guard: gating only ever looks at the immediately preceding
-
-    level, and only if it has real content. A2 has none yet, so B1 (which
-    already has real lesson content a real user relies on) must stay open.
-    """
+    """A2 now has real content, so B1 is a real gate for anyone starting fresh."""
     response = await client.get("/api/v1/levels/B1/modules", headers=auth_headers)
+    assert response.status_code == 403
+
+
+async def test_b1_stays_unlocked_for_a_user_who_already_studied_it(
+    client: AsyncClient, synced_lesson: Lesson, b1_studied_headers: dict[str, str]
+) -> None:
+    """Regression guard: a user who already has attempts in B1 must never be
+
+    locked out retroactively just because a preceding level (A2) later
+    gained content and started gating. See `is_level_unlocked`'s
+    grandfathering check.
+    """
+    response = await client.get("/api/v1/levels/B1/modules", headers=b1_studied_headers)
     assert response.status_code == 200
     slugs = [module["slug"] for module in response.json()]
     assert "small-talk" in slugs
@@ -109,12 +118,19 @@ async def test_b1_stays_unlocked_since_a2_has_no_content_yet(
 async def test_levels_response_reports_unlocked_flag(
     client: AsyncClient, synced_lesson: Lesson, auth_headers: dict[str, str]
 ) -> None:
-    # Only levels with authored content have a `Level` row at all (A2/B2
-    # don't exist yet) — this just checks the two that do.
     response = await client.get("/api/v1/levels", headers=auth_headers)
     assert response.status_code == 200
     by_code = {level["code"]: level for level in response.json()}
     assert by_code["A1"]["unlocked"] is True
+    assert by_code["B1"]["unlocked"] is False
+
+
+async def test_levels_response_reports_b1_unlocked_for_a_studied_user(
+    client: AsyncClient, synced_lesson: Lesson, b1_studied_headers: dict[str, str]
+) -> None:
+    response = await client.get("/api/v1/levels", headers=b1_studied_headers)
+    assert response.status_code == 200
+    by_code = {level["code"]: level for level in response.json()}
     assert by_code["B1"]["unlocked"] is True
 
 

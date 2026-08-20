@@ -129,3 +129,38 @@ async def synced_lesson(_test_database):
     async with async_session_factory() as session:
         lessons = await ContentLoaderService(session).sync_directory(content_dir)
     return lessons[0]
+
+
+@pytest_asyncio.fixture
+async def b1_studied_headers(
+    client: AsyncClient, synced_lesson, auth_headers: dict[str, str]
+) -> dict[str, str]:
+    """`auth_headers`, but the user already has one exercise attempt in B1.
+
+    Represents a learner who studied B1 before A2 (and its exit-exam gate)
+    existed — `LevelExamService.is_level_unlocked` grandfathers such users
+    in regardless of whether they've passed A2's exam, so B1 course-browsing
+    tests should exercise that realistic path rather than a brand-new user.
+    """
+    exercises = (
+        await client.get("/api/v1/lessons/making-small-talk/exercises", headers=auth_headers)
+    ).json()
+    exercise = exercises[0]
+    exercise_type = exercise["exercise_type"]
+    if exercise_type == "multiple_choice":
+        submitted_answer: dict = {"option_id": "definitely-wrong"}
+    elif exercise_type == "fill_blank":
+        blank_count = exercise["prompt"]["text"].count("___")
+        submitted_answer = {"blanks": ["zzz"] * blank_count}
+    elif exercise_type == "sentence_ordering":
+        submitted_answer = {"order": list(reversed(exercise["prompt"]["words"]))}
+    else:
+        submitted_answer = {
+            "answers": {q["id"]: "definitely-wrong" for q in exercise["prompt"]["questions"]}
+        }
+    await client.post(
+        f"/api/v1/exercises/{exercise['id']}/attempts",
+        headers=auth_headers,
+        json={"submitted_answer": submitted_answer},
+    )
+    return auth_headers

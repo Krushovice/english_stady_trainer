@@ -1,0 +1,373 @@
+level:
+  code: A2
+  order_index: 1
+
+module:
+  slug: hotel
+  title: Hotel Check-in
+  order_index: 3
+
+lesson:
+  slug: hotel-check-in
+  title: Hotel Check-in
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Заселиться в отель и объяснить, что вы уже забронировали номер"
+        - "Использовать Present Perfect для результата, важного сейчас"
+        - "Спросить про услуги отеля (Wi-Fi, завтрак, время выезда)"
+        - "Использовать 8 новых слов по теме отеля"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Present Perfect (have/has + причастие прошедшего времени) описывает
+        действие в прошлом, результат которого важен сейчас — не важно,
+        когда именно оно произошло. "I have booked a room" — я забронировал
+        номер (и он у меня есть сейчас). Сравните с Past Simple: "I booked
+        a room last week" — здесь важно именно когда. На ресепшене отеля
+        Present Perfect используют постоянно: "I've booked a room for two
+        nights.", "Have you got any rooms available?", "I haven't checked
+        in yet.".
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "check in / check out"
+          translation: "заселиться / выселиться"
+          example_sentence: "Check-in is at 2pm and check-out is at 11am."
+        - headword: "reservation / booking"
+          translation: "бронирование"
+          example_sentence: "I have a reservation under the name Smith."
+        - headword: "reception / front desk"
+          translation: "ресепшен, стойка регистрации"
+          example_sentence: "You can leave your key at reception."
+        - headword: "double / single room"
+          translation: "двухместный / одноместный номер"
+          example_sentence: "We booked a double room with a sea view."
+        - headword: "breakfast included"
+          translation: "завтрак включён"
+          example_sentence: "Is breakfast included in the price?"
+        - headword: "key card"
+          translation: "карта-ключ"
+          example_sentence: "Here's your key card, room 214."
+        - headword: "available"
+          translation: "доступный, свободный"
+          example_sentence: "Have you got any rooms available for tonight?"
+        - headword: "complain"
+          translation: "жаловаться"
+          example_sentence: "She complained that the room wasn't clean."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: present-perfect
+          title: "Present Perfect (introduction): have/has + past participle"
+          description: >
+            Present Perfect = have/has + причастие прошедшего времени
+            (past participle): "I have booked", "She has arrived". У
+            правильных глаголов причастие = глагол + -ed (booked,
+            arrived); у неправильных — своя форма (have -> had, go ->
+            gone, see -> seen). Используется, когда результат действия
+            важен сейчас, а точное время неважно или не названо: "I've
+            booked a room" (номер у меня есть сейчас). Вопрос: "Have you
+            booked a room?"; отрицание: "I haven't booked a room yet."
+            Сигнальные слова: already, yet, just, ever, never. Частая
+            ошибка — использовать Present Perfect с точным временем в
+            прошлом ("I have booked it yesterday" — неправильно, нужно
+            Past Simple: "I booked it yesterday").
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: At the hotel reception
+          lines:
+            - speaker: A
+              text: "Good afternoon. I've booked a double room for two nights."
+            - speaker: B
+              text: "Can I have your name, please?"
+            - speaker: A
+              text: "Yes, it's under Petrova. I haven't checked in online yet."
+            - speaker: B
+              text: "That's fine, I've found your reservation. Is breakfast included — yes, it is."
+            - speaker: A
+              text: "Great. Have you got a room with a sea view, by any chance?"
+            - speaker: B
+              text: "Let me check... Yes, we have. Here's your key card, room 305."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: hotel-check-in-mc-reservation
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A2
+          vocabulary_headword: "reservation / booking"
+          prompt:
+            question: >-
+              Что означает "I have a reservation under the name Smith"?
+            options:
+              - id: a
+                text: "У меня забронирован номер на имя Смит"
+              - id: b
+                text: "Я хочу пожаловаться на имя Смит"
+              - id: c
+                text: "Я потерял ключ-карту"
+              - id: d
+                text: "Завтрак включён в стоимость"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Reservation" — бронирование; фраза означает, что номер уже
+            забронирован на это имя.
+
+        - slug: hotel-check-in-fill-present-perfect
+          type: fill_blank
+          skill: grammar
+          difficulty: A2
+          grammar_topic_slug: present-perfect
+          prompt:
+            text: >-
+              Заполните пропуски Present Perfect: 1) "I ___ (book) a room
+              for two nights." 2) "___ you ___ (check) in online yet?" 3)
+              "We ___ (not/receive) our key card yet."
+          answer_key:
+            blanks:
+              - ["have booked"]
+              - ["Have", "checked"]
+              - ["haven't received"]
+          explanation: >-
+            Present Perfect: have/has + причастие. "I have booked",
+            "Have you checked...?", "We haven't received...".
+
+        - slug: hotel-check-in-order-available
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A2
+          grammar_topic_slug: present-perfect
+          prompt:
+            words: ["got", "rooms", "you", "any", "Have", "available"]
+          answer_key:
+            correct_order: ["Have", "you", "got", "any", "rooms", "available"]
+          explanation: >-
+            Вопрос в Present Perfect: "Have" + подлежащее ("you") + "got"
+            + существительное ("any rooms") + уточнение ("available").
+
+        - slug: hotel-check-in-reading-late-arrival
+          type: reading_comprehension
+          skill: reading
+          difficulty: A2
+          prompt:
+            passage: >-
+              Mr. Johnson has booked a single room for three nights, but
+              his flight was delayed and he hasn't arrived at the hotel
+              yet. He has called the reception to explain the situation.
+              The receptionist has kept his room and told him that
+              breakfast is included, even though he'll miss it on the
+              first day. He plans to check in very late tonight.
+            questions:
+              - id: q1
+                text: "Why hasn't Mr. Johnson arrived at the hotel yet?"
+                options:
+                  - id: a
+                    text: "His flight was delayed"
+                  - id: b
+                    text: "He cancelled his booking"
+                  - id: c
+                    text: "The hotel was full"
+                  - id: d
+                    text: "He forgot the address"
+              - id: q2
+                text: "What has the receptionist done?"
+                options:
+                  - id: a
+                    text: "Cancelled his room"
+                  - id: b
+                    text: "Kept his room for him"
+                  - id: c
+                    text: "Given his room to someone else"
+                  - id: d
+                    text: "Refused to help him"
+          answer_key:
+            answers:
+              q1: a
+              q2: b
+          explanation: >-
+            "His flight was delayed" (Q1). "The receptionist has kept his
+            room" (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: A Late Arrival
+      text: >
+        Mr. Johnson has booked a single room for three nights, but his
+        flight was delayed and he hasn't arrived at the hotel yet. He has
+        called the reception to explain the situation. The receptionist
+        has kept his room and told him that breakfast is included, even
+        though he'll miss it on the first day. He plans to check in very
+        late tonight.
+      summary_ru: >
+        Мистер Джонсон забронировал одноместный номер на три ночи, но его
+        рейс задержали, и он ещё не приехал в отель. Он позвонил на
+        ресепшен, чтобы объяснить ситуацию. Администратор сохранил за ним
+        номер и сказал, что завтрак включён, хотя в первый день он его
+        пропустит. Он планирует заселиться очень поздно вечером.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      transcript: >
+        A: Good afternoon. I've booked a double room for two nights. — B:
+        Can I have your name, please? — A: Yes, it's under Petrova. I
+        haven't checked in online yet. — B: That's fine, I've found your
+        reservation. Is breakfast included — yes, it is. — A: Great. Have
+        you got a room with a sea view, by any chance? — B: Let me
+        check... Yes, we have. Here's your key card, room 305.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Представьте, что вы заселяетесь в отель. Скажите, что вы
+        забронировали номер, спросите про завтрак и время выезда, и
+        уточните, есть ли номер с видом на море. Используйте Present
+        Perfect хотя бы дважды. Говорите 40-60 секунд.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Напишите короткий диалог (6-8 реплик) на ресепшене отеля,
+            используя минимум 3 предложения в Present Perfect.
+        - type: vocabulary_recall
+          instructions: >
+            Не заглядывая в урок, запишите как можно больше слов по теме
+            отеля, затем сверьте список со словарным блоком.
+        - type: grammar_practice
+          instructions: >
+            Напишите 5 предложений о том, что вы уже сделали сегодня,
+            используя Present Perfect (I have already..., I haven't...
+            yet).
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        present-perfect grammar topic are generated automatically from
+        mistakes and spaced repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: hotel-check-in-mini-mc-key-card
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A2
+          vocabulary_headword: "key card"
+          prompt:
+            question: "What do you use to open your hotel room door?"
+            options:
+              - id: a
+                text: "a key card"
+              - id: b
+                text: "a reservation"
+              - id: c
+                text: "a front desk"
+              - id: d
+                text: "a check-out"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            Дверь номера открывают карта-ключом (key card).
+
+        - slug: hotel-check-in-mini-fill-present-perfect-2
+          type: fill_blank
+          skill: grammar
+          difficulty: A2
+          grammar_topic_slug: present-perfect
+          prompt:
+            text: >-
+              Заполните пропуски: 1) "She ___ (arrive) at the hotel
+              already." (has arrived) 2) "I ___ (not/pack) my suitcase
+              yet." (haven't packed)
+          answer_key:
+            blanks:
+              - ["has arrived"]
+              - ["haven't packed"]
+          explanation: >-
+            Present Perfect: has + причастие ("has arrived"); отрицание —
+            haven't + причастие ("haven't packed").
+
+        - slug: hotel-check-in-mini-order-checkout
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A2
+          vocabulary_headword: "check in / check out"
+          prompt:
+            words: ["at", "Check-out", "11am", "is"]
+          answer_key:
+            correct_order: ["Check-out", "is", "at", "11am"]
+          explanation: >-
+            Подлежащее ("Check-out") + глагол-связка ("is") + время
+            ("at 11am").
+
+        - slug: hotel-check-in-mini-mc-available
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A2
+          vocabulary_headword: "available"
+          prompt:
+            question: "\"Have you got any rooms available?\" is asking about..."
+            options:
+              - id: a
+                text: "Whether there are free rooms"
+              - id: b
+                text: "The price of the room"
+              - id: c
+                text: "Whether breakfast is included"
+              - id: d
+                text: "The check-out time"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Available" — свободный, доступный. Вопрос про свободные
+            номера.
+
+        - slug: hotel-check-in-mini-reading-checkin
+          type: reading_comprehension
+          skill: reading
+          difficulty: A2
+          prompt:
+            passage: >-
+              Anna has booked a single room for one night. She has
+              arrived early, but her room isn't ready yet.
+            questions:
+              - id: q1
+                text: "Is Anna's room ready?"
+                options:
+                  - id: a
+                    text: "Yes, it's ready"
+                  - id: b
+                    text: "No, not yet"
+                  - id: c
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: b
+          explanation: >-
+            "Her room isn't ready yet."

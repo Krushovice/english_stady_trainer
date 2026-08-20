@@ -1,0 +1,370 @@
+level:
+  code: A2
+  order_index: 1
+
+module:
+  slug: directions
+  title: Asking for Directions
+  order_index: 2
+
+lesson:
+  slug: asking-for-directions
+  title: Asking for Directions
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Спросить дорогу к нужному месту"
+        - "Понять и дать простые указания, используя повелительное наклонение"
+        - "Использовать предлоги движения: past, along, across, through"
+        - "Использовать 8 новых слов по теме ориентирования в городе"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Указания дороги обычно даются повелительным наклонением (imperative)
+        — глагол в начале предложения без подлежащего: "Turn left.", "Go
+        straight on.", "Take the second right.". Предлоги движения
+        показывают, как именно двигаться: "past the bank" (мимо банка),
+        "along this street" (вдоль этой улицы), "across the square" (через
+        площадь), "through the park" (сквозь парк). Если не понял с первого
+        раза, вежливо переспрашивают: "Sorry, could you repeat that?" или
+        "Is it far from here?".
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "turn left / right"
+          translation: "повернуть налево / направо"
+          example_sentence: "Turn left at the traffic lights."
+        - headword: "go straight on"
+          translation: "идти прямо"
+          example_sentence: "Go straight on for two blocks."
+        - headword: "corner"
+          translation: "угол"
+          example_sentence: "The shop is on the corner of the street."
+        - headword: "crossroads"
+          translation: "перекрёсток"
+          example_sentence: "Turn right at the crossroads."
+        - headword: "traffic lights"
+          translation: "светофор"
+          example_sentence: "Wait for the traffic lights, then cross."
+        - headword: "block"
+          translation: "квартал"
+          example_sentence: "It's about three blocks from here."
+        - headword: "landmark"
+          translation: "ориентир, приметное место"
+          example_sentence: "The church is a good landmark."
+        - headword: "get lost"
+          translation: "заблудиться"
+          example_sentence: "I got lost on my way to the station."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: imperatives-directions
+          title: "Imperatives for directions + movement prepositions"
+          description: >
+            Указания дороги строятся повелительным наклонением: глагол в
+            начальной форме без подлежащего — "Turn left.", "Go straight
+            on.", "Take the first right.", "Don't turn right, turn left."
+            (отрицание — "Don't" + глагол). Предлоги движения уточняют
+            путь: "past" (мимо), "along" (вдоль), "across" (через,
+            поперёк), "through" (сквозь, через что-то с проходом внутри).
+            Частая ошибка — путать "across the street" (перейти улицу) и
+            "along the street" (идти вдоль улицы, не переходя).
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Excuse me, how do I get to the museum?
+          lines:
+            - speaker: A
+              text: "Excuse me, how do I get to the museum?"
+            - speaker: B
+              text: "Go straight on and take the second right."
+            - speaker: A
+              text: "Second right, OK. Is it far from here?"
+            - speaker: B
+              text: "No, it's close. Walk past the bank, then go along the main street."
+            - speaker: A
+              text: "Past the bank, along the main street... and then?"
+            - speaker: B
+              text: "You'll see it on the corner, across from the park."
+            - speaker: A
+              text: "Great, thank you very much!"
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: asking-for-directions-mc-crossroads
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A2
+          vocabulary_headword: "crossroads"
+          prompt:
+            question: >-
+              Что такое "crossroads"?
+            options:
+              - id: a
+                text: "Перекрёсток"
+              - id: b
+                text: "Угол дома"
+              - id: c
+                text: "Приметное место"
+              - id: d
+                text: "Квартал"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Crossroads" — это перекрёсток, место пересечения улиц.
+
+        - slug: asking-for-directions-fill-imperatives
+          type: fill_blank
+          skill: grammar
+          difficulty: A2
+          grammar_topic_slug: imperatives-directions
+          prompt:
+            text: >-
+              Заполните пропуски: 1) "___ left at the traffic lights."
+              (Turn) 2) "___ straight on for two blocks." (Go) 3) "___ turn
+              right, it's the wrong way." (Don't)
+          answer_key:
+            blanks:
+              - ["Turn"]
+              - ["Go"]
+              - ["Don't"]
+          explanation: >-
+            Указания дороги — повелительное наклонение: глагол в начале
+            без подлежащего; отрицание — "Don't" + глагол.
+
+        - slug: asking-for-directions-order-past-bank
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A2
+          grammar_topic_slug: imperatives-directions
+          prompt:
+            words: ["past", "Walk", "bank", "the"]
+          answer_key:
+            correct_order: ["Walk", "past", "the", "bank"]
+          explanation: >-
+            Повелительное наклонение: глагол ("Walk") + предлог движения
+            ("past") + существительное с артиклем ("the bank").
+
+        - slug: asking-for-directions-reading-tourist
+          type: reading_comprehension
+          skill: reading
+          difficulty: A2
+          prompt:
+            passage: >-
+              A tourist stopped a local and asked how to get to the train
+              station. The local said: "Go straight on, then turn left at
+              the crossroads. Walk along the main street, past the
+              pharmacy, and you'll see the station across from the park.
+              It's about ten minutes on foot, so you won't get lost." The
+              tourist thanked her and followed the directions carefully.
+            questions:
+              - id: q1
+                text: "Where does the tourist need to turn left?"
+                options:
+                  - id: a
+                    text: "At the pharmacy"
+                  - id: b
+                    text: "At the crossroads"
+                  - id: c
+                    text: "At the park"
+                  - id: d
+                    text: "At the train station"
+              - id: q2
+                text: "How long does it take to walk to the station?"
+                options:
+                  - id: a
+                    text: "About ten minutes"
+                  - id: b
+                    text: "About thirty minutes"
+                  - id: c
+                    text: "About one hour"
+                  - id: d
+                    text: "It doesn't say"
+          answer_key:
+            answers:
+              q1: b
+              q2: a
+          explanation: >-
+            "Turn left at the crossroads" (Q1). "It's about ten minutes on
+            foot" (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: Finding the Train Station
+      text: >
+        A tourist stopped a local and asked how to get to the train
+        station. The local said: "Go straight on, then turn left at the
+        crossroads. Walk along the main street, past the pharmacy, and
+        you'll see the station across from the park. It's about ten
+        minutes on foot, so you won't get lost." The tourist thanked her
+        and followed the directions carefully.
+      summary_ru: >
+        Турист остановил местную жительницу и спросил, как пройти к
+        вокзалу. Она ответила: «Идите прямо, потом поверните налево на
+        перекрёстке. Идите вдоль главной улицы, мимо аптеки, и вы увидите
+        вокзал напротив парка. Это около десяти минут пешком, так что вы
+        не заблудитесь». Турист поблагодарил её и внимательно следовал
+        указаниям.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      transcript: >
+        A: Excuse me, how do I get to the museum? — B: Go straight on and
+        take the second right. — A: Second right, OK. Is it far from
+        here? — B: No, it's close. Walk past the bank, then go along the
+        main street. — A: Past the bank, along the main street... and
+        then? — B: You'll see it on the corner, across from the park. —
+        A: Great, thank you very much!
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Объясните дорогу от вашего дома до ближайшего магазина или
+        станции метро, используя повелительное наклонение и хотя бы два
+        предлога движения (past, along, across, through). Говорите 40-60
+        секунд.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Напишите короткие указания (5-6 предложений), как пройти от
+            вашего дома до ближайшего парка или магазина.
+        - type: vocabulary_recall
+          instructions: >
+            Не заглядывая в урок, запишите как можно больше слов по теме
+            ориентирования в городе, затем сверьте список со словарным
+            блоком.
+        - type: grammar_practice
+          instructions: >
+            Напишите 5 указаний дороги, используя повелительное
+            наклонение (Turn, Go, Take, Walk, Don't).
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        imperatives-directions grammar topic are generated automatically
+        from mistakes and spaced repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: asking-for-directions-mini-mc-landmark
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A2
+          vocabulary_headword: "landmark"
+          prompt:
+            question: "What is a 'landmark'?"
+            options:
+              - id: a
+                text: "A well-known place that helps you find your way"
+              - id: b
+                text: "A type of traffic light"
+              - id: c
+                text: "A quiet street with no traffic"
+              - id: d
+                text: "A place where you buy a ticket"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Landmark" — приметное место, ориентир, который помогает
+            найти дорогу.
+
+        - slug: asking-for-directions-mini-fill-imperatives-2
+          type: fill_blank
+          skill: grammar
+          difficulty: A2
+          grammar_topic_slug: imperatives-directions
+          prompt:
+            text: >-
+              Заполните пропуски: 1) "___ the second right." (Take) 2)
+              "___ worry, it isn't far." (Don't)
+          answer_key:
+            blanks:
+              - ["Take"]
+              - ["Don't"]
+          explanation: >-
+            Повелительное наклонение: глагол в начале ("Take"),
+            отрицание — "Don't" + глагол.
+
+        - slug: asking-for-directions-mini-order-lost
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A2
+          vocabulary_headword: "get lost"
+          prompt:
+            words: ["lost", "the", "in", "got", "I", "city"]
+          answer_key:
+            correct_order: ["I", "got", "lost", "in", "the", "city"]
+          explanation: >-
+            Подлежащее ("I") + глагол в Past Simple ("got lost") + место
+            ("in the city").
+
+        - slug: asking-for-directions-mini-mc-block
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A2
+          vocabulary_headword: "block"
+          prompt:
+            question: "\"It's about three blocks from here\" means..."
+            options:
+              - id: a
+                text: "It's about three street sections away"
+              - id: b
+                text: "It's three minutes by bus"
+              - id: c
+                text: "It's three floors up"
+              - id: d
+                text: "It's closed for three days"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Block" — квартал, участок улицы между перекрёстками.
+
+        - slug: asking-for-directions-mini-reading-directions
+          type: reading_comprehension
+          skill: reading
+          difficulty: A2
+          prompt:
+            passage: >-
+              Go straight on, turn right at the corner, and walk past the
+              pharmacy. The library is across from the park.
+            questions:
+              - id: q1
+                text: "Where is the library?"
+                options:
+                  - id: a
+                    text: "Across from the park"
+                  - id: b
+                    text: "Next to the pharmacy"
+                  - id: c
+                    text: "Behind the crossroads"
+          answer_key:
+            answers:
+              q1: a
+          explanation: >-
+            "The library is across from the park."

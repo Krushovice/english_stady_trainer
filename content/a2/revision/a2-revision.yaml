@@ -1,0 +1,296 @@
+level:
+  code: A2
+  order_index: 1
+
+module:
+  slug: a2-revision
+  title: Revision
+  order_index: 10
+
+lesson:
+  slug: a2-revision
+  title: "A2 Revision"
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Повторить всю грамматику уровня A2 в смешанных упражнениях"
+        - "Уверенно использовать Present Perfect, Past Continuous и used to вместе"
+        - "Вспомнить ключевую лексику всех 9 тем уровня A2"
+        - "Подготовиться к итоговому экзамену уровня A2"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Этот урок повторяет всю грамматику уровня A2: вежливые просьбы
+        (Could I have / I'd like), повелительное наклонение для дороги,
+        Present Perfect, have to / should, used to, going to / will,
+        Past Continuous и превосходную степень. В реальной речи эти
+        конструкции часто сочетаются в одном рассказе: "I've booked a
+        hotel (Present Perfect) because we're going to travel (going to)
+        next week — we used to go camping (used to), but camping isn't
+        the most comfortable option (superlative) anymore, so we should
+        try something new (should)."
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "could I have"
+          translation: "могу я взять / дайте мне, пожалуйста"
+          example_sentence: "Could I have the bill, please?"
+        - headword: "get lost"
+          translation: "заблудиться"
+          example_sentence: "We got lost on the way to the hotel."
+        - headword: "reservation / booking"
+          translation: "бронирование"
+          example_sentence: "We made a reservation for two nights."
+        - headword: "fix / repair"
+          translation: "чинить, ремонтировать"
+          example_sentence: "We had to fix the leak ourselves."
+        - headword: "outdated / old-fashioned"
+          translation: "устаревший"
+          example_sentence: "Our old maps feel outdated now."
+        - headword: "look forward to"
+          translation: "с нетерпением ждать"
+          example_sentence: "I'm looking forward to the trip."
+        - headword: "all of a sudden"
+          translation: "вдруг, неожиданно"
+          example_sentence: "All of a sudden, it started to rain."
+        - headword: "in my opinion"
+          translation: "по моему мнению"
+          example_sentence: "In my opinion, this was the best trip ever."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: present-perfect
+          title: "Present Perfect (introduction): have/has + past participle"
+          description: >
+            Повторение: Present Perfect (have/has + причастие)
+            описывает результат в прошлом, важный сейчас — "I've booked
+            a room." В отличие от Past Simple, точное время не
+            указывается или неважно.
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Planning a trip together
+          lines:
+            - speaker: A
+              text: "I've booked a hotel for next weekend — we're going to visit the coast."
+            - speaker: B
+              text: "Nice! We used to go camping every summer, remember?"
+            - speaker: A
+              text: "We did, but camping wasn't the most comfortable option, was it?"
+            - speaker: B
+              text: "True. While we were camping last time, it suddenly started to rain all night."
+            - speaker: A
+              text: "Exactly. I think we should try a hotel this time — I'm really looking forward to it."
+            - speaker: B
+              text: "Do we have to bring anything special, or is everything included?"
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: a2-revision-mc-mixed-vocabulary
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A2
+          vocabulary_headword: "reservation / booking"
+          prompt:
+            question: >-
+              You already booked a hotel room online. How do you say
+              this to the receptionist?
+            options:
+              - id: a
+                text: "I have a reservation under my name."
+              - id: b
+                text: "I'm going to book a room."
+              - id: c
+                text: "I used to book a room."
+              - id: d
+                text: "I should book a room."
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            Раз бронирование уже сделано, используется Present Perfect
+            в значении результата: "I have a reservation".
+
+        - slug: a2-revision-fill-mixed-grammar
+          type: fill_blank
+          skill: grammar
+          difficulty: A2
+          grammar_topic_slug: present-perfect
+          prompt:
+            text: >-
+              Заполните пропуски правильными формами: 1) "We ___ (book)
+              the hotel already." (have booked) 2) "We ___ ___ (go —
+              привычка в прошлом) camping every summer, but not
+              anymore." (used to go) 3) "While we ___ (camp — фон,
+              длилось), it started to rain." (were camping) 4) "This is
+              ___ ___ (comfortable) hotel we've ever stayed in." (the
+              most comfortable)
+          answer_key:
+            blanks:
+              - ["have booked"]
+              - ["used to go"]
+              - ["were camping"]
+              - ["the most comfortable"]
+          explanation: >-
+            Present Perfect для результата (have booked); used to для
+            прошлой привычки; Past Continuous для фона (were camping);
+            превосходная степень для сравнения (the most comfortable).
+
+        - slug: a2-revision-order-should-imperative
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A2
+          grammar_topic_slug: present-perfect
+          prompt:
+            words: ["hotel", "try", "should", "We", "a"]
+          answer_key:
+            correct_order: ["We", "should", "try", "a", "hotel"]
+          explanation: >-
+            Совет: подлежащее ("We") + "should" + глагол ("try") +
+            дополнение ("a hotel").
+
+        - slug: a2-revision-reading-trip-plan
+          type: reading_comprehension
+          skill: reading
+          difficulty: A2
+          prompt:
+            passage: >-
+              Tom and Lisa used to go camping every summer, but last
+              year, while they were camping, it suddenly started to rain
+              for three days. They didn't have to cancel the whole trip,
+              but they decided it wasn't the most comfortable
+              experience. This year, Tom has already booked a hotel near
+              the beach instead. He thinks they should try something new,
+              and Lisa agrees — she's looking forward to a room with a
+              real bed and, in her opinion, the most important thing: a
+              hot shower.
+            questions:
+              - id: q1
+                text: "What happened while Tom and Lisa were camping last year?"
+                options:
+                  - id: a
+                    text: "It suddenly started to rain for three days"
+                  - id: b
+                    text: "They lost their tent"
+                  - id: c
+                    text: "They ran out of food"
+                  - id: d
+                    text: "Nothing unusual happened"
+              - id: q2
+                text: "What has Tom already done for this year's trip?"
+                options:
+                  - id: a
+                    text: "Booked a hotel near the beach"
+                  - id: b
+                    text: "Bought a new tent"
+                  - id: c
+                    text: "Cancelled the trip"
+                  - id: d
+                    text: "Booked a camping site again"
+              - id: q3
+                text: "What does Lisa think is the most important thing?"
+                options:
+                  - id: a
+                    text: "A hot shower"
+                  - id: b
+                    text: "A sea view"
+                  - id: c
+                    text: "Free breakfast"
+                  - id: d
+                    text: "A cheap price"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+              q3: a
+          explanation: >-
+            "While they were camping, it suddenly started to rain for
+            three days" (Q1). "Tom has already booked a hotel near the
+            beach" (Q2). "In her opinion, the most important thing: a hot
+            shower" (Q3).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: Planning This Year's Trip
+      text: >
+        Tom and Lisa used to go camping every summer, but last year,
+        while they were camping, it suddenly started to rain for three
+        days. They didn't have to cancel the whole trip, but they
+        decided it wasn't the most comfortable experience. This year,
+        Tom has already booked a hotel near the beach instead. He thinks
+        they should try something new, and Lisa agrees — she's looking
+        forward to a room with a real bed and, in her opinion, the most
+        important thing: a hot shower.
+      summary_ru: >
+        Том и Лиза раньше каждое лето ездили в кемпинг, но в прошлом
+        году, пока они были в кемпинге, внезапно три дня подряд шёл
+        дождь. Им не пришлось отменять всю поездку, но они решили, что
+        это был не самый комфортный опыт. В этом году Том уже
+        забронировал отель у моря. Он думает, что стоит попробовать
+        что-то новое, и Лиза согласна — она с нетерпением ждёт номер с
+        настоящей кроватью и, по её мнению, самое главное: горячий душ.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      transcript: >
+        A: I've booked a hotel for next weekend — we're going to visit
+        the coast. — B: Nice! We used to go camping every summer,
+        remember? — A: We did, but camping wasn't the most comfortable
+        option, was it? — B: True. While we were camping last time, it
+        suddenly started to rain all night. — A: Exactly. I think we
+        should try a hotel this time — I'm really looking forward to it.
+        — B: Do we have to bring anything special, or is everything
+        included?
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Расскажите о поездке, которую вы недавно спланировали или
+        совершили. Используйте минимум четыре разные грамматические
+        конструкции уровня A2 (Present Perfect, used to, going to/will,
+        Past Continuous, should/have to, превосходная степень). Говорите
+        60 секунд.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Напишите короткий рассказ (8-10 предложений) о поездке или
+            событии, используя минимум 5 разных грамматических
+            конструкций уровня A2.
+        - type: vocabulary_recall
+          instructions: >
+            Не заглядывая в уроки, запишите как можно больше слов из
+            всех 9 тем уровня A2 (еда, дорога, отель, проблемы,
+            технологии, планы, истории, сравнения, игры).
+        - type: grammar_practice
+          instructions: >
+            Составьте по одному предложению на каждую грамматическую
+            тему уровня A2 (9 предложений всего).
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and grammar topics are
+        generated automatically from mistakes and spaced repetition —
+        nothing to author here.

@@ -1,0 +1,379 @@
+level:
+  code: A2
+  order_index: 1
+
+module:
+  slug: storytelling
+  title: "Past Continuous & Storytelling"
+  order_index: 7
+
+lesson:
+  slug: past-continuous-storytelling
+  title: "Past Continuous & Storytelling"
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Рассказать историю, описывая фон события и то, что его прервало"
+        - "Использовать Past Continuous для длящегося действия в прошлом"
+        - "Правильно сочетать Past Continuous и Past Simple в одном рассказе"
+        - "Использовать 8 новых слов по теме рассказа истории"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Past Continuous (was/were + глагол-ing) описывает действие,
+        которое длилось в определённый момент прошлого — фон истории:
+        "I was walking home when it started to rain." Past Simple
+        описывает короткое законченное действие, часто то, что прерывает
+        длящееся: "started to rain" — произошло внезапно, пока я шёл.
+        Формула для рассказа: Past Continuous (фон) + Past Simple
+        (событие, которое произошло на этом фоне). Ещё Past Continuous
+        используют для двух параллельных действий: "While I was cooking,
+        she was watching TV."
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "suddenly"
+          translation: "внезапно"
+          example_sentence: "Suddenly, the lights went out."
+        - headword: "meanwhile"
+          translation: "тем временем"
+          example_sentence: "I was cooking; meanwhile, my brother set the table."
+        - headword: "notice"
+          translation: "заметить"
+          example_sentence: "I noticed a strange noise outside."
+        - headword: "interrupt"
+          translation: "прерывать"
+          example_sentence: "The phone rang and interrupted our conversation."
+        - headword: "happen"
+          translation: "происходить, случаться"
+          example_sentence: "What happened after that?"
+        - headword: "in the middle of"
+          translation: "посреди, в середине (чего-то)"
+          example_sentence: "We were in the middle of dinner when the power cut happened."
+        - headword: "scared / frightened"
+          translation: "напуганный"
+          example_sentence: "I was scared when I heard the noise."
+        - headword: "all of a sudden"
+          translation: "вдруг, неожиданно"
+          example_sentence: "All of a sudden, someone knocked on the door."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: past-continuous
+          title: "Past Continuous vs Past Simple"
+          description: >
+            Past Continuous = was/were + глагол-ing: "I was reading a
+            book." Описывает фон, действие, которое уже длилось в
+            определённый момент прошлого. Past Simple описывает
+            короткое, законченное событие. Типичная связка — "when" или
+            "while": "I was reading (фон, длилось) when the phone rang
+            (короткое событие, прервало)." Для двух параллельных
+            длящихся действий используют Past Continuous в обеих частях
+            с "while": "While I was cooking, she was reading." Частая
+            ошибка — использовать Past Continuous для короткого
+            завершённого события ("The phone was ringing and I answered
+            it" вместо "The phone rang and I answered it", если звонок
+            был одним коротким действием, а не длящимся).
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: What happened last night?
+          lines:
+            - speaker: A
+              text: "You look tired today. What happened last night?"
+            - speaker: B
+              text: "I was sleeping when I suddenly heard a strange noise outside."
+            - speaker: A
+              text: "That sounds scary! What did you do?"
+            - speaker: B
+              text: "I got up and looked out the window. A cat had knocked over some bottles."
+            - speaker: A
+              text: "Ha! So while you were panicking, it was just a cat?"
+            - speaker: B
+              text: "Exactly. Meanwhile, my brother was still fast asleep the whole time."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: past-continuous-storytelling-mc-suddenly
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A2
+          vocabulary_headword: "suddenly"
+          prompt:
+            question: >-
+              Which word means "very quickly and without warning"?
+            options:
+              - id: a
+                text: "suddenly"
+              - id: b
+                text: "meanwhile"
+              - id: c
+                text: "usually"
+              - id: d
+                text: "already"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Suddenly" — внезапно, без предупреждения; "meanwhile" —
+            тем временем, происходит параллельно.
+
+        - slug: past-continuous-storytelling-fill-past-continuous
+          type: fill_blank
+          skill: grammar
+          difficulty: A2
+          grammar_topic_slug: past-continuous
+          prompt:
+            text: >-
+              Заполните пропуски: 1) "I ___ (walk — фон, длилось) home
+              when it started to rain." (was walking) 2) "While she ___
+              (cook — фон, длилось), the phone rang." (was cooking) 3)
+              "Suddenly, someone ___ (knock — короткое событие) on the
+              door." (knocked)
+          answer_key:
+            blanks:
+              - ["was walking"]
+              - ["was cooking"]
+              - ["knocked"]
+          explanation: >-
+            Фон, действие в процессе — Past Continuous (was walking, was
+            cooking); короткое событие, которое произошло — Past Simple
+            (knocked).
+
+        - slug: past-continuous-storytelling-order-when-phone
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A2
+          grammar_topic_slug: past-continuous
+          prompt:
+            words: ["was", "when", "TV", "rang", "watching", "I", "the", "phone"]
+          answer_key:
+            correct_order: ["I", "was", "watching", "TV", "when", "the", "phone", "rang"]
+          explanation: >-
+            Фон (was watching TV) + "when" + короткое событие (the
+            phone rang).
+
+        - slug: past-continuous-storytelling-reading-strange-night
+          type: reading_comprehension
+          skill: reading
+          difficulty: A2
+          prompt:
+            passage: >-
+              Last Friday, Sarah was walking home from work when she
+              noticed something strange. A group of people was standing
+              outside her building, all looking up at the sky. While she
+              was trying to understand what was happening, someone
+              explained that they were watching a meteor shower. Sarah
+              was so surprised that she stayed and watched with them for
+              an hour, even though she had been planning to go straight
+              to bed.
+            questions:
+              - id: q1
+                text: "What was Sarah doing when she noticed something strange?"
+                options:
+                  - id: a
+                    text: "Walking home from work"
+                  - id: b
+                    text: "Watching a meteor shower"
+                  - id: c
+                    text: "Sleeping"
+                  - id: d
+                    text: "Cooking dinner"
+              - id: q2
+                text: "What were the people outside her building doing?"
+                options:
+                  - id: a
+                    text: "Waiting for a bus"
+                  - id: b
+                    text: "Watching a meteor shower"
+                  - id: c
+                    text: "Having a party"
+                  - id: d
+                    text: "Fixing a car"
+          answer_key:
+            answers:
+              q1: a
+              q2: b
+          explanation: >-
+            "Sarah was walking home from work when she noticed something
+            strange" (Q1). "They were watching a meteor shower" (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: A Strange Night
+      text: >
+        Last Friday, Sarah was walking home from work when she noticed
+        something strange. A group of people was standing outside her
+        building, all looking up at the sky. While she was trying to
+        understand what was happening, someone explained that they were
+        watching a meteor shower. Sarah was so surprised that she stayed
+        and watched with them for an hour, even though she had been
+        planning to go straight to bed.
+      summary_ru: >
+        В прошлую пятницу Сара шла домой с работы, когда заметила
+        кое-что странное. Группа людей стояла возле её дома и смотрела
+        вверх, в небо. Пока она пыталась понять, что происходит,
+        кто-то объяснил, что все наблюдают за метеорным потоком. Сара
+        была так удивлена, что осталась и смотрела вместе с ними целый
+        час, хотя собиралась сразу лечь спать.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      transcript: >
+        A: You look tired today. What happened last night? — B: I was
+        sleeping when I suddenly heard a strange noise outside. — A:
+        That sounds scary! What did you do? — B: I got up and looked out
+        the window. A cat had knocked over some bottles. — A: Ha! So
+        while you were panicking, it was just a cat? — B: Exactly.
+        Meanwhile, my brother was still fast asleep the whole time.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Расскажите короткую историю о чём-то неожиданном, что случилось
+        с вами. Опишите, что вы делали (Past Continuous — фон), когда
+        это произошло (Past Simple — событие). Говорите 40-60 секунд.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Напишите короткую историю (6-8 предложений) о неожиданном
+            событии, используя минимум 3 предложения с Past Continuous.
+        - type: vocabulary_recall
+          instructions: >
+            Не заглядывая в урок, запишите как можно больше слов по теме
+            рассказа истории, затем сверьте список со словарным блоком.
+        - type: grammar_practice
+          instructions: >
+            Напишите 5 предложений, сочетающих Past Continuous (фон) и
+            Past Simple (событие), например: "I was ... when ...".
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        past-continuous grammar topic are generated automatically from
+        mistakes and spaced repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: past-continuous-storytelling-mini-mc-interrupt
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A2
+          vocabulary_headword: "interrupt"
+          prompt:
+            question: "What does \"interrupt\" mean?"
+            options:
+              - id: a
+                text: "To stop something while it's happening"
+              - id: b
+                text: "To finish something calmly"
+              - id: c
+                text: "To notice something"
+              - id: d
+                text: "To feel scared"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Interrupt" — прервать что-то, пока оно происходит.
+
+        - slug: past-continuous-storytelling-mini-fill-past-continuous-2
+          type: fill_blank
+          skill: grammar
+          difficulty: A2
+          grammar_topic_slug: past-continuous
+          prompt:
+            text: >-
+              Заполните пропуски: 1) "They ___ (talk — фон) when I
+              arrived." (were talking) 2) "While I ___ (drive — фон), it
+              started to rain." (was driving)
+          answer_key:
+            blanks:
+              - ["were talking"]
+              - ["was driving"]
+          explanation: >-
+            Фон, длящееся действие — Past Continuous: "were talking",
+            "was driving".
+
+        - slug: past-continuous-storytelling-mini-order-meanwhile
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A2
+          vocabulary_headword: "meanwhile"
+          prompt:
+            words: ["cooking", "was", "Meanwhile", "he", "TV", "watching", "was", "I"]
+          answer_key:
+            correct_order: ["I", "was", "cooking", "Meanwhile", "he", "was", "watching", "TV"]
+          explanation: >-
+            "Meanwhile" соединяет два параллельных действия в прошлом.
+
+        - slug: past-continuous-storytelling-mini-mc-notice
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A2
+          vocabulary_headword: "notice"
+          prompt:
+            question: "\"I noticed a strange noise\" means..."
+            options:
+              - id: a
+                text: "I became aware of it"
+              - id: b
+                text: "I made the noise"
+              - id: c
+                text: "I ignored it completely"
+              - id: d
+                text: "I was scared of it"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Notice" — заметить, обратить внимание на что-то.
+
+        - slug: past-continuous-storytelling-mini-reading-story
+          type: reading_comprehension
+          skill: reading
+          difficulty: A2
+          prompt:
+            passage: >-
+              I was walking in the park when I suddenly saw an old
+              friend. We hadn't met for years, so we stopped and talked
+              for an hour.
+            questions:
+              - id: q1
+                text: "What was the person doing when they saw their friend?"
+                options:
+                  - id: a
+                    text: "Walking in the park"
+                  - id: b
+                    text: "Sitting at home"
+                  - id: c
+                    text: "Driving a car"
+          answer_key:
+            answers:
+              q1: a
+          explanation: >-
+            "I was walking in the park when I suddenly saw an old
+            friend."

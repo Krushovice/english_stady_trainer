@@ -1,0 +1,375 @@
+level:
+  code: A2
+  order_index: 1
+
+module:
+  slug: gaming
+  title: "Gaming & Free Time"
+  order_index: 9
+
+lesson:
+  slug: gaming-and-free-time
+  title: "Gaming & Free Time"
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Обсудить игры и хобби, используя разные глагольные конструкции"
+        - "Правильно выбирать -ing или to + глагол после ключевых глаголов"
+        - "Описать, сколько времени вы тратите на увлечение и почему оно нравится"
+        - "Использовать 8 новых слов по теме игр и свободного времени"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        После некоторых глаголов используется -ing форма (герундий):
+        "enjoy playing", "be good at solving", "spend time gaming".
+        После других глаголов используется "to + глагол" (инфинитив):
+        "decide to play", "want to try", "plan to finish". Это нужно
+        просто запоминать по глаголу: enjoy/mind/avoid/be good at +
+        -ing; want/decide/plan/manage + to. Некоторые глаголы работают с
+        обоими вариантами почти без разницы в смысле: "start
+        playing"/"start to play", "like playing"/"like to play".
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "level up"
+          translation: "повышать уровень (в игре)"
+          example_sentence: "I need ten more points to level up."
+        - headword: "beat (a game/level)"
+          translation: "пройти, победить (игру/уровень)"
+          example_sentence: "It took me three tries to beat that level."
+        - headword: "be good at"
+          translation: "быть хорошим в чём-то, хорошо получаться"
+          example_sentence: "She's really good at strategy games."
+        - headword: "waste time"
+          translation: "тратить время впустую"
+          example_sentence: "I don't think gaming is a waste of time."
+        - headword: "addictive"
+          translation: "затягивающий, вызывающий привыкание"
+          example_sentence: "This game is so addictive, I can't stop."
+        - headword: "multiplayer / single-player"
+          translation: "многопользовательская / одиночная (игра)"
+          example_sentence: "I prefer multiplayer games with friends."
+        - headword: "give up"
+          translation: "сдаваться, бросать"
+          example_sentence: "Don't give up, you're almost at the end."
+        - headword: "relax / unwind"
+          translation: "расслабляться, отдыхать"
+          example_sentence: "Gaming helps me unwind after work."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: verb-patterns-gerund-infinitive
+          title: "Verb patterns: -ing vs to + verb"
+          description: >
+            Глаголы + -ing (герундий): enjoy, mind, avoid, be good at,
+            spend time, finish, give up — "I enjoy playing games.", "She's
+            good at solving puzzles.", "I gave up trying to beat that
+            level." Глаголы + to + начальная форма: want, decide, plan,
+            manage, would like, hope — "I want to try that new game.",
+            "We decided to play together." Некоторые глаголы (like,
+            love, start, begin) допускают оба варианта почти без разницы
+            в смысле. Частая ошибка — использовать to-инфинитив после
+            enjoy/avoid/be good at ("I enjoy to play" — неправильно,
+            нужно "I enjoy playing").
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Talking about gaming
+          lines:
+            - speaker: A
+              text: "I've been trying to beat this level for an hour. It's so addictive, I can't stop."
+            - speaker: B
+              text: "Ha! I know that feeling. I'm not very good at strategy games, though."
+            - speaker: A
+              text: "Really? I decided to try a new multiplayer game last week — do you want to join?"
+            - speaker: B
+              text: "I'd love to, but I usually avoid playing at night. It helps me relax before that, though."
+            - speaker: A
+              text: "Fair enough. Don't give up on the single-player one, by the way."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: gaming-and-free-time-mc-addictive
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A2
+          vocabulary_headword: "addictive"
+          prompt:
+            question: >-
+              What does "addictive" describe?
+            options:
+              - id: a
+                text: "Something so enjoyable it's hard to stop doing"
+              - id: b
+                text: "Something boring and slow"
+              - id: c
+                text: "Something expensive to buy"
+              - id: d
+                text: "Something you finished quickly"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Addictive" — затягивающий, из-за чего трудно остановиться.
+
+        - slug: gaming-and-free-time-fill-verb-patterns
+          type: fill_blank
+          skill: grammar
+          difficulty: A2
+          grammar_topic_slug: verb-patterns-gerund-infinitive
+          prompt:
+            text: >-
+              Заполните пропуски правильной формой: 1) "I enjoy ___
+              (play) games at the weekend." (playing) 2) "We decided ___
+              (try) a new game." (to try) 3) "She's good at ___ (solve)
+              puzzles." (solving)
+          answer_key:
+            blanks:
+              - ["playing"]
+              - ["to try"]
+              - ["solving"]
+          explanation: >-
+            "Enjoy" и "be good at" требуют -ing; "decide" требует
+            to-инфинитив.
+
+        - slug: gaming-and-free-time-order-give-up
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A2
+          vocabulary_headword: "give up"
+          prompt:
+            words: ["give", "the", "up", "Don't", "level", "on"]
+          answer_key:
+            correct_order: ["Don't", "give", "up", "on", "the", "level"]
+          explanation: >-
+            Отрицательное повелительное наклонение: "Don't" + глагол +
+            фразовый глагол ("give up") + дополнение ("on the level").
+
+        - slug: gaming-and-free-time-reading-hobby
+          type: reading_comprehension
+          skill: reading
+          difficulty: A2
+          prompt:
+            passage: >-
+              Jake spends most evenings gaming, but he avoids playing too
+              late because it affects his sleep. He isn't very good at
+              fast action games, so he prefers puzzle games instead. He
+              decided to try a multiplayer game last month and now plays
+              with friends online twice a week. He doesn't think it's a
+              waste of time — he says it helps him relax and stay
+              connected with friends who live far away.
+            questions:
+              - id: q1
+                text: "Why does Jake avoid playing too late?"
+                options:
+                  - id: a
+                    text: "It affects his sleep"
+                  - id: b
+                    text: "The internet is too slow at night"
+                  - id: c
+                    text: "His friends are asleep"
+                  - id: d
+                    text: "He has to work early"
+              - id: q2
+                text: "Why does Jake think gaming isn't a waste of time?"
+                options:
+                  - id: a
+                    text: "It helps him relax and stay connected with friends"
+                  - id: b
+                    text: "It makes him money"
+                  - id: c
+                    text: "It helps him sleep better"
+                  - id: d
+                    text: "It's part of his job"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "He avoids playing too late because it affects his sleep"
+            (Q1). "It helps him relax and stay connected with friends"
+            (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: Jake's Gaming Habits
+      text: >
+        Jake spends most evenings gaming, but he avoids playing too late
+        because it affects his sleep. He isn't very good at fast action
+        games, so he prefers puzzle games instead. He decided to try a
+        multiplayer game last month and now plays with friends online
+        twice a week. He doesn't think it's a waste of time — he says it
+        helps him relax and stay connected with friends who live far
+        away.
+      summary_ru: >
+        Джейк проводит большинство вечеров за играми, но избегает играть
+        слишком поздно, потому что это влияет на сон. У него плохо
+        получаются быстрые экшн-игры, поэтому он предпочитает
+        головоломки. В прошлом месяце он решил попробовать
+        многопользовательскую игру и теперь играет с друзьями онлайн
+        дважды в неделю. Он не считает это тратой времени — говорит, что
+        это помогает расслабиться и оставаться на связи с друзьями,
+        которые живут далеко.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      transcript: >
+        A: I've been trying to beat this level for an hour. It's so
+        addictive, I can't stop. — B: Ha! I know that feeling. I'm not
+        very good at strategy games, though. — A: Really? I decided to
+        try a new multiplayer game last week — do you want to join? — B:
+        I'd love to, but I usually avoid playing at night. It helps me
+        relax before that, though. — A: Fair enough. Don't give up on
+        the single-player one, by the way.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Расскажите о своём любимом способе провести свободное время
+        (игры, спорт, хобби). Используйте конструкции enjoy + -ing,
+        decide/want + to, и be good at + -ing. Говорите 40-60 секунд.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Напишите 5-6 предложений о своём хобби, используя минимум 2
+            глагола с -ing (enjoy, be good at) и 2 с to-инфинитивом
+            (want, decide, plan).
+        - type: vocabulary_recall
+          instructions: >
+            Не заглядывая в урок, запишите как можно больше слов по теме
+            игр и свободного времени, затем сверьте список со словарным
+            блоком.
+        - type: grammar_practice
+          instructions: >
+            Напишите 6 предложений про своё хобби: по 3 с каждым типом
+            глагольной конструкции (-ing и to + глагол).
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        verb-patterns-gerund-infinitive grammar topic are generated
+        automatically from mistakes and spaced repetition — nothing to
+        author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: gaming-and-free-time-mini-mc-beat
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A2
+          vocabulary_headword: "beat (a game/level)"
+          prompt:
+            question: "\"I finally beat the level\" means..."
+            options:
+              - id: a
+                text: "I completed it successfully"
+              - id: b
+                text: "I gave up on it"
+              - id: c
+                text: "I started it"
+              - id: d
+                text: "I found it boring"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Beat a level/game" — успешно пройти, победить.
+
+        - slug: gaming-and-free-time-mini-fill-verb-patterns-2
+          type: fill_blank
+          skill: grammar
+          difficulty: A2
+          grammar_topic_slug: verb-patterns-gerund-infinitive
+          prompt:
+            text: >-
+              Заполните пропуски: 1) "I avoid ___ (play) late at night."
+              (playing) 2) "We plan ___ (finish) the game this weekend."
+              (to finish)
+          answer_key:
+            blanks:
+              - ["playing"]
+              - ["to finish"]
+          explanation: >-
+            "Avoid" требует -ing; "plan" требует to-инфинитив.
+
+        - slug: gaming-and-free-time-mini-order-level-up
+          type: sentence_ordering
+          skill: grammar
+          difficulty: A2
+          vocabulary_headword: "level up"
+          prompt:
+            words: ["points", "more", "ten", "to", "I", "level", "up", "need"]
+          answer_key:
+            correct_order: ["I", "need", "ten", "more", "points", "to", "level", "up"]
+          explanation: >-
+            Подлежащее ("I") + глагол ("need") + дополнение ("ten more
+            points") + цель ("to level up").
+
+        - slug: gaming-and-free-time-mini-mc-unwind
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: A2
+          vocabulary_headword: "relax / unwind"
+          prompt:
+            question: "\"Gaming helps me unwind\" means..."
+            options:
+              - id: a
+                text: "It helps me relax after a stressful day"
+              - id: b
+                text: "It makes me more stressed"
+              - id: c
+                text: "It helps me focus at work"
+              - id: d
+                text: "It wastes my time"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Unwind" — расслабиться, снять напряжение.
+
+        - slug: gaming-and-free-time-mini-reading-multiplayer
+          type: reading_comprehension
+          skill: reading
+          difficulty: A2
+          prompt:
+            passage: >-
+              Lisa enjoys playing multiplayer games with her sister. They
+              decided to play together every Sunday evening.
+            questions:
+              - id: q1
+                text: "When do Lisa and her sister play together?"
+                options:
+                  - id: a
+                    text: "Every Sunday evening"
+                  - id: b
+                    text: "Every morning"
+                  - id: c
+                    text: "Only on holidays"
+          answer_key:
+            answers:
+              q1: a
+          explanation: >-
+            "They decided to play together every Sunday evening."
