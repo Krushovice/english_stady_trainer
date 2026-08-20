@@ -1,0 +1,384 @@
+level:
+  code: B2
+  order_index: 4
+
+module:
+  slug: wishes-and-regrets
+  title: Wishes and Regrets
+  order_index: 3
+
+lesson:
+  slug: wishes-and-regrets
+  title: Wishes and Regrets
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Express a wish about the present, the past, or a habit you dislike"
+        - "Use wish/if only with the correct tense for each meaning"
+        - "Use should have / shouldn't have to express regret about the past"
+        - "Use 6 new expressions for talking about wishes and regrets"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        "Wish" and the stronger "if only" express a desire for something
+        to be different, and the tense used shows the timeframe. For a
+        present situation you'd like to be different, use Past Simple:
+        "I wish I lived closer to my family." (I don't live close now).
+        For a past situation you regret, use Past Perfect: "I wish I
+        had studied medicine." (I didn't study medicine). For annoyance
+        about someone's repeated behaviour, use "would + verb": "I wish
+        you would stop interrupting me." "If only" works the same way
+        but is more emphatic: "If only I'd known!" A simpler, very
+        common way to express regret about the past is "should have /
+        shouldn't have + past participle": "I should have called her
+        back." (I didn't, and I regret it.) "You shouldn't have said
+        that." (You did, and it was a mistake.)
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "look back on"
+          translation: "оглядываться назад на, вспоминать"
+          example_sentence: "When I look back on it, I made the right choice."
+        - headword: "second-guess"
+          translation: "сомневаться задним числом, перепроверять своё решение"
+          example_sentence: "Try not to second-guess yourself too much."
+        - headword: "beat yourself up"
+          translation: "корить себя"
+          example_sentence: "Don't beat yourself up over one mistake."
+        - headword: "water under the bridge"
+          translation: "дела давно минувших дней, что было, то было"
+          example_sentence: "It's water under the bridge now — let's move on."
+        - headword: "lesson learned"
+          translation: "извлечённый урок"
+          example_sentence: "It was a difficult experience, but a lesson learned."
+        - headword: "make peace with"
+          translation: "смириться с, примириться с"
+          example_sentence: "I've made peace with the decision I made back then."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: wish-if-only
+          title: "Wish / if only, and should have / shouldn't have"
+          description: >
+            Present situation you want different: "wish/if only + Past
+            Simple": "I wish I had more free time." Past situation you
+            regret: "wish/if only + Past Perfect": "If only I hadn't
+            said that." Annoying repeated behaviour (usually someone
+            else's): "wish + would + verb": "I wish he would listen for
+            once." "Was" often becomes "were" after wish in careful
+            style: "I wish I were taller." Regret about a specific past
+            action, a simpler alternative to "wish + Past Perfect":
+            "should have / shouldn't have + past participle": "I should
+            have asked for help." / "I shouldn't have ignored the
+            email." Common mistake: using "would" for your own present
+            state ("I wish I would be taller" — incorrect; "would" is
+            only for someone else's annoying behaviour, not your own
+            wish for a different state).
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Reflecting on a decision
+          lines:
+            - speaker: A
+              text: "Do you ever look back on your old job and wish you'd stayed?"
+            - speaker: B
+              text: "Honestly, sometimes. I wish I'd asked more questions before I quit."
+            - speaker: A
+              text: "Try not to beat yourself up about it, though."
+            - speaker: B
+              text: "I know. It's water under the bridge now — a lesson learned, really."
+            - speaker: A
+              text: "Exactly. Should you have negotiated a better offer first, maybe?"
+            - speaker: B
+              text: "Probably! But I've made peace with it. No point second-guessing myself forever."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: wishes-and-regrets-mc-water-under-bridge
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "water under the bridge"
+          prompt:
+            question: >-
+              "It's water under the bridge now" means...
+            options:
+              - id: a
+                text: "It's in the past and no longer worth worrying about"
+              - id: b
+                text: "It's still a serious, unresolved problem"
+              - id: c
+                text: "It happened very recently"
+              - id: d
+                text: "It will happen again soon"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Water under the bridge" describes a past event that's no
+            longer worth being upset about.
+
+        - slug: wishes-and-regrets-fill-wish-if-only
+          type: fill_blank
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: wish-if-only
+          prompt:
+            text: >-
+              Complete: 1) "I wish I ___ (have) more free time these
+              days." (had) 2) "If only I ___ (not/say) that." (hadn't
+              said) 3) "I wish he ___ (would/stop) interrupting me."
+              (would stop) 4) "I ___ ___ (should) asked for help
+              sooner." (should have)
+          answer_key:
+            blanks:
+              - ["had"]
+              - ["hadn't said"]
+              - ["would stop"]
+              - ["should have"]
+          explanation: >-
+            Present wish -> Past Simple (had); past regret -> Past
+            Perfect (hadn't said); annoying behaviour -> "would + verb"
+            (would stop); simple past regret -> "should have + past
+            participle".
+
+        - slug: wishes-and-regrets-order-should-have
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: wish-if-only
+          prompt:
+            words: ["for", "should", "sooner", "asked", "help", "I", "have"]
+          answer_key:
+            correct_order: ["I", "should", "have", "asked", "for", "help", "sooner"]
+          explanation: >-
+            "Should have + past participle" expresses regret about a
+            past action that didn't happen.
+
+        - slug: wishes-and-regrets-reading-career-regret
+          type: reading_comprehension
+          skill: reading
+          difficulty: B2
+          prompt:
+            passage: >-
+              When Elena looks back on her twenties, she doesn't
+              second-guess her decision to travel instead of going
+              straight to university. She sometimes wishes she'd saved
+              more money during those years, but she's made peace with
+              the choices she made. "I shouldn't have worried so much
+              about what other people thought," she says now. "If only
+              I'd trusted myself more back then. But it's water under
+              the bridge — every experience was a lesson learned, and I
+              don't beat myself up about it anymore."
+            questions:
+              - id: q1
+                text: "Does Elena regret travelling instead of going to university?"
+                options:
+                  - id: a
+                    text: "Yes, deeply"
+                  - id: b
+                    text: "No, she doesn't second-guess that decision"
+                  - id: c
+                    text: "She hasn't decided how she feels"
+                  - id: d
+                    text: "The text doesn't say"
+              - id: q2
+                text: "What does Elena wish she had done differently?"
+                options:
+                  - id: a
+                    text: "Saved more money"
+                  - id: b
+                    text: "Gone to university"
+                  - id: c
+                    text: "Travelled less"
+                  - id: d
+                    text: "Worked more"
+          answer_key:
+            answers:
+              q1: b
+              q2: a
+          explanation: >-
+            "She doesn't second-guess her decision to travel" (Q1).
+            "She sometimes wishes she'd saved more money during those
+            years" (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: No Regrets, Mostly
+      text: >
+        When Elena looks back on her twenties, she doesn't second-guess
+        her decision to travel instead of going straight to university.
+        She sometimes wishes she'd saved more money during those years,
+        but she's made peace with the choices she made. "I shouldn't
+        have worried so much about what other people thought," she says
+        now. "If only I'd trusted myself more back then. But it's water
+        under the bridge — every experience was a lesson learned, and I
+        don't beat myself up about it anymore."
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      transcript: >
+        A: Do you ever look back on your old job and wish you'd stayed?
+        — B: Honestly, sometimes. I wish I'd asked more questions
+        before I quit. — A: Try not to beat yourself up about it,
+        though. — B: I know. It's water under the bridge now — a
+        lesson learned, really. — A: Exactly. Should you have
+        negotiated a better offer first, maybe? — B: Probably! But
+        I've made peace with it. No point second-guessing myself
+        forever.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Talk about something you wish were different, either about your
+        life now or something in the past. Use "wish", "if only" and
+        "should have/shouldn't have" at least once each. Speak for 60
+        seconds.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Write 6-8 sentences about things you wish were different,
+            using wish/if only for present and past situations, and
+            should have/shouldn't have.
+        - type: vocabulary_recall
+          instructions: >
+            Without looking back at the lesson, write down as many
+            expressions for wishes and regrets as you remember, then
+            check your list against the vocabulary block.
+        - type: grammar_practice
+          instructions: >
+            Write 5 sentences: 2 with wish + Past Simple, 2 with wish +
+            Past Perfect, 1 with wish + would.
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        wish-if-only grammar topic are generated automatically from
+        mistakes and spaced repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: wishes-and-regrets-mini-mc-lesson-learned
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "lesson learned"
+          prompt:
+            question: "\"It was a lesson learned\" means..."
+            options:
+              - id: a
+                text: "Something useful was learned from a difficult experience"
+              - id: b
+                text: "Nothing useful came from the experience"
+              - id: c
+                text: "It happened at school"
+              - id: d
+                text: "It will be forgotten quickly"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "A lesson learned" means the experience taught something
+            valuable, even if it was difficult.
+
+        - slug: wishes-and-regrets-mini-fill-wish-if-only-2
+          type: fill_blank
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: wish-if-only
+          prompt:
+            text: >-
+              Complete: 1) "I wish I ___ (be) taller." (were) 2) "She
+              ___ ___ (should) called earlier." (should have)
+          answer_key:
+            blanks:
+              - ["were"]
+              - ["should have"]
+          explanation: >-
+            "Were" replaces "was" after wish in careful style; "should
+            have + past participle" for past regret.
+
+        - slug: wishes-and-regrets-mini-order-beat-yourself-up
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B2
+          vocabulary_headword: "beat yourself up"
+          prompt:
+            words: ["up", "mistake", "yourself", "one", "Don't", "over", "beat"]
+          answer_key:
+            correct_order: ["Don't", "beat", "yourself", "up", "over", "one", "mistake"]
+          explanation: >-
+            "Beat yourself up over" + noun — feel excessive guilt about
+            something.
+
+        - slug: wishes-and-regrets-mini-mc-make-peace-with
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "make peace with"
+          prompt:
+            question: "\"I've made peace with that decision\" means..."
+            options:
+              - id: a
+                text: "I've accepted it and I'm no longer upset about it"
+              - id: b
+                text: "I'm still very angry about it"
+              - id: c
+                text: "I changed the decision"
+              - id: d
+                text: "I've forgotten about it completely"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Make peace with" means to come to accept something,
+            without necessarily forgetting it.
+
+        - slug: wishes-and-regrets-mini-reading-wish
+          type: reading_comprehension
+          skill: reading
+          difficulty: B2
+          prompt:
+            passage: >-
+              I wish I had studied a language when I was younger. Now I
+              find it much harder, but I've made peace with taking it
+              slowly.
+            questions:
+              - id: q1
+                text: "Did the speaker study a language when they were young?"
+                options:
+                  - id: a
+                    text: "Yes"
+                  - id: b
+                    text: "No"
+                  - id: c
+                    text: "The text doesn't say"
+          answer_key:
+            answers:
+              q1: b
+          explanation: >-
+            "I wish I had studied..." shows this did not actually
+            happen.

@@ -1,0 +1,387 @@
+level:
+  code: B2
+  order_index: 4
+
+module:
+  slug: reported-speech
+  title: Reported Speech
+  order_index: 1
+
+lesson:
+  slug: reported-speech
+  title: Reported Speech
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Report what someone said, asked or told you to do without quoting them directly"
+        - "Apply backshift correctly when reporting statements"
+        - "Report questions and commands with the right structure"
+        - "Use 6 new expressions for reporting news and conversations"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Reported (indirect) speech describes what someone said without
+        quoting their exact words. When the reporting verb is in the
+        past ("said", "told"), the tense of the original statement
+        usually shifts back one step — this is called backshift:
+        present simple → past simple, present continuous → past
+        continuous, present perfect → past perfect, will → would, can →
+        could. "I live in Berlin" becomes "She said she lived in
+        Berlin." Reported questions lose the question word order and
+        the question mark, and use if/whether for yes/no questions: "Are
+        you coming?" → "He asked if I was coming." "Where do you
+        live?" → "She asked where I lived." Reported commands use
+        "told/asked + object + to + infinitive": "Close the door" →
+        "She told him to close the door." Pronouns and time/place
+        expressions also often change: today → that day, here → there,
+        tomorrow → the next day.
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "claim (that)"
+          translation: "утверждать (что)"
+          example_sentence: "The company claims that the product is completely safe."
+        - headword: "mention (that)"
+          translation: "упомянуть (что)"
+          example_sentence: "She mentioned that she might be late."
+        - headword: "point out (that)"
+          translation: "указать, отметить (что)"
+          example_sentence: "He pointed out that the plan had a flaw."
+        - headword: "deny (doing something)"
+          translation: "отрицать (что-то сделал)"
+          example_sentence: "He denied breaking the vase."
+        - headword: "admit (to something)"
+          translation: "признать (что-то)"
+          example_sentence: "She admitted to making a mistake."
+        - headword: "according to"
+          translation: "согласно, по словам"
+          example_sentence: "According to the report, sales have increased."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: reported-speech
+          title: "Reported speech: statements, questions and commands"
+          description: >
+            Statements: backshift the tense one step back when the
+            reporting verb ("said", "told") is in the past — present
+            simple → past simple, past simple → past perfect, will →
+            would, can → could, must → had to. "I'll call you" → "He
+            said he would call me." Yes/no questions: use if/whether,
+            normal statement word order (no auxiliary inversion): "Do
+            you like it?" → "She asked if I liked it." Wh-questions:
+            keep the question word, drop the inversion: "What time is
+            it?" → "He asked what time it was." Commands/requests:
+            "told/asked + object + (not) to + infinitive": "Don't be
+            late" → "She told me not to be late." Common mistake:
+            keeping the question word order in a reported question
+            ("She asked where did I live" — incorrect; needs "She
+            asked where I lived").
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Passing on a conversation
+          lines:
+            - speaker: A
+              text: "What did Anna say about the meeting?"
+            - speaker: B
+              text: "She said she couldn't make it, and she asked if we could reschedule."
+            - speaker: A
+              text: "Did she mention when she'd be free?"
+            - speaker: B
+              text: "She mentioned that she'd be free the following week, actually."
+            - speaker: A
+              text: "OK. And did she explain why she'd be busy?"
+            - speaker: B
+              text: "Not really — she just pointed out that it had been a hectic month for her."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: reported-speech-mc-deny
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "deny (doing something)"
+          prompt:
+            question: >-
+              If someone "denies breaking the vase", what are they
+              saying?
+            options:
+              - id: a
+                text: "They say they did not break it"
+              - id: b
+                text: "They admit they broke it"
+              - id: c
+                text: "They don't know who broke it"
+              - id: d
+                text: "They are offering to fix it"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Deny" means to state that something is not true — the
+            opposite of "admit".
+
+        - slug: reported-speech-fill-reported-speech
+          type: fill_blank
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: reported-speech
+          prompt:
+            text: >-
+              Report these sentences: 1) "I live in Berlin," she said.
+              -> She said she ___ (live) in Berlin. 2) "Are you
+              coming?" he asked. -> He asked ___ I ___ (come). 3)
+              "Close the door," she said. -> She told me ___ ___ (close)
+              the door.
+          answer_key:
+            blanks:
+              - ["lived"]
+              - ["if", "was coming"]
+              - ["to close"]
+          explanation: >-
+            Statements backshift one tense (live -> lived); yes/no
+            questions use "if" + statement word order (was coming);
+            commands use "told + object + to + infinitive" (to close).
+
+        - slug: reported-speech-order-asked-where
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: reported-speech
+          prompt:
+            words: ["lived", "asked", "where", "She", "I"]
+          answer_key:
+            correct_order: ["She", "asked", "where", "I", "lived"]
+          explanation: >-
+            Reported wh-question: reporting verb ("asked") + question
+            word ("where") + statement word order ("I lived"), no
+            inversion.
+
+        - slug: reported-speech-reading-office-news
+          type: reading_comprehension
+          skill: reading
+          difficulty: B2
+          prompt:
+            passage: >-
+              During the interview, the manager claimed that the
+              company had never had a serious data breach. However, a
+              former employee later pointed out that a small breach had
+              in fact occurred two years earlier, though it had been
+              kept quiet. When journalists asked the manager directly
+              whether she had known about it, she admitted that she
+              had, but denied that the company had tried to hide it
+              deliberately. According to the company's official
+              statement released the next day, they were now reviewing
+              their security procedures.
+            questions:
+              - id: q1
+                text: "What did the former employee point out?"
+                options:
+                  - id: a
+                    text: "A small data breach had occurred two years earlier"
+                  - id: b
+                    text: "The company never had any problems"
+                  - id: c
+                    text: "The manager was lying about everything"
+                  - id: d
+                    text: "The company was closing down"
+              - id: q2
+                text: "What did the manager deny?"
+                options:
+                  - id: a
+                    text: "Knowing about the breach"
+                  - id: b
+                    text: "That the company had tried to hide it deliberately"
+                  - id: c
+                    text: "That a breach had happened at all"
+                  - id: d
+                    text: "Reviewing their security procedures"
+          answer_key:
+            answers:
+              q1: a
+              q2: b
+          explanation: >-
+            "A former employee later pointed out that a small breach
+            had in fact occurred two years earlier" (Q1). "She admitted
+            that she had, but denied that the company had tried to hide
+            it deliberately" (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: A Company Under Pressure
+      text: >
+        During the interview, the manager claimed that the company had
+        never had a serious data breach. However, a former employee
+        later pointed out that a small breach had in fact occurred two
+        years earlier, though it had been kept quiet. When journalists
+        asked the manager directly whether she had known about it, she
+        admitted that she had, but denied that the company had tried to
+        hide it deliberately. According to the company's official
+        statement released the next day, they were now reviewing their
+        security procedures.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      transcript: >
+        A: What did Anna say about the meeting? — B: She said she
+        couldn't make it, and she asked if we could reschedule. — A:
+        Did she mention when she'd be free? — B: She mentioned that
+        she'd be free the following week, actually. — A: OK. And did
+        she explain why she'd be busy? — B: Not really — she just
+        pointed out that it had been a hectic month for her.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Report a real or imagined conversation you had recently —
+        include at least one reported statement, one reported question
+        and one reported command or request. Speak for 60 seconds.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Write 6-8 sentences reporting a conversation (real or
+            imagined), including reported statements, questions and at
+            least one command.
+        - type: vocabulary_recall
+          instructions: >
+            Without looking back at the lesson, write down as many
+            reporting verbs as you remember (claim, mention, point out,
+            deny, admit...), then check your list against the
+            vocabulary block.
+        - type: grammar_practice
+          instructions: >
+            Take 5 direct sentences of your own and rewrite them as
+            reported speech, applying backshift correctly.
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        reported-speech grammar topic are generated automatically from
+        mistakes and spaced repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: reported-speech-mini-mc-admit
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "admit (to something)"
+          prompt:
+            question: "\"She admitted to making a mistake\" means..."
+            options:
+              - id: a
+                text: "She accepted that she had made a mistake"
+              - id: b
+                text: "She denied making a mistake"
+              - id: c
+                text: "She blamed someone else"
+              - id: d
+                text: "She corrected the mistake immediately"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Admit" means to accept or confess that something (often
+            unwelcome) is true.
+
+        - slug: reported-speech-mini-fill-reported-speech-2
+          type: fill_blank
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: reported-speech
+          prompt:
+            text: >-
+              Report these: 1) "I'll help you," he said. -> He said he
+              ___ (help) me. 2) "What time is it?" she asked. -> She
+              asked what time ___ ___ .
+          answer_key:
+            blanks:
+              - ["would help"]
+              - ["it was"]
+          explanation: >-
+            "Will" backshifts to "would"; reported wh-question keeps
+            statement word order ("what time it was").
+
+        - slug: reported-speech-mini-order-claim
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B2
+          vocabulary_headword: "claim (that)"
+          prompt:
+            words: ["safe", "product", "The", "is", "company", "the", "claims"]
+          answer_key:
+            correct_order: ["The", "company", "claims", "the", "product", "is", "safe"]
+          explanation: >-
+            Subject ("The company") + verb ("claims") + that-clause
+            ("the product is safe").
+
+        - slug: reported-speech-mini-mc-according-to
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "according to"
+          prompt:
+            question: "\"According to the report, sales have increased\" means..."
+            options:
+              - id: a
+                text: "The report states this information"
+              - id: b
+                text: "The speaker disagrees with the report"
+              - id: c
+                text: "The report has not been published yet"
+              - id: d
+                text: "Sales figures are unknown"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "According to" introduces the source of information — here,
+            the report.
+
+        - slug: reported-speech-mini-reading-report
+          type: reading_comprehension
+          skill: reading
+          difficulty: B2
+          prompt:
+            passage: >-
+              He told me he had finished the project the day before,
+              but later he admitted that he hadn't actually started
+              it yet.
+            questions:
+              - id: q1
+                text: "Had he actually finished the project?"
+                options:
+                  - id: a
+                    text: "Yes, the day before"
+                  - id: b
+                    text: "No, he hadn't even started it"
+                  - id: c
+                    text: "The text doesn't say"
+          answer_key:
+            answers:
+              q1: b
+          explanation: >-
+            "He admitted that he hadn't actually started it yet."

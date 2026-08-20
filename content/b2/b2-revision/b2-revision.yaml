@@ -1,0 +1,279 @@
+level:
+  code: B2
+  order_index: 4
+
+module:
+  slug: b2-revision
+  title: Revision
+  order_index: 10
+
+lesson:
+  slug: b2-revision
+  title: "B2 Revision"
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Review all B2 grammar in mixed, realistic contexts"
+        - "Confidently combine reported speech, conditionals and modals of speculation"
+        - "Recall key vocabulary from all 9 B2 topics"
+        - "Complete the A1-B2 course by preparing for the B2 level exit exam"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        This lesson reviews all B2 grammar: reported speech, third and
+        mixed conditionals, wish/if only, modals of speculation
+        (must/might/can't have), defining and non-defining relative
+        clauses, cleft sentences for emphasis, inversion for emphasis,
+        passive reporting structures and the causative, and discourse
+        markers with three-part phrasal verbs. Fluent speakers combine
+        several of these naturally in one thought: "Never had I
+        imagined that the report, which had been rewritten twice, would
+        be so well received — to be fair, if we hadn't had it reviewed
+        by an outside expert, it might have gone very differently."
+        Notice how reported speech, conditionals, relative clauses and
+        the causative all work together here without sounding
+        artificial.
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "at the end of the day"
+          translation: "в конечном счёте, в конце концов"
+          example_sentence: "At the end of the day, it worked out fine."
+        - headword: "to be honest"
+          translation: "честно говоря"
+          example_sentence: "To be honest, I didn't expect that outcome."
+        - headword: "a turning point"
+          translation: "поворотный момент"
+          example_sentence: "That decision was a real turning point."
+        - headword: "figure out"
+          translation: "разобраться, выяснить"
+          example_sentence: "We eventually figured out what had gone wrong."
+        - headword: "out of the blue"
+          translation: "как гром среди ясного неба, внезапно"
+          example_sentence: "The offer came completely out of the blue."
+        - headword: "to some extent"
+          translation: "в некоторой степени"
+          example_sentence: "To some extent, both explanations are true."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: reported-speech
+          title: "Reported speech: statements, questions and commands"
+          description: >
+            Review: backshift one tense when the reporting verb is in
+            the past ("said she lived", "asked if I was coming"),
+            wh-questions keep the question word but lose inversion,
+            commands use "told/asked + object + to + infinitive".
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Looking back on a big project
+          lines:
+            - speaker: A
+              text: "Do you remember how stressed we were before the launch?"
+            - speaker: B
+              text: "Never had I felt so nervous. If we hadn't had the report reviewed, it might have failed."
+            - speaker: A
+              text: "To be fair, the client who reviewed it gave us some great feedback."
+            - speaker: B
+              text: "Exactly. Out of the blue, they said it was the best proposal they'd seen all year."
+            - speaker: A
+              text: "That was a real turning point for the whole team, honestly."
+            - speaker: B
+              text: "At the end of the day, I think it's what we learn from moments like that that really matters."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: b2-revision-mc-mixed-vocabulary
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "a turning point"
+          prompt:
+            question: >-
+              Your team's biggest project unexpectedly succeeded and
+              changed how the company works from then on. How would you
+              describe that moment?
+            options:
+              - id: a
+                text: "It was a real turning point for the team."
+              - id: b
+                text: "It was water under the bridge for the team."
+              - id: c
+                text: "It was a counterargument for the team."
+              - id: d
+                text: "It was a defining feature for the team."
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "A turning point" describes a moment that significantly
+            changes future direction — exactly this situation.
+
+        - slug: b2-revision-fill-mixed-grammar
+          type: fill_blank
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: reported-speech
+          prompt:
+            text: >-
+              Complete with the correct forms: 1) "She said she ___
+              (be) nervous before the launch." (was) 2) "If we ___
+              (not/have) the report reviewed, it might have failed."
+              (hadn't had) 3) "Never ___ I ___ (feel) so nervous."
+              (had / felt) 4) "It ___ ___ (believe) that the proposal
+              was the best of the year." (is believed)
+          answer_key:
+            blanks:
+              - ["was"]
+              - ["hadn't had"]
+              - ["had", "felt"]
+              - ["is believed"]
+          explanation: >-
+            Reported speech backshift (was); third conditional
+            if-clause (hadn't had); inversion after "never" (had I
+            felt); passive reporting (is believed).
+
+        - slug: b2-revision-order-cleft
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: reported-speech
+          prompt:
+            words: ["matters", "we", "It's", "learn", "what", "that", "really"]
+          answer_key:
+            correct_order: ["It's", "what", "we", "learn", "that", "really", "matters"]
+          explanation: >-
+            "It"-cleft with a "what"-clause as the focus: "It's what we
+            learn that really matters."
+
+        - slug: b2-revision-reading-project-story
+          type: reading_comprehension
+          skill: reading
+          difficulty: B2
+          prompt:
+            passage: >-
+              Never had the team felt so nervous before a launch. Out
+              of the blue, a senior client whose feedback they'd been
+              dreading offered to review the proposal personally. If
+              they hadn't had it reviewed by her, it might have gone
+              very differently — she pointed out several issues that,
+              to be fair, nobody else had noticed. It is widely believed
+              within the company that this single review became the
+              project's real turning point. At the end of the day, what
+              made the difference wasn't luck — it was the willingness
+              to ask for outside help.
+            questions:
+              - id: q1
+                text: "Who reviewed the proposal?"
+                options:
+                  - id: a
+                    text: "A senior client"
+                  - id: b
+                    text: "A junior team member"
+                  - id: c
+                    text: "The CEO"
+                  - id: d
+                    text: "The text doesn't say"
+              - id: q2
+                text: "What does the text say made the real difference, according to the last sentence?"
+                options:
+                  - id: a
+                    text: "The willingness to ask for outside help"
+                  - id: b
+                    text: "Pure luck"
+                  - id: c
+                    text: "A bigger budget"
+                  - id: d
+                    text: "More time"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "A senior client whose feedback they'd been dreading
+            offered to review the proposal personally" (Q1). "What made
+            the difference wasn't luck — it was the willingness to ask
+            for outside help" (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: The Review That Changed Everything
+      text: >
+        Never had the team felt so nervous before a launch. Out of the
+        blue, a senior client whose feedback they'd been dreading
+        offered to review the proposal personally. If they hadn't had
+        it reviewed by her, it might have gone very differently — she
+        pointed out several issues that, to be fair, nobody else had
+        noticed. It is widely believed within the company that this
+        single review became the project's real turning point. At the
+        end of the day, what made the difference wasn't luck — it was
+        the willingness to ask for outside help.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      transcript: >
+        A: Do you remember how stressed we were before the launch? —
+        B: Never had I felt so nervous. If we hadn't had the report
+        reviewed, it might have failed. — A: To be fair, the client who
+        reviewed it gave us some great feedback. — B: Exactly. Out of
+        the blue, they said it was the best proposal they'd seen all
+        year. — A: That was a real turning point for the whole team,
+        honestly. — B: At the end of the day, I think it's what we
+        learn from moments like that that really matters.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Tell a story about a project, decision or event, combining at
+        least four different B2 grammar structures from this level
+        (reported speech, conditionals, wish/regret, modals of
+        speculation, relative clauses, cleft sentences, inversion,
+        passive reporting/causative). Speak for 90 seconds.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Write a short story or reflection (10-12 sentences) about a
+            real or imagined event, using at least 6 different grammar
+            structures from B2.
+        - type: vocabulary_recall
+          instructions: >
+            Without looking back at the lessons, write down as many
+            words as you can remember from all 9 B2 topics (reported
+            speech, hypothetical situations, wishes and regrets,
+            speculating and deducing, relative clauses, debating
+            opinions, advanced storytelling, society and abstract
+            topics, talking naturally).
+        - type: grammar_practice
+          instructions: >
+            Write one sentence for each B2 grammar topic (9 sentences
+            total).
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and grammar topics
+        are generated automatically from mistakes and spaced
+        repetition — nothing to author here.

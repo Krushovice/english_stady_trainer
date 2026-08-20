@@ -1,0 +1,378 @@
+level:
+  code: B2
+  order_index: 4
+
+module:
+  slug: advanced-storytelling
+  title: Advanced Storytelling
+  order_index: 7
+
+lesson:
+  slug: advanced-storytelling
+  title: Advanced Storytelling
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Tell a dramatic or surprising story with natural, varied sentence structure"
+        - "Use inversion after negative adverbials for emphasis"
+        - "Vary sentence openings instead of always starting with the subject"
+        - "Use 6 new expressions for dramatic and surprising storytelling"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Inversion moves the auxiliary verb before the subject, normally
+        reserved for questions, but also used after certain negative or
+        limiting adverbials for dramatic emphasis in storytelling and
+        formal writing. "Never have I felt so nervous." (instead of "I
+        have never felt so nervous.") "Not only did she win the award,
+        but she also broke the record." "Little did he know that
+        everything was about to change." "Rarely do we see such
+        dedication." The adverbial (never, not only, little, rarely,
+        seldom, no sooner) comes first, followed by inverted word order
+        (auxiliary + subject). This structure is more formal and
+        emphatic than the normal word order, and native speakers use it
+        specifically to build tension or highlight a surprising moment
+        in a story.
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "out of the blue"
+          translation: "как гром среди ясного неба, внезапно"
+          example_sentence: "The news came completely out of the blue."
+        - headword: "to make matters worse"
+          translation: "что ещё хуже"
+          example_sentence: "To make matters worse, it started raining."
+        - headword: "against all odds"
+          translation: "вопреки всему"
+          example_sentence: "Against all odds, they finished the project on time."
+        - headword: "in the nick of time"
+          translation: "в последний момент, впритык"
+          example_sentence: "We caught the train in the nick of time."
+        - headword: "a twist"
+          translation: "неожиданный поворот (сюжета/событий)"
+          example_sentence: "The story had an unexpected twist at the end."
+        - headword: "unfold"
+          translation: "разворачиваться (о событиях)"
+          example_sentence: "We watched the events unfold in disbelief."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: inversion-emphasis
+          title: "Inversion for emphasis after negative/limiting adverbials"
+          description: >
+            After certain negative or limiting adverbials placed at the
+            start of a sentence, the subject and auxiliary invert (like
+            a question): "Never have I seen such chaos." "Not only did
+            he apologise, but he also fixed the problem himself."
+            "Little did she realise how much things would change."
+            "Rarely does he arrive on time." "No sooner had we sat down
+            than the phone rang." If there's no auxiliary in the
+            original sentence, add "do/does/did": "Rarely do we get
+            such an opportunity." This is a formal, literary/emphatic
+            structure — very common in storytelling for dramatic
+            effect, but too formal for casual daily speech. Common
+            mistake: forgetting to invert after the adverbial ("Never I
+            have seen..." — incorrect; needs "Never have I seen...").
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Telling a dramatic story
+          lines:
+            - speaker: A
+              text: "You won't believe what happened yesterday. Out of the blue, my car broke down on the motorway."
+            - speaker: B
+              text: "Oh no! What did you do?"
+            - speaker: A
+              text: "To make matters worse, my phone had no battery. Never have I felt so stuck."
+            - speaker: B
+              text: "That's rough. How did it end?"
+            - speaker: A
+              text: "Against all odds, a mechanic drove past and stopped to help — in the nick of time, too, it started raining right after."
+            - speaker: B
+              text: "Wow, what a twist! I love how these stories always unfold."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: advanced-storytelling-mc-out-of-the-blue
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "out of the blue"
+          prompt:
+            question: >-
+              "The news came completely out of the blue" means...
+            options:
+              - id: a
+                text: "It was totally unexpected"
+              - id: b
+                text: "It was announced formally"
+              - id: c
+                text: "Everyone was expecting it"
+              - id: d
+                text: "It happened slowly over time"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Out of the blue" describes something completely sudden and
+            unexpected.
+
+        - slug: advanced-storytelling-fill-inversion-emphasis
+          type: fill_blank
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: inversion-emphasis
+          prompt:
+            text: >-
+              Rewrite with inversion: 1) "I have never seen such
+              chaos." -> "Never ___ I ___ such chaos." (have / seen) 2)
+              "He didn't only apologise, he also fixed it." -> "Not
+              only ___ he apologise, but he also fixed it." (did) 3)
+              "She rarely arrives late." -> "Rarely ___ she arrive
+              late." (does)
+          answer_key:
+            blanks:
+              - ["have", "seen"]
+              - ["did"]
+              - ["does"]
+          explanation: >-
+            Inversion after a negative/limiting adverbial: auxiliary
+            before subject ("have I seen"), or add do/does/did if no
+            auxiliary exists in the original sentence.
+
+        - slug: advanced-storytelling-order-little-did-he-know
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: inversion-emphasis
+          prompt:
+            words: ["change", "know", "everything", "he", "would", "Little", "did"]
+          answer_key:
+            correct_order: ["Little", "did", "he", "know", "everything", "would", "change"]
+          explanation: >-
+            "Little" + inverted word order ("did he know") — a classic
+            storytelling inversion for dramatic foreshadowing.
+
+        - slug: advanced-storytelling-reading-flight-delay
+          type: reading_comprehension
+          skill: reading
+          difficulty: B2
+          prompt:
+            passage: >-
+              Never had I experienced such a chaotic journey. Out of
+              the blue, our flight was cancelled just an hour before
+              boarding. To make matters worse, the airport was
+              completely full, and every hotel nearby was booked. Little
+              did we know that a kind stranger would offer us a ride to
+              a hotel two towns away. Against all odds, we made it to
+              our connecting flight the next morning, arriving in the
+              nick of time before the gate closed. It was a twist none
+              of us had expected, and we still talk about how it all
+              unfolded.
+            questions:
+              - id: q1
+                text: "What happened an hour before boarding?"
+                options:
+                  - id: a
+                    text: "The flight was cancelled"
+                  - id: b
+                    text: "The flight was delayed by five minutes"
+                  - id: c
+                    text: "The airport closed"
+                  - id: d
+                    text: "The hotel was booked"
+              - id: q2
+                text: "Who helped them find a hotel?"
+                options:
+                  - id: a
+                    text: "A kind stranger"
+                  - id: b
+                    text: "An airline employee"
+                  - id: c
+                    text: "A friend"
+                  - id: d
+                    text: "The text doesn't say"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "Our flight was cancelled just an hour before boarding"
+            (Q1). "A kind stranger would offer us a ride" (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: A Chaotic Journey
+      text: >
+        Never had I experienced such a chaotic journey. Out of the
+        blue, our flight was cancelled just an hour before boarding. To
+        make matters worse, the airport was completely full, and every
+        hotel nearby was booked. Little did we know that a kind
+        stranger would offer us a ride to a hotel two towns away.
+        Against all odds, we made it to our connecting flight the next
+        morning, arriving in the nick of time before the gate closed.
+        It was a twist none of us had expected, and we still talk about
+        how it all unfolded.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      transcript: >
+        A: You won't believe what happened yesterday. Out of the blue,
+        my car broke down on the motorway. — B: Oh no! What did you
+        do? — A: To make matters worse, my phone had no battery. Never
+        have I felt so stuck. — B: That's rough. How did it end? — A:
+        Against all odds, a mechanic drove past and stopped to help —
+        in the nick of time, too, it started raining right after. — B:
+        Wow, what a twist! I love how these stories always unfold.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Tell a dramatic or surprising story from your own life. Use at
+        least two inversion structures (never have I, not only, little
+        did I know, rarely) for emphasis. Speak for 60 seconds.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Write a short dramatic story (8-10 sentences), using
+            inversion for emphasis at least 3 times.
+        - type: vocabulary_recall
+          instructions: >
+            Without looking back at the lesson, write down as many
+            storytelling expressions as you remember, then check your
+            list against the vocabulary block.
+        - type: grammar_practice
+          instructions: >
+            Rewrite 5 plain sentences using inversion for emphasis
+            (never, not only, little, rarely, no sooner).
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        inversion-emphasis grammar topic are generated automatically
+        from mistakes and spaced repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: advanced-storytelling-mini-mc-against-all-odds
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "against all odds"
+          prompt:
+            question: "\"Against all odds, they finished the project on time\" means..."
+            options:
+              - id: a
+                text: "Despite very unlikely chances of success"
+              - id: b
+                text: "Because it was very easy"
+              - id: c
+                text: "With plenty of extra time to spare"
+              - id: d
+                text: "They didn't finish on time"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Against all odds" means despite very low chances of
+            success.
+
+        - slug: advanced-storytelling-mini-fill-inversion-emphasis-2
+          type: fill_blank
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: inversion-emphasis
+          prompt:
+            text: >-
+              Rewrite: 1) "We had no sooner sat down than the phone
+              rang." -> "No sooner ___ we sat down than the phone
+              rang." (had) 2) "I have rarely felt so proud." -> "Rarely
+              ___ I felt so proud." (have)
+          answer_key:
+            blanks:
+              - ["had"]
+              - ["have"]
+          explanation: >-
+            Inversion after "no sooner" and "rarely" — auxiliary before
+            subject.
+
+        - slug: advanced-storytelling-mini-order-nick-of-time
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B2
+          vocabulary_headword: "in the nick of time"
+          prompt:
+            words: ["nick", "the", "caught", "train", "the", "We", "in", "of", "time"]
+          answer_key:
+            correct_order: ["We", "caught", "the", "train", "in", "the", "nick", "of", "time"]
+          explanation: >-
+            "In the nick of time" — at the very last possible moment.
+
+        - slug: advanced-storytelling-mini-mc-twist
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "a twist"
+          prompt:
+            question: "A \"twist\" in a story is..."
+            options:
+              - id: a
+                text: "An unexpected turn of events"
+              - id: b
+                text: "A predictable, boring ending"
+              - id: c
+                text: "The beginning of the story"
+              - id: d
+                text: "A character's name"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            A "twist" is a surprising, unexpected turn in a story.
+
+        - slug: advanced-storytelling-mini-reading-inversion
+          type: reading_comprehension
+          skill: reading
+          difficulty: B2
+          prompt:
+            passage: >-
+              Never had she felt so relieved. Against all odds, the
+              rescue team arrived just in the nick of time.
+            questions:
+              - id: q1
+                text: "How did she feel?"
+                options:
+                  - id: a
+                    text: "Relieved"
+                  - id: b
+                    text: "Angry"
+                  - id: c
+                    text: "Bored"
+          answer_key:
+            answers:
+              q1: a
+          explanation: >-
+            "Never had she felt so relieved."

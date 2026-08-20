@@ -1,0 +1,382 @@
+level:
+  code: B2
+  order_index: 4
+
+module:
+  slug: speculating-and-deducing
+  title: Speculating and Deducing
+  order_index: 4
+
+lesson:
+  slug: speculating-and-deducing
+  title: Speculating and Deducing
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Guess what might have happened based on available evidence"
+        - "Use modal verbs of speculation for the present and the past"
+        - "Distinguish must have, might/may have, and can't have by certainty"
+        - "Use 6 new expressions for speculating and drawing conclusions"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Modal verbs let you speculate about something you're not
+        completely sure of, with the modal showing how confident you
+        are. For the present: "must be" (very confident it's true),
+        "might/may be" or "could be" (possible, not sure), "can't be"
+        (very confident it's not true): "She's not answering — she must
+        be busy." "It might be true, I'm not sure." "He can't be
+        serious." For the past, add "have + past participle": "must
+        have + past participle" (confident about a past fact): "The
+        lights are off — they must have left already." "Might/may have
+        + past participle" (a past possibility): "She might have
+        forgotten." "Can't have + past participle" (confident something
+        didn't happen): "He can't have finished already, it's only been
+        five minutes." These modals of deduction are different from
+        their other meanings (permission, obligation) — here they're
+        purely about how likely something is to be true.
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "draw a conclusion"
+          translation: "сделать вывод"
+          example_sentence: "It's hard to draw a conclusion without more evidence."
+        - headword: "on second thoughts"
+          translation: "если подумать ещё раз, пожалуй"
+          example_sentence: "On second thoughts, maybe she's just running late."
+        - headword: "there's no way"
+          translation: "не может быть, невозможно"
+          example_sentence: "There's no way he finished that already."
+        - headword: "it makes sense"
+          translation: "это логично, это имеет смысл"
+          example_sentence: "It makes sense that she left early if she was tired."
+        - headword: "figure out"
+          translation: "разобраться, выяснить"
+          example_sentence: "We're still trying to figure out what happened."
+        - headword: "suspicious"
+          translation: "подозрительный"
+          example_sentence: "Something about his story seems suspicious."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: modals-of-speculation
+          title: "Modals of speculation and deduction: must/might/may/could/can't (have)"
+          description: >
+            Present speculation: "must + verb" (very confident, based on
+            evidence): "He must know the answer." "might/may/could +
+            verb" (uncertain possibility): "She might know already."
+            "can't + verb" (confident it's false): "That can't be
+            right." Past speculation adds "have + past participle":
+            "must have + past participle": "They must have left — the
+            lights are off." "might/may/could have + past participle":
+            "She might have missed the bus." "can't have + past
+            participle": "He can't have seen the message, he'd have
+            replied." Note: "mustn't have" is not used for past
+            deduction — the negative of "must have" (deduction) is
+            "can't have", not "mustn't have" (which is about
+            obligation). Common mistake: using "must not have" for a
+            confident negative deduction instead of "can't have".
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Where is everyone?
+          lines:
+            - speaker: A
+              text: "The office is empty. Where is everyone?"
+            - speaker: B
+              text: "They must have gone to lunch — it's almost 1pm."
+            - speaker: A
+              text: "Hmm, but Sarah's laptop is still open. She can't have gone far."
+            - speaker: B
+              text: "True. She might just be in a meeting somewhere."
+            - speaker: A
+              text: "On second thoughts, there's a meeting room booking on her calendar."
+            - speaker: B
+              text: "That makes sense, then. Mystery solved — we figured it out."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: speculating-and-deducing-mc-suspicious
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "suspicious"
+          prompt:
+            question: >-
+              "Something about his story seems suspicious" means...
+            options:
+              - id: a
+                text: "It might not be true; something seems wrong"
+              - id: b
+                text: "It's definitely true"
+              - id: c
+                text: "It's very boring"
+              - id: d
+                text: "It has already been proven false"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Suspicious" describes something that gives reason to doubt
+            it's honest or accurate.
+
+        - slug: speculating-and-deducing-fill-modals-of-speculation
+          type: fill_blank
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: modals-of-speculation
+          prompt:
+            text: >-
+              Complete: 1) "The lights are off — they ___ ___ (must)
+              left already." 2) "She ___ ___ (might) forgotten about
+              the meeting." 3) "He ___ ___ (can't) finished already,
+              it's only been five minutes."
+          answer_key:
+            blanks:
+              - ["must have"]
+              - ["might have"]
+              - ["can't have"]
+          explanation: >-
+            "Must have" for a confident past deduction; "might have"
+            for an uncertain one; "can't have" for confidently ruling
+            something out.
+
+        - slug: speculating-and-deducing-order-cant-have
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: modals-of-speculation
+          prompt:
+            words: ["right", "can't", "be", "That"]
+          answer_key:
+            correct_order: ["That", "can't", "be", "right"]
+          explanation: >-
+            Present speculation: subject ("That") + "can't" + "be" +
+            complement ("right") — confident it's false.
+
+        - slug: speculating-and-deducing-reading-mystery
+          type: reading_comprehension
+          skill: reading
+          difficulty: B2
+          prompt:
+            passage: >-
+              When Ben got home, the front door was unlocked and a
+              window was open, even though he was sure he'd locked
+              everything before leaving. His first thought was that
+              someone must have broken in, but nothing seemed to be
+              missing. On second thoughts, he remembered his sister had
+              a spare key — she might have stopped by while he was out.
+              There's no way a burglar would leave without taking
+              anything valuable, so it made more sense to assume it was
+              her. He texted her to figure out what had actually
+              happened.
+            questions:
+              - id: q1
+                text: "What was Ben's first thought about the open window?"
+                options:
+                  - id: a
+                    text: "Someone must have broken in"
+                  - id: b
+                    text: "His sister must have visited"
+                  - id: c
+                    text: "He must have forgotten to lock it himself"
+                  - id: d
+                    text: "It was probably the wind"
+              - id: q2
+                text: "Why did Ben think it made more sense to assume his sister had visited?"
+                options:
+                  - id: a
+                    text: "Nothing valuable was missing"
+                  - id: b
+                    text: "He saw her outside"
+                  - id: c
+                    text: "The door was broken"
+                  - id: d
+                    text: "The text doesn't say"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "His first thought was that someone must have broken in"
+            (Q1). "There's no way a burglar would leave without taking
+            anything valuable" implies nothing was missing (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: An Unlocked Door
+      text: >
+        When Ben got home, the front door was unlocked and a window was
+        open, even though he was sure he'd locked everything before
+        leaving. His first thought was that someone must have broken
+        in, but nothing seemed to be missing. On second thoughts, he
+        remembered his sister had a spare key — she might have stopped
+        by while he was out. There's no way a burglar would leave
+        without taking anything valuable, so it made more sense to
+        assume it was her. He texted her to figure out what had
+        actually happened.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      transcript: >
+        A: The office is empty. Where is everyone? — B: They must have
+        gone to lunch — it's almost 1pm. — A: Hmm, but Sarah's laptop
+        is still open. She can't have gone far. — B: True. She might
+        just be in a meeting somewhere. — A: On second thoughts,
+        there's a meeting room booking on her calendar. — B: That makes
+        sense, then. Mystery solved — we figured it out.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Describe a small mystery or unexplained situation (real or
+        imagined) and speculate about what happened. Use must have,
+        might have and can't have at least once each. Speak for 60
+        seconds.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Write 6-8 sentences speculating about an unexplained
+            situation, using must (have), might/may (have) and can't
+            (have).
+        - type: vocabulary_recall
+          instructions: >
+            Without looking back at the lesson, write down as many
+            speculation/deduction expressions as you remember, then
+            check your list against the vocabulary block.
+        - type: grammar_practice
+          instructions: >
+            Write 6 speculative sentences: 2 with must (have), 2 with
+            might/may (have), 2 with can't (have).
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        modals-of-speculation grammar topic are generated automatically
+        from mistakes and spaced repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: speculating-and-deducing-mini-mc-figure-out
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "figure out"
+          prompt:
+            question: "\"We're still trying to figure out what happened\" means..."
+            options:
+              - id: a
+                text: "We're trying to understand or work it out"
+              - id: b
+                text: "We already know exactly what happened"
+              - id: c
+                text: "We've given up trying to understand"
+              - id: d
+                text: "We're drawing a picture of what happened"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Figure out" means to work something out or understand it
+            through thought.
+
+        - slug: speculating-and-deducing-mini-fill-modals-of-speculation-2
+          type: fill_blank
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: modals-of-speculation
+          prompt:
+            text: >-
+              Complete: 1) "She's not here — she ___ ___ (must) gone
+              home already." 2) "That ___ ___ (can't) true, I only saw
+              him an hour ago."
+          answer_key:
+            blanks:
+              - ["must have"]
+              - ["can't be"]
+          explanation: >-
+            "Must have" for a confident past deduction; "can't be" for
+            a confident present denial.
+
+        - slug: speculating-and-deducing-mini-order-draw-conclusion
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B2
+          vocabulary_headword: "draw a conclusion"
+          prompt:
+            words: ["hard", "conclusion", "It's", "draw", "a", "to"]
+          answer_key:
+            correct_order: ["It's", "hard", "to", "draw", "a", "conclusion"]
+          explanation: >-
+            "Draw a conclusion" — form a judgement based on evidence.
+
+        - slug: speculating-and-deducing-mini-mc-it-makes-sense
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "it makes sense"
+          prompt:
+            question: "\"It makes sense that she left early\" means..."
+            options:
+              - id: a
+                text: "It's a logical, understandable explanation"
+              - id: b
+                text: "It's a strange, confusing explanation"
+              - id: c
+                text: "Nobody knows why she left early"
+              - id: d
+                text: "She didn't actually leave early"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "It makes sense" means an explanation is logical and easy
+            to understand.
+
+        - slug: speculating-and-deducing-mini-reading-deduction
+          type: reading_comprehension
+          skill: reading
+          difficulty: B2
+          prompt:
+            passage: >-
+              The car is gone and the garage is open. She must have
+              left for work already. She can't have gone far, since
+              her phone is still on the kitchen table.
+            questions:
+              - id: q1
+                text: "Where does the speaker think the phone is?"
+                options:
+                  - id: a
+                    text: "On the kitchen table"
+                  - id: b
+                    text: "In the car"
+                  - id: c
+                    text: "At work"
+          answer_key:
+            answers:
+              q1: a
+          explanation: >-
+            "Her phone is still on the kitchen table."

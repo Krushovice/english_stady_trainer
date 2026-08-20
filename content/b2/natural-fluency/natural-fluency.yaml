@@ -1,0 +1,383 @@
+level:
+  code: B2
+  order_index: 4
+
+module:
+  slug: natural-fluency
+  title: Talking Naturally
+  order_index: 9
+
+lesson:
+  slug: talking-naturally
+  title: Talking Naturally
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Sound more natural and less textbook-like in everyday conversation"
+        - "Use discourse markers to organise spoken thoughts and buy thinking time"
+        - "Recognise and use common three-part phrasal verbs"
+        - "Use 6 new expressions that native speakers use constantly in conversation"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Fluent, natural speech relies heavily on discourse markers —
+        small words and phrases that organise thoughts, soften
+        statements, or buy a moment to think, rather than adding new
+        information. "Well, ..." (starting to answer, especially a
+        tricky question), "I mean, ..." (clarifying or rephrasing),
+        "you know, ..." (checking shared understanding), "anyway, ..."
+        (returning to the main point), "basically, ..." (simplifying),
+        "to be fair, ..." (acknowledging a valid point before
+        disagreeing). Fluent speech also uses three-part phrasal verbs
+        (verb + adverb + preposition) frequently: "look forward to",
+        "put up with", "come up with", "get away with", "look down on".
+        These are fixed combinations whose meaning often can't be
+        guessed from the individual words, and using them naturally is
+        one of the clearest signs of fluency.
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "put up with"
+          translation: "мириться с, терпеть"
+          example_sentence: "I don't know how she puts up with that noise."
+        - headword: "get away with"
+          translation: "выйти сухим из воды, избежать наказания за"
+          example_sentence: "He always gets away with being late."
+        - headword: "look down on"
+          translation: "смотреть свысока на"
+          example_sentence: "She never looks down on anyone."
+        - headword: "come across as"
+          translation: "производить впечатление, казаться"
+          example_sentence: "He comes across as very confident."
+        - headword: "to be fair"
+          translation: "если быть справедливым, честно говоря"
+          example_sentence: "To be fair, she did warn us in advance."
+        - headword: "basically"
+          translation: "по сути, в основном"
+          example_sentence: "Basically, we just need more time."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: discourse-markers-phrasal-verbs
+          title: "Discourse markers and three-part phrasal verbs"
+          description: >
+            Discourse markers organise spoken language without adding
+            factual content — they're normal, expected, and make speech
+            sound more natural, not sloppy: "Well, I'm not sure that's
+            true." "I mean, it depends on the situation." "Anyway, back
+            to what I was saying." Overusing filler ("um", "like" every
+            sentence) can sound unclear, but discourse markers used
+            purposefully are a genuine fluency skill. Three-part
+            phrasal verbs (verb + adverb + preposition) behave as a
+            single unit and take a fixed preposition: "put up with"
+            (tolerate), "look forward to" (anticipate happily), "come
+            up with" (invent/produce), "get away with" (avoid
+            consequences for), "look down on" (consider inferior).
+            They're inseparable — the object always goes after the
+            whole phrase: "I can't put up with this noise anymore" (not
+            "put this noise up with").
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: A casual catch-up
+          lines:
+            - speaker: A
+              text: "So, how's the new job going? You come across as pretty happy about it."
+            - speaker: B
+              text: "Well, honestly, it's good. I mean, there are some annoying parts, but overall, yeah."
+            - speaker: A
+              text: "What kind of annoying parts?"
+            - speaker: B
+              text: "You know, the usual — a manager who always seems to get away with being late himself."
+            - speaker: A
+              text: "Ha, to be fair, that happens everywhere."
+            - speaker: B
+              text: "True. Anyway, basically, I've learnt to put up with the small stuff and focus on the good."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: talking-naturally-mc-come-across-as
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "come across as"
+          prompt:
+            question: >-
+              "He comes across as very confident" means...
+            options:
+              - id: a
+                text: "He gives the impression of being confident"
+              - id: b
+                text: "He is definitely not confident"
+              - id: c
+                text: "He crossed the street confidently"
+              - id: d
+                text: "He always argues with people"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Come across as" describes the impression someone gives, not
+            necessarily what's objectively true.
+
+        - slug: talking-naturally-fill-discourse-markers
+          type: fill_blank
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: discourse-markers-phrasal-verbs
+          prompt:
+            text: >-
+              Complete: 1) "I don't know how she ___ ___ ___ that
+              noise." (puts up with) 2) "He always ___ ___ ___ being
+              late." (gets away with) 3) "She never ___ ___ ___
+              anyone." (looks down on)
+          answer_key:
+            blanks:
+              - ["puts up with"]
+              - ["gets away with"]
+              - ["looks down on"]
+          explanation: >-
+            Three-part phrasal verbs are fixed units — "put up with",
+            "get away with", "look down on" — always keep their full
+            form and preposition.
+
+        - slug: talking-naturally-order-to-be-fair
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B2
+          vocabulary_headword: "to be fair"
+          prompt:
+            words: ["advance", "did", "in", "warn", "us", "she", "fair", "To", "be"]
+          answer_key:
+            correct_order: ["To", "be", "fair", "she", "did", "warn", "us", "in", "advance"]
+          explanation: >-
+            "To be fair" opens the sentence as a discourse marker
+            before the main clause.
+
+        - slug: talking-naturally-reading-catch-up
+          type: reading_comprehension
+          skill: reading
+          difficulty: B2
+          prompt:
+            passage: >-
+              "Well, I mean, it's complicated," Rosa said when asked
+              about her new role. "Basically, I love the work itself,
+              but I have to put up with a lot of unnecessary meetings.
+              To be fair, that's probably true everywhere, though." Her
+              friend laughed. "You know, you always come across as
+              really positive, even when you're complaining." "Ha,
+              maybe," Rosa said. "Anyway, at least nobody looks down on
+              new ideas here — that's the main thing I appreciate."
+            questions:
+              - id: q1
+                text: "What does Rosa say she has to put up with?"
+                options:
+                  - id: a
+                    text: "A lot of unnecessary meetings"
+                  - id: b
+                    text: "A difficult manager"
+                  - id: c
+                    text: "Low pay"
+                  - id: d
+                    text: "Long commutes"
+              - id: q2
+                text: "What does Rosa appreciate most about her workplace?"
+                options:
+                  - id: a
+                    text: "Nobody looks down on new ideas"
+                  - id: b
+                    text: "The salary"
+                  - id: c
+                    text: "The office location"
+                  - id: d
+                    text: "The short meetings"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "I have to put up with a lot of unnecessary meetings" (Q1).
+            "At least nobody looks down on new ideas here — that's the
+            main thing I appreciate" (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: A Chat About Work
+      text: >
+        "Well, I mean, it's complicated," Rosa said when asked about her
+        new role. "Basically, I love the work itself, but I have to put
+        up with a lot of unnecessary meetings. To be fair, that's
+        probably true everywhere, though." Her friend laughed. "You
+        know, you always come across as really positive, even when
+        you're complaining." "Ha, maybe," Rosa said. "Anyway, at least
+        nobody looks down on new ideas here — that's the main thing I
+        appreciate."
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      transcript: >
+        A: So, how's the new job going? You come across as pretty happy
+        about it. — B: Well, honestly, it's good. I mean, there are
+        some annoying parts, but overall, yeah. — A: What kind of
+        annoying parts? — B: You know, the usual — a manager who
+        always seems to get away with being late himself. — A: Ha, to
+        be fair, that happens everywhere. — B: True. Anyway, basically,
+        I've learnt to put up with the small stuff and focus on the
+        good.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Talk casually about your job, studies or daily life, deliberately
+        using at least three discourse markers (well, I mean, you know,
+        anyway, basically, to be fair) and one three-part phrasal verb.
+        Speak for 60 seconds.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Write a casual, natural-sounding dialogue (8-10 lines)
+            between two friends, using at least 4 discourse markers and
+            2 three-part phrasal verbs.
+        - type: vocabulary_recall
+          instructions: >
+            Without looking back at the lesson, write down as many
+            discourse markers and phrasal verbs as you remember, then
+            check your list against the vocabulary block.
+        - type: grammar_practice
+          instructions: >
+            Write 6 sentences using a different three-part phrasal verb
+            in each (put up with, look forward to, come up with, get
+            away with, look down on, and one more of your choice).
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        discourse-markers-phrasal-verbs grammar topic are generated
+        automatically from mistakes and spaced repetition — nothing to
+        author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: talking-naturally-mini-mc-basically
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "basically"
+          prompt:
+            question: "\"Basically, we just need more time\" is used to..."
+            options:
+              - id: a
+                text: "Simplify or summarise the main point"
+              - id: b
+                text: "Add a complicated new detail"
+              - id: c
+                text: "Contradict what was said before"
+              - id: d
+                text: "Ask a question"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Basically" introduces a simplified summary of the main
+            point.
+
+        - slug: talking-naturally-mini-fill-discourse-markers-2
+          type: fill_blank
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: discourse-markers-phrasal-verbs
+          prompt:
+            text: >-
+              Complete: 1) "I'm really ___ ___ ___ the weekend." (look
+              forward to) 2) "They ___ ___ ___ a great solution." (came
+              up with)
+          answer_key:
+            blanks:
+              - ["looking forward to"]
+              - ["came up with"]
+          explanation: >-
+            "Look forward to" (anticipate happily); "come up with"
+            (invent/produce) — both fixed three-part phrasal verbs.
+
+        - slug: talking-naturally-mini-order-get-away-with
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B2
+          vocabulary_headword: "get away with"
+          prompt:
+            words: ["late", "gets", "He", "with", "away", "being", "always"]
+          answer_key:
+            correct_order: ["He", "always", "gets", "away", "with", "being", "late"]
+          explanation: >-
+            "Get away with" + gerund: "gets away with being late" —
+            avoids consequences for something.
+
+        - slug: talking-naturally-mini-mc-look-down-on
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "look down on"
+          prompt:
+            question: "\"She never looks down on anyone\" means..."
+            options:
+              - id: a
+                text: "She never treats people as inferior"
+              - id: b
+                text: "She never looks at people directly"
+              - id: c
+                text: "She avoids everyone"
+              - id: d
+                text: "She always agrees with everyone"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Look down on" means to consider someone inferior or less
+            important.
+
+        - slug: talking-naturally-mini-reading-discourse
+          type: reading_comprehension
+          skill: reading
+          difficulty: B2
+          prompt:
+            passage: >-
+              Well, to be fair, it wasn't a perfect plan. Basically, we
+              just ran out of time to prepare properly.
+            questions:
+              - id: q1
+                text: "Why does the speaker say the plan wasn't perfect?"
+                options:
+                  - id: a
+                    text: "They ran out of time to prepare"
+                  - id: b
+                    text: "Nobody wanted to help"
+                  - id: c
+                    text: "It was too expensive"
+          answer_key:
+            answers:
+              q1: a
+          explanation: >-
+            "Basically, we just ran out of time to prepare properly."

@@ -1,0 +1,392 @@
+level:
+  code: B2
+  order_index: 4
+
+module:
+  slug: society-and-abstract-topics
+  title: "Society & Abstract Topics"
+  order_index: 8
+
+lesson:
+  slug: society-and-abstract-topics
+  title: "Society & Abstract Topics"
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Discuss abstract topics like inequality, tradition and progress"
+        - "Report general beliefs impersonally using passive reporting structures"
+        - "Talk about arranging for someone else to do something with the causative"
+        - "Use 6 new expressions for discussing society and abstract ideas"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Two structures make abstract, impersonal discussion sound more
+        natural. First, passive reporting structures let you state a
+        widely held belief without naming who holds it: "It is
+        believed that the tradition dates back centuries." / "The
+        tradition is believed to date back centuries." Both mean the
+        same; the second is more common in formal writing. Common
+        reporting verbs used this way: think, say, believe, consider,
+        estimate, know. Second, the causative "have/get something done"
+        describes arranging for someone else to do something for you,
+        rather than doing it yourself: "have + object + past
+        participle": "We had the report translated." (someone else
+        translated it for us, not us). "Get" is a slightly more
+        informal alternative: "I need to get my documents checked."
+        This is different from the passive, which has no sense of
+        arranging or paying someone.
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "inequality"
+          translation: "неравенство"
+          example_sentence: "The report highlights growing inequality."
+        - headword: "widespread"
+          translation: "широко распространённый"
+          example_sentence: "The belief is widespread across the region."
+        - headword: "tradition vs. progress"
+          translation: "традиция против прогресса"
+          example_sentence: "The debate between tradition and progress is nothing new."
+        - headword: "raise awareness"
+          translation: "повышать осведомлённость"
+          example_sentence: "The campaign aims to raise awareness of the issue."
+        - headword: "shape (society/opinion)"
+          translation: "формировать (общество/мнение)"
+          example_sentence: "Media has always helped shape public opinion."
+        - headword: "to some extent"
+          translation: "в некоторой степени"
+          example_sentence: "To some extent, both sides have a point."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: causative-passive-reporting
+          title: "Passive reporting structures and the causative have/get something done"
+          description: >
+            Passive reporting: "It is + reporting verb (past participle)
+            + that + clause": "It is estimated that costs will rise."
+            Or: "subject + is/are + reporting verb (past participle) +
+            to + infinitive": "Costs are estimated to rise." Both avoid
+            naming who exactly holds the belief — useful for general,
+            widely-held views. Causative: "have/get + object + past
+            participle" describes something done for you by someone
+            else, often arranged or paid for: "I had my hair cut
+            yesterday." (a hairdresser cut it, not me) "We're getting
+            the kitchen renovated next month." Contrast with the plain
+            passive, which has no sense of arranging: "The kitchen was
+            renovated" (states a fact, no focus on who arranged it or
+            who benefits). Common mistake: using the causative when you
+            actually did the action yourself — "I had my homework
+            finished" implies someone else finished it for you, not
+            that you finished it yourself.
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Discussing a social issue
+          lines:
+            - speaker: A
+              text: "It's widely believed that inequality has gotten worse in the last decade."
+            - speaker: B
+              text: "To some extent, yes. It's estimated that the gap has doubled in some countries."
+            - speaker: A
+              text: "That's why campaigns try to raise awareness — it really does shape opinion."
+            - speaker: B
+              text: "Speaking of which, did you get that report translated for the conference?"
+            - speaker: A
+              text: "Yes, I had it translated last week — it covers the tradition vs. progress debate too."
+            - speaker: B
+              text: "Good. I'll get my copy printed before the meeting."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: society-and-abstract-topics-mc-widespread
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "widespread"
+          prompt:
+            question: >-
+              "The belief is widespread across the region" means...
+            options:
+              - id: a
+                text: "Many people in the region hold this belief"
+              - id: b
+                text: "Almost nobody holds this belief"
+              - id: c
+                text: "The belief is new and uncommon"
+              - id: d
+                text: "The belief only exists in one small town"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Widespread" means existing or happening in many places, or
+            held by many people.
+
+        - slug: society-and-abstract-topics-fill-causative-passive-reporting
+          type: fill_blank
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: causative-passive-reporting
+          prompt:
+            text: >-
+              Complete: 1) "It ___ ___ (believed) that costs will
+              rise." (is believed) 2) "Costs ___ ___ (estimate) to
+              rise." (are estimated) 3) "I ___ my hair ___ (cut)
+              yesterday." (had / cut)
+          answer_key:
+            blanks:
+              - ["is believed"]
+              - ["are estimated"]
+              - ["had", "cut"]
+          explanation: >-
+            "It is + past participle + that" and "subject + is/are +
+            past participle + to" are both passive reporting patterns;
+            the causative uses "have + object + past participle" (had
+            my hair cut).
+
+        - slug: society-and-abstract-topics-order-causative
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: causative-passive-reporting
+          prompt:
+            words: ["kitchen", "the", "getting", "renovated", "We're"]
+          answer_key:
+            correct_order: ["We're", "getting", "the", "kitchen", "renovated"]
+          explanation: >-
+            Causative: subject + "getting" + object ("the kitchen") +
+            past participle ("renovated").
+
+        - slug: society-and-abstract-topics-reading-inequality-report
+          type: reading_comprehension
+          skill: reading
+          difficulty: B2
+          prompt:
+            passage: >-
+              It is widely believed that access to good education
+              plays a major role in reducing inequality. According to a
+              new report, the gap between regions is estimated to have
+              grown over the last ten years, despite widespread efforts
+              to raise awareness. Many local governments have started
+              having their education systems reviewed by independent
+              experts, hoping to identify what shapes long-term
+              outcomes. To some extent, progress has been made, but
+              campaigners argue that tradition and outdated policies
+              still hold many regions back.
+            questions:
+              - id: q1
+                text: "What is widely believed to play a major role in reducing inequality?"
+                options:
+                  - id: a
+                    text: "Access to good education"
+                  - id: b
+                    text: "Higher taxes"
+                  - id: c
+                    text: "New technology"
+                  - id: d
+                    text: "The text doesn't say"
+              - id: q2
+                text: "What are many local governments having done?"
+                options:
+                  - id: a
+                    text: "Their education systems reviewed by independent experts"
+                  - id: b
+                    text: "New schools built immediately"
+                  - id: c
+                    text: "Their budgets cut"
+                  - id: d
+                    text: "Nothing at all"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "It is widely believed that access to good education plays
+            a major role in reducing inequality" (Q1). "Many local
+            governments have started having their education systems
+            reviewed by independent experts" (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: Closing the Gap
+      text: >
+        It is widely believed that access to good education plays a
+        major role in reducing inequality. According to a new report,
+        the gap between regions is estimated to have grown over the
+        last ten years, despite widespread efforts to raise awareness.
+        Many local governments have started having their education
+        systems reviewed by independent experts, hoping to identify
+        what shapes long-term outcomes. To some extent, progress has
+        been made, but campaigners argue that tradition and outdated
+        policies still hold many regions back.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      transcript: >
+        A: It's widely believed that inequality has gotten worse in
+        the last decade. — B: To some extent, yes. It's estimated that
+        the gap has doubled in some countries. — A: That's why
+        campaigns try to raise awareness — it really does shape
+        opinion. — B: Speaking of which, did you get that report
+        translated for the conference? — A: Yes, I had it translated
+        last week — it covers the tradition vs. progress debate too. —
+        B: Good. I'll get my copy printed before the meeting.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Talk about an abstract or societal topic you care about (e.g.
+        inequality, tradition vs. progress, technology's effect on
+        society). Use at least one passive reporting structure and one
+        causative structure. Speak for 60 seconds.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Write 6-8 sentences discussing an abstract social topic,
+            using at least 2 passive reporting structures and 2
+            causative structures.
+        - type: vocabulary_recall
+          instructions: >
+            Without looking back at the lesson, write down as many
+            society/abstract-topic expressions as you remember, then
+            check your list against the vocabulary block.
+        - type: grammar_practice
+          instructions: >
+            Write 3 sentences with passive reporting ("It is believed
+            that...") and 3 with the causative ("I had/got ...
+            done").
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        causative-passive-reporting grammar topic are generated
+        automatically from mistakes and spaced repetition — nothing to
+        author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: society-and-abstract-topics-mini-mc-raise-awareness
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "raise awareness"
+          prompt:
+            question: "\"The campaign aims to raise awareness of the issue\" means..."
+            options:
+              - id: a
+                text: "Help more people know about and understand the issue"
+              - id: b
+                text: "Solve the issue immediately"
+              - id: c
+                text: "Hide the issue from the public"
+              - id: d
+                text: "Reduce funding for the issue"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Raise awareness" means to help people become more informed
+            about something.
+
+        - slug: society-and-abstract-topics-mini-fill-causative-passive-reporting-2
+          type: fill_blank
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: causative-passive-reporting
+          prompt:
+            text: >-
+              Complete: 1) "It ___ ___ (know) that the tradition is
+              very old." (is known) 2) "We ___ our car ___ (repair)
+              last week." (had / repaired)
+          answer_key:
+            blanks:
+              - ["is known"]
+              - ["had", "repaired"]
+          explanation: >-
+            Passive reporting: "It is known that..."; causative: "had
+            + object + past participle".
+
+        - slug: society-and-abstract-topics-mini-order-shape
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B2
+          vocabulary_headword: "shape (society/opinion)"
+          prompt:
+            words: ["opinion", "helped", "always", "public", "has", "shape", "Media"]
+          answer_key:
+            correct_order: ["Media", "has", "always", "helped", "shape", "public", "opinion"]
+          explanation: >-
+            Subject ("Media") + auxiliary ("has") + adverb ("always") +
+            verb phrase ("helped shape public opinion").
+
+        - slug: society-and-abstract-topics-mini-mc-to-some-extent
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "to some extent"
+          prompt:
+            question: "\"To some extent, both sides have a point\" means..."
+            options:
+              - id: a
+                text: "Partially, but not completely"
+              - id: b
+                text: "Completely and fully"
+              - id: c
+                text: "Not at all"
+              - id: d
+                text: "Only one side has a point"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "To some extent" means partially true, but with
+            limitations.
+
+        - slug: society-and-abstract-topics-mini-reading-causative
+          type: reading_comprehension
+          skill: reading
+          difficulty: B2
+          prompt:
+            passage: >-
+              It is believed that the policy will reduce inequality
+              over time. The government had the proposal reviewed by
+              independent economists before announcing it.
+            questions:
+              - id: q1
+                text: "Who reviewed the proposal?"
+                options:
+                  - id: a
+                    text: "Independent economists"
+                  - id: b
+                    text: "The government itself"
+                  - id: c
+                    text: "The public"
+          answer_key:
+            answers:
+              q1: a
+          explanation: >-
+            "The government had the proposal reviewed by independent
+            economists."

@@ -1,0 +1,385 @@
+level:
+  code: B2
+  order_index: 4
+
+module:
+  slug: debating-opinions
+  title: Debating Opinions
+  order_index: 6
+
+lesson:
+  slug: debating-opinions
+  title: Debating Opinions
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Take part in a structured debate and defend a position"
+        - "Emphasise the exact point you're making with cleft sentences"
+        - "Use formal linking words to build a logical argument"
+        - "Use 6 new expressions for debating and structuring arguments"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        In a debate, precision matters — cleft sentences let you put
+        exactly the right piece of information in focus. "What"-clefts
+        put the focus at the end: "What worries me most is the cost." (
+        not just "The cost worries me" — this version emphasises "the
+        cost" as the answer to an implied question). "It"-clefts put the
+        focus right after "it is/was": "It's the cost that worries me
+        most, not the timeline." (specifically singles out "the cost",
+        implicitly contrasting it with something else). Formal debates
+        also rely on linking words that plain conversation rarely
+        needs: "however" and "nevertheless" (contrast), "moreover" and
+        "furthermore" (adding a point), "consequently" and "as a
+        result" (result), "on the whole" (summarising a general view).
+        These give an argument a clear, logical shape a listener can
+        follow.
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "put forward (an argument)"
+          translation: "выдвинуть (аргумент)"
+          example_sentence: "She put forward a strong argument for change."
+        - headword: "play devil's advocate"
+          translation: "выступать в роли адвоката дьявола, спорить намеренно"
+          example_sentence: "Let me play devil's advocate for a moment."
+        - headword: "a valid point"
+          translation: "обоснованный довод"
+          example_sentence: "That's a valid point, but I still disagree."
+        - headword: "on the whole"
+          translation: "в целом"
+          example_sentence: "On the whole, I support the new policy."
+        - headword: "a counterargument"
+          translation: "контраргумент"
+          example_sentence: "He offered a strong counterargument."
+        - headword: "at the end of the day"
+          translation: "в конечном счёте, в конце концов"
+          example_sentence: "At the end of the day, the results speak for themselves."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: cleft-sentences-emphasis
+          title: "Cleft sentences for emphasis: what... is / it is... that"
+          description: >
+            "What"-cleft: "What + clause + is/was + the focus.": "What
+            concerns me is the lack of evidence." Puts extra weight on
+            "the lack of evidence" compared to the plain "The lack of
+            evidence concerns me." "It"-cleft: "It + is/was + the focus
+            + that/who + clause.": "It was Anna who first raised the
+            issue." Singles out "Anna" specifically, often implying a
+            contrast ("...not someone else"). Both structures move
+            information that would normally be in the middle of a
+            sentence to a position of focus, which is why they're
+            common in argument and debate — they let you say precisely
+            what matters most. Common mistake: forgetting "that/who"
+            after an it-cleft ("It was Anna first raised the issue" —
+            incorrect; needs "It was Anna who first raised the issue").
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: A debate about remote work
+          lines:
+            - speaker: A
+              text: "What worries me most about remote work is the lack of collaboration."
+            - speaker: B
+              text: "That's a valid point. However, it's flexibility that most employees value."
+            - speaker: A
+              text: "Let me play devil's advocate — is flexibility really worth losing teamwork?"
+            - speaker: B
+              text: "Moreover, studies show productivity often increases. Consequently, many companies keep it."
+            - speaker: A
+              text: "On the whole, I agree it has benefits, but I'd put forward a hybrid model instead."
+            - speaker: B
+              text: "That's a fair counterargument. At the end of the day, it depends on the team."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: debating-opinions-mc-valid-point
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "a valid point"
+          prompt:
+            question: >-
+              "That's a valid point, but I still disagree" means...
+            options:
+              - id: a
+                text: "The argument is reasonable, even though I don't agree"
+              - id: b
+                text: "The argument is completely wrong"
+              - id: c
+                text: "I agree completely with the argument"
+              - id: d
+                text: "The argument doesn't make sense"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "A valid point" acknowledges an argument is reasonable, even
+            if the speaker ultimately disagrees.
+
+        - slug: debating-opinions-fill-cleft-sentences
+          type: fill_blank
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: cleft-sentences-emphasis
+          prompt:
+            text: >-
+              Rewrite for emphasis: 1) "The lack of evidence concerns
+              me." -> "What ___ me is the lack of evidence." (concerns)
+              2) "Anna first raised the issue." -> "It was Anna ___
+              first raised the issue." (who)
+          answer_key:
+            blanks:
+              - ["concerns"]
+              - ["who"]
+          explanation: >-
+            "What"-cleft: "What + clause + is/was + focus". "It"-cleft:
+            "It + is/was + focus + who/that + clause".
+
+        - slug: debating-opinions-order-what-cleft
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: cleft-sentences-emphasis
+          prompt:
+            words: ["timeline", "the", "worries", "What", "me", "is"]
+          answer_key:
+            correct_order: ["What", "worries", "me", "is", "the", "timeline"]
+          explanation: >-
+            "What"-cleft: "What" + clause ("worries me") + "is" + focus
+            ("the timeline").
+
+        - slug: debating-opinions-reading-debate-transcript
+          type: reading_comprehension
+          skill: reading
+          difficulty: B2
+          prompt:
+            passage: >-
+              During the panel discussion, one speaker put forward a
+              strong argument for shorter working weeks. "What matters
+              most," she said, "is not the number of hours worked, but
+              the quality of the output." Another panellist played
+              devil's advocate, pointing out that some industries simply
+              couldn't function with fewer hours. It was the moderator
+              who eventually summarised the debate: "On the whole, both
+              sides raised valid points, and consequently, the real
+              answer probably depends on the industry."
+            questions:
+              - id: q1
+                text: "What did the first speaker say matters most?"
+                options:
+                  - id: a
+                    text: "The quality of the output, not the number of hours"
+                  - id: b
+                    text: "The number of hours worked"
+                  - id: c
+                    text: "The size of the company"
+                  - id: d
+                    text: "The location of the office"
+              - id: q2
+                text: "Who summarised the debate?"
+                options:
+                  - id: a
+                    text: "The moderator"
+                  - id: b
+                    text: "The first speaker"
+                  - id: c
+                    text: "The audience"
+                  - id: d
+                    text: "The text doesn't say"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "'What matters most,' she said, 'is not the number of
+            hours worked, but the quality of the output'" (Q1). "It
+            was the moderator who eventually summarised the debate"
+            (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: A Panel Discussion on Working Hours
+      text: >
+        During the panel discussion, one speaker put forward a strong
+        argument for shorter working weeks. "What matters most," she
+        said, "is not the number of hours worked, but the quality of
+        the output." Another panellist played devil's advocate, pointing
+        out that some industries simply couldn't function with fewer
+        hours. It was the moderator who eventually summarised the
+        debate: "On the whole, both sides raised valid points, and
+        consequently, the real answer probably depends on the
+        industry."
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      transcript: >
+        A: What worries me most about remote work is the lack of
+        collaboration. — B: That's a valid point. However, it's
+        flexibility that most employees value. — A: Let me play
+        devil's advocate — is flexibility really worth losing teamwork?
+        — B: Moreover, studies show productivity often increases.
+        Consequently, many companies keep it. — A: On the whole, I
+        agree it has benefits, but I'd put forward a hybrid model
+        instead. — B: That's a fair counterargument. At the end of the
+        day, it depends on the team.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Take a position on a debatable topic (e.g. social media, remote
+        work, city life vs. countryside) and argue for it. Use at
+        least one cleft sentence and two formal linking words. Speak
+        for 60 seconds.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Write a short argument (6-8 sentences) on a debatable topic,
+            using at least 2 cleft sentences and 3 formal linking
+            words.
+        - type: vocabulary_recall
+          instructions: >
+            Without looking back at the lesson, write down as many
+            debate-related expressions as you remember, then check your
+            list against the vocabulary block.
+        - type: grammar_practice
+          instructions: >
+            Rewrite 5 plain sentences as cleft sentences for emphasis
+            (mix of what-clefts and it-clefts).
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        cleft-sentences-emphasis grammar topic are generated
+        automatically from mistakes and spaced repetition — nothing to
+        author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: debating-opinions-mini-mc-counterargument
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "a counterargument"
+          prompt:
+            question: "A \"counterargument\" is..."
+            options:
+              - id: a
+                text: "An argument that opposes another argument"
+              - id: b
+                text: "The strongest possible argument"
+              - id: c
+                text: "An argument nobody understands"
+              - id: d
+                text: "An argument made without evidence"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            A "counterargument" is an argument put forward against
+            another one.
+
+        - slug: debating-opinions-mini-fill-cleft-sentences-2
+          type: fill_blank
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: cleft-sentences-emphasis
+          prompt:
+            text: >-
+              Rewrite: 1) "Flexibility matters most to employees." ->
+              "What matters most to employees ___ flexibility." (is)
+              2) "The moderator summarised the debate." -> "It was the
+              moderator ___ summarised the debate." (who)
+          answer_key:
+            blanks:
+              - ["is"]
+              - ["who"]
+          explanation: >-
+            "What"-cleft ends with "is/was + focus"; "It"-cleft needs
+            "who/that" before the rest of the clause.
+
+        - slug: debating-opinions-mini-order-put-forward
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B2
+          vocabulary_headword: "put forward (an argument)"
+          prompt:
+            words: ["strong", "put", "She", "argument", "a", "forward"]
+          answer_key:
+            correct_order: ["She", "put", "forward", "a", "strong", "argument"]
+          explanation: >-
+            "Put forward (an argument)" — present an argument for
+            consideration.
+
+        - slug: debating-opinions-mini-mc-play-devils-advocate
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "play devil's advocate"
+          prompt:
+            question: "\"Let me play devil's advocate for a moment\" means..."
+            options:
+              - id: a
+                text: "Deliberately argue the opposite side to test an idea"
+              - id: b
+                text: "Give up on the argument"
+              - id: c
+                text: "Agree with everything said so far"
+              - id: d
+                text: "End the discussion"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Play devil's advocate" means to argue against a position
+            on purpose, often to test how strong it is.
+
+        - slug: debating-opinions-mini-reading-cleft
+          type: reading_comprehension
+          skill: reading
+          difficulty: B2
+          prompt:
+            passage: >-
+              What really matters in a debate is listening carefully.
+              It's respect, not volume, that makes an argument
+              persuasive.
+            questions:
+              - id: q1
+                text: "What does the text say makes an argument persuasive?"
+                options:
+                  - id: a
+                    text: "Respect"
+                  - id: b
+                    text: "Volume"
+                  - id: c
+                    text: "Speed"
+          answer_key:
+            answers:
+              q1: a
+          explanation: >-
+            "It's respect, not volume, that makes an argument
+            persuasive."

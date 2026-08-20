@@ -1,0 +1,380 @@
+level:
+  code: B2
+  order_index: 4
+
+module:
+  slug: relative-clauses
+  title: "Describing People and Things Precisely"
+  order_index: 5
+
+lesson:
+  slug: describing-people-and-things
+  title: "Describing People and Things Precisely"
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Give extra or essential information about a person, thing or place in one sentence"
+        - "Use defining relative clauses without commas to identify exactly what you mean"
+        - "Use non-defining relative clauses with commas to add extra, non-essential detail"
+        - "Use 6 new expressions for describing people and things precisely"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Choosing between a defining and a non-defining relative clause
+        changes meaning, not just style. Compare: "My sister who lives
+        in Spain is a doctor." (defining, no comma — implies I have
+        more than one sister, and this clause identifies which one) vs.
+        "My sister, who lives in Spain, is a doctor." (non-defining,
+        commas — implies I have only one sister, and the clause is just
+        extra information). This distinction matters most with proper
+        nouns and unique things, which almost always take a
+        non-defining clause since they're already identified: "Paris,
+        which is the capital of France, attracts millions of tourists."
+        A common mistake is using "that" in a non-defining clause
+        ("My mother, that lives nearby, ..." — incorrect; needs "who").
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "in detail"
+          translation: "подробно, детально"
+          example_sentence: "Could you describe it in detail?"
+        - headword: "to be exact"
+          translation: "если точнее, точнее говоря"
+          example_sentence: "It cost fifty euros, or forty-nine, to be exact."
+        - headword: "namely"
+          translation: "а именно"
+          example_sentence: "There's one problem, namely the deadline."
+        - headword: "in other words"
+          translation: "другими словами"
+          example_sentence: "In other words, we need more time."
+        - headword: "distinguish between"
+          translation: "различать, отличать"
+          example_sentence: "It's hard to distinguish between the two options."
+        - headword: "a defining feature"
+          translation: "отличительная черта"
+          example_sentence: "Honesty is a defining feature of her character."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: relative-clauses
+          title: "Defining and non-defining relative clauses"
+          description: >
+            Defining relative clauses identify exactly which person or
+            thing you mean — no commas, and the sentence doesn't make
+            full sense without them: "The woman who called earlier left
+            a message." (which woman? — the one who called). Use
+            who/that for people, which/that for things, whose for
+            possession, where for places, when for times. "That" can
+            replace who/which in defining clauses, and the relative
+            pronoun can often be dropped if it's the object of the
+            clause: "The book (that) I read was great." Non-defining
+            relative clauses add extra information that isn't essential
+            to identify the noun — always with commas, and "that" is
+            never used: "My brother, who lives in Spain, is visiting
+            next week." (I have one brother; the clause just adds
+            detail). Removing a non-defining clause doesn't change who
+            or what is being talked about; removing a defining clause
+            can make the sentence meaningless or change its meaning
+            entirely.
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Talking about a colleague
+          lines:
+            - speaker: A
+              text: "Which colleague are you talking about, the one who joined last month?"
+            - speaker: B
+              text: "No, the one whose office is next to mine — the one that always brings coffee."
+            - speaker: A
+              text: "Oh, Marco! My friend, who used to work with him, says he's brilliant."
+            - speaker: B
+              text: "To be exact, he's the person who designed our whole onboarding process."
+            - speaker: A
+              text: "That's a defining feature of a good team member, honestly."
+            - speaker: B
+              text: "In other words, we're lucky to have him."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: describing-people-and-things-mc-namely
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "namely"
+          prompt:
+            question: >-
+              "There's one problem, namely the deadline" means...
+            options:
+              - id: a
+                text: "Specifically, the problem is the deadline"
+              - id: b
+                text: "The deadline is not a problem"
+              - id: c
+                text: "There are many problems, unrelated to the deadline"
+              - id: d
+                text: "The deadline has already passed"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Namely" introduces exactly what you're referring to — here,
+            specifying that the problem is the deadline.
+
+        - slug: describing-people-and-things-fill-relative-clauses
+          type: fill_blank
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: relative-clauses
+          prompt:
+            text: >-
+              Complete: 1) "The woman ___ called earlier left a
+              message." (defining, person) (who) 2) "My brother, ___
+              lives in Spain, is visiting next week." (non-defining,
+              person) (who) 3) "This is the house ___ I grew up."
+              (defining, place) (where)
+          answer_key:
+            blanks:
+              - ["who"]
+              - ["who"]
+              - ["where"]
+          explanation: >-
+            "Who" for people in both defining and non-defining clauses
+            (never "that" in non-defining); "where" for places.
+
+        - slug: describing-people-and-things-order-non-defining
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: relative-clauses
+          prompt:
+            words: ["Spain", "brother", "in", "who", "lives", "My"]
+          answer_key:
+            correct_order: ["My", "brother", "who", "lives", "in", "Spain"]
+          explanation: >-
+            Subject ("My brother") + relative pronoun ("who") + verb
+            phrase ("lives in Spain") — forms a relative clause
+            fragment naming the brother.
+
+        - slug: describing-people-and-things-reading-team-profile
+          type: reading_comprehension
+          skill: reading
+          difficulty: B2
+          prompt:
+            passage: >-
+              The company hired a new designer whose portfolio impressed
+              everyone during the interview. Their previous manager,
+              who had worked with them for three years, described them
+              as one of the most creative people she'd ever met. The
+              project that she's now leading, namely the redesign of
+              the whole app, is the one that excites her most. In other
+              words, this is exactly the kind of challenge she was
+              hoping for when she joined the company.
+            questions:
+              - id: q1
+                text: "What impressed everyone during the interview?"
+                options:
+                  - id: a
+                    text: "The designer's portfolio"
+                  - id: b
+                    text: "The designer's previous manager"
+                  - id: c
+                    text: "The designer's salary expectations"
+                  - id: d
+                    text: "The company's office"
+              - id: q2
+                text: "What project is the designer now leading?"
+                options:
+                  - id: a
+                    text: "The redesign of the whole app"
+                  - id: b
+                    text: "A new marketing campaign"
+                  - id: c
+                    text: "Hiring new staff"
+                  - id: d
+                    text: "The text doesn't say"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "A new designer whose portfolio impressed everyone" (Q1).
+            "The project that she's now leading, namely the redesign of
+            the whole app" (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: The New Designer
+      text: >
+        The company hired a new designer whose portfolio impressed
+        everyone during the interview. Their previous manager, who had
+        worked with them for three years, described them as one of the
+        most creative people she'd ever met. The project that she's now
+        leading, namely the redesign of the whole app, is the one that
+        excites her most. In other words, this is exactly the kind of
+        challenge she was hoping for when she joined the company.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      transcript: >
+        A: Which colleague are you talking about, the one who joined
+        last month? — B: No, the one whose office is next to mine —
+        the one that always brings coffee. — A: Oh, Marco! My friend,
+        who used to work with him, says he's brilliant. — B: To be
+        exact, he's the person who designed our whole onboarding
+        process. — A: That's a defining feature of a good team member,
+        honestly. — B: In other words, we're lucky to have him.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Describe someone you know and something you own, using at
+        least one defining and one non-defining relative clause for
+        each. Speak for 60 seconds.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Write 6-8 sentences describing people or places you know,
+            using at least 3 defining and 3 non-defining relative
+            clauses.
+        - type: vocabulary_recall
+          instructions: >
+            Without looking back at the lesson, write down as many
+            precision expressions as you remember (namely, to be
+            exact, in other words...), then check your list against
+            the vocabulary block.
+        - type: grammar_practice
+          instructions: >
+            Write 4 pairs of sentences: each pair should show the same
+            fact once as a defining clause and once as a non-defining
+            clause, and explain how the meaning changes.
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        relative-clauses grammar topic are generated automatically
+        from mistakes and spaced repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: describing-people-and-things-mini-mc-distinguish-between
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "distinguish between"
+          prompt:
+            question: "\"It's hard to distinguish between the two options\" means..."
+            options:
+              - id: a
+                text: "It's hard to tell the two options apart"
+              - id: b
+                text: "The two options are exactly the same"
+              - id: c
+                text: "There is only one real option"
+              - id: d
+                text: "One option is clearly better"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Distinguish between" means to recognise the differences
+            between two or more things.
+
+        - slug: describing-people-and-things-mini-fill-relative-clauses-2
+          type: fill_blank
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: relative-clauses
+          prompt:
+            text: >-
+              Complete: 1) "This is the book ___ changed my life."
+              (defining, thing) (that) 2) "Paris, ___ is the capital
+              of France, is beautiful." (non-defining, place) (which)
+          answer_key:
+            blanks:
+              - ["that"]
+              - ["which"]
+          explanation: >-
+            "That" for things in a defining clause; "which" for a
+            non-defining clause about a place/thing (never "that"
+            here).
+
+        - slug: describing-people-and-things-mini-order-in-other-words
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B2
+          vocabulary_headword: "in other words"
+          prompt:
+            words: ["time", "more", "need", "words", "we", "In", "other"]
+          answer_key:
+            correct_order: ["In", "other", "words", "we", "need", "more", "time"]
+          explanation: >-
+            "In other words" introduces a restatement or clarification.
+
+        - slug: describing-people-and-things-mini-mc-in-detail
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "in detail"
+          prompt:
+            question: "\"Could you describe it in detail?\" is asking for..."
+            options:
+              - id: a
+                text: "A thorough, complete description"
+              - id: b
+                text: "A very short summary"
+              - id: c
+                text: "No description at all"
+              - id: d
+                text: "A written report only"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "In detail" means thoroughly, covering all the specifics.
+
+        - slug: describing-people-and-things-mini-reading-relative-clause
+          type: reading_comprehension
+          skill: reading
+          difficulty: B2
+          prompt:
+            passage: >-
+              The restaurant that we visited last night, which is
+              famous for its seafood, was fully booked.
+            questions:
+              - id: q1
+                text: "What is the restaurant famous for?"
+                options:
+                  - id: a
+                    text: "Its seafood"
+                  - id: b
+                    text: "Its desserts"
+                  - id: c
+                    text: "Its location"
+          answer_key:
+            answers:
+              q1: a
+          explanation: >-
+            "...which is famous for its seafood..."

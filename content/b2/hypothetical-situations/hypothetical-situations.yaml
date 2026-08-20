@@ -1,0 +1,386 @@
+level:
+  code: B2
+  order_index: 4
+
+module:
+  slug: hypothetical-situations
+  title: Hypothetical Situations
+  order_index: 2
+
+lesson:
+  slug: hypothetical-situations
+  title: Hypothetical Situations
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Talk about imaginary past situations and their imagined results"
+        - "Use the third conditional for unreal past events"
+        - "Use mixed conditionals when a past cause has a present result, or vice versa"
+        - "Use 6 new expressions for talking about hypothetical situations"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        The third conditional talks about an unreal situation in the
+        past and its imagined (also unreal) past result: "If I had
+        studied harder, I would have passed the exam." — I didn't study
+        harder, and I didn't pass; both parts are impossible to change
+        now. Structure: "If + Past Perfect, would have + past
+        participle." Mixed conditionals combine a past condition with a
+        present result, or a present/general condition with a past
+        result, when the timing of cause and effect doesn't match: "If
+        I hadn't missed the flight, I would be in Rome right now." (past
+        condition, present result) "If she weren't so shy, she wouldn't
+        have stayed silent in the meeting." (present/general condition,
+        past result). Mixed conditionals let you connect two different
+        timeframes in one sentence, which real regrets and hypotheticals
+        often need.
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "in hindsight"
+          translation: "задним числом, оглядываясь назад"
+          example_sentence: "In hindsight, we should have left earlier."
+        - headword: "regret (doing something)"
+          translation: "сожалеть (о чём-то сделанном)"
+          example_sentence: "I regret not applying for that job."
+        - headword: "turning point"
+          translation: "поворотный момент"
+          example_sentence: "That decision was a turning point in her career."
+        - headword: "miss an opportunity"
+          translation: "упустить возможность"
+          example_sentence: "He missed an opportunity to speak up."
+        - headword: "consequence"
+          translation: "последствие"
+          example_sentence: "Every decision has consequences."
+        - headword: "what if"
+          translation: "что, если бы (гипотетически)"
+          example_sentence: "What if we had chosen a different path?"
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: mixed-third-conditional
+          title: "Third and mixed conditionals"
+          description: >
+            Third conditional (unreal past + unreal past result): "If +
+            Past Perfect, ... would have + past participle." "If I'd
+            known you were coming, I would have cooked more food."
+            Mixed type 1 (past condition, present result): "If + Past
+            Perfect, ... would + verb." "If I hadn't taken that job, I
+            wouldn't be living here now." Mixed type 2 (present/general
+            condition, past result): "If + Past Simple, ... would have
+            + past participle." "If he weren't so stubborn, he wouldn't
+            have argued with everyone." "Could have" or "might have"
+            can replace "would have" for possibility rather than
+            certainty: "If we'd left earlier, we might have caught the
+            train." Common mistake: mixing up the two parts and using
+            "would have" in the if-clause itself ("If I would have
+            known..." — incorrect; needs "If I had known...").
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Looking back on a big decision
+          lines:
+            - speaker: A
+              text: "Do you ever think about what if you hadn't moved abroad?"
+            - speaker: B
+              text: "All the time. If I hadn't moved, I probably wouldn't have met my husband."
+            - speaker: A
+              text: "That's a real turning point, then."
+            - speaker: B
+              text: "Definitely. In hindsight, though, if I'd planned it better, I wouldn't have struggled so much at first."
+            - speaker: A
+              text: "Do you have any regrets?"
+            - speaker: B
+              text: "Not really. If I hadn't taken that risk, I think I would have missed a huge opportunity."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: hypothetical-situations-mc-in-hindsight
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "in hindsight"
+          prompt:
+            question: >-
+              "In hindsight, we should have left earlier" means...
+            options:
+              - id: a
+                text: "Looking back now, we can see it would have been better"
+              - id: b
+                text: "We are planning to leave earlier next time"
+              - id: c
+                text: "We didn't know when to leave"
+              - id: d
+                text: "We left too early"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "In hindsight" introduces a reflection made after the event,
+            with the benefit of knowing how things turned out.
+
+        - slug: hypothetical-situations-fill-mixed-third-conditional
+          type: fill_blank
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: mixed-third-conditional
+          prompt:
+            text: >-
+              Complete: 1) "If I ___ (study) harder, I would have
+              passed." (had studied) 2) "If I hadn't missed the flight,
+              I ___ ___ (be) in Rome right now." (would be) 3) "If she
+              ___ (not/be) so shy, she wouldn't have stayed silent."
+              (weren't)
+          answer_key:
+            blanks:
+              - ["had studied"]
+              - ["would be"]
+              - ["weren't"]
+          explanation: >-
+            Third conditional if-clause uses Past Perfect (had
+            studied); mixed conditional past-condition/present-result
+            uses "would + verb" (would be); present-condition uses Past
+            Simple/were (weren't).
+
+        - slug: hypothetical-situations-order-would-have-passed
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: mixed-third-conditional
+          prompt:
+            words: ["passed", "would", "harder", "studied", "I", "have", "had", "I", "If"]
+          answer_key:
+            correct_order: ["If", "I", "had", "studied", "harder", "I", "would", "have", "passed"]
+          explanation: >-
+            Third conditional: "If + Past Perfect (had studied), ...
+            would have + past participle (would have passed)."
+
+        - slug: hypothetical-situations-reading-career-choice
+          type: reading_comprehension
+          skill: reading
+          difficulty: B2
+          prompt:
+            passage: >-
+              Looking back, Marco says his decision to move cities for
+              work was a real turning point. If he hadn't taken that
+              job, he would probably still be living with his parents
+              today. In hindsight, he admits it wasn't an easy choice —
+              if the opportunity hadn't come with such a tight deadline,
+              he might have thought about it longer. Still, he has no
+              regrets. He often wonders what if he had said no, but he's
+              fairly sure he would have missed an opportunity that never
+              came again.
+            questions:
+              - id: q1
+                text: "What would Marco's life be like if he hadn't taken the job?"
+                options:
+                  - id: a
+                    text: "He would probably still be living with his parents"
+                  - id: b
+                    text: "He would have a completely different career"
+                  - id: c
+                    text: "He would have moved even further away"
+                  - id: d
+                    text: "The text doesn't say"
+              - id: q2
+                text: "Does Marco regret taking the job?"
+                options:
+                  - id: a
+                    text: "Yes, deeply"
+                  - id: b
+                    text: "No, he has no regrets"
+                  - id: c
+                    text: "He hasn't decided yet"
+                  - id: d
+                    text: "The text doesn't say"
+          answer_key:
+            answers:
+              q1: a
+              q2: b
+          explanation: >-
+            "If he hadn't taken that job, he would probably still be
+            living with his parents today" (Q1). "Still, he has no
+            regrets" (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: A Career Turning Point
+      text: >
+        Looking back, Marco says his decision to move cities for work
+        was a real turning point. If he hadn't taken that job, he would
+        probably still be living with his parents today. In hindsight,
+        he admits it wasn't an easy choice — if the opportunity hadn't
+        come with such a tight deadline, he might have thought about it
+        longer. Still, he has no regrets. He often wonders what if he
+        had said no, but he's fairly sure he would have missed an
+        opportunity that never came again.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      transcript: >
+        A: Do you ever think about what if you hadn't moved abroad? —
+        B: All the time. If I hadn't moved, I probably wouldn't have
+        met my husband. — A: That's a real turning point, then. — B:
+        Definitely. In hindsight, though, if I'd planned it better, I
+        wouldn't have struggled so much at first. — A: Do you have any
+        regrets? — B: Not really. If I hadn't taken that risk, I think
+        I would have missed a huge opportunity.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Talk about a decision from your past and how your life might be
+        different today if you had chosen differently. Use at least
+        one third conditional and one mixed conditional sentence. Speak
+        for 60 seconds.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Write 6-8 sentences about a hypothetical past situation and
+            its results, using third and mixed conditionals.
+        - type: vocabulary_recall
+          instructions: >
+            Without looking back at the lesson, write down as many
+            expressions for talking about hypothetical situations as
+            you remember, then check your list against the vocabulary
+            block.
+        - type: grammar_practice
+          instructions: >
+            Write 5 sentences: 3 third-conditional and 2 mixed
+            conditional, about real or imagined past decisions.
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        mixed-third-conditional grammar topic are generated
+        automatically from mistakes and spaced repetition — nothing to
+        author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: hypothetical-situations-mini-mc-turning-point
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "turning point"
+          prompt:
+            question: "A \"turning point\" in someone's life is..."
+            options:
+              - id: a
+                text: "A moment that significantly changes the direction of their life"
+              - id: b
+                text: "A boring, uneventful period"
+              - id: c
+                text: "The end of their career"
+              - id: d
+                text: "A minor, unimportant detail"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            A "turning point" is a moment when something important
+            changes direction.
+
+        - slug: hypothetical-situations-mini-fill-mixed-third-conditional-2
+          type: fill_blank
+          skill: grammar
+          difficulty: B2
+          grammar_topic_slug: mixed-third-conditional
+          prompt:
+            text: >-
+              Complete: 1) "If we ___ (leave) earlier, we would have
+              caught the train." (had left) 2) "If he weren't so busy,
+              he ___ ___ (help) us yesterday." (would have helped)
+          answer_key:
+            blanks:
+              - ["had left"]
+              - ["would have helped"]
+          explanation: >-
+            Third conditional if-clause: Past Perfect (had left); mixed
+            conditional present-condition/past-result: "would have +
+            past participle" (would have helped).
+
+        - slug: hypothetical-situations-mini-order-miss-opportunity
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B2
+          vocabulary_headword: "miss an opportunity"
+          prompt:
+            words: ["speak", "missed", "an", "up", "to", "He", "opportunity"]
+          answer_key:
+            correct_order: ["He", "missed", "an", "opportunity", "to", "speak", "up"]
+          explanation: >-
+            "Miss an opportunity to" + verb: "He missed an opportunity
+            to speak up."
+
+        - slug: hypothetical-situations-mini-mc-consequence
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B2
+          vocabulary_headword: "consequence"
+          prompt:
+            question: "\"Every decision has consequences\" means..."
+            options:
+              - id: a
+                text: "Every decision leads to results, good or bad"
+              - id: b
+                text: "Decisions don't matter"
+              - id: c
+                text: "Only bad decisions have effects"
+              - id: d
+                text: "Decisions should be avoided"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            A "consequence" is a result or effect of an action or
+            decision.
+
+        - slug: hypothetical-situations-mini-reading-regret
+          type: reading_comprehension
+          skill: reading
+          difficulty: B2
+          prompt:
+            passage: >-
+              If I had accepted that job offer, I would be living
+              somewhere completely different now. In hindsight, I'm not
+              sure I made the right choice.
+            questions:
+              - id: q1
+                text: "Did the speaker accept the job offer?"
+                options:
+                  - id: a
+                    text: "Yes"
+                  - id: b
+                    text: "No"
+                  - id: c
+                    text: "The text doesn't say"
+          answer_key:
+            answers:
+              q1: b
+          explanation: >-
+            The third conditional ("If I had accepted...") shows this
+            didn't actually happen.
