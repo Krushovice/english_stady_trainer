@@ -1,0 +1,393 @@
+level:
+  code: B1
+  order_index: 3
+
+module:
+  slug: future-plans
+  title: Future Plans & Predictions
+  order_index: 5
+
+lesson:
+  slug: future-plans-and-predictions
+  title: Future Plans & Predictions
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Describe what will be happening at a specific future time"
+        - "Make predictions with different levels of certainty"
+        - "Use might, may and could for uncertain predictions"
+        - "Use 6 new expressions for talking about the future"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Future Continuous (will be + -ing) describes an action in
+        progress at a specific point in the future: "This time next
+        week, I'll be lying on a beach." It's different from "will" for
+        a simple future fact — it puts you inside the action, at a
+        moment. For predictions, "will" shows confidence: "It will
+        rain tomorrow, I'm sure." "Might", "may" and "could" show less
+        certainty: "It might rain tomorrow." (maybe 40-50% sure) "Could"
+        is similar to "might" for possibility, but is not used to give
+        permission the way "may" sometimes is. A stronger prediction can
+        use "be likely to" or "probably": "She's likely to get the
+        job." / "She'll probably get the job."
+      summary_ru: >
+        Future Continuous (will be + -ing) — действие в процессе в
+        определённый момент будущего: "This time next week, I'll be
+        lying on a beach." "Will" для предсказаний показывает
+        уверенность. "Might/may/could" — меньшую уверенность (примерно
+        40-50%). Более сильное предсказание — "be likely to" или
+        "probably": "She's likely to get the job." / "She'll probably
+        get the job."
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "be likely to"
+          translation: "вероятно, скорее всего (что-то произойдёт)"
+          example_sentence: "Prices are likely to go up next year."
+        - headword: "in the near future"
+          translation: "в ближайшем будущем"
+          example_sentence: "We plan to move house in the near future."
+        - headword: "sooner or later"
+          translation: "рано или поздно"
+          example_sentence: "Sooner or later, everyone has to make this decision."
+        - headword: "have no idea"
+          translation: "понятия не иметь"
+          example_sentence: "I have no idea what I'll be doing in five years."
+        - headword: "be bound to"
+          translation: "неизбежно, обязательно (произойдёт)"
+          example_sentence: "It's bound to rain if we don't bring an umbrella."
+        - headword: "keep your fingers crossed"
+          translation: "держать кулачки, надеяться на удачу"
+          example_sentence: "I'm keeping my fingers crossed for the interview."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: future-forms-predictions
+          title: "Future Continuous and prediction modals: might/may/could vs will"
+          description: >
+            Future Continuous = will be + -ing: describes an action in
+            progress at a future point in time: "At 8pm, I'll be
+            cooking dinner." Question: "Will you be working tomorrow
+            evening?" For predictions, choose the modal by confidence
+            level: "will" = confident ("It will be sunny tomorrow"),
+            "might/may/could" = uncertain, around 40-50% sure ("It
+            might rain later"), "be likely to" or "probably" = fairly
+            confident but not 100% ("She's likely to win"). Negative of
+            "might" is "might not" (no contraction), same for "may
+            not". Common mistake: using "will" when the speaker is
+            actually unsure — this misses the nuance the modal system
+            is designed to express.
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Planning ahead
+          lines:
+            - speaker: A
+              text: "What will you be doing this time next year?"
+            - speaker: B
+              text: "Honestly, I have no idea. I might be travelling, or I might still be here."
+            - speaker: A
+              text: "Sooner or later you'll have to decide, right?"
+            - speaker: B
+              text: "True. I'm applying for a job abroad — keep your fingers crossed for me."
+            - speaker: A
+              text: "Of course! You're bound to get an interview at least, with your experience."
+            - speaker: B
+              text: "Let's hope so. Salaries there are likely to be higher too."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: future-plans-and-predictions-mc-be-likely-to
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B1
+          vocabulary_headword: "be likely to"
+          prompt:
+            question: >-
+              "Prices are likely to go up next year" means...
+            options:
+              - id: a
+                text: "Prices will probably increase"
+              - id: b
+                text: "Prices will definitely stay the same"
+              - id: c
+                text: "Prices have already gone up"
+              - id: d
+                text: "Nobody knows what will happen to prices"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Be likely to" expresses a fairly confident prediction, close
+            in meaning to "will probably".
+
+        - slug: future-plans-and-predictions-fill-future-forms
+          type: fill_blank
+          skill: grammar
+          difficulty: B1
+          grammar_topic_slug: future-forms-predictions
+          prompt:
+            text: >-
+              Complete: 1) "This time tomorrow, I ___ ___ (fly — future
+              continuous) to New York." 2) "It ___ (uncertain, 50%)
+              rain later, take an umbrella just in case." 3) "I'm
+              almost certain — it ___ (confident prediction) be a great
+              trip."
+          answer_key:
+            blanks:
+              - ["will be flying"]
+              - ["might"]
+              - ["will"]
+          explanation: >-
+            Future Continuous for an action in progress at a future
+            time ("will be flying"); "might" for an uncertain
+            prediction; "will" for a confident one.
+
+        - slug: future-plans-and-predictions-order-fingers-crossed
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B1
+          vocabulary_headword: "keep your fingers crossed"
+          prompt:
+            words: ["crossed", "fingers", "my", "keeping", "I'm", "you", "for"]
+          answer_key:
+            correct_order: ["I'm", "keeping", "my", "fingers", "crossed", "for", "you"]
+          explanation: >-
+            "Keep your fingers crossed for someone" — hope for good
+            luck on their behalf.
+
+        - slug: future-plans-and-predictions-reading-forecast
+          type: reading_comprehension
+          skill: reading
+          difficulty: B1
+          prompt:
+            passage: >-
+              Economists have no idea exactly what will happen next
+              year, but most agree that prices are likely to rise
+              slightly. Some believe interest rates might go down,
+              though others think they will stay the same. Sooner or
+              later, most people will need to adjust their budgets. By
+              this time next year, many families will probably be
+              spending more carefully than they are today, and experts
+              say a full recovery is bound to take at least two more
+              years.
+            questions:
+              - id: q1
+                text: "What do most economists agree on?"
+                options:
+                  - id: a
+                    text: "Prices are likely to rise slightly"
+                  - id: b
+                    text: "Prices will definitely fall"
+                  - id: c
+                    text: "Interest rates will definitely go down"
+                  - id: d
+                    text: "There will be no changes at all"
+              - id: q2
+                text: "How long do experts say a full recovery is bound to take?"
+                options:
+                  - id: a
+                    text: "At least two more years"
+                  - id: b
+                    text: "A few months"
+                  - id: c
+                    text: "It has already happened"
+                  - id: d
+                    text: "The text doesn't say"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "Most agree that prices are likely to rise slightly" (Q1).
+            "A full recovery is bound to take at least two more years"
+            (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: What the Economists Say
+      text: >
+        Economists have no idea exactly what will happen next year, but
+        most agree that prices are likely to rise slightly. Some
+        believe interest rates might go down, though others think they
+        will stay the same. Sooner or later, most people will need to
+        adjust their budgets. By this time next year, many families
+        will probably be spending more carefully than they are today,
+        and experts say a full recovery is bound to take at least two
+        more years.
+      summary_ru: >
+        Экономисты понятия не имеют, что именно произойдёт в следующем
+        году, но большинство согласны, что цены, вероятно, немного
+        вырастут. Некоторые считают, что процентные ставки могут
+        снизиться, хотя другие думают, что они останутся прежними. Рано
+        или поздно большинству людей придётся пересмотреть бюджет. К
+        этому времени в следующем году многие семьи, вероятно, будут
+        тратить осторожнее, чем сегодня, а эксперты говорят, что полное
+        восстановление неизбежно займёт как минимум ещё два года.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      transcript: >
+        A: What will you be doing this time next year? — B: Honestly, I
+        have no idea. I might be travelling, or I might still be here.
+        — A: Sooner or later you'll have to decide, right? — B: True.
+        I'm applying for a job abroad — keep your fingers crossed for
+        me. — A: Of course! You're bound to get an interview at least,
+        with your experience. — B: Let's hope so. Salaries there are
+        likely to be higher too.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Talk about your plans and predictions for the next five years.
+        Use Future Continuous once, and at least two prediction modals
+        (will, might, may, could, be likely to). Speak for 60 seconds.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Write 6-8 sentences about what you think your life will look
+            like in ten years, using Future Continuous and at least 2
+            prediction modals.
+        - type: vocabulary_recall
+          instructions: >
+            Without looking back at the lesson, write down as many
+            future/prediction expressions as you remember, then check
+            your list against the vocabulary block.
+        - type: grammar_practice
+          instructions: >
+            Write 5 predictions about the world in 20 years, using a
+            mix of will, might, may and be likely to.
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        future-forms-predictions grammar topic are generated
+        automatically from mistakes and spaced repetition — nothing to
+        author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: future-plans-and-predictions-mini-mc-sooner-or-later
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B1
+          vocabulary_headword: "sooner or later"
+          prompt:
+            question: "\"Sooner or later, everyone has to make this decision\" means..."
+            options:
+              - id: a
+                text: "At some point, eventually"
+              - id: b
+                text: "Right now"
+              - id: c
+                text: "Never"
+              - id: d
+                text: "Only in the morning"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Sooner or later" means eventually, at some unspecified
+            future point.
+
+        - slug: future-plans-and-predictions-mini-fill-future-forms-2
+          type: fill_blank
+          skill: grammar
+          difficulty: B1
+          grammar_topic_slug: future-forms-predictions
+          prompt:
+            text: >-
+              Complete: 1) "At 9pm tonight, we ___ ___ (watch) the
+              match." (will be watching) 2) "It ___ (uncertain) snow
+              tomorrow." (might)
+          answer_key:
+            blanks:
+              - ["will be watching"]
+              - ["might"]
+          explanation: >-
+            "Will be + -ing" for an action in progress at a future
+            time; "might" for an uncertain prediction.
+
+        - slug: future-plans-and-predictions-mini-order-bound-to
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B1
+          vocabulary_headword: "be bound to"
+          prompt:
+            words: ["rain", "It's", "if", "we", "bound", "to", "wait"]
+          answer_key:
+            correct_order: ["It's", "bound", "to", "rain", "if", "we", "wait"]
+          explanation: >-
+            "Be bound to" + verb = certain/inevitable to happen.
+
+        - slug: future-plans-and-predictions-mini-mc-near-future
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B1
+          vocabulary_headword: "in the near future"
+          prompt:
+            question: "\"In the near future\" means..."
+            options:
+              - id: a
+                text: "Soon, not far away in time"
+              - id: b
+                text: "A long time from now"
+              - id: c
+                text: "In the past"
+              - id: d
+                text: "Never"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "In the near future" means soon, relatively close in time.
+
+        - slug: future-plans-and-predictions-mini-reading-prediction
+          type: reading_comprehension
+          skill: reading
+          difficulty: B1
+          prompt:
+            passage: >-
+              We have no idea what the weather will be like tomorrow.
+              It might rain, but it's also likely to be sunny in the
+              afternoon.
+            questions:
+              - id: q1
+                text: "Is the speaker completely certain about the weather?"
+                options:
+                  - id: a
+                    text: "Yes, completely certain"
+                  - id: b
+                    text: "No, uncertain"
+                  - id: c
+                    text: "The text doesn't say"
+          answer_key:
+            answers:
+              q1: b
+          explanation: >-
+            "We have no idea..." and "It might rain" both signal
+            uncertainty.

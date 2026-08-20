@@ -1,0 +1,397 @@
+level:
+  code: B1
+  order_index: 3
+
+module:
+  slug: problem-solving
+  title: Solving Problems
+  order_index: 6
+
+lesson:
+  slug: solving-problems
+  title: Solving Problems
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Suggest solutions to a hypothetical or imagined problem"
+        - "Use the second conditional for unreal or unlikely present situations"
+        - "Give advice using conditional structures instead of just should"
+        - "Use 6 new expressions for problem-solving and advice"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        The second conditional talks about unreal, hypothetical or
+        unlikely situations in the present or future, and their
+        imagined result: "If I had more time, I would learn another
+        language." — I don't have more time right now, this is
+        imaginary. Structure: "If + Past Simple, would + verb." The
+        "if" clause uses Past Simple even though it's not about the
+        past — it signals distance from reality. "Were" is often used
+        instead of "was" for all subjects in formal or careful speech:
+        "If I were you, I would apologise." This is the classic way to
+        give strong advice in English: "If I were you, I'd..." The
+        result clause can also use "could" or "might" instead of
+        "would" for a softer or less certain result.
+      summary_ru: >
+        Second conditional — о нереальных, гипотетических или
+        маловероятных ситуациях в настоящем/будущем и их воображаемом
+        результате: "If I had more time, I would learn another
+        language." Структура: "If + Past Simple, would + глагол." Past
+        Simple в if-части здесь не про прошлое — это сигнал
+        удалённости от реальности. "Were" вместо "was" для всех лиц в
+        аккуратной речи: "If I were you, I would apologise." — классика
+        для сильного совета. В результирующей части можно использовать
+        "could" или "might" вместо "would" для более мягкого или менее
+        уверенного результата.
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "come up with (a solution)"
+          translation: "придумать (решение)"
+          example_sentence: "We need to come up with a solution quickly."
+        - headword: "if I were you"
+          translation: "на твоём месте"
+          example_sentence: "If I were you, I'd talk to your manager directly."
+        - headword: "deal with"
+          translation: "справляться с, разбираться с"
+          example_sentence: "I don't know how to deal with this situation."
+        - headword: "weigh up the options"
+          translation: "взвесить варианты"
+          example_sentence: "Let's weigh up the options before deciding."
+        - headword: "as a last resort"
+          translation: "в крайнем случае"
+          example_sentence: "As a last resort, we could ask for a refund."
+        - headword: "get to the bottom of"
+          translation: "докопаться до сути, разобраться в причине"
+          example_sentence: "We need to get to the bottom of this problem."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: second-conditional
+          title: "Second conditional: unreal present/future situations"
+          description: >
+            Structure: "If + Past Simple, ... would/could/might +
+            verb." Describes an imaginary or unlikely present/future
+            situation and its result: "If I won the lottery, I would
+            travel the world." (I probably won't win — this is
+            hypothetical.) Use "were" (not "was") for all subjects in
+            careful/formal style, especially in the fixed phrase "If I
+            were you...": "If I were you, I wouldn't say anything."
+            "Could" instead of "would" softens the result to a
+            possibility: "If we had more staff, we could open earlier."
+            The clauses can be reversed with no comma needed: "I would
+            travel the world if I won the lottery." Common mistake:
+            using "would" in the if-clause itself ("If I would have
+            more time..." — incorrect; needs "If I had more time...").
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: What would you do?
+          lines:
+            - speaker: A
+              text: "My neighbour keeps playing loud music at night. What would you do?"
+            - speaker: B
+              text: "If I were you, I'd talk to them directly first."
+            - speaker: A
+              text: "I've tried that. If it happened again, I might call the building manager."
+            - speaker: B
+              text: "That sounds reasonable. As a last resort, you could file a formal complaint."
+            - speaker: A
+              text: "True. I just want to get to the bottom of it without causing drama."
+            - speaker: B
+              text: "Let's weigh up the options together — I'm sure we can come up with something."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: solving-problems-mc-last-resort
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B1
+          vocabulary_headword: "as a last resort"
+          prompt:
+            question: >-
+              "As a last resort, we could ask for a refund" means...
+            options:
+              - id: a
+                text: "Only if nothing else works"
+              - id: b
+                text: "As the very first option"
+              - id: c
+                text: "We already asked for a refund"
+              - id: d
+                text: "We will never ask for a refund"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "As a last resort" describes an action taken only when all
+            other options have failed.
+
+        - slug: solving-problems-fill-second-conditional
+          type: fill_blank
+          skill: grammar
+          difficulty: B1
+          grammar_topic_slug: second-conditional
+          prompt:
+            text: >-
+              Complete: 1) "If I ___ (have) more money, I would travel
+              more." 2) "If I ___ you, I wouldn't say anything." 3)
+              "She ___ (help) us if she had more time."
+          answer_key:
+            blanks:
+              - ["had"]
+              - ["were"]
+              - ["would help"]
+          explanation: >-
+            Second conditional: "If + Past Simple" (had); "were" for
+            all subjects in "If I were you"; result clause uses
+            "would + verb" (would help).
+
+        - slug: solving-problems-order-if-i-were-you
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B1
+          grammar_topic_slug: second-conditional
+          prompt:
+            words: ["manager", "your", "I'd", "you", "talk", "If", "were", "to", "I"]
+          answer_key:
+            correct_order: ["If", "I", "were", "you", "I'd", "talk", "to", "your", "manager"]
+          explanation: >-
+            "If I were you, I'd..." — classic second conditional advice
+            structure.
+
+        - slug: solving-problems-reading-neighbour-noise
+          type: reading_comprehension
+          skill: reading
+          difficulty: B1
+          prompt:
+            passage: >-
+              If I had a noisy neighbour, I would probably talk to them
+              first before doing anything else. Many people avoid
+              conflict, but a calm conversation usually gets to the
+              bottom of the problem faster than a formal complaint
+              would. If that didn't work, I might ask the building
+              manager to get involved. As a last resort, some people
+              choose to move — but that would be an extreme solution
+              for a problem that could often be solved by simply
+              talking it through.
+            questions:
+              - id: q1
+                text: "What would the writer do first with a noisy neighbour?"
+                options:
+                  - id: a
+                    text: "Talk to them directly"
+                  - id: b
+                    text: "Move house immediately"
+                  - id: c
+                    text: "File a formal complaint"
+                  - id: d
+                    text: "Ignore the problem"
+              - id: q2
+                text: "What does the writer consider an extreme solution?"
+                options:
+                  - id: a
+                    text: "Talking to the neighbour"
+                  - id: b
+                    text: "Moving house"
+                  - id: c
+                    text: "Asking the building manager"
+                  - id: d
+                    text: "Doing nothing"
+          answer_key:
+            answers:
+              q1: a
+              q2: b
+          explanation: >-
+            "I would probably talk to them first" (Q1). "Some people
+            choose to move — but that would be an extreme solution"
+            (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: Dealing With a Noisy Neighbour
+      text: >
+        If I had a noisy neighbour, I would probably talk to them first
+        before doing anything else. Many people avoid conflict, but a
+        calm conversation usually gets to the bottom of the problem
+        faster than a formal complaint would. If that didn't work, I
+        might ask the building manager to get involved. As a last
+        resort, some people choose to move — but that would be an
+        extreme solution for a problem that could often be solved by
+        simply talking it through.
+      summary_ru: >
+        Если бы у меня был шумный сосед, я бы сначала поговорил с ним,
+        прежде чем что-то предпринимать. Многие избегают конфликтов, но
+        спокойный разговор обычно быстрее докапывается до сути
+        проблемы, чем формальная жалоба. Если бы это не помогло, я бы
+        обратился к управляющему зданием. В крайнем случае некоторые
+        решают переехать — но это было бы крайней мерой для проблемы,
+        которую часто можно решить простым разговором.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      transcript: >
+        A: My neighbour keeps playing loud music at night. What would
+        you do? — B: If I were you, I'd talk to them directly first. —
+        A: I've tried that. If it happened again, I might call the
+        building manager. — B: That sounds reasonable. As a last
+        resort, you could file a formal complaint. — A: True. I just
+        want to get to the bottom of it without causing drama. — B:
+        Let's weigh up the options together — I'm sure we can come up
+        with something.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Describe a hypothetical problem (imaginary or real) and what
+        you would do about it. Use the second conditional at least
+        twice, including "If I were you..." at least once. Speak for
+        60 seconds.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Write 6-8 sentences giving advice to a friend with a
+            problem, using the second conditional (If I were you...,
+            If you did X, you would...).
+        - type: vocabulary_recall
+          instructions: >
+            Without looking back at the lesson, write down as many
+            problem-solving expressions as you remember, then check
+            your list against the vocabulary block.
+        - type: grammar_practice
+          instructions: >
+            Write 5 second-conditional sentences about what you would
+            do in different hypothetical situations.
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        second-conditional grammar topic are generated automatically
+        from mistakes and spaced repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: solving-problems-mini-mc-deal-with
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B1
+          vocabulary_headword: "deal with"
+          prompt:
+            question: "\"I don't know how to deal with this situation\" means..."
+            options:
+              - id: a
+                text: "Handle or manage the situation"
+              - id: b
+                text: "Ignore the situation"
+              - id: c
+                text: "Create the situation"
+              - id: d
+                text: "Explain the situation to someone"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Deal with" means to handle or manage a problem or
+            situation.
+
+        - slug: solving-problems-mini-fill-second-conditional-2
+          type: fill_blank
+          skill: grammar
+          difficulty: B1
+          grammar_topic_slug: second-conditional
+          prompt:
+            text: >-
+              Complete: 1) "If we ___ (have) more staff, we could open
+              earlier." 2) "What ___ you ___ (do) if you lost your
+              job?"
+          answer_key:
+            blanks:
+              - ["had"]
+              - ["would", "do"]
+          explanation: >-
+            "If + Past Simple" (had); question form "would + subject +
+            verb" (would you do).
+
+        - slug: solving-problems-mini-order-weigh-up
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B1
+          vocabulary_headword: "weigh up the options"
+          prompt:
+            words: ["options", "up", "the", "Let's", "weigh"]
+          answer_key:
+            correct_order: ["Let's", "weigh", "up", "the", "options"]
+          explanation: >-
+            "Weigh up the options" — consider different choices
+            carefully before deciding.
+
+        - slug: solving-problems-mini-mc-come-up-with
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B1
+          vocabulary_headword: "come up with (a solution)"
+          prompt:
+            question: "\"We need to come up with a solution\" means..."
+            options:
+              - id: a
+                text: "Think of or create a solution"
+              - id: b
+                text: "Copy someone else's solution"
+              - id: c
+                text: "Give up on solving the problem"
+              - id: d
+                text: "Wait for the problem to disappear"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Come up with" means to think of or produce an idea or
+            solution.
+
+        - slug: solving-problems-mini-reading-conditional
+          type: reading_comprehension
+          skill: reading
+          difficulty: B1
+          prompt:
+            passage: >-
+              If I were you, I would talk to your landlord about the
+              broken heater. He might fix it faster if you explained
+              the problem clearly.
+            questions:
+              - id: q1
+                text: "What does the speaker suggest?"
+                options:
+                  - id: a
+                    text: "Talking to the landlord"
+                  - id: b
+                    text: "Moving to a new flat"
+                  - id: c
+                    text: "Fixing the heater yourself"
+          answer_key:
+            answers:
+              q1: a
+          explanation: >-
+            "If I were you, I would talk to your landlord..."

@@ -1,0 +1,396 @@
+level:
+  code: B1
+  order_index: 3
+
+module:
+  slug: technology-media
+  title: Technology & Media
+  order_index: 7
+
+lesson:
+  slug: technology-and-media
+  title: Technology & Media
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Talk about technology and media news without naming who did the action"
+        - "Use the passive voice in present and past tenses"
+        - "Discuss how technology affects the way we consume media"
+        - "Use 6 new expressions for talking about technology and media"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        The passive voice puts the focus on the action or the thing
+        affected, not on who did it — very common in news and
+        technology reporting, where the doer is unknown, obvious or
+        unimportant: "The app was downloaded five million times." (we
+        don't know or care exactly who downloaded it — the number
+        matters). Structure: "be + past participle": "The news is
+        reported daily." (present simple passive) "The article was
+        published yesterday." (past simple passive). To mention who did
+        it, add "by": "The app was developed by a small team." Active
+        voice puts the doer first and is more direct/personal: "A small
+        team developed the app." Choose passive when the action matters
+        more than the doer, or the doer is unknown.
+      summary_ru: >
+        Passive voice переносит фокус на действие или объект, а не на
+        того, кто его совершил — часто используется в новостях и
+        технологических текстах, где деятель неизвестен, очевиден или
+        неважен: "The app was downloaded five million times."
+        Структура: "be + причастие прошедшего времени". Чтобы указать,
+        кто совершил действие, добавляют "by": "The app was developed
+        by a small team." Active voice ставит деятеля на первое место
+        и звучит более прямо/лично: "A small team developed the app."
+        Passive выбирают, когда действие важнее деятеля или деятель
+        неизвестен.
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "release (a product/update)"
+          translation: "выпустить (продукт/обновление)"
+          example_sentence: "The new update was released last week."
+        - headword: "go viral"
+          translation: "стать вирусным (быстро распространиться)"
+          example_sentence: "The video went viral within a few hours."
+        - headword: "widely used"
+          translation: "широко используемый"
+          example_sentence: "This app is widely used by students."
+        - headword: "keep up with"
+          translation: "не отставать от, поспевать за"
+          example_sentence: "It's hard to keep up with new technology."
+        - headword: "reliable source"
+          translation: "надёжный источник"
+          example_sentence: "Always check if the news comes from a reliable source."
+        - headword: "outdated information"
+          translation: "устаревшая информация"
+          example_sentence: "That article contains a lot of outdated information."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: passive-voice
+          title: "Passive voice: present and past simple"
+          description: >
+            Passive = subject + be + past participle (+ by + agent,
+            optional). Present simple passive: "The app is used by
+            millions of people." Past simple passive: "The app was
+            developed in 2019." Only use "by + agent" if it adds real
+            information — otherwise leave it out: "The phone was
+            invented in the 1970s." (no need to say by whom if it's
+            not relevant). To turn an active sentence into passive, the
+            object of the active sentence becomes the subject of the
+            passive one: Active — "Millions of people use this app." →
+            Passive — "This app is used by millions of people." Common
+            mistake: forgetting "be" ("The app developed in 2019" —
+            incorrect, needs "The app was developed in 2019").
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: A tech news story
+          lines:
+            - speaker: A
+              text: "Did you see that video? It went viral overnight."
+            - speaker: B
+              text: "Yeah, it's been shared millions of times already."
+            - speaker: A
+              text: "Apparently the app it was made with was only released last month."
+            - speaker: B
+              text: "Wow. It's hard to keep up with how fast this stuff spreads."
+            - speaker: A
+              text: "True. Was the story confirmed by a reliable source, though?"
+            - speaker: B
+              text: "Good question. A lot of outdated information gets shared as if it's new."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: technology-and-media-mc-go-viral
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B1
+          vocabulary_headword: "go viral"
+          prompt:
+            question: >-
+              What does it mean when a video "goes viral"?
+            options:
+              - id: a
+                text: "It spreads very quickly and is seen by many people"
+              - id: b
+                text: "It gets deleted by the platform"
+              - id: c
+                text: "It is watched by only a few close friends"
+              - id: d
+                text: "It contains a computer virus"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Go viral" means to spread rapidly online and reach a huge
+            audience — nothing to do with a computer virus.
+
+        - slug: technology-and-media-fill-passive-voice
+          type: fill_blank
+          skill: grammar
+          difficulty: B1
+          grammar_topic_slug: passive-voice
+          prompt:
+            text: >-
+              Rewrite in the passive: 1) "Millions of people use this
+              app." -> "This app ___ ___ (use) by millions of people."
+              2) "A small team developed the software." -> "The
+              software ___ ___ (develop) by a small team." 3) "They
+              release updates every month." -> "Updates ___ ___
+              (release) every month."
+          answer_key:
+            blanks:
+              - ["is used"]
+              - ["was developed"]
+              - ["are released"]
+          explanation: >-
+            Passive = be + past participle. Present tense subject
+            ("this app", "updates") -> "is used"/"are released"; past
+            tense subject ("the software") -> "was developed".
+
+        - slug: technology-and-media-order-was-released
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B1
+          grammar_topic_slug: passive-voice
+          prompt:
+            words: ["last", "was", "update", "The", "week", "released"]
+          answer_key:
+            correct_order: ["The", "update", "was", "released", "last", "week"]
+          explanation: >-
+            Passive voice: subject ("The update") + "was" + past
+            participle ("released") + time expression.
+
+        - slug: technology-and-media-reading-app-story
+          type: reading_comprehension
+          skill: reading
+          difficulty: B1
+          prompt:
+            passage: >-
+              A new language-learning app was released last spring, and
+              within weeks it had gone viral on social media. The app
+              was developed by a small team of just five people, and it
+              is now widely used by learners around the world. However,
+              some experts warn that not all the content shared about
+              the app online comes from reliable sources — a lot of
+              outdated information about older versions is still being
+              shared, which makes it hard for new users to keep up with
+              what has actually changed.
+            questions:
+              - id: q1
+                text: "Who was the app developed by?"
+                options:
+                  - id: a
+                    text: "A small team of five people"
+                  - id: b
+                    text: "A large international company"
+                  - id: c
+                    text: "One person working alone"
+                  - id: d
+                    text: "The text doesn't say"
+              - id: q2
+                text: "What do some experts warn about?"
+                options:
+                  - id: a
+                    text: "The app is too expensive"
+                  - id: b
+                    text: "Outdated information is still being shared"
+                  - id: c
+                    text: "The app doesn't work on phones"
+                  - id: d
+                    text: "Nobody uses the app anymore"
+          answer_key:
+            answers:
+              q1: a
+              q2: b
+          explanation: >-
+            "The app was developed by a small team of just five people"
+            (Q1). "Some experts warn... a lot of outdated information...
+            is still being shared" (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: How a Small App Went Viral
+      text: >
+        A new language-learning app was released last spring, and within
+        weeks it had gone viral on social media. The app was developed
+        by a small team of just five people, and it is now widely used
+        by learners around the world. However, some experts warn that
+        not all the content shared about the app online comes from
+        reliable sources — a lot of outdated information about older
+        versions is still being shared, which makes it hard for new
+        users to keep up with what has actually changed.
+      summary_ru: >
+        Новое приложение для изучения языков вышло прошлой весной, и
+        за несколько недель стало вирусным в соцсетях. Его разработала
+        небольшая команда всего из пяти человек, и теперь им широко
+        пользуются учащиеся по всему миру. Однако некоторые эксперты
+        предупреждают, что не весь контент о приложении в интернете
+        поступает из надёжных источников — до сих пор распространяется
+        много устаревшей информации о старых версиях, из-за чего новым
+        пользователям сложно уследить за тем, что реально изменилось.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      transcript: >
+        A: Did you see that video? It went viral overnight. — B: Yeah,
+        it's been shared millions of times already. — A: Apparently the
+        app it was made with was only released last month. — B: Wow.
+        It's hard to keep up with how fast this stuff spreads. — A:
+        True. Was the story confirmed by a reliable source, though? —
+        B: Good question. A lot of outdated information gets shared as
+        if it's new.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Talk about a piece of technology or an app you use often. Use
+        the passive voice at least twice to describe when or how it was
+        made, updated or used. Speak for 60 seconds.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Write 6-8 sentences about a piece of technology news, using
+            the passive voice at least 4 times.
+        - type: vocabulary_recall
+          instructions: >
+            Without looking back at the lesson, write down as many
+            technology and media expressions as you remember, then
+            check your list against the vocabulary block.
+        - type: grammar_practice
+          instructions: >
+            Rewrite 5 active sentences about technology into the
+            passive voice.
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        passive-voice grammar topic are generated automatically from
+        mistakes and spaced repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: technology-and-media-mini-mc-keep-up-with
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B1
+          vocabulary_headword: "keep up with"
+          prompt:
+            question: "\"It's hard to keep up with new technology\" means..."
+            options:
+              - id: a
+                text: "It's hard to stay updated with fast changes"
+              - id: b
+                text: "It's hard to buy new technology"
+              - id: c
+                text: "It's hard to fix broken devices"
+              - id: d
+                text: "It's hard to sell old technology"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Keep up with" means to stay updated or maintain the same
+            pace as something changing quickly.
+
+        - slug: technology-and-media-mini-fill-passive-voice-2
+          type: fill_blank
+          skill: grammar
+          difficulty: B1
+          grammar_topic_slug: passive-voice
+          prompt:
+            text: >-
+              Rewrite in the passive: 1) "They released the app in
+              2020." -> "The app ___ ___ (release) in 2020." 2) "People
+              use this website every day." -> "This website ___ ___
+              (use) every day."
+          answer_key:
+            blanks:
+              - ["was released"]
+              - ["is used"]
+          explanation: >-
+            Past tense subject -> "was released"; present tense
+            subject -> "is used".
+
+        - slug: technology-and-media-mini-order-reliable-source
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B1
+          vocabulary_headword: "reliable source"
+          prompt:
+            words: ["from", "news", "reliable", "This", "a", "source", "comes"]
+          answer_key:
+            correct_order: ["This", "news", "comes", "from", "a", "reliable", "source"]
+          explanation: >-
+            Subject ("This news") + verb ("comes") + "from a reliable
+            source".
+
+        - slug: technology-and-media-mini-mc-widely-used
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B1
+          vocabulary_headword: "widely used"
+          prompt:
+            question: "\"This app is widely used by students\" means..."
+            options:
+              - id: a
+                text: "Many students use it"
+              - id: b
+                text: "Very few students use it"
+              - id: c
+                text: "Only teachers use it"
+              - id: d
+                text: "It's no longer used"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Widely used" means used by a large number of people.
+
+        - slug: technology-and-media-mini-reading-passive
+          type: reading_comprehension
+          skill: reading
+          difficulty: B1
+          prompt:
+            passage: >-
+              The website was redesigned last year, and it is now used
+              by thousands of people every day.
+            questions:
+              - id: q1
+                text: "When was the website redesigned?"
+                options:
+                  - id: a
+                    text: "Last year"
+                  - id: b
+                    text: "This week"
+                  - id: c
+                    text: "It hasn't been redesigned"
+          answer_key:
+            answers:
+              q1: a
+          explanation: >-
+            "The website was redesigned last year."

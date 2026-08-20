@@ -1,0 +1,392 @@
+level:
+  code: B1
+  order_index: 3
+
+module:
+  slug: past-events
+  title: Describing Past Events in Detail
+  order_index: 4
+
+lesson:
+  slug: describing-past-events
+  title: Describing Past Events in Detail
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Describe a past event with a clear sequence of what happened first"
+        - "Use Past Perfect to show one past action happened before another"
+        - "Combine Past Perfect and Past Simple correctly in a story"
+        - "Use 6 new expressions for describing detailed past events"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        Past Simple describes finished actions in the past, and Past
+        Continuous describes the background (see A2). Past Perfect (had
+        + past participle) goes one step further back: it shows that one
+        past action happened *before* another past action. "When I
+        arrived at the station, the train had already left." — the
+        train leaving happened before the arriving. Compare with "When I
+        arrived, the train left." — here the two things happen almost
+        at the same time. Past Perfect is especially useful for
+        explaining cause and effect in a story: "She was tired because
+        she hadn't slept well." Signal words: already, just, by the
+        time, before, after, when.
+      summary_ru: >
+        Past Simple — законченное действие в прошлом. Past Perfect (had
+        + причастие) уходит на шаг дальше назад: показывает, что одно
+        прошлое действие случилось раньше другого прошлого действия.
+        "When I arrived at the station, the train had already left." —
+        поезд ушёл раньше, чем я приехал. Сравните: "When I arrived,
+        the train left." — эти два события происходят почти
+        одновременно. Past Perfect особенно полезен для причины и
+        следствия в рассказе: "She was tired because she hadn't slept
+        well."
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "by the time"
+          translation: "к тому времени, как"
+          example_sentence: "By the time we arrived, the show had already started."
+        - headword: "turn out"
+          translation: "оказаться, обернуться"
+          example_sentence: "The trip turned out better than we expected."
+        - headword: "realise (that)"
+          translation: "осознать, понять"
+          example_sentence: "I realised that I had left my phone at home."
+        - headword: "in the end"
+          translation: "в конце концов"
+          example_sentence: "In the end, everything worked out fine."
+        - headword: "miss out on"
+          translation: "упустить, пропустить"
+          example_sentence: "We missed out on the best part of the party."
+        - headword: "come as a surprise"
+          translation: "стать неожиданностью"
+          example_sentence: "The news came as a complete surprise."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: past-perfect
+          title: "Past Perfect: had + past participle"
+          description: >
+            Past Perfect (had + past participle) marks the earlier of
+            two past events: "By the time I got home, my roommate had
+            already cooked dinner." — cooking happened before getting
+            home. Negative: "had not/hadn't + past participle": "She
+            hadn't finished her homework when her friend called."
+            Question: "Had + subject + past participle?": "Had you
+            eaten before the meeting?" Often used with "by the time",
+            "before", "after", "already", "just" and "when" to make the
+            sequence of two past events clear. Common mistake: using
+            Past Perfect for the *only* past event mentioned — it's
+            only needed when there are two past events and you're
+            marking which came first.
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: A missed connection
+          lines:
+            - speaker: A
+              text: "How was your trip? You look exhausted."
+            - speaker: B
+              text: "Don't ask. By the time we got to the airport, our flight had already boarded."
+            - speaker: A
+              text: "Oh no, what happened?"
+            - speaker: B
+              text: "We'd left home late because the taxi hadn't arrived on time."
+            - speaker: A
+              text: "That's frustrating. Did you miss out on the whole trip?"
+            - speaker: B
+              text: "No, in the end we caught a later flight. It turned out fine, actually."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: describing-past-events-mc-turn-out
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B1
+          vocabulary_headword: "turn out"
+          prompt:
+            question: >-
+              "The trip turned out better than we expected" means...
+            options:
+              - id: a
+                text: "In the end, the trip was better than expected"
+              - id: b
+                text: "The trip was cancelled"
+              - id: c
+                text: "We expected the trip to be great and it was"
+              - id: d
+                text: "The trip started badly and never improved"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Turn out" describes how something ends up, especially when
+            it's different from what was expected.
+
+        - slug: describing-past-events-fill-past-perfect
+          type: fill_blank
+          skill: grammar
+          difficulty: B1
+          grammar_topic_slug: past-perfect
+          prompt:
+            text: >-
+              Complete the sentences: 1) "By the time we arrived, the
+              film ___ (already/start)." 2) "She was upset because she
+              ___ (not/pass) the exam." 3) "___ you ___ (eat) before the
+              meeting started?"
+          answer_key:
+            blanks:
+              - ["had already started"]
+              - ["hadn't passed"]
+              - ["Had", "eaten"]
+          explanation: >-
+            Past Perfect marks the earlier of two past events: "had
+            already started", "hadn't passed", "Had you eaten?".
+
+        - slug: describing-past-events-order-by-the-time
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B1
+          grammar_topic_slug: past-perfect
+          prompt:
+            words: ["home", "left", "had", "already", "we", "arrived", "By", "the", "time", "I"]
+          answer_key:
+            correct_order: ["By", "the", "time", "I", "arrived", "we", "had", "already", "left", "home"]
+          explanation: >-
+            "By the time" + Past Simple (arrived) marks the later event;
+            Past Perfect (had already left) marks the earlier one.
+
+        - slug: describing-past-events-reading-flight-story
+          type: reading_comprehension
+          skill: reading
+          difficulty: B1
+          prompt:
+            passage: >-
+              Last month, Daniel had a terrible start to a business
+              trip. He had packed his suitcase the night before, but by
+              the time he got to the airport, he realised he had
+              forgotten his passport at home. He hadn't left enough
+              time to go back, so he had to buy a new ticket for the
+              next day. It came as a complete surprise when the airline
+              refunded part of his ticket, since he hadn't expected any
+              help at all. In the end, he made it to his meeting only
+              one day late.
+            questions:
+              - id: q1
+                text: "What had Daniel forgotten?"
+                options:
+                  - id: a
+                    text: "His suitcase"
+                  - id: b
+                    text: "His passport"
+                  - id: c
+                    text: "His ticket"
+                  - id: d
+                    text: "His phone"
+              - id: q2
+                text: "What came as a surprise to Daniel?"
+                options:
+                  - id: a
+                    text: "The airline refunded part of his ticket"
+                  - id: b
+                    text: "His flight was cancelled"
+                  - id: c
+                    text: "He missed his meeting completely"
+                  - id: d
+                    text: "He found his passport at the airport"
+          answer_key:
+            answers:
+              q1: b
+              q2: a
+          explanation: >-
+            "He had forgotten his passport at home" (Q1). "It came as a
+            complete surprise when the airline refunded part of his
+            ticket" (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: A Bad Start to a Business Trip
+      text: >
+        Last month, Daniel had a terrible start to a business trip. He
+        had packed his suitcase the night before, but by the time he got
+        to the airport, he realised he had forgotten his passport at
+        home. He hadn't left enough time to go back, so he had to buy a
+        new ticket for the next day. It came as a complete surprise when
+        the airline refunded part of his ticket, since he hadn't
+        expected any help at all. In the end, he made it to his meeting
+        only one day late.
+      summary_ru: >
+        В прошлом месяце у Дэниела было ужасное начало деловой поездки.
+        Он собрал чемодан накануне вечером, но, добравшись до
+        аэропорта, понял, что забыл паспорт дома. У него не оставалось
+        времени вернуться, поэтому пришлось купить новый билет на
+        следующий день. Полной неожиданностью стало то, что
+        авиакомпания вернула часть стоимости билета, ведь он вообще не
+        ожидал никакой помощи. В итоге он добрался до встречи с
+        опозданием всего на один день.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      transcript: >
+        A: How was your trip? You look exhausted. — B: Don't ask. By
+        the time we got to the airport, our flight had already
+        boarded. — A: Oh no, what happened? — B: We'd left home late
+        because the taxi hadn't arrived on time. — A: That's
+        frustrating. Did you miss out on the whole trip? — B: No, in
+        the end we caught a later flight. It turned out fine, actually.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Tell a story about something that went wrong for you, and
+        explain what had already happened before things went wrong.
+        Use Past Perfect at least twice. Speak for 60 seconds.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Write a short story (8-10 sentences) about a past event,
+            using Past Perfect at least 3 times to show what happened
+            earlier.
+        - type: vocabulary_recall
+          instructions: >
+            Without looking back at the lesson, write down as many
+            expressions for describing detailed past events as you
+            remember, then check your list against the vocabulary
+            block.
+        - type: grammar_practice
+          instructions: >
+            Write 5 sentences with "By the time..." combining Past
+            Simple and Past Perfect.
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the past-perfect
+        grammar topic are generated automatically from mistakes and
+        spaced repetition — nothing to author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: describing-past-events-mini-mc-miss-out
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B1
+          vocabulary_headword: "miss out on"
+          prompt:
+            question: "\"We missed out on the best part of the party\" means..."
+            options:
+              - id: a
+                text: "We didn't get to experience it"
+              - id: b
+                text: "We enjoyed it the most"
+              - id: c
+                text: "We organised it"
+              - id: d
+                text: "We arrived early"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Miss out on" means to fail to experience or take part in
+            something.
+
+        - slug: describing-past-events-mini-fill-past-perfect-2
+          type: fill_blank
+          skill: grammar
+          difficulty: B1
+          grammar_topic_slug: past-perfect
+          prompt:
+            text: >-
+              Complete: 1) "She ___ (already/leave) when I called." 2)
+              "They hadn't ___ (finish) the project by Friday."
+          answer_key:
+            blanks:
+              - ["had already left"]
+              - ["finished"]
+          explanation: >-
+            "had + past participle" marks the earlier event: "had
+            already left", "hadn't finished".
+
+        - slug: describing-past-events-mini-order-realise
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B1
+          vocabulary_headword: "realise (that)"
+          prompt:
+            words: ["forgotten", "keys", "realised", "my", "I", "I'd"]
+          answer_key:
+            correct_order: ["I", "realised", "I'd", "forgotten", "my", "keys"]
+          explanation: >-
+            "Realise" + that-clause with Past Perfect for the earlier
+            event: "I realised I'd forgotten my keys."
+
+        - slug: describing-past-events-mini-mc-by-the-time
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B1
+          vocabulary_headword: "by the time"
+          prompt:
+            question: "\"By the time we arrived, the show had started\" means..."
+            options:
+              - id: a
+                text: "The show started before we got there"
+              - id: b
+                text: "The show started right when we arrived"
+              - id: c
+                text: "The show started after we left"
+              - id: d
+                text: "There was no show"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            Past Perfect ("had started") marks the event that happened
+            before "we arrived".
+
+        - slug: describing-past-events-mini-reading-past-perfect
+          type: reading_comprehension
+          skill: reading
+          difficulty: B1
+          prompt:
+            passage: >-
+              When Ana got to work, she realised she had left her
+              laptop at home. In the end, a colleague lent her a spare
+              one for the day.
+            questions:
+              - id: q1
+                text: "What had Ana left at home?"
+                options:
+                  - id: a
+                    text: "Her laptop"
+                  - id: b
+                    text: "Her phone"
+                  - id: c
+                    text: "Her keys"
+          answer_key:
+            answers:
+              q1: a
+          explanation: >-
+            "She realised she had left her laptop at home."

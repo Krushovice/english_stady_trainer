@@ -1,0 +1,388 @@
+level:
+  code: B1
+  order_index: 3
+
+module:
+  slug: experiences
+  title: Talking About Experiences
+  order_index: 2
+
+lesson:
+  slug: talking-about-experiences
+  title: Talking About Experiences
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Talk about life experiences without saying exactly when they happened"
+        - "Use Present Perfect with ever, never, already, just and yet"
+        - "Use for and since to say how long a situation has lasted"
+        - "Use 6 new expressions for talking about experiences"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        We use Present Perfect to talk about life experiences up to now,
+        when the exact time doesn't matter: "I've been to Japan.", "She's
+        never tried sushi.". "Ever" and "never" go with questions and
+        negatives about experience: "Have you ever lived abroad?" "I've
+        never lived abroad." "Already" shows something happened sooner
+        than expected: "I've already finished the report." "Yet" is used
+        in questions and negatives, usually at the end: "Have you
+        finished yet?" "I haven't finished yet." "Just" shows something
+        happened a moment ago: "I've just got back." For how long a
+        situation has continued, use "for" + a period ("for five years")
+        or "since" + a starting point ("since 2019").
+      summary_ru: >
+        Present Perfect используют для жизненного опыта до настоящего
+        момента, когда точное время неважно: "I've been to Japan."
+        "Ever/never" — для опыта в вопросах и отрицаниях. "Already" —
+        уже (раньше, чем ожидалось). "Yet" — ещё (в вопросах и
+        отрицаниях, обычно в конце). "Just" — только что. "For" +
+        период времени ("for five years") и "since" + точка отсчёта
+        ("since 2019") показывают, как долго длится ситуация.
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "have you ever"
+          translation: "тебе доводилось когда-нибудь"
+          example_sentence: "Have you ever tried scuba diving?"
+        - headword: "so far"
+          translation: "на данный момент, пока что"
+          example_sentence: "So far, this is the best trip I've had."
+        - headword: "run a marathon"
+          translation: "пробежать марафон"
+          example_sentence: "I've always wanted to run a marathon."
+        - headword: "get used to"
+          translation: "привыкнуть к"
+          example_sentence: "I've finally got used to working from home."
+        - headword: "life-changing"
+          translation: "меняющий жизнь"
+          example_sentence: "Moving abroad was a life-changing experience for her."
+        - headword: "not yet"
+          translation: "ещё нет"
+          example_sentence: "I haven't read that book yet."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: present-perfect-experience
+          title: "Present Perfect for experience: ever/never/already/just/yet, for/since"
+          description: >
+            Present Perfect describes experiences up to now without a
+            fixed time: "I've visited three countries this year." Ever
+            (in questions), never (in statements): "Have you ever eaten
+            snails?" "I've never eaten snails." Already (statements,
+            sooner than expected): "I've already seen that film." Yet
+            (questions and negatives, end of sentence): "Have you
+            called her yet?" Just (very recently): "I've just woken
+            up." For a duration: "for two years"; since a point in
+            time: "since 2020". Common mistake: using Present Perfect
+            with a finished time expression like "yesterday" or "in
+            2019" — those need Past Simple instead ("I visited Rome in
+            2019", not "I have visited Rome in 2019").
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Have you ever...?
+          lines:
+            - speaker: A
+              text: "Have you ever lived in another country?"
+            - speaker: B
+              text: "Yes, actually — I've lived in Portugal for two years now."
+            - speaker: A
+              text: "Wow, since when exactly?"
+            - speaker: B
+              text: "Since 2022. It's been a life-changing experience so far."
+            - speaker: A
+              text: "Have you got used to the language yet?"
+            - speaker: B
+              text: "Almost! I've already learnt the basics, but I haven't mastered it yet."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: talking-about-experiences-mc-life-changing
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B1
+          vocabulary_headword: "life-changing"
+          prompt:
+            question: >-
+              What does a "life-changing experience" mean?
+            options:
+              - id: a
+                text: "An experience that changes how you live or see things"
+              - id: b
+                text: "An experience you forget quickly"
+              - id: c
+                text: "A boring, ordinary experience"
+              - id: d
+                text: "An experience that lasts only a few minutes"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Life-changing" describes something that significantly
+            changes your life or perspective — not something ordinary
+            or quickly forgotten.
+
+        - slug: talking-about-experiences-fill-present-perfect-experience
+          type: fill_blank
+          skill: grammar
+          difficulty: B1
+          grammar_topic_slug: present-perfect-experience
+          prompt:
+            text: >-
+              Complete the sentences: 1) "___ you ___ (ever/try) Thai
+              food?" 2) "I ___ (already/finish) the report." 3) "She
+              hasn't called me ___ ." 4) "We've lived here ___ 2018."
+          answer_key:
+            blanks:
+              - ["Have", "ever tried"]
+              - ["have already finished"]
+              - ["yet"]
+              - ["since"]
+          explanation: >-
+            "Have + ever + past participle" for a question about
+            experience; "already" for something sooner than expected;
+            "yet" ends a negative/question; "since" marks a starting
+            point.
+
+        - slug: talking-about-experiences-order-havent-yet
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B1
+          grammar_topic_slug: present-perfect-experience
+          prompt:
+            words: ["haven't", "yet", "I", "finished", "book", "the"]
+          answer_key:
+            correct_order: ["I", "haven't", "finished", "the", "book", "yet"]
+          explanation: >-
+            Negative Present Perfect with "yet" at the end: subject +
+            "haven't" + past participle + object + "yet".
+
+        - slug: talking-about-experiences-reading-marathon
+          type: reading_comprehension
+          skill: reading
+          difficulty: B1
+          prompt:
+            passage: >-
+              Maya has always wanted to run a marathon, but she's never
+              had the confidence to try. This year, she's finally
+              started training, and so far she's run 15 kilometres
+              without stopping. She hasn't signed up for a race yet,
+              but she's already told all her friends about her plan —
+              she says it's more motivating that way. She's been
+              training since March, and she says it's been the most
+              life-changing challenge she's ever taken on.
+            questions:
+              - id: q1
+                text: "Has Maya signed up for a race yet?"
+                options:
+                  - id: a
+                    text: "Yes, already"
+                  - id: b
+                    text: "No, not yet"
+                  - id: c
+                    text: "The text doesn't say"
+                  - id: d
+                    text: "She signed up last year"
+              - id: q2
+                text: "Since when has Maya been training?"
+                options:
+                  - id: a
+                    text: "Since March"
+                  - id: b
+                    text: "Since last year"
+                  - id: c
+                    text: "Since she was a child"
+                  - id: d
+                    text: "The text doesn't say"
+          answer_key:
+            answers:
+              q1: b
+              q2: a
+          explanation: >-
+            "She hasn't signed up for a race yet" (Q1). "She's been
+            training since March" (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: Training for a Marathon
+      text: >
+        Maya has always wanted to run a marathon, but she's never had
+        the confidence to try. This year, she's finally started
+        training, and so far she's run 15 kilometres without stopping.
+        She hasn't signed up for a race yet, but she's already told all
+        her friends about her plan — she says it's more motivating that
+        way. She's been training since March, and she says it's been
+        the most life-changing challenge she's ever taken on.
+      summary_ru: >
+        Майя всегда хотела пробежать марафон, но ей никогда не хватало
+        уверенности попробовать. В этом году она наконец начала
+        тренироваться и уже пробежала 15 километров без остановки. Она
+        ещё не записалась на забег, но уже рассказала всем друзьям о
+        своём плане — говорит, что так мотивирует лучше. Она
+        тренируется с марта и говорит, что это самый меняющий жизнь
+        вызов из всех, что она когда-либо принимала.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      transcript: >
+        A: Have you ever lived in another country? — B: Yes, actually —
+        I've lived in Portugal for two years now. — A: Wow, since when
+        exactly? — B: Since 2022. It's been a life-changing experience
+        so far. — A: Have you got used to the language yet? — B:
+        Almost! I've already learnt the basics, but I haven't mastered
+        it yet.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Talk about three things you have or haven't done in your life.
+        Use "ever", "never", "already", "yet" and "for/since" at least
+        once each. Speak for 60 seconds.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Write 6-8 sentences about your own life experiences, using
+            Present Perfect with ever/never/already/yet and for/since.
+        - type: vocabulary_recall
+          instructions: >
+            Without looking back at the lesson, write down as many
+            experience-related expressions as you remember, then check
+            your list against the vocabulary block.
+        - type: grammar_practice
+          instructions: >
+            Write 5 questions to ask a friend about their life
+            experiences, starting with "Have you ever...?".
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and the
+        present-perfect-experience grammar topic are generated
+        automatically from mistakes and spaced repetition — nothing to
+        author here.
+
+  - type: mini_test
+    order_index: 12
+    content:
+      items:
+        - slug: talking-about-experiences-mini-mc-so-far
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B1
+          vocabulary_headword: "so far"
+          prompt:
+            question: "\"So far, this is the best trip I've had\" means..."
+            options:
+              - id: a
+                text: "Up to this point in time"
+              - id: b
+                text: "A long time ago"
+              - id: c
+                text: "Never again"
+              - id: d
+                text: "Very far away"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "So far" means "up to now" — it always pairs naturally with
+            Present Perfect.
+
+        - slug: talking-about-experiences-mini-fill-present-perfect-experience-2
+          type: fill_blank
+          skill: grammar
+          difficulty: B1
+          grammar_topic_slug: present-perfect-experience
+          prompt:
+            text: >-
+              Complete: 1) "I ___ (never/be) to Australia." 2) "He's
+              worked here ___ five years."
+          answer_key:
+            blanks:
+              - ["have never been"]
+              - ["for"]
+          explanation: >-
+            "Never" pairs with Present Perfect ("have never been"); a
+            duration in numbers uses "for".
+
+        - slug: talking-about-experiences-mini-order-get-used-to
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B1
+          vocabulary_headword: "get used to"
+          prompt:
+            words: ["used", "finally", "to", "I've", "the", "got", "noise"]
+          answer_key:
+            correct_order: ["I've", "finally", "got", "used", "to", "the", "noise"]
+          explanation: >-
+            "Get used to" + noun: "I've finally got used to the
+            noise."
+
+        - slug: talking-about-experiences-mini-mc-marathon
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B1
+          vocabulary_headword: "run a marathon"
+          prompt:
+            question: "What does it mean to \"run a marathon\"?"
+            options:
+              - id: a
+                text: "To run a very long race, usually 42 kilometres"
+              - id: b
+                text: "To run a short sprint"
+              - id: c
+                text: "To train indoors only"
+              - id: d
+                text: "To watch a running competition"
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            A marathon is a long-distance race, traditionally 42.195 km.
+
+        - slug: talking-about-experiences-mini-reading-experience
+          type: reading_comprehension
+          skill: reading
+          difficulty: B1
+          prompt:
+            passage: >-
+              I've never been skiing, but my sister has skied since she
+              was a child. I've already asked her to teach me this
+              winter.
+            questions:
+              - id: q1
+                text: "Has the speaker ever been skiing?"
+                options:
+                  - id: a
+                    text: "Yes, many times"
+                  - id: b
+                    text: "No, never"
+                  - id: c
+                    text: "Once, as a child"
+          answer_key:
+            answers:
+              q1: b
+          explanation: >-
+            "I've never been skiing" — the speaker has no experience
+            of it.

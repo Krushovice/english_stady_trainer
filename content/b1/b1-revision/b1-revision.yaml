@@ -1,0 +1,290 @@
+level:
+  code: B1
+  order_index: 3
+
+module:
+  slug: b1-revision
+  title: Revision
+  order_index: 8
+
+lesson:
+  slug: b1-revision
+  title: "B1 Revision"
+  order_index: 1
+
+blocks:
+  - type: learning_goals
+    order_index: 1
+    content:
+      goals:
+        - "Review all B1 grammar in mixed, realistic contexts"
+        - "Confidently combine Present Perfect, Past Perfect and the passive voice"
+        - "Recall key vocabulary from all 7 B1 topics"
+        - "Prepare for the B1 level exit exam"
+
+  - type: context
+    order_index: 2
+    content:
+      text: >
+        This lesson reviews all B1 grammar: question tags, Present
+        Perfect for experience (ever/never/already/yet, for/since),
+        concession clauses (although/even though/despite/in spite of),
+        Past Perfect, future forms and prediction modals (will be +
+        -ing, might/may/could), the second conditional, and the passive
+        voice. In real conversation, these structures often combine
+        naturally: "Although I've never lived abroad, I'd love to,
+        if I had the chance — my sister's flat was actually found by a
+        friend of hers who'd been living there for years." Notice how
+        several structures work together to build one natural,
+        connected thought.
+      summary_ru: >
+        Этот урок повторяет всю грамматику B1: question tags, Present
+        Perfect для опыта (ever/never/already/yet, for/since),
+        уступительные конструкции (although/even though/despite/in
+        spite of), Past Perfect, формы будущего и модальные глаголы
+        предсказания (will be + -ing, might/may/could), second
+        conditional и passive voice. В реальной речи эти конструкции
+        часто соединяются в одной естественной мысли.
+
+  - type: vocabulary
+    order_index: 3
+    content:
+      items:
+        - headword: "so far"
+          translation: "на данный момент, пока что"
+          example_sentence: "So far, everything has gone smoothly."
+        - headword: "to be honest"
+          translation: "честно говоря"
+          example_sentence: "To be honest, I'd do things differently next time."
+        - headword: "by the time"
+          translation: "к тому времени, как"
+          example_sentence: "By the time we finished, it had already got dark."
+        - headword: "sooner or later"
+          translation: "рано или поздно"
+          example_sentence: "Sooner or later, we'll have to make a decision."
+        - headword: "come up with (a solution)"
+          translation: "придумать (решение)"
+          example_sentence: "We finally came up with a solution together."
+        - headword: "keep up with"
+          translation: "не отставать от, поспевать за"
+          example_sentence: "It's hard to keep up with everything happening at once."
+
+  - type: grammar
+    order_index: 4
+    content:
+      topics:
+        - slug: present-perfect-experience
+          title: "Present Perfect for experience: ever/never/already/just/yet, for/since"
+          description: >
+            Review: Present Perfect for life experience up to now
+            ("I've been to Japan"), with ever/never in questions and
+            negatives, already/just for recency, yet for
+            questions/negatives, and for/since for duration.
+
+  - type: examples
+    order_index: 5
+    content:
+      dialogues:
+        - title: Catching up after a long time
+          lines:
+            - speaker: A
+              text: "It's been ages! Have you done anything exciting lately?"
+            - speaker: B
+              text: "Actually, yes. Although I'd never travelled alone before, I went to Italy last month."
+            - speaker: A
+              text: "Wow, how was it? Had you planned it for long?"
+            - speaker: B
+              text: "Not really — by the time I decided to go, the trip was only two weeks away!"
+            - speaker: A
+              text: "That's brave. If I were you, I might have been too nervous."
+            - speaker: B
+              text: "To be honest, I nearly cancelled. But in the end, everything was arranged really quickly."
+
+  - type: exercises
+    order_index: 6
+    content:
+      items:
+        - slug: b1-revision-mc-mixed-vocabulary
+          type: multiple_choice
+          skill: vocabulary
+          difficulty: B1
+          vocabulary_headword: "come up with (a solution)"
+          prompt:
+            question: >-
+              You and a colleague have been discussing a problem for an
+              hour and finally think of a good idea. What do you say?
+            options:
+              - id: a
+                text: "We've finally come up with a solution."
+              - id: b
+                text: "We've finally deal with a solution."
+              - id: c
+                text: "We've finally gone viral with a solution."
+              - id: d
+                text: "We've finally turned out a solution."
+          answer_key:
+            correct_option_id: a
+          explanation: >-
+            "Come up with (a solution)" means to think of or produce an
+            idea — the natural fit here.
+
+        - slug: b1-revision-fill-mixed-grammar
+          type: fill_blank
+          skill: grammar
+          difficulty: B1
+          grammar_topic_slug: present-perfect-experience
+          prompt:
+            text: >-
+              Complete with the correct forms: 1) "___ you ___
+              (ever/be) to Italy?" (Have / ever been) 2) "By the time
+              we arrived, the meeting ___ (already/start)." (had
+              already started) 3) "If I ___ (have) more time, I would
+              travel more." (had) 4) "The article ___ (publish) last
+              week." (was published)
+          answer_key:
+            blanks:
+              - ["Have", "ever been"]
+              - ["had already started"]
+              - ["had"]
+              - ["was published"]
+          explanation: >-
+            Present Perfect for experience (Have you ever been); Past
+            Perfect for the earlier of two past events (had already
+            started); second conditional if-clause (had); passive
+            voice for a past event without a named agent (was
+            published).
+
+        - slug: b1-revision-order-although
+          type: sentence_ordering
+          skill: grammar
+          difficulty: B1
+          grammar_topic_slug: present-perfect-experience
+          prompt:
+            words: ["alone", "travelled", "never", "I'd", "Although", "before"]
+          answer_key:
+            correct_order: ["Although", "I'd", "never", "travelled", "alone", "before"]
+          explanation: >-
+            "Although" + clause (subject + verb): "Although I'd never
+            travelled alone before...".
+
+        - slug: b1-revision-reading-trip-story
+          type: reading_comprehension
+          skill: reading
+          difficulty: B1
+          prompt:
+            passage: >-
+              Although Elena had never travelled alone before, she
+              decided to go to Italy last month. By the time she'd
+              booked the flight, she had only two weeks to plan
+              everything. As far as she was concerned, that wasn't a
+              problem — she'd already researched most of the trip
+              online. Despite a few small issues, the trip turned out
+              to be one of the best experiences she's ever had. If she
+              had more money, she would go again next year, and this
+              time she might be travelling with a friend instead.
+            questions:
+              - id: q1
+                text: "Had Elena travelled alone before?"
+                options:
+                  - id: a
+                    text: "Yes, many times"
+                  - id: b
+                    text: "No, never"
+                  - id: c
+                    text: "Once, as a child"
+                  - id: d
+                    text: "The text doesn't say"
+              - id: q2
+                text: "How does Elena describe the trip, despite a few small issues?"
+                options:
+                  - id: a
+                    text: "One of the best experiences she's ever had"
+                  - id: b
+                    text: "A complete disaster"
+                  - id: c
+                    text: "Boring and disappointing"
+                  - id: d
+                    text: "Too expensive to repeat"
+          answer_key:
+            answers:
+              q1: b
+              q2: a
+          explanation: >-
+            "Elena had never travelled alone before" (Q1). "Despite a
+            few small issues, the trip turned out to be one of the
+            best experiences she's ever had" (Q2).
+
+  - type: reading
+    order_index: 7
+    content:
+      title: A Trip Worth Taking
+      text: >
+        Although Elena had never travelled alone before, she decided to
+        go to Italy last month. By the time she'd booked the flight,
+        she had only two weeks to plan everything. As far as she was
+        concerned, that wasn't a problem — she'd already researched
+        most of the trip online. Despite a few small issues, the trip
+        turned out to be one of the best experiences she's ever had. If
+        she had more money, she would go again next year, and this time
+        she might be travelling with a friend instead.
+      summary_ru: >
+        Хотя Елена никогда раньше не путешествовала одна, в прошлом
+        месяце она решила поехать в Италию. К тому времени, как она
+        забронировала билет, у неё оставалось всего две недели на
+        подготовку. По её мнению, это не было проблемой — она уже
+        изучила большую часть маршрута онлайн. Несмотря на несколько
+        мелких неурядиц, поездка оказалась одним из лучших впечатлений
+        в её жизни. Будь у неё больше денег, она бы поехала снова в
+        следующем году, и на этот раз, возможно, уже с подругой.
+
+  - type: listening
+    order_index: 8
+    content:
+      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      transcript: >
+        A: It's been ages! Have you done anything exciting lately? —
+        B: Actually, yes. Although I'd never travelled alone before, I
+        went to Italy last month. — A: Wow, how was it? Had you
+        planned it for long? — B: Not really — by the time I decided to
+        go, the trip was only two weeks away! — A: That's brave. If I
+        were you, I might have been too nervous. — B: To be honest, I
+        nearly cancelled. But in the end, everything was arranged
+        really quickly.
+
+  - type: speaking
+    order_index: 9
+    content:
+      prompt: >
+        Tell a story about a trip, decision or experience, combining at
+        least four different B1 grammar structures from this level
+        (question tags, Present Perfect for experience, concession
+        clauses, Past Perfect, future/prediction forms, second
+        conditional, passive voice). Speak for 60 seconds.
+
+  - type: homework
+    order_index: 10
+    content:
+      tasks:
+        - type: writing
+          instructions: >
+            Write a short story (8-10 sentences) about a real or
+            imagined trip or life event, using at least 5 different
+            grammar structures from B1.
+        - type: vocabulary_recall
+          instructions: >
+            Without looking back at the lessons, write down as many
+            words as you can remember from all 7 B1 topics (small
+            talk, experiences, opinions, past events, future plans,
+            problem solving, technology & media).
+        - type: grammar_practice
+          instructions: >
+            Write one sentence for each B1 grammar topic (7 sentences
+            total).
+
+  - type: review
+    order_index: 11
+    content:
+      note: >
+        Review items for this lesson's vocabulary and grammar topics
+        are generated automatically from mistakes and spaced
+        repetition — nothing to author here.
