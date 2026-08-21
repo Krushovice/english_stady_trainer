@@ -1,7 +1,7 @@
 import uuid
 from collections.abc import Sequence
 
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
@@ -38,3 +38,18 @@ class MistakeRepository:
             query = query.where(UserMistake.status == status)
         result = await self._session.execute(query)
         return result.scalars().all()
+
+    async def count_by_status(self, user_id: uuid.UUID) -> dict[MistakeStatus, int]:
+        """Number of grammar topics currently in each mistake status —
+        one row per (user, grammar_topic), so this is a topic count, not an
+        attempt count. Missing statuses default to 0 so callers never need
+        a fallback lookup."""
+        counts = {status: 0 for status in MistakeStatus}
+        result = await self._session.execute(
+            select(UserMistake.status, func.count())
+            .where(UserMistake.user_id == user_id)
+            .group_by(UserMistake.status)
+        )
+        for status, count in result.all():
+            counts[status] = count
+        return counts

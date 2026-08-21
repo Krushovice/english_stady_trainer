@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getProgress } from "../api/exercises";
+import { getMyTitle } from "../api/titles";
 import type { Skill } from "../api/types";
 
 const SKILL_LABELS: Record<Skill, string> = {
@@ -25,6 +26,10 @@ export function ProgressPage() {
     queryKey: ["progress"],
     queryFn: getProgress,
   });
+  const title = useQuery({
+    queryKey: ["title"],
+    queryFn: getMyTitle,
+  });
 
   if (isLoading) return <p className="status">Loading progress...</p>;
   if (error) return <p className="status status-error">Couldn't load progress.</p>;
@@ -34,6 +39,19 @@ export function ProgressPage() {
   return (
     <div className="page">
       <h1>Progress</h1>
+      {title.data && (
+        <div className="title-card">
+          <h2>
+            {title.data.title}
+            {title.data.cefr_grade ? ` · ${title.data.cefr_grade}` : ""}
+          </h2>
+          <p className="status">
+            {title.data.days_practiced} day{title.data.days_practiced === 1 ? "" : "s"} practiced ·{" "}
+            {title.data.mistakes_mastered}/{title.data.mistakes_total} mistakes mastered ·{" "}
+            {title.data.review_count} review{title.data.review_count === 1 ? "" : "s"} completed
+          </p>
+        </div>
+      )}
       <p className="status">Tracked separately per skill — not one overall score.</p>
       <div className="progress-grid">
         {SKILL_ORDER.map((skill) => {

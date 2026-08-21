@@ -17,8 +17,10 @@ from app.schemas.exercise import (
     SkillProgressResponse,
     SubmitAttemptRequest,
 )
+from app.schemas.titles import TitleResponse
 from app.services.exercise_service import ExerciseService
 from app.services.scoring import InvalidSubmissionError
+from app.services.title_service import TitleService
 
 router = APIRouter(tags=["exercises"])
 
@@ -110,3 +112,19 @@ async def get_progress(
         )
         for row in rows
     ]
+
+
+@router.get("/titles/me", response_model=TitleResponse)
+async def get_my_title(
+    session: AsyncSession = Depends(get_db_session),
+    current_user: User = Depends(get_current_user),
+) -> TitleResponse:
+    result = await TitleService(session).get_title(current_user.id)
+    return TitleResponse(
+        title=result.title,
+        cefr_grade=result.cefr_grade,
+        days_practiced=result.days_practiced,
+        mistakes_mastered=result.mistakes_mastered,
+        mistakes_total=result.mistakes_total,
+        review_count=result.review_count,
+    )

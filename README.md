@@ -4,7 +4,7 @@ Personal interactive English-learning platform. Product rules, architecture, and
 
 ## Status
 
-Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. Phase 5 (AI) is done: the provider abstraction, writing feedback, homework generation, conversation mode, and the Speaking flow (prompt → recording → STT → evaluation → feedback → retry) are all built and verified end to end against real local models — see "AI (local model)", "Writing feedback and homework", "Conversation mode", "Speech-to-text (STT)", and "Speaking" below. Content authoring is also done: all 43 planned lessons across A1/A2/B1/B2 are written (see "Content" below); C1/C2 stay explicitly out of scope. Phase 6 (UX) is in progress: the core learning loop, dashboard-equivalent nav (Lessons/Daily quiz/Review/Homework/Speaking/Talk/Progress), progress screen, review center, placement test UI, level exit exams, a "C1/C2 — coming soon" placeholder on `/levels`, and — as of 2026-08-20 — frontend for Homework/Speaking/AI Conversation are all built; gamification (titles/grades), the completion certificate, and a course-wide final exam are designed but not yet built (see `docs/decisions.md`).
+Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. Phase 5 (AI) is done: the provider abstraction, writing feedback, homework generation, conversation mode, and the Speaking flow (prompt → recording → STT → evaluation → feedback → retry) are all built and verified end to end against real local models — see "AI (local model)", "Writing feedback and homework", "Conversation mode", "Speech-to-text (STT)", and "Speaking" below. Content authoring is also done: all 43 planned lessons across A1/A2/B1/B2 are written (see "Content" below); C1/C2 stay explicitly out of scope. Phase 6 (UX) is in progress: the core learning loop, dashboard-equivalent nav (Lessons/Daily quiz/Review/Homework/Speaking/Talk/Progress), progress screen with a computed title/grade, review center, placement test UI, level exit exams, a "C1/C2 — coming soon" placeholder on `/levels`, and frontend for Homework/Speaking/AI Conversation are all built; the completion certificate and a course-wide final exam are designed but not yet built (see `docs/decisions.md`).
 
 ## Stack
 
@@ -65,6 +65,15 @@ Verified live end to end with headless-browser scripts against the real API — 
 `LevelsPage` also shows two static, non-clickable "C1 / C2 — Coming soon" cards alongside
 the real A1–B2 level cards, reusing the existing locked-card style. No `Level` DB row exists
 for C1/C2 — CLAUDE.md keeps them out of scope for the MVP.
+
+## Titles and grades
+
+`GET /titles/me` (folded into the existing `/progress` route file) — one computed "main"
+title + the user's current CEFR grade (e.g. "Отладчик · B1"), shown as a card on
+`ProgressPage`. Computed from three signals with no new tracking tables: distinct days
+practiced, mistake-remediation ratio (mastered/total `UserMistake` topics), and lifetime
+`ReviewItem.review_count`. Tier ladder and CEFR-grade choice are documented in
+`app/services/title_service.py` and `docs/decisions.md`.
 
 ## Homework, Speaking, and AI Conversation frontend
 

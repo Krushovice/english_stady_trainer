@@ -25,6 +25,7 @@ class ExerciseAttempt(Base):
     __table_args__ = (
         Index("ix_exercise_attempts_user_exercise", "user_id", "exercise_id"),
         Index("ix_exercise_attempts_user_source", "user_id", "source"),
+        Index("ix_exercise_attempts_user_attempted_at", "user_id", "attempted_at"),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)

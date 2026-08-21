@@ -890,3 +890,16 @@ main {
   border: 1px solid var(--border);
   border-radius: var(--radius);
 }
+
+/* --- Title card --- */
+
+.title-card {
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  background: var(--accent-soft);
+  border-radius: var(--radius);
+}
+
+.title-card h2 {
+  margin: 0 0 0.35rem;
+}

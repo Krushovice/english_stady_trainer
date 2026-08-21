@@ -147,6 +147,15 @@ export interface SkillProgress {
   accuracy: number;
 }
 
+export interface Title {
+  title: string;
+  cefr_grade: CEFRLevel | null;
+  days_practiced: number;
+  mistakes_mastered: number;
+  mistakes_total: number;
+  review_count: number;
+}
+
 // --- Placement test ---
 
 export interface SkillLevelResult {

@@ -2,7 +2,7 @@ import uuid
 from collections.abc import Sequence
 from datetime import datetime
 
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
@@ -57,3 +57,13 @@ class ReviewRepository:
             .limit(limit)
         )
         return result.scalars().all()
+
+    async def sum_review_count(self, user_id: uuid.UUID) -> int:
+        """Lifetime total of ReviewItem.review_count across all of the
+        user's review items — the "review consistency" signal for titles."""
+        result = await self._session.execute(
+            select(func.coalesce(func.sum(ReviewItem.review_count), 0)).where(
+                ReviewItem.user_id == user_id
+            )
+        )
+        return result.scalar_one()

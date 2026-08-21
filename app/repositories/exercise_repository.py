@@ -175,6 +175,16 @@ class ExerciseRepository:
         )
         return result.scalars().all()
 
+    async def count_distinct_attempt_days(self, user_id: uuid.UUID) -> int:
+        """Distinct calendar days the user has attempted at least one
+        exercise — the "regularity" signal behind the titles system."""
+        result = await self._session.execute(
+            select(func.count(func.distinct(func.date(ExerciseAttempt.attempted_at)))).where(
+                ExerciseAttempt.user_id == user_id
+            )
+        )
+        return result.scalar_one()
+
     async def get_skill_progress(self, user_id: uuid.UUID) -> Sequence[SkillProgress]:
         result = await self._session.execute(
             select(
