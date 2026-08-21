@@ -52,11 +52,29 @@ export function ModulesPage() {
         <p className="status">No modules yet for this level.</p>
       ) : (
         <div className="card-grid">
-          {data!.map((module) => (
-            <Link key={module.id} to={`/modules/${module.slug}/lessons`} className="card">
-              <span className="card-title">{module.title}</span>
-            </Link>
-          ))}
+          {data!.map((module, i) => {
+            if (!module.unlocked) {
+              const previousTitle = data![i - 1]?.title;
+              return (
+                <div key={module.id} className="card card-locked">
+                  <span className="card-title">🔒 {module.title}</span>
+                  <span className="status">
+                    {previousTitle
+                      ? `Pass "${previousTitle}" (70%+) to unlock`
+                      : "Locked"}
+                  </span>
+                </div>
+              );
+            }
+            return (
+              <Link key={module.id} to={`/modules/${module.slug}/lessons`} className="card">
+                <span className="card-title">
+                  {module.passed ? "✅ " : ""}
+                  {module.title}
+                </span>
+              </Link>
+            );
+          })}
         </div>
       )}
     </div>

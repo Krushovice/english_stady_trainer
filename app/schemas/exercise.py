@@ -170,3 +170,12 @@ class SkillProgressResponse(BaseModel):
     attempts_count: int
     correct_count: int
     accuracy: Decimal
+
+
+class LessonCompletionResponse(BaseModel):
+    attempted: bool
+    accuracy: Decimal | None
+    passed: bool
+    wrong_exercise_ids: list[uuid.UUID]
+    total: int
+    correct: int

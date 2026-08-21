@@ -1,8 +1,19 @@
 import { apiRequest } from "./client";
-import type { AttemptResult, Exercise, MiniTest, SkillProgress, SubmittedAnswer } from "./types";
+import type {
+  AttemptResult,
+  Exercise,
+  LessonCompletion,
+  MiniTest,
+  SkillProgress,
+  SubmittedAnswer,
+} from "./types";
 
 export function listLessonExercises(lessonSlug: string): Promise<Exercise[]> {
   return apiRequest<Exercise[]>(`/lessons/${lessonSlug}/exercises`);
+}
+
+export function getLessonCompletion(lessonSlug: string): Promise<LessonCompletion> {
+  return apiRequest<LessonCompletion>(`/lessons/${lessonSlug}/completion`);
 }
 
 export function getMiniTest(lessonSlug: string): Promise<MiniTest> {

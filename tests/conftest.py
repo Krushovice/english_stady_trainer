@@ -166,7 +166,34 @@ async def b1_studied_headers(
     return auth_headers
 
 
-def _level_exam_correct_submission(exercise: dict, answer_key: dict) -> dict:
+@pytest_asyncio.fixture
+async def b1_lesson1_passed_headers(
+    client: AsyncClient, synced_lesson, auth_headers: dict[str, str]
+) -> dict[str, str]:
+    """`auth_headers`, but every exercise in B1's first lesson
+    ("making-small-talk") has been answered correctly — clears the 70%
+    sequential-lesson-unlock threshold for the lesson right after it.
+    """
+    from app.core.db import async_session_factory
+    from app.repositories.exercise_repository import ExerciseRepository
+
+    exercises = (
+        await client.get("/api/v1/lessons/making-small-talk/exercises", headers=auth_headers)
+    ).json()
+    async with async_session_factory() as session:
+        repo = ExerciseRepository(session)
+        for exercise in exercises:
+            model = await repo.get_by_id(uuid.UUID(exercise["id"]))
+            submitted = _correct_submission_for(exercise, model.answer_key)
+            await client.post(
+                f"/api/v1/exercises/{exercise['id']}/attempts",
+                headers=auth_headers,
+                json={"submitted_answer": submitted},
+            )
+    return auth_headers
+
+
+def _correct_submission_for(exercise: dict, answer_key: dict) -> dict:
     exercise_type = exercise["exercise_type"]
     if exercise_type == "multiple_choice":
         return {"option_id": answer_key["correct_option_id"]}
@@ -192,7 +219,7 @@ async def _pass_level_exam(client: AsyncClient, headers: dict[str, str], level: 
         repo = ExerciseRepository(session)
         for exercise in body["exercises"]:
             model = await repo.get_by_id(uuid.UUID(exercise["id"]))
-            submitted = _level_exam_correct_submission(exercise, model.answer_key)
+            submitted = _correct_submission_for(exercise, model.answer_key)
             answers.append({"exercise_id": exercise["id"], "submitted_answer": submitted})
 
     submit = await client.post(

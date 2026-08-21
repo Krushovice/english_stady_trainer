@@ -4,9 +4,11 @@ import type { LessonBlock } from "../api/types";
 // (app/schemas/content.py) — they're rendered separately from the lesson's
 // top-level `vocabulary`/`grammar_topics` fields, so this component skips
 // those two block types entirely rather than showing the same content twice.
-// `exercises` is skipped too: real exercises come from a dedicated fetch
-// with proper submit/feedback UI, not from this read-only block content.
-const SKIPPED_TYPES = new Set(["vocabulary", "grammar", "exercises"]);
+// `exercises` and `mini_test` are skipped too: both are raw exercise-authoring
+// data, not display content — real exercises and the mini-test come from
+// dedicated fetches with proper submit/feedback UI (`LessonPage`'s own
+// mini-test section), not from this read-only block renderer.
+const SKIPPED_TYPES = new Set(["vocabulary", "grammar", "exercises", "mini_test"]);
 
 // Immersion is graded by level in content authoring (A1-A2 blocks author
 // in Russian directly, B2 drops this field) — this is only the B1 middle

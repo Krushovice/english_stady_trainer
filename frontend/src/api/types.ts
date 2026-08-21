@@ -21,6 +21,8 @@ export interface Module {
   slug: string;
   title: string;
   order_index: number;
+  unlocked: boolean;
+  passed: boolean | null;
 }
 
 export interface LessonSummary {
@@ -179,6 +181,20 @@ export interface PlacementResult {
   placement_completed_at: string | null;
 }
 
+// --- Mistakes (weak-topic tracking) ---
+
+export type MistakeStatus = "new" | "repeated" | "improving" | "mastered";
+
+export interface UserMistake {
+  id: string;
+  grammar_topic: GrammarTopic;
+  status: MistakeStatus;
+  total_attempts: number;
+  incorrect_attempts: number;
+  last_attempt_at: string;
+  error_rate: number;
+}
+
 // --- Review ---
 
 export type ReviewItemType = "vocabulary" | "grammar_topic" | "exercise";
@@ -192,6 +208,17 @@ export interface ReviewItem {
   vocabulary: Vocabulary | null;
   grammar_topic: GrammarTopic | null;
   exercise: Exercise | null;
+}
+
+// --- Lesson completion (sequential-unlock threshold) ---
+
+export interface LessonCompletion {
+  attempted: boolean;
+  accuracy: number | null;
+  passed: boolean;
+  wrong_exercise_ids: string[];
+  total: number;
+  correct: number;
 }
 
 // --- Mini-test (post-lesson reinforcement of the previous topic) ---

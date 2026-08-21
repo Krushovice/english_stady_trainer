@@ -55,6 +55,10 @@ class LevelLockedError(DomainError):
     """Raised when accessing a level whose prerequisite exit exam isn't passed yet."""
 
 
+class LessonLockedError(DomainError):
+    """Raised when accessing a lesson whose preceding lesson in the level isn't passed yet."""
+
+
 class ExamAlreadyPassedError(DomainError):
     """Raised when starting a new attempt at an exam already passed."""
 

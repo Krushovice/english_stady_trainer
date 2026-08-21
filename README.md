@@ -4,7 +4,7 @@ Personal interactive English-learning platform. Product rules, architecture, and
 
 ## Status
 
-Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. Phase 5 (AI) is done: the provider abstraction, writing feedback, homework generation, conversation mode, and the Speaking flow (prompt → recording → STT → evaluation → feedback → retry) are all built and verified end to end against real local models — see "AI (local model)", "Writing feedback and homework", "Conversation mode", "Speech-to-text (STT)", and "Speaking" below. Content authoring is also done: all 43 planned lessons across A1/A2/B1/B2 are written (see "Content" below); C1/C2 stay explicitly out of scope. Phase 6 (UX) is mostly done: the core learning loop, a real `Dashboard` (do now / weak at / improved / due for review), nav (Dashboard/Lessons/Daily quiz/Review/Homework/Speaking/Talk/Progress/Final exam/Certificate), progress screen with a computed title/grade, review center, placement test UI, level exit exams, frontend for Homework/Speaking/AI Conversation, a course-wide final exam gating a printable completion certificate, and a "C1/C2 — coming soon" placeholder on `/levels` are all built (as of 2026-08-21). Still open: a VPS deployment, general UI polish, and frontend automated tests (deliberately deferred, see `docs/decisions.md`).
+Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. Phase 5 (AI) is done: the provider abstraction, writing feedback, homework generation, conversation mode, and the Speaking flow (prompt → recording → STT → evaluation → feedback → retry) are all built and verified end to end against real local models — see "AI (local model)", "Writing feedback and homework", "Conversation mode", "Speech-to-text (STT)", and "Speaking" below. Content authoring is also done: all 43 planned lessons across A1/A2/B1/B2 are written (see "Content" below); C1/C2 stay explicitly out of scope. Phase 6 (UX) is mostly done: the core learning loop, a real `Dashboard` (do now / weak at / improved / due for review), nav (Dashboard/Lessons/Daily quiz/Review/Homework/Speaking/Talk/Progress/Final exam/Certificate), progress screen with a computed title/grade, review center, placement test UI, level exit exams, frontend for Homework/Speaking/AI Conversation, a course-wide final exam gating a printable completion certificate, a "C1/C2 — coming soon" placeholder on `/levels`, and sequential lesson unlocking with a single-check exercise flow (see "Sequential lessons and the single-check exercise flow" below) are all built (as of 2026-08-21). Still open, from the same round of live-testing feedback: placement-driven starting-point choice (skip vs. review a lower level), local TTS audio for listening blocks, and translating the interface chrome to Russian — plus a VPS deployment, general UI polish, and frontend automated tests (deliberately deferred, see `docs/decisions.md`).
 
 ## Stack
 
@@ -47,7 +47,7 @@ Needs the API running (either `docker compose up` from the repo root, or the "De
 - `pages/` — one per route: `LoginPage`, `RegisterPage`, `DashboardPage`, `LevelsPage`, `ModulesPage`, `LessonsPage`, `LessonPage`, `ProgressPage`, `DailyQuizPage`, `PlacementTestPage`, `ReviewPage`, `ExamPage`, `CourseExamPage`, `CertificatePage`, `HomeworkPage`, `SpeakingPage`, `ConversationPage`.
 - `components/layout/Header.tsx` — nav (Dashboard / Lessons / Daily quiz / Review / Homework / Speaking / Talk / Progress / Final exam / Certificate) with active-state styling via `react-router-dom`'s `NavLink`.
 - `components/LessonBlockView.tsx` — renders each lesson block type (goals, context, examples, reading, listening, speaking, homework, review, ...); unknown block types fall back to a raw JSON dump instead of silently disappearing. `context`/`reading` blocks additionally render a collapsed "Кратко на русском" toggle when the block's content has a `summary_ru` key — see "Content" below. Note: a lesson's `speaking`/`homework` blocks are static author-written prompts, unrelated to the AI-driven `HomeworkPage`/`SpeakingPage` below — the two systems don't share content, only a name.
-- `components/exercises/` — one input component per scored exercise type (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension), each a plain controlled input that reports an answer via `onChange` with no submission logic of its own — reused as-is by both `ExerciseCard` (lesson/review/daily-quiz submission) and `PlacementTestPage` (batched submission, no per-item feedback). `ExerciseCard` submits an attempt and shows the scored result; "Try again" remounts the input component (via a bumped `key`) so old answers don't linger; a successful submit also invalidates the `progress`/`daily-quiz`/`review-due` react-query caches so those pages don't show stale data.
+- `components/exercises/` — one input component per scored exercise type (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension), each a plain controlled input that reports an answer via `onChange` with no submission logic of its own. Two things sit on top of them: `ExerciseCard` (instant per-item submit-and-feedback — Daily Quiz, Review, the post-lesson mini-test) and the shared `ExerciseItem` switch (answer-collection only, no button — `ExamPage`/`CourseExamPage`/`PlacementTestPage`'s batched-submission exams and `LessonPage`'s single-check exercises block). `ExerciseCard`'s "Try again" remounts the input component (via a bumped `key`) so old answers don't linger; a successful submit also invalidates the `progress`/`daily-quiz`/`review-due` react-query caches so those pages don't show stale data.
 - `components/ReviewFlashcard.tsx` — front/back self-rated card for vocabulary and grammar-topic review items (no exercise attached to quiz on): reveal, then Remembered/Forgot calls `POST /review/{id}/complete`.
 - `components/WritingFeedbackCard.tsx` — renders the 5-section AI feedback shape (Good / Grammar / Vocabulary / Natural version / Try again) shared by Homework-task and Speaking feedback.
 - `components/AudioRecorder.tsx` — `getUserMedia`/`MediaRecorder` wrapper for the Speaking flow: record with a live timer → stop → preview playback with a re-record option → submit. Requires a secure context (`https:`, or `localhost`/`127.0.0.1`) per browser spec — `navigator.mediaDevices` is `undefined` otherwise.
@@ -93,6 +93,42 @@ browser print/PDF (Ctrl+P) — the first `@media print` CSS in the project.
 review", composed client-side from `GET /review/due`, `GET /mistakes`, `GET /progress`, and
 `GET /practice/daily-quiz` via parallel `useQuery` calls. No new backend endpoint — see
 `docs/decisions.md` for why.
+
+## Sequential lessons and the single-check exercise flow
+
+Live-testing feedback (2026-08-21): lessons inside a level could previously be opened in
+any order, and each exercise had its own "Check" button with no lesson-level pass/fail
+signal. Now:
+
+- `LessonProgressService` (`app/services/lesson_progress_service.py`) computes a lesson's
+  completion from the *latest* attempt per exercise: 70% correct (`PASS_THRESHOLD`) passes
+  it. A lesson unlocks only once the lesson immediately before it in the level (via the
+  existing `CourseRepository.get_previous_lesson_in_level`) is passed; the level's first
+  lesson is always open. `GET /levels/{code}/modules` now returns `unlocked`/`passed` per
+  module (modules are 1:1 with lessons); `GET /lessons/{slug}` 403s on a locked lesson
+  (`LessonLockedError`) as a direct-URL guard behind the UI's own lock. `ModulesPage` shows
+  locked modules as non-clickable cards naming the lesson to pass first; `LevelsPage`'s
+  existing `.card-locked` styling is reused, not reinvented.
+- `GET /lessons/{slug}/completion` — accuracy, pass/fail, and which exercise ids are still
+  wrong, for the "N exercises from your last attempt still need fixing" banner on revisit.
+- `LessonPage`'s Exercises block dropped per-exercise "Check" buttons (`ExerciseCard`) for
+  a single "Check" at the bottom that grades every answered exercise (sequentially, not
+  concurrently — a single failed submission must not discard the others that already
+  succeeded) and shows an aggregate `correct/total` plus a ✅/❌ per exercise. Already-passed
+  exercises lock as read-only on return visits. Daily Quiz, Review Center, and the
+  post-lesson mini-test deliberately keep the old per-exercise instant-feedback
+  `ExerciseCard` — see `docs/decisions.md` for why those three stay out of scope.
+- New shared `components/exercises/ExerciseItem.tsx` — the answer-collecting switch over
+  the 4 scored exercise types, extracted from what used to be separately duplicated as
+  `ExamItem` (`ExamPage`) and `PlacementItem` (`PlacementTestPage`); both exam pages and
+  `LessonPage` now import the one component.
+- Fixed alongside this: a lesson's `mini_test` content block was rendering as a raw JSON
+  dump (`LessonBlockView`'s `SKIPPED_TYPES` didn't include it — the real mini-test UI comes
+  from `LessonPage`'s own dedicated fetch, not this block); and `frontend/src/api/types.ts`
+  was missing the `MistakeStatus`/`UserMistake` types that `api/mistakes.ts` (Dashboard,
+  Phase 6) already imported — both went undetected because `npx tsc --noEmit` alone
+  type-checks nothing in this project (the root `tsconfig.json` has an empty `files` list);
+  the real check is `npx tsc --noEmit --project tsconfig.app.json`.
 
 ## Homework, Speaking, and AI Conversation frontend
 

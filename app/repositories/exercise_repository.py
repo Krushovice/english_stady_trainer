@@ -123,6 +123,28 @@ class ExerciseRepository:
         )
         return result.scalars().all()
 
+    async def get_latest_attempts(
+        self, user_id: uuid.UUID, exercise_ids: Sequence[uuid.UUID]
+    ) -> dict[uuid.UUID, ExerciseAttempt]:
+        """Most recent attempt per exercise, for this user, among the given ids.
+
+        Collapsed in Python rather than a window function — a lesson-sized
+        exercise count (5-10) makes that overhead pointless.
+        """
+        if not exercise_ids:
+            return {}
+        result = await self._session.execute(
+            select(ExerciseAttempt)
+            .where(
+                ExerciseAttempt.user_id == user_id, ExerciseAttempt.exercise_id.in_(exercise_ids)
+            )
+            .order_by(ExerciseAttempt.attempted_at.desc())
+        )
+        latest: dict[uuid.UUID, ExerciseAttempt] = {}
+        for attempt in result.scalars().all():
+            latest.setdefault(attempt.exercise_id, attempt)
+        return latest
+
     async def has_any_attempt_in_level(self, user_id: uuid.UUID, level_code: CEFRLevel) -> bool:
         """Whether the user has ever attempted an exercise belonging to this level.
 

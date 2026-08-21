@@ -161,7 +161,11 @@ class CourseRepository:
 
     async def list_modules_by_level_code(self, code: CEFRLevel) -> Sequence[Module]:
         result = await self._session.execute(
-            select(Module).join(Level).where(Level.code == code).order_by(Module.order_index)
+            select(Module)
+            .join(Level)
+            .where(Level.code == code)
+            .options(selectinload(Module.lessons))
+            .order_by(Module.order_index)
         )
         return result.scalars().all()
 

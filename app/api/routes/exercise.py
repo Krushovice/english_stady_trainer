@@ -13,12 +13,14 @@ from app.schemas.exercise import (
     AttemptHistoryResponse,
     AttemptResultResponse,
     ExercisePublicResponse,
+    LessonCompletionResponse,
     MiniTestResponse,
     SkillProgressResponse,
     SubmitAttemptRequest,
 )
 from app.schemas.titles import TitleResponse
 from app.services.exercise_service import ExerciseService
+from app.services.lesson_progress_service import LessonProgressService
 from app.services.scoring import InvalidSubmissionError
 from app.services.title_service import TitleService
 
@@ -46,6 +48,23 @@ async def get_mini_test(
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
     return MiniTestResponse(
         previous_lesson_title=result.previous_lesson_title, exercises=result.exercises
+    )
+
+
+@router.get("/lessons/{lesson_slug}/completion", response_model=LessonCompletionResponse)
+async def get_lesson_completion(
+    lesson_slug: str,
+    session: AsyncSession = Depends(get_db_session),
+    current_user: User = Depends(get_current_user),
+) -> LessonCompletionResponse:
+    completion = await LessonProgressService(session).get_completion(current_user.id, lesson_slug)
+    return LessonCompletionResponse(
+        attempted=completion.attempted,
+        accuracy=completion.accuracy,
+        passed=completion.passed,
+        wrong_exercise_ids=completion.wrong_exercise_ids,
+        total=completion.total,
+        correct=completion.correct,
     )
 
 

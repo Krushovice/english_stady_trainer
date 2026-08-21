@@ -22,6 +22,8 @@ class ModuleResponse(BaseModel):
     slug: str
     title: str
     order_index: int
+    unlocked: bool
+    passed: bool | None
 
 
 class LessonSummaryResponse(BaseModel):

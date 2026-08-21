@@ -4,10 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ApiError } from "../api/client";
 import { getPlacementItems, getPlacementResult, submitPlacementTest } from "../api/placement";
 import type { Exercise, PlacementResult, Skill, SubmittedAnswer } from "../api/types";
-import { FillBlankExercise } from "../components/exercises/FillBlankExercise";
-import { MultipleChoiceExercise } from "../components/exercises/MultipleChoiceExercise";
-import { ReadingComprehensionExercise } from "../components/exercises/ReadingComprehensionExercise";
-import { SentenceOrderingExercise } from "../components/exercises/SentenceOrderingExercise";
+import { ExerciseItem } from "../components/exercises/ExerciseItem";
 
 const SKILL_LABELS: Record<Skill, string> = {
   grammar: "Grammar",
@@ -17,49 +14,6 @@ const SKILL_LABELS: Record<Skill, string> = {
   writing: "Writing",
   speaking: "Speaking",
 };
-
-function PlacementItem({
-  exercise,
-  onAnswer,
-}: {
-  exercise: Exercise;
-  onAnswer: (answer: SubmittedAnswer) => void;
-}) {
-  switch (exercise.exercise_type) {
-    case "multiple_choice":
-      return (
-        <MultipleChoiceExercise
-          prompt={exercise.prompt}
-          disabled={false}
-          onChange={(optionId) => onAnswer({ option_id: optionId })}
-        />
-      );
-    case "fill_blank":
-      return (
-        <FillBlankExercise
-          prompt={exercise.prompt}
-          disabled={false}
-          onChange={(blanks) => onAnswer({ blanks })}
-        />
-      );
-    case "sentence_ordering":
-      return (
-        <SentenceOrderingExercise
-          prompt={exercise.prompt}
-          disabled={false}
-          onChange={(order) => onAnswer({ order })}
-        />
-      );
-    case "reading_comprehension":
-      return (
-        <ReadingComprehensionExercise
-          prompt={exercise.prompt}
-          disabled={false}
-          onChange={(answers) => onAnswer({ answers })}
-        />
-      );
-  }
-}
 
 function ResultView({ result }: { result: PlacementResult }) {
   const navigate = useNavigate();
@@ -206,7 +160,7 @@ export function PlacementTestPage() {
             <span className="badge">{i + 1}</span>
             <span className="badge badge-muted">{SKILL_LABELS[exercise.skill]}</span>
           </div>
-          <PlacementItem
+          <ExerciseItem
             exercise={exercise}
             onAnswer={(answer) =>
               setAnswers((prev) => ({ ...prev, [exercise.id]: answer }))

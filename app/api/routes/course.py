@@ -2,10 +2,9 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_user, get_db_session
-from app.core.exceptions import LevelLockedError, NotFoundError
+from app.core.exceptions import LessonLockedError, LevelLockedError, NotFoundError
 from app.models.learning_profile import CEFRLevel
 from app.models.lesson import Lesson
-from app.models.module import Module
 from app.models.user import User
 from app.schemas.course import (
     LessonDetailResponse,
@@ -25,7 +24,9 @@ async def list_levels(
 ) -> list[LevelResponse]:
     levels = await CourseService(session).list_levels(current_user.id)
     return [
-        LevelResponse(id=level.id, code=level.code, order_index=level.order_index, unlocked=unlocked)
+        LevelResponse(
+            id=level.id, code=level.code, order_index=level.order_index, unlocked=unlocked
+        )
         for level, unlocked in levels
     ]
 
@@ -35,11 +36,22 @@ async def list_modules(
     level_code: CEFRLevel,
     session: AsyncSession = Depends(get_db_session),
     current_user: User = Depends(get_current_user),
-) -> list[Module]:
+) -> list[ModuleResponse]:
     try:
-        return await CourseService(session).list_modules(current_user.id, level_code)
+        modules = await CourseService(session).list_modules(current_user.id, level_code)
     except LevelLockedError as exc:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=str(exc)) from exc
+    return [
+        ModuleResponse(
+            id=module.id,
+            slug=module.slug,
+            title=module.title,
+            order_index=module.order_index,
+            unlocked=unlocked,
+            passed=passed,
+        )
+        for module, unlocked, passed in modules
+    ]
 
 
 @router.get("/modules/{module_slug}/lessons", response_model=list[LessonSummaryResponse])
@@ -61,5 +73,5 @@ async def get_lesson(
         return await CourseService(session).get_lesson(current_user.id, lesson_slug)
     except NotFoundError as exc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
-    except LevelLockedError as exc:
+    except (LevelLockedError, LessonLockedError) as exc:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=str(exc)) from exc

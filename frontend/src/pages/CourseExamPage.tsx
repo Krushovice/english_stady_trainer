@@ -8,7 +8,8 @@ import {
   submitCourseExamAttempt,
 } from "../api/courseExam";
 import type { ExamResult, Exercise, Skill, SubmittedAnswer } from "../api/types";
-import { ExamItem, formatClock, formatWhen } from "./ExamPage";
+import { ExerciseItem } from "../components/exercises/ExerciseItem";
+import { formatClock, formatWhen } from "./ExamPage";
 
 const SKILL_LABELS: Record<Skill, string> = {
   grammar: "Grammar",
@@ -146,7 +147,7 @@ export function CourseExamPage() {
               <span className="badge">{i + 1}</span>
               <span className="badge badge-muted">{SKILL_LABELS[exercise.skill]}</span>
             </div>
-            <ExamItem
+            <ExerciseItem
               exercise={exercise}
               onAnswer={(answer) => setAnswers((prev) => ({ ...prev, [exercise.id]: answer }))}
             />
