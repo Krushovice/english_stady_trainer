@@ -12,6 +12,9 @@ export function Header() {
       {user && (
         <>
           <nav className="site-nav">
+            <NavLink to="/dashboard" className="site-nav-link">
+              Dashboard
+            </NavLink>
             <NavLink to="/levels" className="site-nav-link">
               Lessons
             </NavLink>

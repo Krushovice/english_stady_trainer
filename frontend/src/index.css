@@ -957,3 +957,21 @@ main {
     box-shadow: none;
   }
 }
+
+/* --- Dashboard --- */
+
+.dashboard-card {
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.dashboard-card h2 {
+  margin-top: 0;
+}
+
+.dashboard-do-now {
+  margin-bottom: 1rem;
+  background: var(--accent-soft);
+}

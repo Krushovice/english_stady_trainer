@@ -6,6 +6,7 @@ import { CertificatePage } from "./pages/CertificatePage";
 import { ConversationPage } from "./pages/ConversationPage";
 import { CourseExamPage } from "./pages/CourseExamPage";
 import { DailyQuizPage } from "./pages/DailyQuizPage";
+import { DashboardPage } from "./pages/DashboardPage";
 import { ExamPage } from "./pages/ExamPage";
 import { HomeworkPage } from "./pages/HomeworkPage";
 import { LessonPage } from "./pages/LessonPage";
@@ -29,6 +30,14 @@ function App() {
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <DashboardPage />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/levels"
             element={
