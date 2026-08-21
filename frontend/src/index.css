@@ -903,3 +903,57 @@ main {
 .title-card h2 {
   margin: 0 0 0.35rem;
 }
+
+/* --- Certificate (print) --- */
+
+.certificate-print {
+  padding: 2rem;
+  margin: 1rem 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.certificate-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.certificate-name {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.certificate-detail {
+  color: var(--text-muted);
+}
+
+.certificate-table {
+  width: 100%;
+  margin-top: 1.5rem;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.certificate-table th,
+.certificate-table td {
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+
+@media print {
+  .site-header,
+  .site-nav {
+    display: none;
+  }
+  main {
+    max-width: none;
+    padding: 0;
+    margin: 0;
+  }
+  .certificate-print {
+    border: none;
+    box-shadow: none;
+  }
+}

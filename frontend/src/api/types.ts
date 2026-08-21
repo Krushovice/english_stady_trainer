@@ -228,6 +228,20 @@ export interface ExamResult {
   total_count: number;
 }
 
+// --- Course-wide final exam (5th exam, gates the certificate) ---
+
+export interface CourseExamStatus {
+  exam_available: boolean;
+  passed: boolean;
+  attempts_used_in_window: number;
+  attempts_per_window: number;
+  cooldown_until: string | null;
+  in_progress_attempt_id: string | null;
+  in_progress_expires_at: string | null;
+  certificate_available: boolean;
+  earned_at: string | null;
+}
+
 // --- AI feedback (shared by Homework and Speaking) ---
 
 export interface WritingFeedback {

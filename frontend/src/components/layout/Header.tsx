@@ -33,6 +33,12 @@ export function Header() {
             <NavLink to="/progress" className="site-nav-link">
               Progress
             </NavLink>
+            <NavLink to="/course-exam" className="site-nav-link">
+              Final exam
+            </NavLink>
+            <NavLink to="/certificate" className="site-nav-link">
+              Certificate
+            </NavLink>
           </nav>
           <div className="site-header-user">
             <span>{user.email}</span>

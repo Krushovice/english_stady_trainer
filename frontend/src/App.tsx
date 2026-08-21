@@ -2,7 +2,9 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { ProtectedRoute } from "./auth/ProtectedRoute";
 import { useAuth } from "./auth/AuthContext";
 import { Header } from "./components/layout/Header";
+import { CertificatePage } from "./pages/CertificatePage";
 import { ConversationPage } from "./pages/ConversationPage";
+import { CourseExamPage } from "./pages/CourseExamPage";
 import { DailyQuizPage } from "./pages/DailyQuizPage";
 import { ExamPage } from "./pages/ExamPage";
 import { HomeworkPage } from "./pages/HomeworkPage";
@@ -80,6 +82,22 @@ function App() {
             element={
               <ProtectedRoute>
                 <ReviewPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/course-exam"
+            element={
+              <ProtectedRoute>
+                <CourseExamPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/certificate"
+            element={
+              <ProtectedRoute>
+                <CertificatePage />
               </ProtectedRoute>
             }
           />

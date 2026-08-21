@@ -5,6 +5,7 @@ from app.api.routes import (
     auth,
     conversation,
     course,
+    course_exam,
     exercise,
     health,
     homework,
@@ -21,6 +22,7 @@ api_router.include_router(auth.router, prefix="/api/v1")
 api_router.include_router(course.router, prefix="/api/v1")
 api_router.include_router(exercise.router, prefix="/api/v1")
 api_router.include_router(level_exam.router, prefix="/api/v1")
+api_router.include_router(course_exam.router, prefix="/api/v1")
 api_router.include_router(placement.router, prefix="/api/v1")
 api_router.include_router(mistake.router, prefix="/api/v1")
 api_router.include_router(review.router, prefix="/api/v1")

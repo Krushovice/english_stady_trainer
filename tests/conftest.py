@@ -164,3 +164,53 @@ async def b1_studied_headers(
         json={"submitted_answer": submitted_answer},
     )
     return auth_headers
+
+
+def _level_exam_correct_submission(exercise: dict, answer_key: dict) -> dict:
+    exercise_type = exercise["exercise_type"]
+    if exercise_type == "multiple_choice":
+        return {"option_id": answer_key["correct_option_id"]}
+    if exercise_type == "fill_blank":
+        return {"blanks": [group[0] for group in answer_key["blanks"]]}
+    if exercise_type == "sentence_ordering":
+        return {"order": answer_key["correct_order"]}
+    if exercise_type == "reading_comprehension":
+        return {"answers": answer_key["answers"]}
+    raise ValueError(f"no correct-submission builder for exercise type '{exercise_type}'")
+
+
+async def _pass_level_exam(client: AsyncClient, headers: dict[str, str], level: str) -> None:
+    from app.core.db import async_session_factory
+    from app.repositories.exercise_repository import ExerciseRepository
+
+    start = await client.post(f"/api/v1/levels/{level}/exam/attempts", headers=headers)
+    assert start.status_code == 200, start.text
+    body = start.json()
+
+    answers = []
+    async with async_session_factory() as session:
+        repo = ExerciseRepository(session)
+        for exercise in body["exercises"]:
+            model = await repo.get_by_id(uuid.UUID(exercise["id"]))
+            submitted = _level_exam_correct_submission(exercise, model.answer_key)
+            answers.append({"exercise_id": exercise["id"], "submitted_answer": submitted})
+
+    submit = await client.post(
+        f"/api/v1/levels/{level}/exam/attempts/{body['attempt_id']}/submit",
+        json={"answers": answers},
+        headers=headers,
+    )
+    assert submit.status_code == 200, submit.text
+    assert submit.json()["passed"] is True
+
+
+@pytest_asyncio.fixture
+async def b2_passed_headers(
+    client: AsyncClient, synced_lesson, auth_headers: dict[str, str]
+) -> dict[str, str]:
+    """`auth_headers`, but the user has passed all 4 level exit exams
+    (A1 -> A2 -> B1 -> B2 in order, each gating the next) — the eligibility
+    precondition for starting the course-wide final exam."""
+    for level in ("A1", "A2", "B1", "B2"):
+        await _pass_level_exam(client, auth_headers, level)
+    return auth_headers

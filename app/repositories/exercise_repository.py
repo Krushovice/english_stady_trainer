@@ -107,6 +107,22 @@ class ExerciseRepository:
         )
         return result.scalars().all()
 
+    async def list_all_non_placement(self) -> Sequence[Exercise]:
+        """Non-mini-test, non-placement exercises across every level — the
+        candidate pool for the course-wide final exam. Same filter as
+        `list_by_level` without the level join; final ordering is decided
+        by the caller's difficulty-bucketed picker, not this query."""
+        result = await self._session.execute(
+            select(Exercise)
+            .join(Lesson)
+            .where(
+                Exercise.is_mini_test_item.is_(False),
+                Exercise.is_placement_item.is_(False),
+            )
+            .order_by(Exercise.difficulty, Lesson.order_index, Exercise.slug)
+        )
+        return result.scalars().all()
+
     async def has_any_attempt_in_level(self, user_id: uuid.UUID, level_code: CEFRLevel) -> bool:
         """Whether the user has ever attempted an exercise belonging to this level.
 

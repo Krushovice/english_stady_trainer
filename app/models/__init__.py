@@ -1,6 +1,7 @@
 from app.models.associations import lesson_grammar_topics, lesson_vocabulary
 from app.models.base import Base
 from app.models.conversation import ConversationMessage, ConversationRole, ConversationSession
+from app.models.course_exam_attempt import CourseExamAttempt
 from app.models.exercise import Exercise, ExerciseType, Skill
 from app.models.exercise_attempt import AttemptSource, ExerciseAttempt
 from app.models.grammar_topic import GrammarTopic
@@ -25,6 +26,7 @@ __all__ = [
     "ConversationMessage",
     "ConversationRole",
     "ConversationSession",
+    "CourseExamAttempt",
     "Exercise",
     "ExerciseAttempt",
     "ExerciseType",
