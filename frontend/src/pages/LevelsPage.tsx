@@ -13,6 +13,10 @@ function precedingLevel(level: CEFRLevel): CEFRLevel | null {
   return index > 0 ? LEVEL_ORDER[index - 1] : null;
 }
 
+// Display-only placeholders — deliberately not part of CEFRLevel (CLAUDE.md
+// excludes C1/C2 from MVP scope; these never become real, clickable levels).
+const COMING_SOON_LEVELS = ["C1", "C2"] as const;
+
 export function LevelsPage() {
   const { data, isLoading, error } = useQuery({
     queryKey: ["levels"],
@@ -55,6 +59,12 @@ export function LevelsPage() {
             </Link>
           );
         })}
+        {COMING_SOON_LEVELS.map((code) => (
+          <div key={code} className="card card-locked">
+            <span className="card-title">🔒 {code}</span>
+            <span className="status">Coming soon</span>
+          </div>
+        ))}
       </div>
     </div>
   );
