@@ -4,7 +4,7 @@ Personal interactive English-learning platform. Product rules, architecture, and
 
 ## Status
 
-Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. Phase 5 (AI) is done: the provider abstraction, writing feedback, homework generation, conversation mode, and the Speaking flow (prompt → recording → STT → evaluation → feedback → retry) are all built and verified end to end against real local models — see "AI (local model)", "Writing feedback and homework", "Conversation mode", "Speech-to-text (STT)", and "Speaking" below. Content authoring is also done: all 43 planned lessons across A1/A2/B1/B2 are written (see "Content" below); C1/C2 stay explicitly out of scope. Phase 6 (UX) is mostly done: the core learning loop, a real `Dashboard` (do now / weak at / improved / due for review), nav (Dashboard/Lessons/Daily quiz/Review/Homework/Speaking/Talk/Progress/Final exam/Certificate), progress screen with a computed title/grade, review center, placement test UI, level exit exams, frontend for Homework/Speaking/AI Conversation, a course-wide final exam gating a printable completion certificate, a "C1/C2 — coming soon" placeholder on `/levels`, sequential lesson unlocking with a single-check exercise flow, a placement-driven starting-point choice, and real local TTS audio for every lesson/placement listening item (see "Sequential lessons and the single-check exercise flow", "Placement-driven starting point", and "Listening audio (Kokoro-TTS)" below) are all built (as of 2026-08-22). Still open, from the same round of live-testing feedback: translating the interface chrome to Russian — plus a VPS deployment, general UI polish, and frontend automated tests (deliberately deferred, see `docs/decisions.md`).
+Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. Phase 5 (AI) is done: the provider abstraction, writing feedback, homework generation, conversation mode, and the Speaking flow (prompt → recording → STT → evaluation → feedback → retry) are all built and verified end to end against real local models — see "AI (local model)", "Writing feedback and homework", "Conversation mode", "Speech-to-text (STT)", and "Speaking" below. Content authoring is also done: all 43 planned lessons across A1/A2/B1/B2 are written (see "Content" below); C1/C2 stay explicitly out of scope. Phase 6 (UX) is mostly done: the core learning loop, a real `Dashboard` (do now / weak at / improved / due for review), nav (Dashboard/Lessons/Daily quiz/Review/Homework/Speaking/Talk/Progress/Final exam/Certificate), progress screen with a computed title/grade, review center, placement test UI, level exit exams, frontend for Homework/Speaking/AI Conversation, a course-wide final exam gating a printable completion certificate, a "C1/C2 — coming soon" placeholder on `/levels`, sequential lesson unlocking with a single-check exercise flow, a placement-driven starting-point choice, real local TTS audio for every lesson/placement listening item, and a full Russian translation of the interface chrome (see "Sequential lessons and the single-check exercise flow", "Placement-driven starting point", "Listening audio (Kokoro-TTS)", and "Russian UI translation" below) are all built (as of 2026-08-22) — this closes out the live-testing-feedback round. Still open: a VPS deployment, general UI polish, and frontend automated tests (deliberately deferred, see `docs/decisions.md`).
 
 ## Stack
 
@@ -301,6 +301,29 @@ fallback. All 47 files (43 lessons + 4 placement items) generated and committed;
 Docker-isolated Playwright — the native `<audio>` element's own `loadedmetadata` event confirmed
 real, playable durations for both a lesson and all 4 placement listening items, zero console
 errors.
+
+## Russian UI translation
+
+The interface chrome — navigation, buttons, statuses, section headings, form labels, error
+messages — is in Russian throughout, as direct JSX string edits with no i18n library (no
+`react-i18next`, no `t()` layer, no language toggle): this is a single-learner personal project
+where the UI *is* Russian, not user-switchable, so an i18n abstraction would solve a
+multi-language problem the project doesn't have (see `docs/decisions.md`). Lesson content stays
+English on purpose — that's the whole point of the app — so `lesson.title`, block text, exercise
+prompts, dialogue lines, vocabulary/grammar content, and AI-generated writing/speaking/conversation
+feedback are all untouched. The A1/A2-Russian, B1-English-with-`RuSummary`-gloss, B2-English-only
+content-immersion convention (see "Content" below) is a separate, pre-existing thing and wasn't
+affected.
+
+Translating the nav surfaced one real layout bug: Russian labels (`Ежедневный тест`, `Домашнее
+задание`, `Финальный экзамен`) run longer than their English originals, and the header had no wrap
+handling — the nav overflowed the viewport width and clipped the logout button off-screen. Fixed
+with `flex-wrap: wrap` on `.site-header`/`.site-nav` (plus a smaller `gap`) so the nav breaks onto
+a second line instead; caught live via a Docker-isolated Playwright `fullPage` screenshot coming
+out wider than the configured viewport. Verified: `tsc --project tsconfig.app.json` and `oxlint`
+clean, full live walkthrough (register → skip placement → dashboard → level → module → lesson →
+answer all 4 exercise types → Check → logout) confirming every UI-chrome string renders in Russian
+while lesson/vocabulary/dialogue content stays English and the header no longer overflows.
 
 ## Speaking
 

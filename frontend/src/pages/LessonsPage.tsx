@@ -10,15 +10,15 @@ export function LessonsPage() {
     enabled: !!moduleSlug,
   });
 
-  if (isLoading) return <p className="status">Loading lessons...</p>;
-  if (error) return <p className="status status-error">Couldn't load lessons.</p>;
+  if (isLoading) return <p className="status">Загрузка уроков...</p>;
+  if (error) return <p className="status status-error">Не удалось загрузить уроки.</p>;
 
   return (
     <div className="page">
       <Link to="/levels" className="back-link">
-        &larr; Levels
+        &larr; Уровни
       </Link>
-      <h1>Lessons</h1>
+      <h1>Уроки</h1>
       <div className="card-grid">
         {data!.map((lesson) => (
           <Link key={lesson.id} to={`/lessons/${lesson.slug}`} className="card">

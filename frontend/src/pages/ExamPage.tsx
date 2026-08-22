@@ -7,12 +7,12 @@ import type { CEFRLevel, Exercise, ExamResult, Skill, SubmittedAnswer } from "..
 import { ExerciseItem } from "../components/exercises/ExerciseItem";
 
 const SKILL_LABELS: Record<Skill, string> = {
-  grammar: "Grammar",
-  vocabulary: "Vocabulary",
-  reading: "Reading",
-  listening: "Listening",
-  writing: "Writing",
-  speaking: "Speaking",
+  grammar: "Грамматика",
+  vocabulary: "Лексика",
+  reading: "Чтение",
+  listening: "Аудирование",
+  writing: "Письмо",
+  speaking: "Говорение",
 };
 
 export function formatClock(seconds: number): string {
@@ -30,18 +30,18 @@ function ResultView({ level, result }: { level: CEFRLevel; result: ExamResult })
   return (
     <div className="exam-result">
       <p className="exam-result-verdict">
-        {result.passed ? "✅ Passed!" : "❌ Not this time."}
+        {result.passed ? "✅ Сдано!" : "❌ Не в этот раз."}
       </p>
       <p className="exam-result-score">
-        {result.correct_count}/{result.total_count} correct ({Math.round(result.score * 100)}%)
+        Верно: {result.correct_count}/{result.total_count} ({Math.round(result.score * 100)}%)
       </p>
       {result.passed ? (
-        <p>The next level after {level} is now unlocked.</p>
+        <p>Следующий уровень после {level} теперь открыт.</p>
       ) : (
-        <p>70% is needed to pass. Review the lessons and try again.</p>
+        <p>Для сдачи нужно 70%. Повторите уроки и попробуйте снова.</p>
       )}
       <Link to="/levels" className="btn-primary">
-        Back to levels
+        Назад к уровням
       </Link>
     </div>
   );
@@ -87,7 +87,7 @@ export function ExamPage() {
       queryClient.invalidateQueries({ queryKey: ["levels"] });
     } catch (err) {
       submittedRef.current = false;
-      setError(err instanceof ApiError ? err.message : "Couldn't submit the exam.");
+      setError(err instanceof ApiError ? err.message : "Не удалось отправить экзамен.");
     } finally {
       setSubmitting(false);
     }
@@ -119,7 +119,7 @@ export function ExamPage() {
       setExpiresAt(attempt.expires_at);
       submittedRef.current = false;
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Couldn't start the exam.");
+      setError(err instanceof ApiError ? err.message : "Не удалось начать экзамен.");
     } finally {
       setStarting(false);
     }
@@ -138,7 +138,7 @@ export function ExamPage() {
   if (result) {
     return (
       <div className="page">
-        <h1>{level} exit exam</h1>
+        <h1>Выходной экзамен уровня {level}</h1>
         <ResultView level={level} result={result} />
       </div>
     );
@@ -147,12 +147,12 @@ export function ExamPage() {
   if (items && attemptId) {
     return (
       <div className="page">
-        <h1>{level} exit exam</h1>
+        <h1>Выходной экзамен уровня {level}</h1>
         <p className="exam-timer">
-          Time left: <strong>{formatClock(remainingSeconds ?? 0)}</strong>
+          Осталось времени: <strong>{formatClock(remainingSeconds ?? 0)}</strong>
         </p>
         <p className="status">
-          {Object.keys(answers).length}/{items.length} answered
+          Отвечено: {Object.keys(answers).length}/{items.length}
         </p>
         {items.map((exercise, i) => (
           <div key={exercise.id} className="exercise-card">
@@ -173,25 +173,25 @@ export function ExamPage() {
           onClick={() => handleSubmit(answers)}
           disabled={submitting}
         >
-          {submitting ? "Submitting..." : "Submit exam"}
+          {submitting ? "Отправка..." : "Отправить экзамен"}
         </button>
       </div>
     );
   }
 
-  if (status.isLoading) return <p className="status">Loading...</p>;
-  if (status.error) return <p className="status status-error">Couldn't load exam status.</p>;
+  if (status.isLoading) return <p className="status">Загрузка...</p>;
+  if (status.error) return <p className="status status-error">Не удалось загрузить статус экзамена.</p>;
   const data = status.data!;
 
   if (!data.exam_available) {
     return (
       <div className="page">
-        <h1>{level} exit exam</h1>
+        <h1>Выходной экзамен уровня {level}</h1>
         <p className="status">
-          There's no lesson content for {level} yet, so there's nothing to test.
+          Для уровня {level} пока нет контента уроков, поэтому тестировать нечего.
         </p>
         <Link to="/levels" className="back-link">
-          &larr; Levels
+          &larr; Уровни
         </Link>
       </div>
     );
@@ -200,10 +200,10 @@ export function ExamPage() {
   if (data.passed) {
     return (
       <div className="page">
-        <h1>{level} exit exam</h1>
-        <p className="status">You've already passed this exam. The next level is unlocked.</p>
+        <h1>Выходной экзамен уровня {level}</h1>
+        <p className="status">Вы уже сдали этот экзамен. Следующий уровень открыт.</p>
         <Link to="/levels" className="btn-primary">
-          Back to levels
+          Назад к уровням
         </Link>
       </div>
     );
@@ -212,13 +212,13 @@ export function ExamPage() {
   if (data.cooldown_until) {
     return (
       <div className="page">
-        <h1>{level} exit exam</h1>
+        <h1>Выходной экзамен уровня {level}</h1>
         <p className="status status-error">
-          {data.attempts_used_in_window} failed attempts in a row. Next attempt available at{" "}
+          Неудачных попыток подряд: {data.attempts_used_in_window}. Следующая попытка будет доступна{" "}
           {formatWhen(data.cooldown_until)}.
         </p>
         <Link to="/levels" className="back-link">
-          &larr; Levels
+          &larr; Уровни
         </Link>
       </div>
     );
@@ -226,21 +226,21 @@ export function ExamPage() {
 
   return (
     <div className="page">
-      <h1>{level} exit exam</h1>
+      <h1>Выходной экзамен уровня {level}</h1>
       <p>
-        20 questions covering everything in {level}, 70% to pass, {15} minutes on the clock. Up
-        to {data.attempts_per_window} attempts before a 24-hour cooldown.
+        20 вопросов по всему уровню {level}, для сдачи нужно 70%, на выполнение {15} минут. До{" "}
+        {data.attempts_per_window} попыток, затем 24-часовая пауза.
       </p>
       <p className="status">
-        Attempts used: {data.attempts_used_in_window}/{data.attempts_per_window}
+        Использовано попыток: {data.attempts_used_in_window}/{data.attempts_per_window}
       </p>
       {error && <p className="form-error">{error}</p>}
       <div className="placement-actions">
         <button type="button" className="btn-primary" onClick={handleStart} disabled={starting}>
-          {starting ? "Loading..." : "Start exam"}
+          {starting ? "Загрузка..." : "Начать экзамен"}
         </button>
         <Link to="/levels" className="link-button">
-          Not now
+          Не сейчас
         </Link>
       </div>
     </div>

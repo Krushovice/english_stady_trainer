@@ -14,12 +14,12 @@ import { ExerciseItem } from "../components/exercises/ExerciseItem";
 import { LessonBlockView } from "../components/LessonBlockView";
 
 const SKILL_LABELS: Record<string, string> = {
-  grammar: "Grammar",
-  vocabulary: "Vocabulary",
-  reading: "Reading",
-  listening: "Listening",
-  writing: "Writing",
-  speaking: "Speaking",
+  grammar: "Грамматика",
+  vocabulary: "Лексика",
+  reading: "Чтение",
+  listening: "Аудирование",
+  writing: "Письмо",
+  speaking: "Говорение",
 };
 
 export function LessonPage() {
@@ -85,13 +85,13 @@ export function LessonPage() {
     queryClient.invalidateQueries({ queryKey: ["progress"] });
     queryClient.invalidateQueries({ queryKey: ["daily-quiz"] });
     queryClient.invalidateQueries({ queryKey: ["review-due"] });
-    if (hadError) setCheckError("Couldn't check some of your answers. Please try again.");
+    if (hadError) setCheckError("Не удалось проверить некоторые ответы. Попробуйте ещё раз.");
     setChecking(false);
   }
 
-  if (lessonQuery.isLoading) return <p className="status">Loading lesson...</p>;
+  if (lessonQuery.isLoading) return <p className="status">Загрузка урока...</p>;
   if (lessonQuery.error || !lessonQuery.data)
-    return <p className="status status-error">Couldn't load this lesson.</p>;
+    return <p className="status status-error">Не удалось загрузить этот урок.</p>;
 
   const lesson = lessonQuery.data;
   const exercises = exercisesQuery.data ?? [];
@@ -101,7 +101,7 @@ export function LessonPage() {
   return (
     <div className="page">
       <Link to="/levels" className="back-link">
-        &larr; Levels
+        &larr; Уровни
       </Link>
       <h1>
         {completion?.passed ? "✅ " : ""}
@@ -117,7 +117,7 @@ export function LessonPage() {
 
       {lesson.vocabulary.length > 0 && (
         <section className="lesson-block">
-          <h2>Vocabulary</h2>
+          <h2>Лексика</h2>
           <dl className="vocabulary-list">
             {lesson.vocabulary.map((word) => (
               <div key={word.id} className="vocabulary-item">
@@ -132,7 +132,7 @@ export function LessonPage() {
 
       {lesson.grammar_topics.length > 0 && (
         <section className="lesson-block">
-          <h2>Grammar</h2>
+          <h2>Грамматика</h2>
           {lesson.grammar_topics.map((topic) => (
             <div key={topic.id} className="grammar-topic">
               <h3>{topic.title}</h3>
@@ -143,27 +143,27 @@ export function LessonPage() {
       )}
 
       <section className="lesson-block">
-        <h2>Exercises</h2>
+        <h2>Упражнения</h2>
 
         {completion?.attempted && !completion.passed && completion.wrong_exercise_ids.length > 0 && (
           <p className="status status-error">
-            {completion.wrong_exercise_ids.length} exercise
-            {completion.wrong_exercise_ids.length === 1 ? "" : "s"} from your last attempt still
-            need{completion.wrong_exercise_ids.length === 1 ? "s" : ""} fixing — 70% correct
-            unlocks the next lesson.
+            {completion.wrong_exercise_ids.length} задани
+            {completion.wrong_exercise_ids.length === 1 ? "е" : "я"} из прошлой попытки ещё не
+            решен{completion.wrong_exercise_ids.length === 1 ? "о" : "ы"} — 70% правильных ответов
+            открывает следующий урок.
           </p>
         )}
 
-        {exercisesQuery.isLoading && <p className="status">Loading exercises...</p>}
-        {exercisesQuery.error && <p className="status status-error">Couldn't load exercises.</p>}
+        {exercisesQuery.isLoading && <p className="status">Загрузка упражнений...</p>}
+        {exercisesQuery.error && <p className="status status-error">Не удалось загрузить упражнения.</p>}
         {exercises.length === 0 && !exercisesQuery.isLoading && (
-          <p className="status">No exercises for this lesson yet.</p>
+          <p className="status">Для этого урока пока нет упражнений.</p>
         )}
 
         {exercises.length > 0 && (
           <>
             <p className="status">
-              {resolvedCount}/{exercises.length} correct
+              Правильно: {resolvedCount}/{exercises.length}
             </p>
             {exercises.map((exercise, i) => {
               const resolved = isResolved(exercise.id);
@@ -191,7 +191,7 @@ export function LessonPage() {
                   />
                   {resolved && (
                     <div className="exercise-result">
-                      <p className="result-verdict">✅ Correct</p>
+                      <p className="result-verdict">✅ Верно</p>
                       {result?.explanation && (
                         <p className="result-explanation">{result.explanation}</p>
                       )}
@@ -199,7 +199,7 @@ export function LessonPage() {
                   )}
                   {!resolved && result && !result.is_correct && (
                     <div className="exercise-result">
-                      <p className="result-verdict">Not quite.</p>
+                      <p className="result-verdict">Не совсем.</p>
                       <p className="result-explanation">{result.explanation}</p>
                     </div>
                   )}
@@ -208,7 +208,7 @@ export function LessonPage() {
             })}
             {checkError && <p className="form-error">{checkError}</p>}
             <button type="button" className="btn-primary" onClick={handleCheck} disabled={checking}>
-              {checking ? "Checking..." : "Check"}
+              {checking ? "Проверка..." : "Проверить"}
             </button>
           </>
         )}
@@ -216,9 +216,9 @@ export function LessonPage() {
 
       {miniTestQuery.data && miniTestQuery.data.exercises.length > 0 && (
         <section className="lesson-block mini-test">
-          <h2>🔁 Quick review: {miniTestQuery.data.previous_lesson_title}</h2>
+          <h2>🔁 Быстрое повторение: {miniTestQuery.data.previous_lesson_title}</h2>
           <p className="status">
-            Five questions on the previous topic before you move on.
+            Пять вопросов по предыдущей теме, прежде чем идти дальше.
           </p>
           {miniTestQuery.data.exercises.map((exercise) => (
             <ExerciseCard key={exercise.id} exercise={exercise} />

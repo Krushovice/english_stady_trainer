@@ -24,7 +24,7 @@ export function ReadingComprehensionExercise({
     <div className="exercise-prompt reading-comprehension">
       {prompt.audio_url && (
         <audio controls src={assetUrl(prompt.audio_url)} className="listening-player">
-          Your browser doesn't support inline audio playback.
+          Ваш браузер не поддерживает воспроизведение аудио.
         </audio>
       )}
       <p className="passage">{prompt.passage}</p>

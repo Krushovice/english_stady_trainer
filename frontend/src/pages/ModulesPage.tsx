@@ -20,36 +20,36 @@ export function ModulesPage() {
     retry: false,
   });
 
-  if (isLoading) return <p className="status">Loading modules...</p>;
+  if (isLoading) return <p className="status">Загрузка модулей...</p>;
   if (error instanceof ApiError && error.status === 403) {
     const gate = precedingLevel(levelCode as CEFRLevel);
     return (
       <div className="page">
         <Link to="/levels" className="back-link">
-          &larr; Levels
+          &larr; Уровни
         </Link>
-        <h1>{levelCode} modules</h1>
+        <h1>Модули уровня {levelCode}</h1>
         <p className="status status-error">
-          🔒 This level is locked.{" "}
+          🔒 Этот уровень заблокирован.{" "}
           {gate ? (
-            <Link to={`/levels/${gate}/exam`}>Pass the {gate} exam to unlock it</Link>
+            <Link to={`/levels/${gate}/exam`}>Сдайте экзамен уровня {gate}, чтобы открыть его</Link>
           ) : (
-            "Pass the previous level's exam to unlock it."
+            "Сдайте экзамен предыдущего уровня, чтобы открыть его."
           )}
         </p>
       </div>
     );
   }
-  if (error) return <p className="status status-error">Couldn't load modules.</p>;
+  if (error) return <p className="status status-error">Не удалось загрузить модули.</p>;
 
   return (
     <div className="page">
       <Link to="/levels" className="back-link">
-        &larr; Levels
+        &larr; Уровни
       </Link>
-      <h1>{levelCode} modules</h1>
+      <h1>Модули уровня {levelCode}</h1>
       {data!.length === 0 ? (
-        <p className="status">No modules yet for this level.</p>
+        <p className="status">Для этого уровня пока нет модулей.</p>
       ) : (
         <div className="card-grid">
           {data!.map((module, i) => {
@@ -60,8 +60,8 @@ export function ModulesPage() {
                   <span className="card-title">🔒 {module.title}</span>
                   <span className="status">
                     {previousTitle
-                      ? `Pass "${previousTitle}" (70%+) to unlock`
-                      : "Locked"}
+                      ? `Пройдите «${previousTitle}» (70%+), чтобы открыть`
+                      : "Заблокировано"}
                   </span>
                 </div>
               );

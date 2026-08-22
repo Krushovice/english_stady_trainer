@@ -32,7 +32,7 @@ export function SpeakingPage() {
       localStorage.setItem(STORAGE_KEY, newAttempt.id);
     } catch (err) {
       setError(
-        err instanceof ApiError ? err.message : "Couldn't generate a speaking prompt.",
+        err instanceof ApiError ? err.message : "Не удалось создать задание для говорения.",
       );
     } finally {
       setLoading(false);
@@ -47,7 +47,7 @@ export function SpeakingPage() {
       setAttempt(await submitSpeakingAttempt(attempt.id, audio, filename));
     } catch (err) {
       setError(
-        err instanceof ApiError ? err.message : "Couldn't submit your recording.",
+        err instanceof ApiError ? err.message : "Не удалось отправить запись.",
       );
     } finally {
       setSubmitting(false);
@@ -56,10 +56,10 @@ export function SpeakingPage() {
 
   return (
     <div className="page">
-      <h1>Speaking</h1>
+      <h1>Говорение</h1>
       <p className="status">
-        A personalised speaking prompt based on your most recently studied lesson —
-        record your answer and get AI feedback on grammar, vocabulary and naturalness.
+        Персонализированное задание для говорения на основе последнего изученного урока —
+        запишите ответ и получите AI-фидбек по грамматике, лексике и естественности речи.
       </p>
 
       {error && <p className="status status-error">{error}</p>}
@@ -73,7 +73,7 @@ export function SpeakingPage() {
             <>
               {attempt.transcript && (
                 <div className="speaking-transcript">
-                  <h3>What we heard</h3>
+                  <h3>Мы услышали</h3>
                   <p>{attempt.transcript}</p>
                 </div>
               )}
@@ -86,7 +86,7 @@ export function SpeakingPage() {
       )}
 
       <button type="button" onClick={handleGeneratePrompt} disabled={loading}>
-        {loading ? "Generating..." : attempt ? "Get a new prompt" : "Get a speaking prompt"}
+        {loading ? "Создание..." : attempt ? "Получить новое задание" : "Получить задание для говорения"}
       </button>
     </div>
   );

@@ -13,12 +13,12 @@ import type { Exercise, PlacementResult, Skill, SubmittedAnswer } from "../api/t
 import { ExerciseItem } from "../components/exercises/ExerciseItem";
 
 const SKILL_LABELS: Record<Skill, string> = {
-  grammar: "Grammar",
-  vocabulary: "Vocabulary",
-  reading: "Reading",
-  listening: "Listening",
-  writing: "Writing",
-  speaking: "Speaking",
+  grammar: "Грамматика",
+  vocabulary: "Лексика",
+  reading: "Чтение",
+  listening: "Аудирование",
+  writing: "Письмо",
+  speaking: "Говорение",
 };
 
 function ResultView({
@@ -52,7 +52,7 @@ function ResultView({
       await queryClient.invalidateQueries({ queryKey: ["levels"] });
       navigate("/levels");
     } catch (err) {
-      setChoiceError(err instanceof ApiError ? err.message : "Couldn't save your choice.");
+      setChoiceError(err instanceof ApiError ? err.message : "Не удалось сохранить выбор.");
       setSaving(null);
     }
   }
@@ -64,14 +64,14 @@ function ResultView({
   return (
     <div className="placement-result">
       <p className="placement-overall">
-        Estimated level: <strong>{result.overall_level ?? "not enough data"}</strong>
+        Оценённый уровень: <strong>{result.overall_level ?? "недостаточно данных"}</strong>
       </p>
       <div className="placement-skill-rows">
         {result.skills.map((row) => (
           <div key={row.skill} className="placement-skill-row">
             <span>{SKILL_LABELS[row.skill]}</span>
             <span>
-              {row.level ?? "not assessed"}
+              {row.level ?? "не оценено"}
               {row.total != null && (
                 <span className="status"> ({row.correct}/{row.total})</span>
               )}
@@ -81,7 +81,7 @@ function ResultView({
       </div>
       {result.recommended_modules.length > 0 && (
         <>
-          <h2>Recommended starting modules</h2>
+          <h2>Рекомендуемые модули для старта</h2>
           <div className="card-grid">
             {result.recommended_modules.map((module) => (
               <Link
@@ -98,7 +98,7 @@ function ResultView({
       )}
       {showStartChoice && result.overall_level ? (
         <div className="placement-start-choice">
-          <h2>Where do you want to start?</h2>
+          <h2>С чего хотите начать?</h2>
           {choiceError && <p className="form-error">{choiceError}</p>}
           <div className="placement-start-options">
             <button
@@ -107,7 +107,7 @@ function ResultView({
               onClick={() => pick("assessed", "assessed")}
               disabled={saving !== null}
             >
-              {saving === "assessed" ? "Starting..." : `Start at ${result.overall_level}`}
+              {saving === "assessed" ? "Начинаем..." : `Начать с уровня ${result.overall_level}`}
             </button>
             {reviewLevels.map((level) => (
               <button
@@ -116,14 +116,14 @@ function ResultView({
                 onClick={() => pick("review", level.code)}
                 disabled={saving !== null}
               >
-                {saving === level.code ? "Starting..." : `Review from ${level.code}`}
+                {saving === level.code ? "Начинаем..." : `Повторить с уровня ${level.code}`}
               </button>
             ))}
           </div>
         </div>
       ) : (
         <button type="button" className="btn-primary" onClick={() => navigate("/levels")}>
-          Continue to lessons
+          Перейти к урокам
         </button>
       )}
     </div>
@@ -152,7 +152,7 @@ export function PlacementTestPage() {
       setItems(await getPlacementItems());
       setPhase("taking");
     } catch {
-      setError("Couldn't load the test. Please try again.");
+      setError("Не удалось загрузить тест. Попробуйте ещё раз.");
     } finally {
       setLoadingItems(false);
     }
@@ -175,19 +175,19 @@ export function PlacementTestPage() {
       // "not completed yet" for the rest of the session.
       queryClient.invalidateQueries({ queryKey: ["placement-result"] });
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Couldn't submit the test.");
+      setError(err instanceof ApiError ? err.message : "Не удалось отправить тест.");
     } finally {
       setSubmitting(false);
     }
   }
 
-  if (existingResult.isLoading) return <p className="status">Loading...</p>;
+  if (existingResult.isLoading) return <p className="status">Загрузка...</p>;
 
   if (phase !== "result" && existingResult.data?.placement_completed_at) {
     return (
       <div className="page">
-        <h1>Placement test</h1>
-        <p className="status">You've already taken this. Here's your result:</p>
+        <h1>Тест на уровень</h1>
+        <p className="status">Вы уже проходили этот тест. Вот ваш результат:</p>
         <ResultView result={existingResult.data} />
       </div>
     );
@@ -196,7 +196,7 @@ export function PlacementTestPage() {
   if (phase === "result" && freshResult) {
     return (
       <div className="page">
-        <h1>Your result</h1>
+        <h1>Ваш результат</h1>
         <ResultView result={freshResult} showStartChoice />
       </div>
     );
@@ -205,18 +205,18 @@ export function PlacementTestPage() {
   if (phase === "intro") {
     return (
       <div className="page">
-        <h1>Placement test</h1>
+        <h1>Тест на уровень</h1>
         <p>
-          About 24 questions covering grammar, vocabulary, reading, and listening. Takes
-          10-15 minutes and estimates your level per skill — not just one number.
+          Около 24 вопросов по грамматике, лексике, чтению и аудированию. Занимает
+          10-15 минут и оценивает ваш уровень по каждому навыку отдельно, а не одной цифрой.
         </p>
         {error && <p className="form-error">{error}</p>}
         <div className="placement-actions">
           <button type="button" className="btn-primary" onClick={startTest} disabled={loadingItems}>
-            {loadingItems ? "Loading..." : "Start test"}
+            {loadingItems ? "Загрузка..." : "Начать тест"}
           </button>
           <Link to="/levels" className="link-button">
-            Skip for now
+            Пропустить пока
           </Link>
         </div>
       </div>
@@ -226,9 +226,9 @@ export function PlacementTestPage() {
   // phase === "taking"
   return (
     <div className="page">
-      <h1>Placement test</h1>
+      <h1>Тест на уровень</h1>
       <p className="status">
-        {Object.keys(answers).length}/{items.length} answered
+        Отвечено: {Object.keys(answers).length}/{items.length}
       </p>
       {items.map((exercise, i) => (
         <div key={exercise.id} className="exercise-card">
@@ -246,7 +246,7 @@ export function PlacementTestPage() {
       ))}
       {error && <p className="form-error">{error}</p>}
       <button type="button" className="btn-primary" onClick={handleSubmit} disabled={submitting}>
-        {submitting ? "Submitting..." : "Submit test"}
+        {submitting ? "Отправка..." : "Отправить тест"}
       </button>
     </div>
   );

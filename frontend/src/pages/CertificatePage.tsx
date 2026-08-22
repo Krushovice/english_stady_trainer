@@ -6,12 +6,12 @@ import type { Skill } from "../api/types";
 import { useAuth } from "../auth/AuthContext";
 
 const SKILL_LABELS: Record<Skill, string> = {
-  grammar: "Grammar",
-  vocabulary: "Vocabulary",
-  reading: "Reading",
-  listening: "Listening",
-  writing: "Writing",
-  speaking: "Speaking",
+  grammar: "Грамматика",
+  vocabulary: "Лексика",
+  reading: "Чтение",
+  listening: "Аудирование",
+  writing: "Письмо",
+  speaking: "Говорение",
 };
 
 export function CertificatePage() {
@@ -19,20 +19,20 @@ export function CertificatePage() {
   const status = useQuery({ queryKey: ["course-exam-status"], queryFn: getCourseExamStatus });
   const progress = useQuery({ queryKey: ["progress"], queryFn: getProgress });
 
-  if (status.isLoading) return <p className="status">Loading...</p>;
-  if (status.error) return <p className="status status-error">Couldn't load certificate status.</p>;
+  if (status.isLoading) return <p className="status">Загрузка...</p>;
+  if (status.error) return <p className="status status-error">Не удалось загрузить статус сертификата.</p>;
 
   const data = status.data!;
 
   if (!data.certificate_available) {
     return (
       <div className="page">
-        <h1>Certificate</h1>
+        <h1>Сертификат</h1>
         <p className="status">
-          Not earned yet — pass the course-wide final exam to unlock your certificate.
+          Пока не получен — сдайте финальный экзамен по всему курсу, чтобы открыть сертификат.
         </p>
         <Link to="/course-exam" className="btn-primary">
-          Go to the final exam
+          К финальному экзамену
         </Link>
       </div>
     );
@@ -42,21 +42,21 @@ export function CertificatePage() {
 
   return (
     <div className="page">
-      <h1>Certificate</h1>
+      <h1>Сертификат</h1>
       <div className="certificate-print">
-        <p className="certificate-heading">Certificate of Completion</p>
+        <p className="certificate-heading">Сертификат о прохождении курса</p>
         <p className="certificate-name">{user?.email}</p>
-        <p className="certificate-detail">has completed the full A1–B2 English course</p>
-        <p className="certificate-detail">Level reached: B2</p>
-        <p className="certificate-detail">Earned on {earnedDate}</p>
+        <p className="certificate-detail">завершил(а) полный курс английского языка A1–B2</p>
+        <p className="certificate-detail">Достигнутый уровень: B2</p>
+        <p className="certificate-detail">Дата получения: {earnedDate}</p>
         {progress.data && (
           <table className="certificate-table">
             <thead>
               <tr>
-                <th>Skill</th>
-                <th>Attempts</th>
-                <th>Correct</th>
-                <th>Accuracy</th>
+                <th>Навык</th>
+                <th>Попыток</th>
+                <th>Верно</th>
+                <th>Точность</th>
               </tr>
             </thead>
             <tbody>
@@ -72,7 +72,7 @@ export function CertificatePage() {
           </table>
         )}
       </div>
-      <p className="status">Press Ctrl+P (or Cmd+P) to print or save as PDF.</p>
+      <p className="status">Нажмите Ctrl+P (или Cmd+P), чтобы распечатать или сохранить в PDF.</p>
     </div>
   );
 }

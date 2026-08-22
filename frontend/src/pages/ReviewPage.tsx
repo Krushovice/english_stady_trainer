@@ -9,20 +9,20 @@ export function ReviewPage() {
     queryFn: listDueReviews,
   });
 
-  if (isLoading) return <p className="status">Loading review...</p>;
-  if (error) return <p className="status status-error">Couldn't load review items.</p>;
+  if (isLoading) return <p className="status">Загрузка повторения...</p>;
+  if (error) return <p className="status status-error">Не удалось загрузить элементы повторения.</p>;
 
   return (
     <div className="page">
-      <h1>Review</h1>
+      <h1>Повторение</h1>
       <p className="status">
-        Words, grammar patterns, and exercises scheduled for spaced-repetition review —
-        each item reappears here once it's actually due, not on a fixed daily amount.
+        Слова, грамматические конструкции и упражнения по расписанию интервального повторения —
+        каждый элемент появляется здесь, когда реально пора его повторить, а не по фиксированной норме в день.
       </p>
       {data!.length === 0 ? (
         <p className="status">
-          Nothing due right now. Items show up here at least a day after you first
-          practice them, sooner if you got them wrong.
+          Сейчас повторять нечего. Элементы появляются здесь минимум через день после
+          первой практики, раньше — если был неверный ответ.
         </p>
       ) : (
         data!.map((item) =>

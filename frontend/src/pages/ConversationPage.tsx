@@ -11,11 +11,11 @@ import type { ConversationSession } from "../api/types";
 const STORAGE_KEY = "et_conversation_id";
 
 const ANALYSIS_SECTIONS: { key: keyof NonNullable<ConversationSession["analysis"]>; label: string }[] = [
-  { key: "recurring_mistakes", label: "Recurring mistakes" },
-  { key: "useful_vocabulary", label: "Useful vocabulary" },
-  { key: "natural_alternatives", label: "Natural alternatives" },
-  { key: "grammar_topics_to_review", label: "Grammar topics to review" },
-  { key: "recommended_practice", label: "Recommended practice" },
+  { key: "recurring_mistakes", label: "Повторяющиеся ошибки" },
+  { key: "useful_vocabulary", label: "Полезная лексика" },
+  { key: "natural_alternatives", label: "Более естественные варианты" },
+  { key: "grammar_topics_to_review", label: "Грамматика для повторения" },
+  { key: "recommended_practice", label: "Рекомендуемая практика" },
 ];
 
 export function ConversationPage() {
@@ -46,7 +46,7 @@ export function ConversationPage() {
       localStorage.setItem(STORAGE_KEY, newSession.id);
     } catch (err) {
       setError(
-        err instanceof ApiError ? err.message : "Couldn't start a conversation.",
+        err instanceof ApiError ? err.message : "Не удалось начать разговор.",
       );
     } finally {
       setLoading(false);
@@ -75,7 +75,7 @@ export function ConversationPage() {
         ],
       });
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Couldn't send your message.");
+      setError(err instanceof ApiError ? err.message : "Не удалось отправить сообщение.");
       setMessage(text);
     } finally {
       setSending(false);
@@ -90,7 +90,7 @@ export function ConversationPage() {
       setSession(await endConversation(session.id));
     } catch (err) {
       setError(
-        err instanceof ApiError ? err.message : "Couldn't end the conversation.",
+        err instanceof ApiError ? err.message : "Не удалось завершить разговор.",
       );
     } finally {
       setEnding(false);
@@ -106,10 +106,10 @@ export function ConversationPage() {
 
   return (
     <div className="page">
-      <h1>Talk</h1>
+      <h1>Разговор</h1>
       <p className="status">
-        Practise a natural conversation with an AI partner — after you end the
-        session, you'll get an analysis of your mistakes and useful vocabulary.
+        Потренируйте живой разговор с AI-собеседником — после завершения сессии
+        вы получите разбор ваших ошибок и полезную лексику.
       </p>
 
       {error && <p className="status status-error">{error}</p>}
@@ -120,11 +120,11 @@ export function ConversationPage() {
             type="text"
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
-            placeholder="Topic (optional) — e.g. travel, hobbies, work"
+            placeholder="Тема (необязательно) — например, путешествия, хобби, работа"
             disabled={loading}
           />
           <button type="button" onClick={handleStart} disabled={loading}>
-            {loading ? "Starting..." : "Start conversation"}
+            {loading ? "Начинаем..." : "Начать разговор"}
           </button>
         </div>
       )}
@@ -146,14 +146,14 @@ export function ConversationPage() {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleSend()}
-                placeholder="Type your reply..."
+                placeholder="Введите ответ..."
                 disabled={sending}
               />
               <button type="button" onClick={handleSend} disabled={sending || !message.trim()}>
-                Send
+                Отправить
               </button>
               <button type="button" onClick={handleEnd} disabled={ending || sending}>
-                {ending ? "Ending..." : "End conversation"}
+                {ending ? "Завершение..." : "Завершить разговор"}
               </button>
             </div>
           ) : (
@@ -169,7 +169,7 @@ export function ConversationPage() {
                 </div>
               )}
               <button type="button" onClick={handleStartNew}>
-                Start new conversation
+                Начать новый разговор
               </button>
             </>
           )}

@@ -8,12 +8,12 @@ import { ReadingComprehensionExercise } from "./ReadingComprehensionExercise";
 import { SentenceOrderingExercise } from "./SentenceOrderingExercise";
 
 const SKILL_LABELS: Record<string, string> = {
-  grammar: "Grammar",
-  vocabulary: "Vocabulary",
-  reading: "Reading",
-  listening: "Listening",
-  writing: "Writing",
-  speaking: "Speaking",
+  grammar: "Грамматика",
+  vocabulary: "Лексика",
+  reading: "Чтение",
+  listening: "Аудирование",
+  writing: "Письмо",
+  speaking: "Говорение",
 };
 
 export function ExerciseCard({ exercise }: { exercise: Exercise }) {
@@ -41,7 +41,7 @@ export function ExerciseCard({ exercise }: { exercise: Exercise }) {
       queryClient.invalidateQueries({ queryKey: ["daily-quiz"] });
       queryClient.invalidateQueries({ queryKey: ["review-due"] });
     } catch {
-      setError("Couldn't submit your answer. Please try again.");
+      setError("Не удалось отправить ответ. Попробуйте ещё раз.");
     } finally {
       setSubmitting(false);
     }
@@ -102,14 +102,14 @@ export function ExerciseCard({ exercise }: { exercise: Exercise }) {
 
       {!result ? (
         <button type="button" onClick={handleSubmit} disabled={!answer || submitting}>
-          {submitting ? "Checking..." : "Check"}
+          {submitting ? "Проверка..." : "Проверить"}
         </button>
       ) : (
         <div className="exercise-result">
-          <p className="result-verdict">{result.is_correct ? "Correct!" : "Not quite."}</p>
+          <p className="result-verdict">{result.is_correct ? "Верно!" : "Не совсем."}</p>
           <p className="result-explanation">{result.explanation}</p>
           <button type="button" className="link-button" onClick={handleRetry}>
-            Try again
+            Попробовать снова
           </button>
         </div>
       )}

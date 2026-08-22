@@ -9,19 +9,19 @@ export function DailyQuizPage() {
     queryFn: getDailyQuiz,
   });
 
-  if (isLoading) return <p className="status">Loading today's quiz...</p>;
-  if (error) return <p className="status status-error">Couldn't load the daily quiz.</p>;
+  if (isLoading) return <p className="status">Загрузка сегодняшнего теста...</p>;
+  if (error) return <p className="status status-error">Не удалось загрузить ежедневный тест.</p>;
 
   return (
     <div className="page">
-      <h1>Daily quiz</h1>
+      <h1>Ежедневный тест</h1>
       <p className="status">
-        A mix pulled from lessons you've already studied — new pick every day.
+        Подборка из уже изученных уроков — новая каждый день.
       </p>
       {data!.length === 0 ? (
         <p className="status">
-          Nothing to quiz yet — finish some exercises in a{" "}
-          <Link to="/levels">lesson</Link> first.
+          Пока нечего тестировать — сначала выполните упражнения в{" "}
+          <Link to="/levels">уроке</Link>.
         </p>
       ) : (
         data!.map((exercise) => <ExerciseCard key={exercise.id} exercise={exercise} />)

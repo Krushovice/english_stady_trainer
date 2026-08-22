@@ -68,7 +68,7 @@ export function AudioRecorder({
       timerRef.current = setInterval(() => setElapsedSeconds((s) => s + 1), 1000);
       setState("recording");
     } catch {
-      setError("Couldn't access your microphone. Check the browser permission and try again.");
+      setError("Не удалось получить доступ к микрофону. Проверьте разрешение браузера и попробуйте снова.");
     }
   }
 
@@ -99,7 +99,7 @@ export function AudioRecorder({
 
       {state === "idle" && (
         <button type="button" onClick={startRecording}>
-          🎙 Start recording
+          🎙 Начать запись
         </button>
       )}
 
@@ -109,7 +109,7 @@ export function AudioRecorder({
             ● {minutes}:{seconds}
           </span>
           <button type="button" onClick={stopRecording}>
-            Stop
+            Стоп
           </button>
         </div>
       )}
@@ -120,10 +120,10 @@ export function AudioRecorder({
           <audio src={audioUrl} controls />
           <div className="audio-recorder-actions">
             <button type="button" onClick={recordAgain} disabled={submitting}>
-              Record again
+              Записать заново
             </button>
             <button type="button" onClick={handleSubmit} disabled={submitting}>
-              {submitting ? "Submitting..." : "Submit"}
+              {submitting ? "Отправка..." : "Отправить"}
             </button>
           </div>
         </div>

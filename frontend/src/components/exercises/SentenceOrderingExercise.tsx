@@ -39,7 +39,7 @@ export function SentenceOrderingExercise({
   return (
     <div className="exercise-prompt sentence-ordering">
       <div className="word-slot-row">
-        {chosen.length === 0 && <span className="placeholder">Tap words below, in order</span>}
+        {chosen.length === 0 && <span className="placeholder">Нажимайте на слова ниже по порядку</span>}
         {chosen.map((item) => (
           <button
             key={item.key}

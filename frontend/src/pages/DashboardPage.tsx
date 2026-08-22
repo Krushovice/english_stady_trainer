@@ -14,8 +14,8 @@ export function DashboardPage() {
     reviews.isLoading || mistakes.isLoading || progress.isLoading || dailyQuiz.isLoading;
   const hasError = reviews.error || mistakes.error || progress.error || dailyQuiz.error;
 
-  if (isLoading) return <p className="status">Loading dashboard...</p>;
-  if (hasError) return <p className="status status-error">Couldn't load your dashboard.</p>;
+  if (isLoading) return <p className="status">Загрузка панели...</p>;
+  if (hasError) return <p className="status status-error">Не удалось загрузить панель.</p>;
 
   const dueCount = reviews.data!.length;
   const weakTopics = mistakes.data!.filter(
@@ -29,28 +29,28 @@ export function DashboardPage() {
   let doNow: { text: string; to: string; label: string };
   if (dueCount > 0) {
     doNow = {
-      text: `You have ${dueCount} review${dueCount === 1 ? "" : "s"} due.`,
+      text: `У вас ${dueCount} элемент${dueCount === 1 ? "" : "ов"} на повторение.`,
       to: "/review",
-      label: "Go to review",
+      label: "К повторению",
     };
   } else if (weakTopics.length > 0) {
     doNow = {
-      text: `You have ${weakTopics.length} weak topic${weakTopics.length === 1 ? "" : "s"} to practice.`,
+      text: `У вас ${weakTopics.length} слаб${weakTopics.length === 1 ? "ая тема" : "ых темы"} для практики.`,
       to: "/daily-quiz",
-      label: "Practice now",
+      label: "Практиковаться",
     };
   } else if (hasQuiz) {
-    doNow = { text: "Try today's daily quiz.", to: "/daily-quiz", label: "Start quiz" };
+    doNow = { text: "Пройдите сегодняшний ежедневный тест.", to: "/daily-quiz", label: "Начать тест" };
   } else {
-    doNow = { text: "Start a lesson to begin practicing.", to: "/levels", label: "Go to lessons" };
+    doNow = { text: "Начните урок, чтобы приступить к практике.", to: "/levels", label: "К урокам" };
   }
 
   return (
     <div className="page">
-      <h1>Dashboard</h1>
+      <h1>Панель</h1>
 
       <div className="dashboard-card dashboard-do-now">
-        <h2>Do now</h2>
+        <h2>Сделать сейчас</h2>
         <p>{doNow.text}</p>
         <Link to={doNow.to} className="btn-primary">
           {doNow.label}
@@ -59,9 +59,9 @@ export function DashboardPage() {
 
       <div className="card-grid">
         <div className="dashboard-card">
-          <h2>Weak at</h2>
+          <h2>Слабые места</h2>
           {weakTopics.length === 0 ? (
-            <p className="status">No weak topics right now.</p>
+            <p className="status">Слабых тем сейчас нет.</p>
           ) : (
             <ul>
               {weakTopics.slice(0, 5).map((m) => (
@@ -72,9 +72,9 @@ export function DashboardPage() {
         </div>
 
         <div className="dashboard-card">
-          <h2>Improved</h2>
+          <h2>Улучшения</h2>
           {improvedTopics.length === 0 ? (
-            <p className="status">Nothing improving yet.</p>
+            <p className="status">Пока ничего не улучшилось.</p>
           ) : (
             <ul>
               {improvedTopics.slice(0, 5).map((m) => (
@@ -85,25 +85,25 @@ export function DashboardPage() {
         </div>
 
         <div className="dashboard-card">
-          <h2>Due for review</h2>
+          <h2>На повторении</h2>
           {dueCount === 0 ? (
-            <p className="status">Nothing due right now.</p>
+            <p className="status">Сейчас ничего не ждёт повторения.</p>
           ) : (
             <p>
-              {dueCount} item{dueCount === 1 ? "" : "s"} waiting.{" "}
-              <Link to="/review">Go to review →</Link>
+              Ждут: {dueCount}.{" "}
+              <Link to="/review">К повторению →</Link>
             </p>
           )}
         </div>
 
         <div className="dashboard-card">
-          <h2>Progress</h2>
+          <h2>Прогресс</h2>
           {progress.data!.length === 0 ? (
-            <p className="status">No attempts yet.</p>
+            <p className="status">Попыток ещё не было.</p>
           ) : (
             <p>
-              Tracked across {progress.data!.length} skill{progress.data!.length === 1 ? "" : "s"}.{" "}
-              <Link to="/progress">See full progress →</Link>
+              Учитывается по {progress.data!.length} навык{progress.data!.length === 1 ? "у" : "ам"}.{" "}
+              <Link to="/progress">Весь прогресс →</Link>
             </p>
           )}
         </div>

@@ -27,15 +27,15 @@ export function LevelsPage() {
     queryFn: getPlacementResult,
   });
 
-  if (isLoading) return <p className="status">Loading levels...</p>;
-  if (error) return <p className="status status-error">Couldn't load levels.</p>;
+  if (isLoading) return <p className="status">Загрузка уровней...</p>;
+  if (error) return <p className="status status-error">Не удалось загрузить уровни.</p>;
 
   return (
     <div className="page">
-      <h1>Levels</h1>
+      <h1>Уровни</h1>
       {placement.data && !placement.data.placement_completed_at && (
         <Link to="/placement-test" className="banner">
-          Take the placement test to find your level →
+          Пройдите тест на уровень, чтобы определить свой уровень →
         </Link>
       )}
       <div className="card-grid">
@@ -55,14 +55,14 @@ export function LevelsPage() {
               className="card card-locked"
             >
               <span className="card-title">🔒 {level.code}</span>
-              <span className="status">Pass the {gate} exam to unlock</span>
+              <span className="status">Сдайте экзамен уровня {gate}, чтобы открыть</span>
             </Link>
           );
         })}
         {COMING_SOON_LEVELS.map((code) => (
           <div key={code} className="card card-locked">
             <span className="card-title">🔒 {code}</span>
-            <span className="status">Coming soon</span>
+            <span className="status">Скоро</span>
           </div>
         ))}
       </div>

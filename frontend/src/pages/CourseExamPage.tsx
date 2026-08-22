@@ -12,30 +12,30 @@ import { ExerciseItem } from "../components/exercises/ExerciseItem";
 import { formatClock, formatWhen } from "./ExamPage";
 
 const SKILL_LABELS: Record<Skill, string> = {
-  grammar: "Grammar",
-  vocabulary: "Vocabulary",
-  reading: "Reading",
-  listening: "Listening",
-  writing: "Writing",
-  speaking: "Speaking",
+  grammar: "Грамматика",
+  vocabulary: "Лексика",
+  reading: "Чтение",
+  listening: "Аудирование",
+  writing: "Письмо",
+  speaking: "Говорение",
 };
 
 function ResultView({ result }: { result: ExamResult }) {
   return (
     <div className="exam-result">
       <p className="exam-result-verdict">
-        {result.passed ? "✅ Passed!" : "❌ Not this time."}
+        {result.passed ? "✅ Сдано!" : "❌ Не в этот раз."}
       </p>
       <p className="exam-result-score">
-        {result.correct_count}/{result.total_count} correct ({Math.round(result.score * 100)}%)
+        Верно: {result.correct_count}/{result.total_count} ({Math.round(result.score * 100)}%)
       </p>
       {result.passed ? (
-        <p>Your certificate is now available.</p>
+        <p>Ваш сертификат теперь доступен.</p>
       ) : (
-        <p>70% is needed to pass. Review your weak topics and try again.</p>
+        <p>Для сдачи нужно 70%. Повторите слабые темы и попробуйте снова.</p>
       )}
       <Link to={result.passed ? "/certificate" : "/levels"} className="btn-primary">
-        {result.passed ? "View certificate" : "Back to levels"}
+        {result.passed ? "Посмотреть сертификат" : "Назад к уровням"}
       </Link>
     </div>
   );
@@ -78,7 +78,7 @@ export function CourseExamPage() {
       queryClient.invalidateQueries({ queryKey: ["course-exam-status"] });
     } catch (err) {
       submittedRef.current = false;
-      setError(err instanceof ApiError ? err.message : "Couldn't submit the exam.");
+      setError(err instanceof ApiError ? err.message : "Не удалось отправить экзамен.");
     } finally {
       setSubmitting(false);
     }
@@ -109,7 +109,7 @@ export function CourseExamPage() {
       setExpiresAt(attempt.expires_at);
       submittedRef.current = false;
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Couldn't start the exam.");
+      setError(err instanceof ApiError ? err.message : "Не удалось начать экзамен.");
     } finally {
       setStarting(false);
     }
@@ -125,7 +125,7 @@ export function CourseExamPage() {
   if (result) {
     return (
       <div className="page">
-        <h1>Final exam</h1>
+        <h1>Финальный экзамен</h1>
         <ResultView result={result} />
       </div>
     );
@@ -134,12 +134,12 @@ export function CourseExamPage() {
   if (items && attemptId) {
     return (
       <div className="page">
-        <h1>Final exam</h1>
+        <h1>Финальный экзамен</h1>
         <p className="exam-timer">
-          Time left: <strong>{formatClock(remainingSeconds ?? 0)}</strong>
+          Осталось времени: <strong>{formatClock(remainingSeconds ?? 0)}</strong>
         </p>
         <p className="status">
-          {Object.keys(answers).length}/{items.length} answered
+          Отвечено: {Object.keys(answers).length}/{items.length}
         </p>
         {items.map((exercise, i) => (
           <div key={exercise.id} className="exercise-card">
@@ -160,26 +160,26 @@ export function CourseExamPage() {
           onClick={() => handleSubmit(answers)}
           disabled={submitting}
         >
-          {submitting ? "Submitting..." : "Submit exam"}
+          {submitting ? "Отправка..." : "Отправить экзамен"}
         </button>
       </div>
     );
   }
 
-  if (status.isLoading) return <p className="status">Loading...</p>;
-  if (status.error) return <p className="status status-error">Couldn't load exam status.</p>;
+  if (status.isLoading) return <p className="status">Загрузка...</p>;
+  if (status.error) return <p className="status status-error">Не удалось загрузить статус экзамена.</p>;
   const data = status.data!;
 
   if (!data.exam_available) {
     return (
       <div className="page">
-        <h1>Final exam</h1>
+        <h1>Финальный экзамен</h1>
         <p className="status">
-          Pass the B2 exit exam first — the final exam covers the whole course, so it only makes
-          sense once you've finished all four levels.
+          Сначала сдайте выходной экзамен B2 — финальный экзамен охватывает весь курс, поэтому
+          имеет смысл только после завершения всех четырёх уровней.
         </p>
         <Link to="/levels/B2/exam" className="btn-primary">
-          Go to the B2 exam
+          К экзамену уровня B2
         </Link>
       </div>
     );
@@ -188,10 +188,10 @@ export function CourseExamPage() {
   if (data.passed) {
     return (
       <div className="page">
-        <h1>Final exam</h1>
-        <p className="status">You've already passed the final exam. Your certificate is ready.</p>
+        <h1>Финальный экзамен</h1>
+        <p className="status">Вы уже сдали финальный экзамен. Ваш сертификат готов.</p>
         <Link to="/certificate" className="btn-primary">
-          View certificate
+          Посмотреть сертификат
         </Link>
       </div>
     );
@@ -200,13 +200,13 @@ export function CourseExamPage() {
   if (data.cooldown_until) {
     return (
       <div className="page">
-        <h1>Final exam</h1>
+        <h1>Финальный экзамен</h1>
         <p className="status status-error">
-          {data.attempts_used_in_window} failed attempts in a row. Next attempt available at{" "}
+          Неудачных попыток подряд: {data.attempts_used_in_window}. Следующая попытка будет доступна{" "}
           {formatWhen(data.cooldown_until)}.
         </p>
         <Link to="/levels" className="back-link">
-          &larr; Levels
+          &larr; Уровни
         </Link>
       </div>
     );
@@ -214,22 +214,22 @@ export function CourseExamPage() {
 
   return (
     <div className="page">
-      <h1>Final exam</h1>
+      <h1>Финальный экзамен</h1>
       <p>
-        44 questions across all four levels, ordered from easy to hard, 70% to pass, 15 minutes
-        on the clock. Up to {data.attempts_per_window} attempts before a 24-hour cooldown. Passing
-        unlocks your completion certificate.
+        44 вопроса по всем четырём уровням, от лёгких к сложным, для сдачи нужно 70%, на
+        выполнение 15 минут. До {data.attempts_per_window} попыток, затем 24-часовая пауза.
+        Сдача открывает сертификат о завершении курса.
       </p>
       <p className="status">
-        Attempts used: {data.attempts_used_in_window}/{data.attempts_per_window}
+        Использовано попыток: {data.attempts_used_in_window}/{data.attempts_per_window}
       </p>
       {error && <p className="form-error">{error}</p>}
       <div className="placement-actions">
         <button type="button" className="btn-primary" onClick={handleStart} disabled={starting}>
-          {starting ? "Loading..." : "Start exam"}
+          {starting ? "Загрузка..." : "Начать экзамен"}
         </button>
         <Link to="/levels" className="link-button">
-          Not now
+          Не сейчас
         </Link>
       </div>
     </div>

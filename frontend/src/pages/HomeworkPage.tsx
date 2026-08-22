@@ -30,7 +30,7 @@ function HomeworkTaskView({
       const newAttempt = await submitHomeworkTask(homework.id, taskId, text);
       onSubmitted({ ...homework, attempts: [...homework.attempts, newAttempt] });
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Couldn't submit this task.");
+      setError(err instanceof ApiError ? err.message : "Не удалось отправить это задание.");
     } finally {
       setSubmitting(false);
     }
@@ -50,12 +50,12 @@ function HomeworkTaskView({
             value={text}
             onChange={(e) => setText(e.target.value)}
             rows={4}
-            placeholder="Write your answer here..."
+            placeholder="Напишите свой ответ здесь..."
             disabled={submitting}
           />
           {error && <p className="status status-error">{error}</p>}
           <button type="button" onClick={handleSubmit} disabled={submitting || !text.trim()}>
-            {submitting ? "Submitting..." : "Submit"}
+            {submitting ? "Отправка..." : "Отправить"}
           </button>
         </>
       )}
@@ -89,7 +89,7 @@ export function HomeworkPage() {
       setError(
         err instanceof ApiError
           ? err.message
-          : "Couldn't generate homework. Please try again.",
+          : "Не удалось создать домашнее задание. Попробуйте ещё раз.",
       );
     } finally {
       setLoading(false);
@@ -98,10 +98,10 @@ export function HomeworkPage() {
 
   return (
     <div className="page">
-      <h1>Homework</h1>
+      <h1>Домашнее задание</h1>
       <p className="status">
-        Personalised writing tasks generated from your most recently studied lesson,
-        with AI feedback on each answer you submit.
+        Персонализированные письменные задания на основе последнего изученного урока,
+        с AI-фидбеком на каждый отправленный ответ.
       </p>
 
       {error && <p className="status status-error">{error}</p>}
@@ -122,7 +122,7 @@ export function HomeworkPage() {
       )}
 
       <button type="button" onClick={handleGenerate} disabled={loading}>
-        {loading ? "Generating..." : homework ? "Generate new homework" : "Generate homework"}
+        {loading ? "Создание..." : homework ? "Создать новое задание" : "Создать домашнее задание"}
       </button>
     </div>
   );

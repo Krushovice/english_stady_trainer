@@ -36,7 +36,7 @@ export function LessonBlockView({ block }: { block: LessonBlock }) {
       const goals = asStringArray(content.goals);
       return (
         <section className="lesson-block">
-          <h2>Learning goals</h2>
+          <h2>Цели урока</h2>
           <ul>
             {goals.map((goal, i) => (
               <li key={i}>{goal}</li>
@@ -49,7 +49,7 @@ export function LessonBlockView({ block }: { block: LessonBlock }) {
     case "context":
       return (
         <section className="lesson-block">
-          <h2>Context</h2>
+          <h2>Контекст</h2>
           <p>{asString(content.text)}</p>
           <RuSummary text={asString(content.summary_ru)} />
         </section>
@@ -62,7 +62,7 @@ export function LessonBlockView({ block }: { block: LessonBlock }) {
       }>(content.dialogues);
       return (
         <section className="lesson-block">
-          <h2>Examples</h2>
+          <h2>Примеры</h2>
           {dialogues.map((dialogue, i) => (
             <div key={i} className="dialogue">
               {dialogue.title && <h3>{dialogue.title}</h3>}
@@ -80,7 +80,7 @@ export function LessonBlockView({ block }: { block: LessonBlock }) {
     case "reading":
       return (
         <section className="lesson-block">
-          <h2>{asString(content.title) || "Reading"}</h2>
+          <h2>{asString(content.title) || "Чтение"}</h2>
           <p>{asString(content.text)}</p>
           <RuSummary text={asString(content.summary_ru)} />
         </section>
@@ -92,10 +92,10 @@ export function LessonBlockView({ block }: { block: LessonBlock }) {
       const audioUrl = asString(content.audio_url);
       return (
         <section className="lesson-block">
-          <h2>Listening</h2>
+          <h2>Аудирование</h2>
           {audioUrl && (
             <audio controls src={assetUrl(audioUrl)} className="listening-player">
-              Your browser doesn't support inline audio playback.
+              Ваш браузер не поддерживает воспроизведение аудио.
             </audio>
           )}
           {note && <p className="note">{note}</p>}
@@ -107,7 +107,7 @@ export function LessonBlockView({ block }: { block: LessonBlock }) {
     case "speaking":
       return (
         <section className="lesson-block">
-          <h2>Speaking</h2>
+          <h2>Говорение</h2>
           <p>{asString(content.prompt)}</p>
         </section>
       );
@@ -116,7 +116,7 @@ export function LessonBlockView({ block }: { block: LessonBlock }) {
       const tasks = asArray<{ type?: string; instructions?: string }>(content.tasks);
       return (
         <section className="lesson-block">
-          <h2>Homework</h2>
+          <h2>Домашнее задание</h2>
           <ul>
             {tasks.map((task, i) => (
               <li key={i}>{task.instructions}</li>
@@ -129,7 +129,7 @@ export function LessonBlockView({ block }: { block: LessonBlock }) {
     case "review":
       return content.note ? (
         <section className="lesson-block">
-          <h2>Review</h2>
+          <h2>Повторение</h2>
           <p className="note">{asString(content.note)}</p>
         </section>
       ) : null;

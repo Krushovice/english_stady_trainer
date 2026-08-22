@@ -19,7 +19,7 @@ export function RegisterPage() {
       await register(email, password);
       navigate("/placement-test");
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Something went wrong.");
+      setError(err instanceof ApiError ? err.message : "Что-то пошло не так.");
     } finally {
       setSubmitting(false);
     }
@@ -28,7 +28,7 @@ export function RegisterPage() {
   return (
     <div className="auth-page">
       <form className="auth-form" onSubmit={handleSubmit}>
-        <h1>Create an account</h1>
+        <h1>Создать аккаунт</h1>
         <label>
           Email
           <input
@@ -40,7 +40,7 @@ export function RegisterPage() {
           />
         </label>
         <label>
-          Password
+          Пароль
           <input
             type="password"
             value={password}
@@ -51,10 +51,10 @@ export function RegisterPage() {
         </label>
         {error && <p className="form-error">{error}</p>}
         <button type="submit" disabled={submitting}>
-          {submitting ? "Creating..." : "Register"}
+          {submitting ? "Создание..." : "Зарегистрироваться"}
         </button>
         <p className="auth-switch">
-          Already have an account? <Link to="/login">Log in</Link>
+          Уже есть аккаунт? <Link to="/login">Войти</Link>
         </p>
       </form>
     </div>

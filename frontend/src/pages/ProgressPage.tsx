@@ -4,12 +4,12 @@ import { getMyTitle } from "../api/titles";
 import type { Skill } from "../api/types";
 
 const SKILL_LABELS: Record<Skill, string> = {
-  grammar: "Grammar",
-  vocabulary: "Vocabulary",
-  reading: "Reading",
-  listening: "Listening",
-  writing: "Writing",
-  speaking: "Speaking",
+  grammar: "Грамматика",
+  vocabulary: "Лексика",
+  reading: "Чтение",
+  listening: "Аудирование",
+  writing: "Письмо",
+  speaking: "Говорение",
 };
 
 const SKILL_ORDER: Skill[] = [
@@ -31,14 +31,14 @@ export function ProgressPage() {
     queryFn: getMyTitle,
   });
 
-  if (isLoading) return <p className="status">Loading progress...</p>;
-  if (error) return <p className="status status-error">Couldn't load progress.</p>;
+  if (isLoading) return <p className="status">Загрузка прогресса...</p>;
+  if (error) return <p className="status status-error">Не удалось загрузить прогресс.</p>;
 
   const bySkill = new Map(data!.map((row) => [row.skill, row]));
 
   return (
     <div className="page">
-      <h1>Progress</h1>
+      <h1>Прогресс</h1>
       {title.data && (
         <div className="title-card">
           <h2>
@@ -46,13 +46,13 @@ export function ProgressPage() {
             {title.data.cefr_grade ? ` · ${title.data.cefr_grade}` : ""}
           </h2>
           <p className="status">
-            {title.data.days_practiced} day{title.data.days_practiced === 1 ? "" : "s"} practiced ·{" "}
-            {title.data.mistakes_mastered}/{title.data.mistakes_total} mistakes mastered ·{" "}
-            {title.data.review_count} review{title.data.review_count === 1 ? "" : "s"} completed
+            Дней с практикой: {title.data.days_practiced} ·{" "}
+            Ошибок исправлено: {title.data.mistakes_mastered}/{title.data.mistakes_total} ·{" "}
+            Повторений завершено: {title.data.review_count}
           </p>
         </div>
       )}
-      <p className="status">Tracked separately per skill — not one overall score.</p>
+      <p className="status">Учитывается отдельно по каждому навыку — без единой общей оценки.</p>
       <div className="progress-grid">
         {SKILL_ORDER.map((skill) => {
           const row = bySkill.get(skill);
@@ -63,9 +63,7 @@ export function ProgressPage() {
               <div className="progress-card-header">
                 <span className="progress-skill">{SKILL_LABELS[skill]}</span>
                 <span className="progress-count">
-                  {attempts === 0
-                    ? "no attempts yet"
-                    : `${attempts} attempt${attempts === 1 ? "" : "s"}`}
+                  {attempts === 0 ? "попыток ещё не было" : `попыток: ${attempts}`}
                 </span>
               </div>
               {attempts > 0 && (
@@ -74,7 +72,7 @@ export function ProgressPage() {
                     <div className="progress-bar-fill" style={{ width: `${accuracyPct}%` }} />
                   </div>
                   <span className="progress-accuracy">
-                    {row!.correct_count}/{attempts} correct ({accuracyPct}%)
+                    Верно: {row!.correct_count}/{attempts} ({accuracyPct}%)
                   </span>
                 </>
               )}

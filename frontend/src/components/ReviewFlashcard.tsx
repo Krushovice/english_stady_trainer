@@ -12,7 +12,7 @@ export function ReviewFlashcard({ item }: { item: ReviewItem }) {
   const back = item.vocabulary
     ? item.vocabulary.translation
     : item.grammar_topic!.description;
-  const label = item.vocabulary ? "Vocabulary" : "Grammar";
+  const label = item.vocabulary ? "Лексика" : "Грамматика";
 
   async function rate(isCorrect: boolean) {
     setSubmitting(true);
@@ -35,16 +35,16 @@ export function ReviewFlashcard({ item }: { item: ReviewItem }) {
           <p className="flashcard-back">{back}</p>
           <div className="flashcard-actions">
             <button type="button" onClick={() => rate(false)} disabled={submitting}>
-              Forgot
+              Забыл(а)
             </button>
             <button type="button" onClick={() => rate(true)} disabled={submitting}>
-              Remembered
+              Помню
             </button>
           </div>
         </>
       ) : (
         <button type="button" onClick={() => setRevealed(true)}>
-          Show answer
+          Показать ответ
         </button>
       )}
     </div>

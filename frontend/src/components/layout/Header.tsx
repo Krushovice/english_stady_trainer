@@ -13,40 +13,40 @@ export function Header() {
         <>
           <nav className="site-nav">
             <NavLink to="/dashboard" className="site-nav-link">
-              Dashboard
+              Панель
             </NavLink>
             <NavLink to="/levels" className="site-nav-link">
-              Lessons
+              Уроки
             </NavLink>
             <NavLink to="/daily-quiz" className="site-nav-link">
-              Daily quiz
+              Ежедневный тест
             </NavLink>
             <NavLink to="/review" className="site-nav-link">
-              Review
+              Повторение
             </NavLink>
             <NavLink to="/homework" className="site-nav-link">
-              Homework
+              Домашнее задание
             </NavLink>
             <NavLink to="/speaking" className="site-nav-link">
-              Speaking
+              Говорение
             </NavLink>
             <NavLink to="/conversation" className="site-nav-link">
-              Talk
+              Разговор
             </NavLink>
             <NavLink to="/progress" className="site-nav-link">
-              Progress
+              Прогресс
             </NavLink>
             <NavLink to="/course-exam" className="site-nav-link">
-              Final exam
+              Финальный экзамен
             </NavLink>
             <NavLink to="/certificate" className="site-nav-link">
-              Certificate
+              Сертификат
             </NavLink>
           </nav>
           <div className="site-header-user">
             <span>{user.email}</span>
             <button type="button" className="link-button" onClick={logout}>
-              Log out
+              Выйти
             </button>
           </div>
         </>

@@ -19,7 +19,7 @@ export function LoginPage() {
       await login(email, password);
       navigate("/levels");
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Something went wrong.");
+      setError(err instanceof ApiError ? err.message : "Что-то пошло не так.");
     } finally {
       setSubmitting(false);
     }
@@ -28,7 +28,7 @@ export function LoginPage() {
   return (
     <div className="auth-page">
       <form className="auth-form" onSubmit={handleSubmit}>
-        <h1>Log in</h1>
+        <h1>Вход</h1>
         <label>
           Email
           <input
@@ -40,7 +40,7 @@ export function LoginPage() {
           />
         </label>
         <label>
-          Password
+          Пароль
           <input
             type="password"
             value={password}
@@ -50,10 +50,10 @@ export function LoginPage() {
         </label>
         {error && <p className="form-error">{error}</p>}
         <button type="submit" disabled={submitting}>
-          {submitting ? "Logging in..." : "Log in"}
+          {submitting ? "Вход..." : "Войти"}
         </button>
         <p className="auth-switch">
-          No account yet? <Link to="/register">Register</Link>
+          Ещё нет аккаунта? <Link to="/register">Зарегистрироваться</Link>
         </p>
       </form>
     </div>
