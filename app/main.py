@@ -7,7 +7,7 @@ from fastapi.staticfiles import StaticFiles
 from app.api.routes import api_router
 from app.core.config import get_settings
 
-app = FastAPI(title="English Trainer API")
+app = FastAPI(title="KrushEnglish API")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=get_settings().cors_origins,

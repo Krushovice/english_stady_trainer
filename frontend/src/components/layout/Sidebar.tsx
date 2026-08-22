@@ -55,10 +55,11 @@ export function Sidebar() {
   return (
     <aside className="sidebar">
       <NavLink to="/dashboard" className="sidebar-brand">
-        <span className="sidebar-brand-mark" aria-hidden="true">
-          ET
+        <img src="/logo.png" alt="" className="sidebar-brand-mark" />
+        <span className="sidebar-brand-text">
+          <span className="sidebar-brand-name">KrushEnglish</span>
+          <span className="sidebar-brand-caption">Английский — это просто</span>
         </span>
-        <span className="sidebar-brand-name">English Trainer</span>
       </NavLink>
 
       <nav className="sidebar-nav">

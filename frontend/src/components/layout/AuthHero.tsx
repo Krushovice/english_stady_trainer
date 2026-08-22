@@ -2,10 +2,8 @@ export function AuthHero() {
   return (
     <div className="auth-hero">
       <div className="auth-hero-brand">
-        <span className="auth-hero-mark" aria-hidden="true">
-          ET
-        </span>
-        English Trainer
+        <img src="/logo.png" alt="" className="auth-hero-mark" />
+        KrushEnglish
       </div>
 
       <div className="auth-hero-copy">
