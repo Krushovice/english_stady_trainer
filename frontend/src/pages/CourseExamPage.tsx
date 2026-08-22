@@ -23,8 +23,8 @@ const SKILL_LABELS: Record<Skill, string> = {
 function ResultView({ result }: { result: ExamResult }) {
   return (
     <div className="exam-result">
-      <p className="exam-result-verdict">
-        {result.passed ? "✅ Сдано!" : "❌ Не в этот раз."}
+      <p className={"exam-result-verdict" + (result.passed ? " is-pass" : " is-fail")}>
+        {result.passed ? "Сдано" : "Не в этот раз"}
       </p>
       <p className="exam-result-score">
         Верно: {result.correct_count}/{result.total_count} ({Math.round(result.score * 100)}%)

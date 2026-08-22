@@ -11,6 +11,7 @@ import {
 import type { AttemptResult, SubmittedAnswer } from "../api/types";
 import { ExerciseCard } from "../components/exercises/ExerciseCard";
 import { ExerciseItem } from "../components/exercises/ExerciseItem";
+import { CheckIcon } from "../components/icons";
 import { LessonBlockView } from "../components/LessonBlockView";
 
 const SKILL_LABELS: Record<string, string> = {
@@ -104,8 +105,12 @@ export function LessonPage() {
         &larr; Уровни
       </Link>
       <h1>
-        {completion?.passed ? "✅ " : ""}
         {lesson.title}
+        {completion?.passed && (
+          <span className="title-check">
+            <CheckIcon width={18} height={18} />
+          </span>
+        )}
       </h1>
 
       {lesson.blocks
@@ -191,7 +196,7 @@ export function LessonPage() {
                   />
                   {resolved && (
                     <div className="exercise-result">
-                      <p className="result-verdict">✅ Верно</p>
+                      <p className="result-verdict">Верно</p>
                       {result?.explanation && (
                         <p className="result-explanation">{result.explanation}</p>
                       )}
@@ -216,7 +221,7 @@ export function LessonPage() {
 
       {miniTestQuery.data && miniTestQuery.data.exercises.length > 0 && (
         <section className="lesson-block mini-test">
-          <h2>🔁 Быстрое повторение: {miniTestQuery.data.previous_lesson_title}</h2>
+          <h2>Быстрое повторение: {miniTestQuery.data.previous_lesson_title}</h2>
           <p className="status">
             Пять вопросов по предыдущей теме, прежде чем идти дальше.
           </p>

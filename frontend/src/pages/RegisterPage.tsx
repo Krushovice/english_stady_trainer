@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ApiError } from "../api/client";
 import { useAuth } from "../auth/AuthContext";
+import { AuthHero } from "../components/layout/AuthHero";
 
 export function RegisterPage() {
   const { register } = useAuth();
@@ -26,37 +27,40 @@ export function RegisterPage() {
   }
 
   return (
-    <div className="auth-page">
-      <form className="auth-form" onSubmit={handleSubmit}>
-        <h1>Создать аккаунт</h1>
-        <label>
-          Email
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            autoFocus
-          />
-        </label>
-        <label>
-          Пароль
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            minLength={8}
-          />
-        </label>
-        {error && <p className="form-error">{error}</p>}
-        <button type="submit" disabled={submitting}>
-          {submitting ? "Создание..." : "Зарегистрироваться"}
-        </button>
-        <p className="auth-switch">
-          Уже есть аккаунт? <Link to="/login">Войти</Link>
-        </p>
-      </form>
+    <div className="auth-shell">
+      <AuthHero />
+      <div className="auth-page">
+        <form className="auth-form" onSubmit={handleSubmit}>
+          <h1>Создать аккаунт</h1>
+          <label>
+            Email
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              autoFocus
+            />
+          </label>
+          <label>
+            Пароль
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              minLength={8}
+            />
+          </label>
+          {error && <p className="form-error">{error}</p>}
+          <button type="submit" disabled={submitting}>
+            {submitting ? "Создание..." : "Зарегистрироваться"}
+          </button>
+          <p className="auth-switch">
+            Уже есть аккаунт? <Link to="/login">Войти</Link>
+          </p>
+        </form>
+      </div>
     </div>
   );
 }

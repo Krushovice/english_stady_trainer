@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { listLevels } from "../api/course";
 import { getPlacementResult } from "../api/placement";
 import type { CEFRLevel } from "../api/types";
+import { ChevronRightIcon, LockIcon } from "../components/icons";
 
 // Mirrors app/services/placement_scoring.py's LEVEL_ORDER — used only to
 // name which level's exam unlocks a locked one, not to drive any scoring.
@@ -32,40 +33,68 @@ export function LevelsPage() {
 
   return (
     <div className="page">
+      <span className="page-eyebrow">Курс</span>
       <h1>Уровни</h1>
       {placement.data && !placement.data.placement_completed_at && (
         <Link to="/placement-test" className="banner">
           Пройдите тест на уровень, чтобы определить свой уровень →
         </Link>
       )}
-      <div className="card-grid">
-        {data!.map((level) => {
+      <ul className="entry-list">
+        {data!.map((level, i) => {
           if (level.unlocked) {
             return (
-              <Link key={level.id} to={`/levels/${level.code}/modules`} className="card">
-                <span className="card-title">{level.code}</span>
-              </Link>
+              <li key={level.id} className="entry-list-item">
+                <Link to={`/levels/${level.code}/modules`} className="entry-row">
+                  <span className="entry-index">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="entry-body">
+                    <span className="entry-title">{level.code}</span>
+                  </span>
+                  <span className="entry-status">
+                    <ChevronRightIcon className="chevron" />
+                  </span>
+                </Link>
+              </li>
             );
           }
           const gate = precedingLevel(level.code);
           return (
-            <Link
-              key={level.id}
-              to={gate ? `/levels/${gate}/exam` : "/levels"}
-              className="card card-locked"
-            >
-              <span className="card-title">🔒 {level.code}</span>
-              <span className="status">Сдайте экзамен уровня {gate}, чтобы открыть</span>
-            </Link>
+            <li key={level.id} className="entry-list-item">
+              <Link
+                to={gate ? `/levels/${gate}/exam` : "/levels"}
+                className="entry-row is-locked is-locked-linkable"
+              >
+                <span className="entry-index">{String(i + 1).padStart(2, "0")}</span>
+                <span className="entry-body">
+                  <span className="entry-title">{level.code}</span>
+                  <span className="entry-meta">
+                    {gate
+                      ? `Сдайте экзамен уровня ${gate}, чтобы открыть`
+                      : "Сдайте экзамен предыдущего уровня, чтобы открыть"}
+                  </span>
+                </span>
+                <span className="entry-status">
+                  <LockIcon width={16} height={16} />
+                </span>
+              </Link>
+            </li>
           );
         })}
-        {COMING_SOON_LEVELS.map((code) => (
-          <div key={code} className="card card-locked">
-            <span className="card-title">🔒 {code}</span>
-            <span className="status">Скоро</span>
-          </div>
+        {COMING_SOON_LEVELS.map((code, i) => (
+          <li key={code} className="entry-list-item">
+            <div className="entry-row is-locked">
+              <span className="entry-index">{String(data!.length + i + 1).padStart(2, "0")}</span>
+              <span className="entry-body">
+                <span className="entry-title">{code}</span>
+                <span className="entry-meta">Скоро</span>
+              </span>
+              <span className="entry-status">
+                <LockIcon width={16} height={16} />
+              </span>
+            </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }

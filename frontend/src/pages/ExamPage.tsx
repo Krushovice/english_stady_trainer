@@ -29,8 +29,8 @@ export function formatWhen(iso: string): string {
 function ResultView({ level, result }: { level: CEFRLevel; result: ExamResult }) {
   return (
     <div className="exam-result">
-      <p className="exam-result-verdict">
-        {result.passed ? "✅ Сдано!" : "❌ Не в этот раз."}
+      <p className={"exam-result-verdict" + (result.passed ? " is-pass" : " is-fail")}>
+        {result.passed ? "Сдано" : "Не в этот раз"}
       </p>
       <p className="exam-result-score">
         Верно: {result.correct_count}/{result.total_count} ({Math.round(result.score * 100)}%)

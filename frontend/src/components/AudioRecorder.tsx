@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { MicIcon } from "./icons";
 
 type RecorderState = "idle" | "recording" | "recorded";
 
@@ -99,7 +100,8 @@ export function AudioRecorder({
 
       {state === "idle" && (
         <button type="button" className="btn-primary" onClick={startRecording}>
-          🎙 Начать запись
+          <MicIcon width={16} height={16} />
+          Начать запись
         </button>
       )}
 

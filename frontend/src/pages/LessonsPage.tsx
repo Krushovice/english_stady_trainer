@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
 import { listLessons } from "../api/course";
+import { ChevronRightIcon } from "../components/icons";
 
 export function LessonsPage() {
   const { moduleSlug } = useParams<{ moduleSlug: string }>();
@@ -19,13 +20,21 @@ export function LessonsPage() {
         &larr; Уровни
       </Link>
       <h1>Уроки</h1>
-      <div className="card-grid">
-        {data!.map((lesson) => (
-          <Link key={lesson.id} to={`/lessons/${lesson.slug}`} className="card">
-            <span className="card-title">{lesson.title}</span>
-          </Link>
+      <ul className="entry-list">
+        {data!.map((lesson, i) => (
+          <li key={lesson.id} className="entry-list-item">
+            <Link to={`/lessons/${lesson.slug}`} className="entry-row">
+              <span className="entry-index">{String(i + 1).padStart(2, "0")}</span>
+              <span className="entry-body">
+                <span className="entry-title">{lesson.title}</span>
+              </span>
+              <span className="entry-status">
+                <ChevronRightIcon className="chevron" />
+              </span>
+            </Link>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
