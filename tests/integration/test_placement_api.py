@@ -127,6 +127,60 @@ async def test_result_before_any_submission_has_no_levels(
     assert result["placement_completed_at"] is None
 
 
+async def test_choose_assessed_credits_levels_below_the_assessed_one(
+    client: AsyncClient, synced_lesson: Lesson, auth_headers: dict[str, str]
+) -> None:
+    # _submit_full_test's known answers produce overall_level == "A2" (see
+    # test_submit_produces_distinct_per_skill_levels) — so "assessed" should
+    # credit through A1, unlocking A2 without a real A1 attempt or exam.
+    result = await _submit_full_test(client, auth_headers)
+    assert result["overall_level"] == "A2"
+
+    choose = await client.post(
+        "/api/v1/placement-test/choose-starting-point",
+        json={"choice": "assessed"},
+        headers=auth_headers,
+    )
+    assert choose.status_code == 204
+
+    levels = (await client.get("/api/v1/levels", headers=auth_headers)).json()
+    unlocked_by_code = {level["code"]: level["unlocked"] for level in levels}
+    assert unlocked_by_code["A1"] is True
+    assert unlocked_by_code["A2"] is True
+    assert unlocked_by_code["B1"] is False
+
+    # A1 is credited (below the assessed level) -> its lessons are auto-passed.
+    a1_modules = (await client.get("/api/v1/levels/A1/modules", headers=auth_headers)).json()
+    assert all(module["unlocked"] and module["passed"] for module in a1_modules)
+
+    # A2 is the assessed level itself -> unlocked to enter, but still has to
+    # be studied lesson by lesson, not auto-credited.
+    a2_modules = (await client.get("/api/v1/levels/A2/modules", headers=auth_headers)).json()
+    first, second = a2_modules[0], a2_modules[1]
+    assert first["unlocked"] is True
+    assert first["passed"] is None
+    assert second["unlocked"] is False
+
+
+async def test_choose_review_leaves_unlock_state_unchanged(
+    client: AsyncClient, synced_lesson: Lesson, auth_headers: dict[str, str]
+) -> None:
+    result = await _submit_full_test(client, auth_headers)
+    assert result["overall_level"] == "A2"
+
+    choose = await client.post(
+        "/api/v1/placement-test/choose-starting-point",
+        json={"choice": "review"},
+        headers=auth_headers,
+    )
+    assert choose.status_code == 204
+
+    levels = (await client.get("/api/v1/levels", headers=auth_headers)).json()
+    unlocked_by_code = {level["code"]: level["unlocked"] for level in levels}
+    assert unlocked_by_code["A1"] is True
+    assert unlocked_by_code["A2"] is False
+
+
 async def test_submit_with_unknown_exercise_returns_404(
     client: AsyncClient, auth_headers: dict[str, str]
 ) -> None:

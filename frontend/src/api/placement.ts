@@ -17,3 +17,10 @@ export function submitPlacementTest(
 export function getPlacementResult(): Promise<PlacementResult> {
   return apiRequest<PlacementResult>("/placement-test/result");
 }
+
+export function chooseStartingPoint(choice: "review" | "assessed"): Promise<void> {
+  return apiRequest<void>("/placement-test/choose-starting-point", {
+    method: "POST",
+    body: { choice },
+  });
+}

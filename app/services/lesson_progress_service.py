@@ -6,6 +6,11 @@ could previously be opened in any order. 70% correct on a lesson's own
 exercises is the threshold that unlocks the next one; short of that, the
 unresolved exercises should stay visible on revisit rather than being
 silently dropped (see `LessonPage.tsx`'s completion banner).
+
+A level credited via the post-placement "start at my assessed level" choice
+(`LearningProfile.placement_skip_credit_through`) short-circuits this: every
+lesson in that level counts as already unlocked and passed, without a real
+attempt — see `_is_credited`.
 """
 
 import uuid
@@ -17,6 +22,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.models.lesson import Lesson
 from app.repositories.course_repository import CourseRepository
 from app.repositories.exercise_repository import ExerciseRepository
+from app.repositories.learning_profile_repository import LearningProfileRepository
+from app.services.placement_scoring import is_level_credited
 
 PASS_THRESHOLD = Decimal("0.7")
 
@@ -69,8 +76,20 @@ class LessonProgressService:
     def __init__(self, session: AsyncSession) -> None:
         self._course = CourseRepository(session)
         self._exercises = ExerciseRepository(session)
+        self._profiles = LearningProfileRepository(session)
 
     async def get_completion(self, user_id: uuid.UUID, lesson_slug: str) -> LessonCompletion:
+        if await self._is_credited(user_id, lesson_slug):
+            # Honestly reflects "credited by placement choice", not a real
+            # attempt — see PlacementService.choose_starting_point.
+            return LessonCompletion(
+                attempted=False,
+                accuracy=None,
+                passed=True,
+                wrong_exercise_ids=[],
+                total=0,
+                correct=0,
+            )
         exercises = list(await self._exercises.list_by_lesson_slug(lesson_slug))
         exercise_ids = [exercise.id for exercise in exercises]
         latest = await self._exercises.get_latest_attempts(user_id, exercise_ids)
@@ -78,8 +97,19 @@ class LessonProgressService:
         return compute_completion(exercise_ids, correctness)
 
     async def is_lesson_unlocked(self, user_id: uuid.UUID, lesson: Lesson) -> bool:
+        if await self._is_credited(user_id, lesson.slug):
+            return True
         previous = await self._course.get_previous_lesson_in_level(lesson.id)
         if previous is None:
             return True
         completion = await self.get_completion(user_id, previous.slug)
         return completion.passed
+
+    async def _is_credited(self, user_id: uuid.UUID, lesson_slug: str) -> bool:
+        level = await self._course.get_level_by_lesson_slug(lesson_slug)
+        if level is None:
+            return False
+        profile = await self._profiles.get_by_user_id(user_id)
+        if profile is None:
+            return False
+        return is_level_credited(level.code, profile.placement_skip_credit_through)

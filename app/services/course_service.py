@@ -43,7 +43,12 @@ class CourseService:
             passed: bool | None = None
             if unlocked:
                 completion = await self._progress.get_completion(user_id, lesson.slug)
-                passed = completion.passed if completion.attempted else None
+                # `total == 0` covers both "nothing to grade" and "credited
+                # via placement choice" — both mean pass without a real
+                # attempt, unlike a genuinely untouched lesson (show no
+                # badge yet, not a false ✕).
+                shows_passed = completion.attempted or completion.total == 0
+                passed = completion.passed if shows_passed else None
             result.append((module, unlocked, passed))
         return result
 

@@ -46,6 +46,14 @@ class LearningProfile(Base):
     placement_completed_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True), nullable=True
     )
+    # Set when the learner chooses "start at my assessed level" instead of
+    # "review from a lower level" after the placement test — every level up
+    # to and including this one is credited without its exit exam. None
+    # means no credit granted (the ordinary exam-gate rule applies to all
+    # levels), which is also the state for every pre-existing user.
+    placement_skip_credit_through: Mapped[CEFRLevel | None] = mapped_column(
+        cefr_level_type, nullable=True
+    )
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now()

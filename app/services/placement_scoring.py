@@ -63,6 +63,16 @@ def estimate_overall_level(skill_levels: Iterable[CEFRLevel | None]) -> CEFRLeve
     return LEVEL_ORDER[average_index]
 
 
+def is_level_credited(level: CEFRLevel, credit_through: CEFRLevel | None) -> bool:
+    """Whether `level` is fully covered by a placement-test "start at my
+    assessed level" choice (`LearningProfile.placement_skip_credit_through`)
+    — see `PlacementService.choose_starting_point`.
+    """
+    if credit_through is None:
+        return False
+    return LEVEL_ORDER.index(level) <= LEVEL_ORDER.index(credit_through)
+
+
 def effective_recommendation_level(
     overall_level: CEFRLevel | None, grammar_level: CEFRLevel | None
 ) -> CEFRLevel | None:

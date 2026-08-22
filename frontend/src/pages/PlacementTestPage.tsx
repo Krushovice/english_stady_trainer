@@ -1,8 +1,14 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ApiError } from "../api/client";
-import { getPlacementItems, getPlacementResult, submitPlacementTest } from "../api/placement";
+import { listLevels } from "../api/course";
+import {
+  chooseStartingPoint,
+  getPlacementItems,
+  getPlacementResult,
+  submitPlacementTest,
+} from "../api/placement";
 import type { Exercise, PlacementResult, Skill, SubmittedAnswer } from "../api/types";
 import { ExerciseItem } from "../components/exercises/ExerciseItem";
 
@@ -15,8 +21,46 @@ const SKILL_LABELS: Record<Skill, string> = {
   speaking: "Speaking",
 };
 
-function ResultView({ result }: { result: PlacementResult }) {
+function ResultView({
+  result,
+  showStartChoice = false,
+}: {
+  result: PlacementResult;
+  showStartChoice?: boolean;
+}) {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const [saving, setSaving] = useState<string | null>(null);
+  const [choiceError, setChoiceError] = useState<string | null>(null);
+
+  // Only needed to build the "review from a level you can already reach"
+  // list — skip the fetch entirely for the plain re-visit view.
+  const levelsQuery = useQuery({
+    queryKey: ["levels"],
+    queryFn: listLevels,
+    enabled: showStartChoice && !!result.overall_level,
+  });
+
+  async function pick(choice: "review" | "assessed", key: string) {
+    setSaving(key);
+    setChoiceError(null);
+    try {
+      await chooseStartingPoint(choice);
+      // "assessed" changes which levels are unlocked — the ["levels"] cache
+      // this same component just populated above would otherwise still
+      // show the pre-choice state on the page we're about to navigate to.
+      await queryClient.invalidateQueries({ queryKey: ["levels"] });
+      navigate("/levels");
+    } catch (err) {
+      setChoiceError(err instanceof ApiError ? err.message : "Couldn't save your choice.");
+      setSaving(null);
+    }
+  }
+
+  const reviewLevels = (levelsQuery.data ?? []).filter(
+    (level) => level.unlocked && level.code !== result.overall_level,
+  );
+
   return (
     <div className="placement-result">
       <p className="placement-overall">
@@ -52,14 +96,42 @@ function ResultView({ result }: { result: PlacementResult }) {
           </div>
         </>
       )}
-      <button type="button" className="btn-primary" onClick={() => navigate("/levels")}>
-        Continue to lessons
-      </button>
+      {showStartChoice && result.overall_level ? (
+        <div className="placement-start-choice">
+          <h2>Where do you want to start?</h2>
+          {choiceError && <p className="form-error">{choiceError}</p>}
+          <div className="placement-start-options">
+            <button
+              type="button"
+              className="btn-primary"
+              onClick={() => pick("assessed", "assessed")}
+              disabled={saving !== null}
+            >
+              {saving === "assessed" ? "Starting..." : `Start at ${result.overall_level}`}
+            </button>
+            {reviewLevels.map((level) => (
+              <button
+                key={level.code}
+                type="button"
+                onClick={() => pick("review", level.code)}
+                disabled={saving !== null}
+              >
+                {saving === level.code ? "Starting..." : `Review from ${level.code}`}
+              </button>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <button type="button" className="btn-primary" onClick={() => navigate("/levels")}>
+          Continue to lessons
+        </button>
+      )}
     </div>
   );
 }
 
 export function PlacementTestPage() {
+  const queryClient = useQueryClient();
   const [phase, setPhase] = useState<"intro" | "taking" | "result">("intro");
   const [items, setItems] = useState<Exercise[]>([]);
   const [answers, setAnswers] = useState<Record<string, SubmittedAnswer>>({});
@@ -98,6 +170,10 @@ export function PlacementTestPage() {
       );
       setFreshResult(result);
       setPhase("result");
+      // The "take the placement test" nudge on LevelsPage reads this same
+      // cache key — without invalidating it, that banner keeps showing
+      // "not completed yet" for the rest of the session.
+      queryClient.invalidateQueries({ queryKey: ["placement-result"] });
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "Couldn't submit the test.");
     } finally {
@@ -121,7 +197,7 @@ export function PlacementTestPage() {
     return (
       <div className="page">
         <h1>Your result</h1>
-        <ResultView result={freshResult} />
+        <ResultView result={freshResult} showStartChoice />
       </div>
     );
   }

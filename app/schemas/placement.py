@@ -1,5 +1,6 @@
 import uuid
 from datetime import datetime
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict
 
@@ -37,3 +38,7 @@ class PlacementResultResponse(BaseModel):
     skills: list[SkillLevelResult]
     recommended_modules: list[RecommendedModuleResponse]
     placement_completed_at: datetime | None
+
+
+class ChooseStartingPointRequest(BaseModel):
+    choice: Literal["review", "assessed"]

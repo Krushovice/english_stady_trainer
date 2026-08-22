@@ -7,6 +7,7 @@ from app.models.exercise import Exercise
 from app.models.user import User
 from app.schemas.exercise import ExercisePublicResponse
 from app.schemas.placement import (
+    ChooseStartingPointRequest,
     PlacementResultResponse,
     PlacementSubmitRequest,
     RecommendedModuleResponse,
@@ -75,3 +76,15 @@ async def get_placement_result(
     except NotFoundError as exc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
     return _to_response(result)
+
+
+@router.post("/choose-starting-point", status_code=status.HTTP_204_NO_CONTENT)
+async def choose_starting_point(
+    payload: ChooseStartingPointRequest,
+    session: AsyncSession = Depends(get_db_session),
+    current_user: User = Depends(get_current_user),
+) -> None:
+    try:
+        await PlacementService(session).choose_starting_point(current_user.id, payload.choice)
+    except NotFoundError as exc:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc

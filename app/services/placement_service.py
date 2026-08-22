@@ -13,6 +13,7 @@ from app.repositories.course_repository import CourseRepository
 from app.repositories.exercise_repository import ExerciseRepository
 from app.repositories.learning_profile_repository import LearningProfileRepository
 from app.services.placement_scoring import (
+    LEVEL_ORDER,
     ModuleCandidate,
     PlacementItemResult,
     effective_recommendation_level,
@@ -146,6 +147,29 @@ class PlacementService:
             recommended_modules=recommended,
             placement_completed_at=profile.placement_completed_at,
         )
+
+    async def choose_starting_point(self, user_id: uuid.UUID, choice: str) -> None:
+        """The post-result choice: start at the assessed level (crediting
+        everything below it, no exam needed) or start over from a lower
+        level for review (no state change — that level is already reachable
+        under the ordinary unlock rules, e.g. A1 always is).
+        """
+        if choice != "assessed":
+            return
+
+        profile = await self._profiles.get_by_user_id(user_id)
+        if profile is None:
+            raise NotFoundError("Learning profile not found")
+
+        skill_levels = {skill: getattr(profile, f"level_{skill.value}", None) for skill in Skill}
+        overall_level = estimate_overall_level(skill_levels.values())
+        if overall_level is None:
+            return
+
+        index = LEVEL_ORDER.index(overall_level)
+        if index > 0:
+            profile.placement_skip_credit_through = LEVEL_ORDER[index - 1]
+            await self._session.commit()
 
     async def _recommend_modules(
         self,

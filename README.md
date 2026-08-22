@@ -4,7 +4,7 @@ Personal interactive English-learning platform. Product rules, architecture, and
 
 ## Status
 
-Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. Phase 5 (AI) is done: the provider abstraction, writing feedback, homework generation, conversation mode, and the Speaking flow (prompt → recording → STT → evaluation → feedback → retry) are all built and verified end to end against real local models — see "AI (local model)", "Writing feedback and homework", "Conversation mode", "Speech-to-text (STT)", and "Speaking" below. Content authoring is also done: all 43 planned lessons across A1/A2/B1/B2 are written (see "Content" below); C1/C2 stay explicitly out of scope. Phase 6 (UX) is mostly done: the core learning loop, a real `Dashboard` (do now / weak at / improved / due for review), nav (Dashboard/Lessons/Daily quiz/Review/Homework/Speaking/Talk/Progress/Final exam/Certificate), progress screen with a computed title/grade, review center, placement test UI, level exit exams, frontend for Homework/Speaking/AI Conversation, a course-wide final exam gating a printable completion certificate, a "C1/C2 — coming soon" placeholder on `/levels`, and sequential lesson unlocking with a single-check exercise flow (see "Sequential lessons and the single-check exercise flow" below) are all built (as of 2026-08-21). Still open, from the same round of live-testing feedback: placement-driven starting-point choice (skip vs. review a lower level), local TTS audio for listening blocks, and translating the interface chrome to Russian — plus a VPS deployment, general UI polish, and frontend automated tests (deliberately deferred, see `docs/decisions.md`).
+Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. Phase 5 (AI) is done: the provider abstraction, writing feedback, homework generation, conversation mode, and the Speaking flow (prompt → recording → STT → evaluation → feedback → retry) are all built and verified end to end against real local models — see "AI (local model)", "Writing feedback and homework", "Conversation mode", "Speech-to-text (STT)", and "Speaking" below. Content authoring is also done: all 43 planned lessons across A1/A2/B1/B2 are written (see "Content" below); C1/C2 stay explicitly out of scope. Phase 6 (UX) is mostly done: the core learning loop, a real `Dashboard` (do now / weak at / improved / due for review), nav (Dashboard/Lessons/Daily quiz/Review/Homework/Speaking/Talk/Progress/Final exam/Certificate), progress screen with a computed title/grade, review center, placement test UI, level exit exams, frontend for Homework/Speaking/AI Conversation, a course-wide final exam gating a printable completion certificate, a "C1/C2 — coming soon" placeholder on `/levels`, sequential lesson unlocking with a single-check exercise flow, and a placement-driven starting-point choice (see "Sequential lessons and the single-check exercise flow" and "Placement-driven starting point" below) are all built (as of 2026-08-21). Still open, from the same round of live-testing feedback: local TTS audio for listening blocks and translating the interface chrome to Russian — plus a VPS deployment, general UI polish, and frontend automated tests (deliberately deferred, see `docs/decisions.md`).
 
 ## Stack
 
@@ -52,7 +52,7 @@ Needs the API running (either `docker compose up` from the repo root, or the "De
 - `components/WritingFeedbackCard.tsx` — renders the 5-section AI feedback shape (Good / Grammar / Vocabulary / Natural version / Try again) shared by Homework-task and Speaking feedback.
 - `components/AudioRecorder.tsx` — `getUserMedia`/`MediaRecorder` wrapper for the Speaking flow: record with a live timer → stop → preview playback with a re-record option → submit. Requires a secure context (`https:`, or `localhost`/`127.0.0.1`) per browser spec — `navigator.mediaDevices` is `undefined` otherwise.
 
-Verified live end to end with headless-browser scripts against the real API — zero console errors: (1) register → levels → modules → lessons → lesson → submit all 4 exercise types → progress/daily quiz update → logout; (2) register → placement test intro → answer all ~24 items → submit → result → banner gone on `/levels` → revisiting `/placement-test` shows the saved result instead of the intro; (3) with review items backdated to due, `/review` renders exercise/vocabulary/grammar items correctly and rating a flashcard removes it from the list.
+Verified live end to end with headless-browser scripts against the real API — zero console errors: (1) register → levels → modules → lessons → lesson → submit all 4 exercise types → progress/daily quiz update → logout; (2) register → placement test intro → answer all ~24 items → submit → result → banner gone on `/levels` → revisiting `/placement-test` shows the saved result instead of the intro (the "banner gone" part needed a real fix in 2026-08-21's placement-choice round — see "Placement-driven starting point" below); (3) with review items backdated to due, `/review` renders exercise/vocabulary/grammar items correctly and rating a flashcard removes it from the list.
 
 ## Progress, Daily quiz, and Review
 
@@ -129,6 +129,29 @@ signal. Now:
   Phase 6) already imported — both went undetected because `npx tsc --noEmit` alone
   type-checks nothing in this project (the root `tsconfig.json` has an empty `files` list);
   the real check is `npx tsc --noEmit --project tsconfig.app.json`.
+
+## Placement-driven starting point
+
+After submitting the placement test, the result screen now offers a choice instead of a single
+"Continue to lessons" button (shown only right after a fresh submission, not on a later revisit):
+"Start at {assessed level}" or "Review from {a level already reachable}". New
+`learning_profiles.placement_skip_credit_through: CEFRLevel | None` column — set by "start at
+assessed level" to the level *below* the assessed one; `LEVEL_ORDER`-based
+`placement_scoring.is_level_credited(level, credit_through)` is the single pure check reused by
+both `LevelExamService.is_level_unlocked` (a credited *preceding* level unlocks the next one,
+same as passing its exam) and `LessonProgressService` (a credited level's own lessons are all
+auto-unlocked and auto-passed, `total=0`/`attempted=False`, honestly distinct from a real
+attempt). Deliberately the assessed level itself is *not* auto-credited — only levels strictly
+below it — so the learner still has to actually study the level they were placed into. "Review"
+is a pure no-op server-side: the chosen lower level is already reachable under the ordinary
+unlock rules, so nothing needs to change. New `POST /placement-test/choose-starting-point`.
+
+Caught live via Docker-isolated Playwright while verifying this (both are now fixed): choosing
+"assessed" didn't visibly unlock anything on `/levels` because that page's `react-query` cache
+(shared key `["levels"]`) had already been populated by the result screen's own "which levels are
+already reachable" lookup and was never invalidated after the choice; separately, the "take the
+placement test" banner kept showing after a completed submission because `["placement-result"]`
+was never invalidated either — a pre-existing gap, not new to this change.
 
 ## Homework, Speaking, and AI Conversation frontend
 

@@ -23,6 +23,12 @@ Design, matching what was agreed before implementation:
     retroactively — real progress must never be locked out after the
     fact. Without this, authoring A2 content would have retroactively
     locked the real user out of B1, which they'd already been studying.
+  - Placement credit: choosing "start at my assessed level" after the
+    placement test sets `LearningProfile.placement_skip_credit_through` —
+    every level up to and including that one counts as credited (its exam
+    need not be passed) for the sole purpose of unlocking the *next* level.
+    See `app/services/placement_scoring.is_level_credited` and
+    `PlacementService.choose_starting_point`.
 """
 
 import random
@@ -45,8 +51,9 @@ from app.models.exercise_attempt import AttemptSource, ExerciseAttempt
 from app.models.learning_profile import CEFRLevel
 from app.models.level_exam_attempt import LevelExamAttempt
 from app.repositories.exercise_repository import ExerciseRepository
+from app.repositories.learning_profile_repository import LearningProfileRepository
 from app.repositories.level_exam_repository import LevelExamRepository
-from app.services.placement_scoring import LEVEL_ORDER
+from app.services.placement_scoring import LEVEL_ORDER, is_level_credited
 from app.services.scoring import InvalidSubmissionError, score_attempt
 
 EXAM_SIZE = 20
@@ -72,6 +79,7 @@ class LevelExamService:
         self._session = session
         self._exams = LevelExamRepository(session)
         self._exercises = ExerciseRepository(session)
+        self._profiles = LearningProfileRepository(session)
 
     async def is_level_unlocked(self, user_id: uuid.UUID, level: CEFRLevel) -> bool:
         index = LEVEL_ORDER.index(level)
@@ -80,6 +88,11 @@ class LevelExamService:
         if await self._exercises.has_any_attempt_in_level(user_id, level):
             return True
         preceding = LEVEL_ORDER[index - 1]
+        profile = await self._profiles.get_by_user_id(user_id)
+        if profile is not None and is_level_credited(
+            preceding, profile.placement_skip_credit_through
+        ):
+            return True
         preceding_pool = await self._exercises.list_by_level(preceding)
         if not preceding_pool:
             return True

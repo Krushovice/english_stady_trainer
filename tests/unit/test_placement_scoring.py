@@ -7,6 +7,7 @@ from app.services.placement_scoring import (
     effective_recommendation_level,
     estimate_overall_level,
     estimate_skill_level,
+    is_level_credited,
     recommend_modules,
 )
 
@@ -73,6 +74,19 @@ def test_effective_recommendation_level_falls_back_to_whichever_is_present() -> 
     assert effective_recommendation_level(None, CEFRLevel.A2) == CEFRLevel.A2
     assert effective_recommendation_level(CEFRLevel.B1, None) == CEFRLevel.B1
     assert effective_recommendation_level(None, None) is None
+
+
+def test_is_level_credited_with_no_credit_set() -> None:
+    assert is_level_credited(CEFRLevel.A1, None) is False
+
+
+def test_is_level_credited_covers_up_to_and_including_credit_through() -> None:
+    assert is_level_credited(CEFRLevel.A1, CEFRLevel.A2) is True
+    assert is_level_credited(CEFRLevel.A2, CEFRLevel.A2) is True
+
+
+def test_is_level_credited_does_not_cover_above_credit_through() -> None:
+    assert is_level_credited(CEFRLevel.B1, CEFRLevel.A2) is False
 
 
 def _module(slug: str, title: str, level: CEFRLevel, order_index: int = 1) -> ModuleCandidate:
