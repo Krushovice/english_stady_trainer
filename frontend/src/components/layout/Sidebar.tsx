@@ -32,7 +32,7 @@ const GROUPS: {
       { to: "/daily-quiz", label: "Ежедневный тест", icon: TargetIcon },
       { to: "/review", label: "Повторение", icon: RotateIcon },
       { to: "/homework", label: "Домашнее задание", icon: PenIcon },
-      { to: "/speaking", label: "Говорение", icon: MicIcon },
+      { to: "/speaking", label: "Тренировка речи", icon: MicIcon },
       { to: "/conversation", label: "Разговор", icon: ChatIcon },
     ],
   },
