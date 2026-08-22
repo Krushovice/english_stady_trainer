@@ -109,6 +109,11 @@ export interface ReadingComprehensionQuestion {
 export interface ReadingComprehensionPrompt {
   passage: string;
   questions: ReadingComprehensionQuestion[];
+  // Only present on placement-test items tagged `skill: "listening"` — see
+  // docs/decisions.md ("listening" items are transcript-based
+  // reading_comprehension exercises). Root-relative; resolve with
+  // `assetUrl()` before use.
+  audio_url?: string;
 }
 
 interface ExerciseBase {

@@ -247,7 +247,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      audio_url: "/audio/a2-revision.mp3"  # src-hash: 6990e34f
       transcript: >
         A: I've booked a hotel for next weekend — we're going to visit
         the coast. — B: Nice! We used to go camping every summer,

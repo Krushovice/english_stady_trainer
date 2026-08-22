@@ -1,4 +1,5 @@
 import { useId, useState } from "react";
+import { assetUrl } from "../../api/client";
 import type { ReadingComprehensionPrompt } from "../../api/types";
 
 export function ReadingComprehensionExercise({
@@ -21,6 +22,11 @@ export function ReadingComprehensionExercise({
 
   return (
     <div className="exercise-prompt reading-comprehension">
+      {prompt.audio_url && (
+        <audio controls src={assetUrl(prompt.audio_url)} className="listening-player">
+          Your browser doesn't support inline audio playback.
+        </audio>
+      )}
       <p className="passage">{prompt.passage}</p>
       {prompt.questions.map((question) => (
         <fieldset key={question.id} disabled={disabled}>

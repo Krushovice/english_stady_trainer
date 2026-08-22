@@ -4,7 +4,7 @@ Personal interactive English-learning platform. Product rules, architecture, and
 
 ## Status
 
-Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. Phase 5 (AI) is done: the provider abstraction, writing feedback, homework generation, conversation mode, and the Speaking flow (prompt → recording → STT → evaluation → feedback → retry) are all built and verified end to end against real local models — see "AI (local model)", "Writing feedback and homework", "Conversation mode", "Speech-to-text (STT)", and "Speaking" below. Content authoring is also done: all 43 planned lessons across A1/A2/B1/B2 are written (see "Content" below); C1/C2 stay explicitly out of scope. Phase 6 (UX) is mostly done: the core learning loop, a real `Dashboard` (do now / weak at / improved / due for review), nav (Dashboard/Lessons/Daily quiz/Review/Homework/Speaking/Talk/Progress/Final exam/Certificate), progress screen with a computed title/grade, review center, placement test UI, level exit exams, frontend for Homework/Speaking/AI Conversation, a course-wide final exam gating a printable completion certificate, a "C1/C2 — coming soon" placeholder on `/levels`, sequential lesson unlocking with a single-check exercise flow, and a placement-driven starting-point choice (see "Sequential lessons and the single-check exercise flow" and "Placement-driven starting point" below) are all built (as of 2026-08-21). Still open, from the same round of live-testing feedback: local TTS audio for listening blocks and translating the interface chrome to Russian — plus a VPS deployment, general UI polish, and frontend automated tests (deliberately deferred, see `docs/decisions.md`).
+Phases 0–4 are done: authentication, DB, test infrastructure, the course tree (levels/modules/lessons/blocks + vocabulary/grammar) with a YAML content loader, a deterministic exercise engine (multiple choice, fill-in-the-blank, sentence ordering, reading comprehension) with attempt history and per-skill progress, a placement test that estimates a CEFR level per skill and recommends starting modules, and learning intelligence — automatic grammar-mistake classification and spaced-repetition review scheduling on every practice attempt. Phase 5 (AI) is done: the provider abstraction, writing feedback, homework generation, conversation mode, and the Speaking flow (prompt → recording → STT → evaluation → feedback → retry) are all built and verified end to end against real local models — see "AI (local model)", "Writing feedback and homework", "Conversation mode", "Speech-to-text (STT)", and "Speaking" below. Content authoring is also done: all 43 planned lessons across A1/A2/B1/B2 are written (see "Content" below); C1/C2 stay explicitly out of scope. Phase 6 (UX) is mostly done: the core learning loop, a real `Dashboard` (do now / weak at / improved / due for review), nav (Dashboard/Lessons/Daily quiz/Review/Homework/Speaking/Talk/Progress/Final exam/Certificate), progress screen with a computed title/grade, review center, placement test UI, level exit exams, frontend for Homework/Speaking/AI Conversation, a course-wide final exam gating a printable completion certificate, a "C1/C2 — coming soon" placeholder on `/levels`, sequential lesson unlocking with a single-check exercise flow, a placement-driven starting-point choice, and real local TTS audio for every lesson/placement listening item (see "Sequential lessons and the single-check exercise flow", "Placement-driven starting point", and "Listening audio (Kokoro-TTS)" below) are all built (as of 2026-08-22). Still open, from the same round of live-testing feedback: translating the interface chrome to Russian — plus a VPS deployment, general UI polish, and frontend automated tests (deliberately deferred, see `docs/decisions.md`).
 
 ## Stack
 
@@ -259,6 +259,48 @@ curl -X POST http://localhost:8001/v1/models/Systran/faster-whisper-medium
 ```
 
 It's cached in the `speaches_models` volume after that, so this is a one-time step per volume, not per container restart.
+
+## Listening audio (Kokoro-TTS)
+
+Every lesson `listening` block and every placement-test listening item now has real synthesized
+audio instead of a transcript-only placeholder — chosen over the browser's Web Speech API, which
+the user tested live and rejected for quality (see `docs/decisions.md`). `app/integrations/tts/`
+mirrors the STT abstraction: `TTSProvider` (protocol), `KokoroTTSProvider` (talks to
+[Kokoro-FastAPI](https://github.com/remsky/Kokoro-FastAPI)'s OpenAI-compatible
+`/v1/audio/speech` endpoint), `MockTTSProvider` for tests. Config is `TTS_*` in `.env.example`.
+Kokoro runs as the `tts` service in `docker-compose.yml`
+(`ghcr.io/remsky/kokoro-fastapi-cpu:latest`, port 8880) — an ordinary container like `stt`, same
+non-health-gated `depends_on` reasoning.
+
+Audio is generated once, offline, by `scripts/generate_audio.py` — not live per request (the
+content is static between content syncs). It reads every lesson's `listening` transcript and the
+placement bank's `skill: listening` items, strips speaker labels ("A: ... B: ...") into plain
+narration text (Kokoro is single-voice), synthesizes each with the configured voice
+(`TTS_VOICE`, default `af_bella`), and saves `content/audio/<slug>.mp3`. The resulting
+`audio_url: "/audio/<slug>.mp3"` is written back into the source YAML — replacing the old "Audio
+recording pending" placeholder `note` for lessons, inserted as a new `prompt` key for placement
+items — the same additive-JSON-field pattern already used for `summary_ru`, so it survives the
+next `sync_content` run with no schema change. A `# src-hash: <hash>` comment on that line makes
+reruns idempotent: unchanged transcripts are skipped, not re-synthesized.
+
+```bash
+docker compose up -d tts
+uv run python -m scripts.generate_audio          # all lessons + the placement bank
+uv run python -m scripts.generate_audio --only introducing-yourself   # just one, for testing
+docker compose exec api python -m scripts.sync_content   # picks up the new audio_url fields
+```
+
+Files are served by the backend at `/audio/...` (mounted via `StaticFiles` at the app root, not
+under `/api/v1`, so the frontend can point an `<audio>` element straight at it) —
+`frontend/src/api/client.ts`'s `assetUrl()` resolves a root-relative `audio_url` against the
+backend's origin (not the full `/api/v1` base). `LessonBlockView`'s `listening` case and
+`ReadingComprehensionExercise` (shared by placement-test listening items, which are
+transcript-based reading-comprehension exercises tagged `skill: listening`) both render an
+`<audio controls>` player when `audio_url` is present, transcript kept visible underneath as a
+fallback. All 47 files (43 lessons + 4 placement items) generated and committed; verified live via
+Docker-isolated Playwright — the native `<audio>` element's own `loadedmetadata` event confirmed
+real, playable durations for both a lesson and all 4 placement listening items, zero console
+errors.
 
 ## Speaking
 

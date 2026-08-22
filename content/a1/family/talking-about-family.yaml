@@ -213,7 +213,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      audio_url: "/audio/talking-about-family.mp3"  # src-hash: 9aa240aa
       transcript: >
         A: Do you have brothers or sisters? — B: Yes, I have one sister.
         She's a teacher. What about you? — A: I don't have any brothers or

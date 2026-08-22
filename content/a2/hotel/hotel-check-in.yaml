@@ -226,7 +226,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      audio_url: "/audio/hotel-check-in.mp3"  # src-hash: ed8cb663
       transcript: >
         A: Good afternoon. I've booked a double room for two nights. — B:
         Can I have your name, please? — A: Yes, it's under Petrova. I

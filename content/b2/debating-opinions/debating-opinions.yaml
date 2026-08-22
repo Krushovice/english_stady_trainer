@@ -229,7 +229,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      audio_url: "/audio/debating-opinions.mp3"  # src-hash: b61527b3
       transcript: >
         A: What worries me most about remote work is the lack of
         collaboration. — B: That's a valid point. However, it's

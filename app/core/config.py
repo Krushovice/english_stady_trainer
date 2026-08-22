@@ -32,6 +32,12 @@ class Settings(BaseSettings):
     stt_model: str = "Systran/faster-whisper-medium"
     stt_timeout_seconds: int = 60
 
+    tts_provider: str = "kokoro"
+    tts_base_url: str = "http://localhost:8880/v1"
+    tts_api_key: str = "not-needed"
+    tts_voice: str = "af_bella"
+    tts_timeout_seconds: int = 60
+
 
 @lru_cache
 def get_settings() -> Settings:

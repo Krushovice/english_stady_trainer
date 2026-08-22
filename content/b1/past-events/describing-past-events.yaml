@@ -243,7 +243,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      audio_url: "/audio/describing-past-events.mp3"  # src-hash: 3165a549
       transcript: >
         A: How was your trip? You look exhausted. — B: Don't ask. By
         the time we got to the airport, our flight had already

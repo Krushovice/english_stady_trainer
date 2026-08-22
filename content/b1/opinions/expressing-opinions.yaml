@@ -248,7 +248,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      audio_url: "/audio/expressing-opinions.mp3"  # src-hash: 69154519
       transcript: >
         A: As far as I'm concerned, working from home is much more
         productive. — B: I see your point, but I think people miss out

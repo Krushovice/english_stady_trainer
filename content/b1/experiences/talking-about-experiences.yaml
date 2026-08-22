@@ -240,7 +240,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      audio_url: "/audio/talking-about-experiences.mp3"  # src-hash: 31465d44
       transcript: >
         A: Have you ever lived in another country? — B: Yes, actually —
         I've lived in Portugal for two years now. — A: Wow, since when

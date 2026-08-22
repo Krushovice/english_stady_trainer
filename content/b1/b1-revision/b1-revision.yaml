@@ -240,7 +240,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      audio_url: "/audio/b1-revision.mp3"  # src-hash: 40df566f
       transcript: >
         A: It's been ages! Have you done anything exciting lately? —
         B: Actually, yes. Although I'd never travelled alone before, I

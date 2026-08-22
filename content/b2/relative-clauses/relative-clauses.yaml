@@ -230,7 +230,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      audio_url: "/audio/describing-people-and-things.mp3"  # src-hash: fd90990f
       transcript: >
         A: Which colleague are you talking about, the one who joined
         last month? — B: No, the one whose office is next to mine —

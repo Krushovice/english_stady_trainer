@@ -1,5 +1,13 @@
 const BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8000/api/v1";
 
+// Generated lesson/placement audio (scripts/generate_audio.py) is served by
+// the backend at its root (/audio/...), not under /api/v1 like everything
+// else — so a root-relative `audio_url` from the API needs the backend's
+// *origin* only, not the full API base path, to become a playable URL.
+export function assetUrl(rootRelativePath: string): string {
+  return new URL(rootRelativePath, BASE_URL).toString();
+}
+
 const TOKEN_STORAGE_KEY = "et_token";
 
 export function getToken(): string | null {

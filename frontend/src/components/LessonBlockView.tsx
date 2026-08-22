@@ -1,3 +1,4 @@
+import { assetUrl } from "../api/client";
 import type { LessonBlock } from "../api/types";
 
 // Only `vocabulary`/`grammar` blocks have a validated shape server-side
@@ -88,9 +89,15 @@ export function LessonBlockView({ block }: { block: LessonBlock }) {
     case "listening": {
       const note = asString(content.note);
       const transcript = asString(content.transcript);
+      const audioUrl = asString(content.audio_url);
       return (
         <section className="lesson-block">
           <h2>Listening</h2>
+          {audioUrl && (
+            <audio controls src={assetUrl(audioUrl)} className="listening-player">
+              Your browser doesn't support inline audio playback.
+            </audio>
+          )}
           {note && <p className="note">{note}</p>}
           {transcript && <p className="transcript">{transcript}</p>}
         </section>

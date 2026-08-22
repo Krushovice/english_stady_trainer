@@ -51,6 +51,15 @@ class EmptyTranscriptError(DomainError):
     """Raised when STT returns no usable speech (silence, noise-only audio)."""
 
 
+class TTSProviderUnavailableError(DomainError):
+    """Raised when the configured text-to-speech provider can't be reached.
+
+    Same graceful-degradation contract as STTProviderUnavailableError — this
+    only affects `scripts/generate_audio.py`, a batch content-authoring
+    tool, never a live request path.
+    """
+
+
 class LevelLockedError(DomainError):
     """Raised when accessing a level whose prerequisite exit exam isn't passed yet."""
 

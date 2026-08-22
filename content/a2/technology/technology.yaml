@@ -228,7 +228,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      audio_url: "/audio/technology.mp3"  # src-hash: fee414cb
       transcript: >
         A: Did you use to have a smartphone as a teenager? — B: No, we
         didn't use to have them. We used to call each other on

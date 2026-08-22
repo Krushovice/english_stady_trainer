@@ -223,7 +223,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      audio_url: "/audio/a1-revision.mp3"  # src-hash: 6ea3e1f6
       transcript: >
         A: Hi! What are you doing this weekend? — B: I'm going to visit my
         parents. They live in a small town near the coast. — A: Nice!

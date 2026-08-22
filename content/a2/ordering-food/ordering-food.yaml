@@ -235,7 +235,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      audio_url: "/audio/ordering-food.mp3"  # src-hash: 802406f7
       transcript: >
         A: Hi, could I have the menu, please? — B: Of course. Here you go.
         Can I get you something to drink? — A: I'd like a lemonade,

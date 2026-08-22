@@ -234,7 +234,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      audio_url: "/audio/past-continuous-storytelling.mp3"  # src-hash: da545d2c
       transcript: >
         A: You look tired today. What happened last night? — B: I was
         sleeping when I suddenly heard a strange noise outside. — A:

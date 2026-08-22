@@ -231,7 +231,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      audio_url: "/audio/advanced-storytelling.mp3"  # src-hash: 47ffe8a9
       transcript: >
         A: You won't believe what happened yesterday. Out of the blue,
         my car broke down on the motorway. — B: Oh no! What did you

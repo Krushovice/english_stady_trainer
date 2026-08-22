@@ -213,7 +213,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      audio_url: "/audio/numbers-and-time.mp3"  # src-hash: b1304c39
       transcript: >
         A: Excuse me, what time is it? — B: It's quarter past nine. — A:
         Thanks. What time does the shop open? — B: It opens at ten

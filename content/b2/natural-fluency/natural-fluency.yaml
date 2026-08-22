@@ -230,7 +230,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      audio_url: "/audio/talking-naturally.mp3"  # src-hash: 390d807a
       transcript: >
         A: So, how's the new job going? You come across as pretty happy
         about it. — B: Well, honestly, it's good. I mean, there are

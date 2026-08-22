@@ -211,7 +211,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      audio_url: "/audio/around-the-city.mp3"  # src-hash: 2e7951b7
       transcript: >
         A: Excuse me, can you help me? I'm looking for a pharmacy. — B:
         Sure! You can find one near the train station. — A: Is it far

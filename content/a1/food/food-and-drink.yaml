@@ -215,7 +215,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      audio_url: "/audio/food-and-drink.mp3"  # src-hash: 689c295b
       transcript: >
         A: I'm hungry. Is there any bread? — B: Yes, there's some bread and
         some cheese too. — A: Great. Do we have any fruit? — B: No, we

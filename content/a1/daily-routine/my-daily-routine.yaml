@@ -220,7 +220,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      audio_url: "/audio/my-daily-routine.mp3"  # src-hash: c7c2cf6d
       transcript: >
         A: What's your daily routine like? — B: I usually wake up at seven
         and have breakfast at half past seven. — A: Does she go to work

@@ -216,7 +216,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      audio_url: "/audio/my-last-trip.mp3"  # src-hash: 8f7df325
       transcript: >
         A: How was your trip to Italy? — B: It was amazing! We visited
         Rome and stayed near the beach. — A: Did you buy any souvenirs? —

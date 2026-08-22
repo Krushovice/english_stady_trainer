@@ -213,7 +213,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      audio_url: "/audio/talking-about-weather.mp3"  # src-hash: d41d56e0
       transcript: >
         A: Have you seen the weather forecast? Is it going to rain
         tomorrow? — B: Yes, it's going to be cloudy and rainy all day. —

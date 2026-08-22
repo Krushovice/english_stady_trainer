@@ -232,7 +232,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      audio_url: "/audio/superlatives.mp3"  # src-hash: 02a2caef
       transcript: >
         A: Which restaurant do you recommend? There are so many here. —
         B: In my opinion, this one is the best — it's not the cheapest,

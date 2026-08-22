@@ -233,7 +233,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Audio recording pending — no audio asset pipeline yet (Phase 5/6)."
+      audio_url: "/audio/speculating-and-deducing.mp3"  # src-hash: 0c55dc8e
       transcript: >
         A: The office is empty. Where is everyone? — B: They must have
         gone to lunch — it's almost 1pm. — A: Hmm, but Sarah's laptop

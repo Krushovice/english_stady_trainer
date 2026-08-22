@@ -226,7 +226,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      note: "Аудиозапись появится позже — пока нет пайплайна для аудио (Phase 5/6)."
+      audio_url: "/audio/everyday-problems.mp3"  # src-hash: 0cc55316
       transcript: >
         A: The washing machine is broken again. There's water
         everywhere! — B: Oh no. You should turn off the water first. —
