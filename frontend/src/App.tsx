@@ -1,7 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { ProtectedRoute } from "./auth/ProtectedRoute";
 import { useAuth } from "./auth/AuthContext";
-import { Header } from "./components/layout/Header";
+import { Sidebar } from "./components/layout/Sidebar";
 import { CertificatePage } from "./pages/CertificatePage";
 import { ConversationPage } from "./pages/ConversationPage";
 import { CourseExamPage } from "./pages/CourseExamPage";
@@ -23,142 +22,45 @@ import { SpeakingPage } from "./pages/SpeakingPage";
 function App() {
   const { user, loading } = useAuth();
 
+  if (!user) {
+    return (
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="*" element={loading ? null : <Navigate to="/login" replace />} />
+      </Routes>
+    );
+  }
+
   return (
-    <>
-      <Header />
-      <main>
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <DashboardPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/levels"
-            element={
-              <ProtectedRoute>
-                <LevelsPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/levels/:levelCode/modules"
-            element={
-              <ProtectedRoute>
-                <ModulesPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/levels/:levelCode/exam"
-            element={
-              <ProtectedRoute>
-                <ExamPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/modules/:moduleSlug/lessons"
-            element={
-              <ProtectedRoute>
-                <LessonsPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/lessons/:lessonSlug"
-            element={
-              <ProtectedRoute>
-                <LessonPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/daily-quiz"
-            element={
-              <ProtectedRoute>
-                <DailyQuizPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/review"
-            element={
-              <ProtectedRoute>
-                <ReviewPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/course-exam"
-            element={
-              <ProtectedRoute>
-                <CourseExamPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/certificate"
-            element={
-              <ProtectedRoute>
-                <CertificatePage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/progress"
-            element={
-              <ProtectedRoute>
-                <ProgressPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/placement-test"
-            element={
-              <ProtectedRoute>
-                <PlacementTestPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/homework"
-            element={
-              <ProtectedRoute>
-                <HomeworkPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/speaking"
-            element={
-              <ProtectedRoute>
-                <SpeakingPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/conversation"
-            element={
-              <ProtectedRoute>
-                <ConversationPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/"
-            element={
-              loading ? null : <Navigate to={user ? "/levels" : "/login"} replace />
-            }
-          />
-        </Routes>
-      </main>
-    </>
+    <div className="app-shell">
+      <Sidebar />
+      <div className="app-content">
+        <main>
+          <Routes>
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/levels" element={<LevelsPage />} />
+            <Route path="/levels/:levelCode/modules" element={<ModulesPage />} />
+            <Route path="/levels/:levelCode/exam" element={<ExamPage />} />
+            <Route path="/modules/:moduleSlug/lessons" element={<LessonsPage />} />
+            <Route path="/lessons/:lessonSlug" element={<LessonPage />} />
+            <Route path="/daily-quiz" element={<DailyQuizPage />} />
+            <Route path="/review" element={<ReviewPage />} />
+            <Route path="/course-exam" element={<CourseExamPage />} />
+            <Route path="/certificate" element={<CertificatePage />} />
+            <Route path="/progress" element={<ProgressPage />} />
+            <Route path="/placement-test" element={<PlacementTestPage />} />
+            <Route path="/homework" element={<HomeworkPage />} />
+            <Route path="/speaking" element={<SpeakingPage />} />
+            <Route path="/conversation" element={<ConversationPage />} />
+            <Route path="/login" element={<Navigate to="/levels" replace />} />
+            <Route path="/register" element={<Navigate to="/levels" replace />} />
+            <Route path="/" element={<Navigate to="/levels" replace />} />
+            <Route path="*" element={<Navigate to="/levels" replace />} />
+          </Routes>
+        </main>
+      </div>
+    </div>
   );
 }
 
