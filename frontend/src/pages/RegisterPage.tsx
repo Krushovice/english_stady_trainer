@@ -7,6 +7,7 @@ import { AuthHero } from "../components/layout/AuthHero";
 export function RegisterPage() {
   const { register } = useAuth();
   const navigate = useNavigate();
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -17,7 +18,7 @@ export function RegisterPage() {
     setError(null);
     setSubmitting(true);
     try {
-      await register(email, password);
+      await register(email, password, name);
       navigate("/placement-test");
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "Что-то пошло не так.");
@@ -33,13 +34,22 @@ export function RegisterPage() {
         <form className="auth-form" onSubmit={handleSubmit}>
           <h1>Создать аккаунт</h1>
           <label>
+            Имя
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              autoFocus
+            />
+          </label>
+          <label>
             Email
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              autoFocus
             />
           </label>
           <label>

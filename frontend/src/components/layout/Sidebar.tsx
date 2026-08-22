@@ -50,7 +50,7 @@ export function Sidebar() {
   const { user, logout } = useAuth();
   if (!user) return null;
 
-  const initial = user.email?.[0]?.toUpperCase() ?? "?";
+  const initial = user.name?.[0]?.toUpperCase() ?? "?";
 
   return (
     <aside className="sidebar">
@@ -87,7 +87,9 @@ export function Sidebar() {
           <span className="user-avatar" aria-hidden="true">
             {initial}
           </span>
-          <span className="user-email">{user.email}</span>
+          <span className="user-email" title={user.email}>
+            {user.name}
+          </span>
         </div>
         <button type="button" className="btn-logout" onClick={logout}>
           <LogoutIcon width={16} height={16} />

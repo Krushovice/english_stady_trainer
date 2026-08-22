@@ -45,7 +45,7 @@ export function CertificatePage() {
       <h1>Сертификат</h1>
       <div className="certificate-print">
         <p className="certificate-heading">Сертификат о прохождении курса</p>
-        <p className="certificate-name">{user?.email}</p>
+        <p className="certificate-name">{user?.name || user?.email}</p>
         <p className="certificate-detail">завершил(а) полный курс английского языка A1–B2</p>
         <p className="certificate-detail">Достигнутый уровень: B2</p>
         <p className="certificate-detail">Дата получения: {earnedDate}</p>

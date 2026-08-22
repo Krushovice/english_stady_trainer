@@ -6,6 +6,7 @@ export type CEFRLevel = "A1" | "A2" | "B1" | "B2";
 export interface User {
   id: string;
   email: string;
+  name: string;
   created_at: string;
 }
 

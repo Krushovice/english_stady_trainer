@@ -12,10 +12,11 @@ async def test_register_then_login_then_me(client: AsyncClient) -> None:
     password = "correcthorsebattery"
 
     register_response = await client.post(
-        "/api/v1/auth/register", json={"email": email, "password": password}
+        "/api/v1/auth/register", json={"email": email, "password": password, "name": "Anna"}
     )
     assert register_response.status_code == 201
     assert register_response.json()["email"] == email
+    assert register_response.json()["name"] == "Anna"
 
     login_response = await client.post(
         "/api/v1/auth/login", json={"email": email, "password": password}
@@ -31,7 +32,8 @@ async def test_register_then_login_then_me(client: AsyncClient) -> None:
 async def test_login_with_wrong_password_is_rejected(client: AsyncClient) -> None:
     email = _unique_email()
     await client.post(
-        "/api/v1/auth/register", json={"email": email, "password": "correcthorsebattery"}
+        "/api/v1/auth/register",
+        json={"email": email, "password": "correcthorsebattery", "name": "Anna"},
     )
 
     response = await client.post(
@@ -43,11 +45,13 @@ async def test_login_with_wrong_password_is_rejected(client: AsyncClient) -> Non
 async def test_register_duplicate_email_is_rejected(client: AsyncClient) -> None:
     email = _unique_email()
     await client.post(
-        "/api/v1/auth/register", json={"email": email, "password": "correcthorsebattery"}
+        "/api/v1/auth/register",
+        json={"email": email, "password": "correcthorsebattery", "name": "Anna"},
     )
 
     response = await client.post(
-        "/api/v1/auth/register", json={"email": email, "password": "another-password"}
+        "/api/v1/auth/register",
+        json={"email": email, "password": "another-password", "name": "Anna"},
     )
     assert response.status_code == 409
 

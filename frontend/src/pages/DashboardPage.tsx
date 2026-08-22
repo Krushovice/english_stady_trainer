@@ -57,7 +57,10 @@ export function DashboardPage() {
     (m) => m.status === "improving" || m.status === "mastered",
   );
   const quizCount = dailyQuiz.data!.length;
-  const emailName = user?.email?.split("@")[0] ?? "";
+  // Backfilled pre-existing accounts (registered before the `name` field
+  // existed) may still have an empty name — fall back to the email's local
+  // part rather than showing a bare comma.
+  const displayName = user?.name || user?.email?.split("@")[0] || "";
 
   let doNow: { text: string; to: string; label: string };
   if (dueCount > 0) {
@@ -84,7 +87,7 @@ export function DashboardPage() {
         <div>
           <h1 className="dashboard-greeting">
             {greeting()}
-            {emailName ? `, ${emailName}` : ""}.
+            {displayName ? `, ${displayName}` : ""}.
           </h1>
           <p className="dashboard-greeting-sub">Ваш английский сегодня</p>
         </div>

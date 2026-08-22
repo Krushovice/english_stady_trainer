@@ -6,10 +6,10 @@ export interface TokenResponse {
   token_type: string;
 }
 
-export function register(email: string, password: string): Promise<User> {
+export function register(email: string, password: string, name: string): Promise<User> {
   return apiRequest<User>("/auth/register", {
     method: "POST",
-    body: { email, password },
+    body: { email, password, name },
     auth: false,
   });
 }

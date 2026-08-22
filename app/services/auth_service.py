@@ -12,11 +12,11 @@ class AuthService:
         self._session = session
         self._users = UserRepository(session)
 
-    async def register(self, email: str, password: str) -> User:
+    async def register(self, email: str, password: str, name: str) -> User:
         if await self._users.get_by_email(email) is not None:
             raise AlreadyExistsError("A user with this email already exists")
 
-        user = User(email=email, password_hash=hash_password(password))
+        user = User(email=email, password_hash=hash_password(password), name=name)
         user.learning_profile = LearningProfile(priority_goals=[])
         await self._users.add(user)
         await self._session.commit()

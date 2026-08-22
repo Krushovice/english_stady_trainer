@@ -17,7 +17,7 @@ async def register(
 ) -> User:
     service = AuthService(session)
     try:
-        return await service.register(payload.email, payload.password)
+        return await service.register(payload.email, payload.password, payload.name)
     except AlreadyExistsError as exc:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=str(exc)) from exc
 

@@ -69,7 +69,9 @@ async def auth_headers(client: AsyncClient) -> dict[str, str]:
     """Register and log in a fresh user, returning a bearer-auth header dict."""
     email = f"user-{uuid.uuid4().hex[:8]}@example.com"
     password = "correcthorsebattery"
-    await client.post("/api/v1/auth/register", json={"email": email, "password": password})
+    await client.post(
+        "/api/v1/auth/register", json={"email": email, "password": password, "name": "Test User"}
+    )
     login_response = await client.post(
         "/api/v1/auth/login", json={"email": email, "password": password}
     )
