@@ -54,7 +54,7 @@ function HomeworkTaskView({
             disabled={submitting}
           />
           {error && <p className="status status-error">{error}</p>}
-          <button type="button" onClick={handleSubmit} disabled={submitting || !text.trim()}>
+          <button type="button" className="btn-primary" onClick={handleSubmit} disabled={submitting || !text.trim()}>
             {submitting ? "Отправка..." : "Отправить"}
           </button>
         </>
@@ -121,7 +121,7 @@ export function HomeworkPage() {
         </>
       )}
 
-      <button type="button" onClick={handleGenerate} disabled={loading}>
+      <button type="button" className="btn-primary" onClick={handleGenerate} disabled={loading}>
         {loading ? "Создание..." : homework ? "Создать новое задание" : "Создать домашнее задание"}
       </button>
     </div>

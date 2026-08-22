@@ -98,7 +98,7 @@ export function AudioRecorder({
       {error && <p className="status status-error">{error}</p>}
 
       {state === "idle" && (
-        <button type="button" onClick={startRecording}>
+        <button type="button" className="btn-primary" onClick={startRecording}>
           🎙 Начать запись
         </button>
       )}
@@ -122,7 +122,7 @@ export function AudioRecorder({
             <button type="button" onClick={recordAgain} disabled={submitting}>
               Записать заново
             </button>
-            <button type="button" onClick={handleSubmit} disabled={submitting}>
+            <button type="button" className="btn-primary" onClick={handleSubmit} disabled={submitting}>
               {submitting ? "Отправка..." : "Отправить"}
             </button>
           </div>

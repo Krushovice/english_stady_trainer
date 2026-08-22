@@ -4,10 +4,13 @@ import { useAuth } from "../../auth/AuthContext";
 export function Header() {
   const { user, logout } = useAuth();
 
+  const initial = user?.email?.[0]?.toUpperCase() ?? "?";
+
   return (
     <header className="site-header">
       <NavLink to="/levels" className="brand">
-        English Trainer
+        <span className="brand-mark" aria-hidden="true">ET</span>
+        <span className="brand-name">English Trainer</span>
       </NavLink>
       {user && (
         <>
@@ -44,8 +47,11 @@ export function Header() {
             </NavLink>
           </nav>
           <div className="site-header-user">
-            <span>{user.email}</span>
-            <button type="button" className="link-button" onClick={logout}>
+            <span className="user-chip">
+              <span className="user-avatar" aria-hidden="true">{initial}</span>
+              <span className="user-email">{user.email}</span>
+            </span>
+            <button type="button" className="btn-logout" onClick={logout}>
               Выйти
             </button>
           </div>

@@ -123,7 +123,7 @@ export function ConversationPage() {
             placeholder="Тема (необязательно) — например, путешествия, хобби, работа"
             disabled={loading}
           />
-          <button type="button" onClick={handleStart} disabled={loading}>
+          <button type="button" className="btn-primary" onClick={handleStart} disabled={loading}>
             {loading ? "Начинаем..." : "Начать разговор"}
           </button>
         </div>
@@ -149,7 +149,7 @@ export function ConversationPage() {
                 placeholder="Введите ответ..."
                 disabled={sending}
               />
-              <button type="button" onClick={handleSend} disabled={sending || !message.trim()}>
+              <button type="button" className="btn-primary" onClick={handleSend} disabled={sending || !message.trim()}>
                 Отправить
               </button>
               <button type="button" onClick={handleEnd} disabled={ending || sending}>

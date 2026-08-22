@@ -85,7 +85,7 @@ export function SpeakingPage() {
         </div>
       )}
 
-      <button type="button" onClick={handleGeneratePrompt} disabled={loading}>
+      <button type="button" className="btn-primary" onClick={handleGeneratePrompt} disabled={loading}>
         {loading ? "Создание..." : attempt ? "Получить новое задание" : "Получить задание для говорения"}
       </button>
     </div>
