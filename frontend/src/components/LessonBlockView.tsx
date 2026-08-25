@@ -8,8 +8,11 @@ import type { LessonBlock } from "../api/types";
 // `exercises` and `mini_test` are skipped too: both are raw exercise-authoring
 // data, not display content — real exercises and the mini-test come from
 // dedicated fetches with proper submit/feedback UI (`LessonPage`'s own
-// mini-test section), not from this read-only block renderer.
-const SKIPPED_TYPES = new Set(["vocabulary", "grammar", "exercises", "mini_test"]);
+// mini-test section), not from this read-only block renderer. `review` is
+// skipped as well — its `note` is an authoring reminder ("review items are
+// generated automatically, nothing to author here"), never learner-facing
+// content, so it has nothing to render.
+const SKIPPED_TYPES = new Set(["vocabulary", "grammar", "exercises", "mini_test", "review"]);
 
 // Immersion is graded by level in content authoring (A1-A2 blocks author
 // in Russian directly, B2 drops this field) — this is only the B1 middle
@@ -125,14 +128,6 @@ export function LessonBlockView({ block }: { block: LessonBlock }) {
         </section>
       );
     }
-
-    case "review":
-      return content.note ? (
-        <section className="lesson-block">
-          <h2>Повторение</h2>
-          <p className="note">{asString(content.note)}</p>
-        </section>
-      ) : null;
 
     default:
       // Unknown block type — show it rather than silently dropping content.
