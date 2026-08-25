@@ -208,6 +208,52 @@ blocks:
             "isn't having something interesting to say; it's showing you're
             willing to listen" (Q2).
 
+        - slug: making-small-talk-listening-coffee-machine
+          type: listening_comprehension
+          skill: listening
+          difficulty: B1
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/making-small-talk.mp3"
+            transcript: >
+              A: Hey, how's it going? — B: Good, thanks! Busy week, though.
+              How about you? — A: Same here. This project isn't getting any
+              easier, is it? — B: Tell me about it. We should catch up
+              properly sometime — grab lunch? — A: Sounds good. You're free
+              on Thursday, aren't you?
+            questions:
+              - id: q1
+                text: "How does B describe their week?"
+                options:
+                  - id: a
+                    text: Busy
+                  - id: b
+                    text: Relaxing
+                  - id: c
+                    text: Boring
+                  - id: d
+                    text: We don't know
+              - id: q2
+                text: "What does B suggest they do?"
+                options:
+                  - id: a
+                    text: Go for lunch together
+                  - id: b
+                    text: Finish the project
+                  - id: c
+                    text: Take a day off
+                  - id: d
+                    text: We don't know
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "Busy week, though" (Q1 — busy); "We should catch up properly
+            sometime — grab lunch?" (Q2 — go for lunch together).
+
   - type: reading
     order_index: 7
     content:

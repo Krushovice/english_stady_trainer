@@ -122,6 +122,19 @@ def test_reading_comprehension_partial_credit() -> None:
     assert result.score == Decimal("0.5")
 
 
+def test_listening_comprehension_scores_like_reading_comprehension() -> None:
+    # Same answers-dict shape, only the prompt differs (audio_url instead
+    # of passage) — scoring is intentionally the exact same function.
+    exercise = _exercise(
+        ExerciseType.LISTENING_COMPREHENSION,
+        prompt={"audio_url": "/audio/test.mp3", "transcript": "...", "questions": []},
+        answer_key={"answers": {"q1": "a", "q2": "b"}},
+    )
+    result = score_attempt(exercise, {"answers": {"q1": "a", "q2": "b"}})
+    assert result.is_correct is True
+    assert result.score == Decimal(1)
+
+
 def test_malformed_submission_raises_invalid_submission_error() -> None:
     exercise = _exercise(
         ExerciseType.MULTIPLE_CHOICE,

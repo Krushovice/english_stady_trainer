@@ -102,7 +102,12 @@ export function LessonBlockView({ block }: { block: LessonBlock }) {
             </audio>
           )}
           {note && <p className="note">{note}</p>}
-          {transcript && <p className="transcript">{transcript}</p>}
+          {transcript && (
+            <details className="ru-summary">
+              <summary>Показать текст</summary>
+              <p className="transcript">{transcript}</p>
+            </details>
+          )}
         </section>
       );
     }

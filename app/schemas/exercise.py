@@ -32,6 +32,7 @@ class SupportedExerciseType(StrEnum):
     FILL_BLANK = "fill_blank"
     SENTENCE_ORDERING = "sentence_ordering"
     READING_COMPREHENSION = "reading_comprehension"
+    LISTENING_COMPREHENSION = "listening_comprehension"
 
 
 class MultipleChoiceOption(BaseModel):
@@ -95,18 +96,32 @@ class ReadingComprehensionSubmission(BaseModel):
     answers: dict[str, str]
 
 
+class ListeningComprehensionPrompt(BaseModel):
+    audio_url: str
+    # Kept for spoiler-reveal on the frontend (and for review), never shown
+    # to the learner before they've answered — the whole point of this
+    # exercise type is that listening, not reading, does the work.
+    transcript: str
+    questions: list[ReadingComprehensionQuestion]
+
+
 PROMPT_MODELS: dict[SupportedExerciseType, type[BaseModel]] = {
     SupportedExerciseType.MULTIPLE_CHOICE: MultipleChoicePrompt,
     SupportedExerciseType.FILL_BLANK: FillBlankPrompt,
     SupportedExerciseType.SENTENCE_ORDERING: SentenceOrderingPrompt,
     SupportedExerciseType.READING_COMPREHENSION: ReadingComprehensionPrompt,
+    SupportedExerciseType.LISTENING_COMPREHENSION: ListeningComprehensionPrompt,
 }
 
+# Listening comprehension is graded identically to reading comprehension —
+# both are just "match a dict of question id -> chosen option id" — so it
+# reuses the same answer-key/submission shapes rather than duplicating them.
 ANSWER_KEY_MODELS: dict[SupportedExerciseType, type[BaseModel]] = {
     SupportedExerciseType.MULTIPLE_CHOICE: MultipleChoiceAnswerKey,
     SupportedExerciseType.FILL_BLANK: FillBlankAnswerKey,
     SupportedExerciseType.SENTENCE_ORDERING: SentenceOrderingAnswerKey,
     SupportedExerciseType.READING_COMPREHENSION: ReadingComprehensionAnswerKey,
+    SupportedExerciseType.LISTENING_COMPREHENSION: ReadingComprehensionAnswerKey,
 }
 
 SUBMISSION_MODELS: dict[SupportedExerciseType, type[BaseModel]] = {
@@ -114,6 +129,7 @@ SUBMISSION_MODELS: dict[SupportedExerciseType, type[BaseModel]] = {
     SupportedExerciseType.FILL_BLANK: FillBlankSubmission,
     SupportedExerciseType.SENTENCE_ORDERING: SentenceOrderingSubmission,
     SupportedExerciseType.READING_COMPREHENSION: ReadingComprehensionSubmission,
+    SupportedExerciseType.LISTENING_COMPREHENSION: ReadingComprehensionSubmission,
 }
 
 

@@ -196,6 +196,51 @@ blocks:
             Текст: "I am 30 years old." (Q1 — Mark is 30); "Her job is a
             teacher" — her относится к Anna (Q2 — teacher).
 
+        - slug: talking-about-yourself-listening-getting-to-know
+          type: listening_comprehension
+          skill: listening
+          difficulty: A1
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/talking-about-yourself.mp3"
+            transcript: >
+              A: So, what do you do, Anna? — B: I'm a student. And you? —
+              A: I'm a teacher. Where do you live? — B: I live in Warsaw.
+              How old are you, if you don't mind me asking? — A: I'm 28.
+              And this is my friend Mark — he's a doctor.
+            questions:
+              - id: q1
+                text: "What is Anna's job?"
+                options:
+                  - id: a
+                    text: "Teacher"
+                  - id: b
+                    text: "Student"
+                  - id: c
+                    text: "Doctor"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "Where does Anna live?"
+                options:
+                  - id: a
+                    text: "Warsaw"
+                  - id: b
+                    text: "London"
+                  - id: c
+                    text: "Berlin"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: b
+              q2: a
+          explanation: >-
+            "I'm a student" (Q1 — student); "I live in Warsaw" (Q2 —
+            Warsaw).
+
   - type: reading
     order_index: 7
     content:

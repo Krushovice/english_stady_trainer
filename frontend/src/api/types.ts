@@ -82,7 +82,7 @@ export interface LessonDetail {
 
 export type Skill = "grammar" | "vocabulary" | "reading" | "listening" | "writing" | "speaking";
 
-// --- Exercises: only the four types the backend can score (SupportedExerciseType) ---
+// --- Exercises: only the types the backend can score (SupportedExerciseType) ---
 
 export interface MultipleChoiceOption {
   id: string;
@@ -118,6 +118,12 @@ export interface ReadingComprehensionPrompt {
   audio_url?: string;
 }
 
+export interface ListeningComprehensionPrompt {
+  audio_url: string;
+  transcript: string;
+  questions: ReadingComprehensionQuestion[];
+}
+
 interface ExerciseBase {
   id: string;
   slug: string;
@@ -132,6 +138,10 @@ export type Exercise =
   | (ExerciseBase & {
       exercise_type: "reading_comprehension";
       prompt: ReadingComprehensionPrompt;
+    })
+  | (ExerciseBase & {
+      exercise_type: "listening_comprehension";
+      prompt: ListeningComprehensionPrompt;
     });
 
 export type SubmittedAnswer =

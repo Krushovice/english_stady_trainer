@@ -196,6 +196,50 @@ blocks:
             Текст: "My name is Tom. I am from Canada." (Q1 — Canada); "This
             is my friend, Anna... She is a student." (Q2 — a student).
 
+        - slug: introducing-yourself-listening-meeting
+          type: listening_comprehension
+          skill: listening
+          difficulty: A1
+          prompt:
+            # Same file as the lesson's own `listening` block above —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/introducing-yourself.mp3"
+            transcript: >
+              A: Hi! I'm Tom. — B: Hello, Tom. Nice to meet you. My name is
+              Anna. — A: Nice to meet you too, Anna. Where are you from? —
+              B: I'm from Poland. And you? — A: I'm from Canada.
+            questions:
+              - id: q1
+                text: "What is the woman's name?"
+                options:
+                  - id: a
+                    text: "Anna"
+                  - id: b
+                    text: "Kate"
+                  - id: c
+                    text: "Poland"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "Where is Tom from?"
+                options:
+                  - id: a
+                    text: "Poland"
+                  - id: b
+                    text: "Canada"
+                  - id: c
+                    text: "The USA"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: b
+          explanation: >-
+            "My name is Anna" (Q1 — Anna); "I'm from Canada" is Tom's own
+            answer at the end of the dialogue (Q2 — Canada).
+
   - type: reading
     order_index: 7
     content:

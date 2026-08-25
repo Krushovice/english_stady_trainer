@@ -25,7 +25,7 @@ async def test_list_lesson_exercises_hides_answer_key(
     assert response.status_code == 200
 
     exercises = response.json()
-    assert len(exercises) == 4
+    assert len(exercises) == 5
     for exercise in exercises:
         assert "answer_key" not in exercise
         assert "explanation" not in exercise
@@ -170,7 +170,7 @@ async def test_daily_quiz_draws_from_studied_exercises(
     response = await client.get("/api/v1/practice/daily-quiz", headers=auth_headers)
     assert response.status_code == 200
     quiz = response.json()
-    assert 0 < len(quiz) <= 4
+    assert 0 < len(quiz) <= 5
     studied_ids = {ex["id"] for ex in exercises}
     assert {ex["id"] for ex in quiz} <= studied_ids
     assert len({ex["id"] for ex in quiz}) == len(quiz)  # no duplicates
@@ -250,4 +250,4 @@ async def test_mini_test_items_are_not_mixed_into_the_owning_lesson_exercises(
         "/api/v1/lessons/introducing-yourself/exercises", headers=auth_headers
     )
     assert response.status_code == 200
-    assert len(response.json()) == 4
+    assert len(response.json()) == 5

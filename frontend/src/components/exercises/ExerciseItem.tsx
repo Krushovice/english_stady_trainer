@@ -1,10 +1,11 @@
 import type { Exercise, SubmittedAnswer } from "../../api/types";
 import { FillBlankExercise } from "./FillBlankExercise";
+import { ListeningComprehensionExercise } from "./ListeningComprehensionExercise";
 import { MultipleChoiceExercise } from "./MultipleChoiceExercise";
 import { ReadingComprehensionExercise } from "./ReadingComprehensionExercise";
 import { SentenceOrderingExercise } from "./SentenceOrderingExercise";
 
-// Pure "collect one answer" switch over the 4 scoreable exercise types — no
+// Pure "collect one answer" switch over the scoreable exercise types — no
 // submit button, no result display. Shared by any flow that gathers several
 // answers before a single batch check (exam, placement test, lesson).
 export function ExerciseItem({
@@ -44,6 +45,14 @@ export function ExerciseItem({
     case "reading_comprehension":
       return (
         <ReadingComprehensionExercise
+          prompt={exercise.prompt}
+          disabled={disabled}
+          onChange={(answers) => onAnswer({ answers })}
+        />
+      );
+    case "listening_comprehension":
+      return (
+        <ListeningComprehensionExercise
           prompt={exercise.prompt}
           disabled={disabled}
           onChange={(answers) => onAnswer({ answers })}

@@ -106,4 +106,8 @@ _SCORERS = {
     ExerciseType.FILL_BLANK: _score_fill_blank,
     ExerciseType.SENTENCE_ORDERING: _score_sentence_ordering,
     ExerciseType.READING_COMPREHENSION: _score_reading_comprehension,
+    # Same shape as reading comprehension ("match a dict of question id ->
+    # chosen option id") — the audio vs. passage distinction only matters to
+    # the prompt, not the grading.
+    ExerciseType.LISTENING_COMPREHENSION: _score_reading_comprehension,
 }

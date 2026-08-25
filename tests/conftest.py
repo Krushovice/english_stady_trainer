@@ -203,7 +203,7 @@ def _correct_submission_for(exercise: dict, answer_key: dict) -> dict:
         return {"blanks": [group[0] for group in answer_key["blanks"]]}
     if exercise_type == "sentence_ordering":
         return {"order": answer_key["correct_order"]}
-    if exercise_type == "reading_comprehension":
+    if exercise_type in ("reading_comprehension", "listening_comprehension"):
         return {"answers": answer_key["answers"]}
     raise ValueError(f"no correct-submission builder for exercise type '{exercise_type}'")
 
