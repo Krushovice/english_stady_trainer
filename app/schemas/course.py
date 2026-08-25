@@ -73,3 +73,4 @@ class LessonDetailResponse(BaseModel):
     blocks: list[LessonBlockResponse]
     vocabulary: list[VocabularyResponse]
     grammar_topics: list[GrammarTopicResponse]
+    next_lesson_slug: str | None = None

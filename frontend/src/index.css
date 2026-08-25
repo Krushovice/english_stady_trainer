@@ -1109,6 +1109,10 @@ a.entry-row:hover .chevron {
   padding-top: 0;
 }
 
+.lesson-next-link {
+  margin-top: var(--space-6);
+}
+
 .lesson-block h2 {
   font-family: var(--font-sans);
   font-size: var(--text-caption);

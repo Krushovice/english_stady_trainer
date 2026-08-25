@@ -55,7 +55,7 @@ class CourseService:
     async def list_lessons(self, module_slug: str) -> list[Lesson]:
         return list(await self._repo.list_lessons_by_module_slug(module_slug))
 
-    async def get_lesson(self, user_id: uuid.UUID, lesson_slug: str) -> Lesson:
+    async def get_lesson(self, user_id: uuid.UUID, lesson_slug: str) -> tuple[Lesson, str | None]:
         lesson = await self._repo.get_lesson_by_slug(lesson_slug)
         if lesson is None:
             raise NotFoundError(f"Lesson '{lesson_slug}' not found")
@@ -68,4 +68,5 @@ class CourseService:
             raise LessonLockedError(
                 f"Lesson '{lesson_slug}' is locked until the previous lesson is passed"
             )
-        return lesson
+        next_lesson = await self._repo.get_next_lesson_in_level(lesson.id)
+        return lesson, (next_lesson.slug if next_lesson else None)

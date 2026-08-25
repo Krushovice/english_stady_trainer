@@ -103,6 +103,16 @@ async def test_second_lesson_unlocks_after_first_lesson_passed(
     assert lesson_response.status_code == 200
 
 
+async def test_lesson_detail_includes_next_lesson_slug(
+    client: AsyncClient, synced_lesson: Lesson, b1_lesson1_passed_headers: dict[str, str]
+) -> None:
+    response = await client.get(
+        "/api/v1/lessons/making-small-talk", headers=b1_lesson1_passed_headers
+    )
+    assert response.status_code == 200
+    assert response.json()["next_lesson_slug"] == "talking-about-experiences"
+
+
 async def test_lesson_completion_reflects_unresolved_exercises(
     client: AsyncClient, synced_lesson: Lesson, b1_studied_headers: dict[str, str]
 ) -> None:

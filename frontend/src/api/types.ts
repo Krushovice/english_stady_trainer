@@ -77,6 +77,7 @@ export interface LessonDetail {
   blocks: LessonBlock[];
   vocabulary: Vocabulary[];
   grammar_topics: GrammarTopic[];
+  next_lesson_slug: string | null;
 }
 
 export type Skill = "grammar" | "vocabulary" | "reading" | "listening" | "writing" | "speaking";

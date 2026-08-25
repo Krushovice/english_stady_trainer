@@ -11,7 +11,7 @@ import {
 import type { AttemptResult, SubmittedAnswer } from "../api/types";
 import { ExerciseCard } from "../components/exercises/ExerciseCard";
 import { ExerciseItem } from "../components/exercises/ExerciseItem";
-import { CheckIcon } from "../components/icons";
+import { CheckIcon, ChevronRightIcon } from "../components/icons";
 import { LessonBlockView } from "../components/LessonBlockView";
 
 const SKILL_LABELS: Record<string, string> = {
@@ -112,6 +112,18 @@ export function LessonPage() {
           </span>
         )}
       </h1>
+
+      {miniTestQuery.data && miniTestQuery.data.exercises.length > 0 && (
+        <section className="lesson-block mini-test">
+          <h2>Быстрое повторение: {miniTestQuery.data.previous_lesson_title}</h2>
+          <p className="status">
+            Пять вопросов по предыдущей теме, прежде чем идти дальше.
+          </p>
+          {miniTestQuery.data.exercises.map((exercise) => (
+            <ExerciseCard key={exercise.id} exercise={exercise} />
+          ))}
+        </section>
+      )}
 
       {lesson.blocks
         .slice()
@@ -219,16 +231,11 @@ export function LessonPage() {
         )}
       </section>
 
-      {miniTestQuery.data && miniTestQuery.data.exercises.length > 0 && (
-        <section className="lesson-block mini-test">
-          <h2>Быстрое повторение: {miniTestQuery.data.previous_lesson_title}</h2>
-          <p className="status">
-            Пять вопросов по предыдущей теме, прежде чем идти дальше.
-          </p>
-          {miniTestQuery.data.exercises.map((exercise) => (
-            <ExerciseCard key={exercise.id} exercise={exercise} />
-          ))}
-        </section>
+      {completion?.passed && lesson.next_lesson_slug && (
+        <Link to={`/lessons/${lesson.next_lesson_slug}`} className="btn-primary lesson-next-link">
+          Следующий урок
+          <ChevronRightIcon width={16} height={16} />
+        </Link>
       )}
     </div>
   );

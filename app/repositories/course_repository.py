@@ -236,6 +236,39 @@ class CourseRepository:
         )
         return result.scalar_one_or_none()
 
+    async def get_next_lesson_in_level(self, lesson_id: uuid.UUID) -> Lesson | None:
+        """The lesson immediately after this one, ordered by
+        (module.order_index, lesson.order_index) within the same level —
+        mirror of `get_previous_lesson_in_level`. Backs the "next lesson"
+        link shown on `LessonPage` once the current lesson is passed.
+        """
+        current = (
+            await self._session.execute(
+                select(Lesson)
+                .join(Module)
+                .where(Lesson.id == lesson_id)
+                .options(selectinload(Lesson.module))
+            )
+        ).scalar_one_or_none()
+        if current is None:
+            return None
+
+        result = await self._session.execute(
+            select(Lesson)
+            .join(Module)
+            .where(Module.level_id == current.module.level_id)
+            .where(
+                (Module.order_index > current.module.order_index)
+                | (
+                    (Module.order_index == current.module.order_index)
+                    & (Lesson.order_index > current.order_index)
+                )
+            )
+            .order_by(Module.order_index.asc(), Lesson.order_index.asc())
+            .limit(1)
+        )
+        return result.scalar_one_or_none()
+
     async def get_level_by_lesson_slug(self, slug: str) -> Level | None:
         result = await self._session.execute(
             select(Level).join(Module).join(Lesson).where(Lesson.slug == slug)

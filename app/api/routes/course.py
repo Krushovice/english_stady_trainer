@@ -68,10 +68,15 @@ async def get_lesson(
     lesson_slug: str,
     session: AsyncSession = Depends(get_db_session),
     current_user: User = Depends(get_current_user),
-) -> Lesson:
+) -> LessonDetailResponse:
     try:
-        return await CourseService(session).get_lesson(current_user.id, lesson_slug)
+        lesson, next_lesson_slug = await CourseService(session).get_lesson(
+            current_user.id, lesson_slug
+        )
     except NotFoundError as exc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
     except (LevelLockedError, LessonLockedError) as exc:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=str(exc)) from exc
+    return LessonDetailResponse.model_validate(lesson).model_copy(
+        update={"next_lesson_slug": next_lesson_slug}
+    )
