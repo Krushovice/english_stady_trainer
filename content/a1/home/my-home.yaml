@@ -203,7 +203,7 @@ blocks:
             # Same file as the lesson's own `listening` block below —
             # generate_audio.py only tracks/regenerates the `listening`
             # block's copy, not this one.
-            audio_url: "/audio/my-home.mp3"  # src-hash: e67e1213
+            audio_url: "/audio/my-home.mp3"
             transcript: >
               A: Where are my keys? — B: They're on the table, next to your bag.
               — A: I don't see them. — B: Look under the newspaper. Ah, there
@@ -255,7 +255,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/my-home.mp3"  # src-hash: b71db6b4
+      audio_url: "/audio/my-home.mp3"  # src-hash: e67e1213
       transcript: >
         A: Where are my keys? — B: They're on the table, next to your bag.
         — A: I don't see them. — B: Look under the newspaper. Ah, there

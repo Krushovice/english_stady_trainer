@@ -203,7 +203,7 @@ blocks:
             # Same file as the lesson's own `listening` block below —
             # generate_audio.py only tracks/regenerates the `listening`
             # block's copy, not this one.
-            audio_url: "/audio/talking-about-weather.mp3"  # src-hash: c2c2da74
+            audio_url: "/audio/talking-about-weather.mp3"
             transcript: >
               A: Have you seen the weather forecast? Is it going to rain
               tomorrow? — B: Yes, it's going to be cloudy and rainy all day. —
@@ -258,7 +258,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/talking-about-weather.mp3"  # src-hash: d41d56e0
+      audio_url: "/audio/talking-about-weather.mp3"  # src-hash: c2c2da74
       transcript: >
         A: Have you seen the weather forecast? Is it going to rain
         tomorrow? — B: Yes, it's going to be cloudy and rainy all day. —

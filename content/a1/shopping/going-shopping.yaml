@@ -204,7 +204,7 @@ blocks:
             # Same file as the lesson's own `listening` block below —
             # generate_audio.py only tracks/regenerates the `listening`
             # block's copy, not this one.
-            audio_url: "/audio/going-shopping.mp3"  # src-hash: 7cac0933
+            audio_url: "/audio/going-shopping.mp3"
             transcript: >
               A: Excuse me, how much is this jacket? — B: That one is 45
               dollars. Would you like to try it on? — A: Yes, please. Is there a
@@ -257,7 +257,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/going-shopping.mp3"  # src-hash: 10fa6fbb
+      audio_url: "/audio/going-shopping.mp3"  # src-hash: 7cac0933
       transcript: >
         A: Excuse me, how much is this jacket? — B: That one is 45
         dollars. Would you like to try it on? — A: Yes, please. Is there a

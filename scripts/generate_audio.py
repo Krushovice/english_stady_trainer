@@ -139,9 +139,18 @@ async def process_lesson_file(provider: TTSProvider, path: Path, stats: Stats) -
     audio_path = AUDIO_DIR / f"{slug}.mp3"
 
     lines = raw_text.splitlines(keepends=True)
+    # A listening_comprehension exercise item (if authored) has its own
+    # `audio_url:` line earlier in the file, reusing the same audio — start
+    # the search after the `listening` block's own header so that one, not
+    # the exercise's copy, is what gets tracked/rewritten.
+    listening_header_index = _find_index(lines, lambda line: line.strip() == "- type: listening")
     audio_line_index = None
     try:
-        audio_line_index = _find_index(lines, lambda line: line.lstrip().startswith("audio_url:"))
+        audio_line_index = _find_index(
+            lines,
+            lambda line: line.lstrip().startswith("audio_url:"),
+            start=listening_header_index,
+        )
     except ValueError:
         pass
 
@@ -164,6 +173,7 @@ async def process_lesson_file(provider: TTSProvider, path: Path, stats: Stats) -
                 line.lstrip().startswith("note:")
                 and any(marker in line for marker in NOTE_PLACEHOLDER_MARKERS)
             ),
+            start=listening_header_index,
         )
     new_line = (
         f'{" " * _line_indent(lines[target_index])}audio_url: "/audio/{slug}.mp3"'

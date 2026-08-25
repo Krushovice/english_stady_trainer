@@ -206,7 +206,7 @@ blocks:
             # Same file as the lesson's own `listening` block below —
             # generate_audio.py only tracks/regenerates the `listening`
             # block's copy, not this one.
-            audio_url: "/audio/food-and-drink.mp3"  # src-hash: c3ce02d7
+            audio_url: "/audio/food-and-drink.mp3"
             transcript: >
               A: I'm hungry. Is there any bread? — B: Yes, there's some bread and
               some cheese too. — A: Great. Do we have any fruit? — B: No, we
@@ -259,7 +259,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/food-and-drink.mp3"  # src-hash: 689c295b
+      audio_url: "/audio/food-and-drink.mp3"  # src-hash: c3ce02d7
       transcript: >
         A: I'm hungry. Is there any bread? — B: Yes, there's some bread and
         some cheese too. — A: Great. Do we have any fruit? — B: No, we

@@ -206,7 +206,7 @@ blocks:
             # Same file as the lesson's own `listening` block below —
             # generate_audio.py only tracks/regenerates the `listening`
             # block's copy, not this one.
-            audio_url: "/audio/my-last-trip.mp3"  # src-hash: 1b19b6d9
+            audio_url: "/audio/my-last-trip.mp3"
             transcript: >
               A: How was your trip to Italy? — B: It was amazing! We visited
               Rome and stayed near the beach. — A: Did you buy any souvenirs? —
@@ -260,7 +260,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/my-last-trip.mp3"  # src-hash: 8f7df325
+      audio_url: "/audio/my-last-trip.mp3"  # src-hash: 1b19b6d9
       transcript: >
         A: How was your trip to Italy? — B: It was amazing! We visited
         Rome and stayed near the beach. — A: Did you buy any souvenirs? —

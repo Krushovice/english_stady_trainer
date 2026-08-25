@@ -203,7 +203,7 @@ blocks:
             # Same file as the lesson's own `listening` block below —
             # generate_audio.py only tracks/regenerates the `listening`
             # block's copy, not this one.
-            audio_url: "/audio/talking-about-family.mp3"  # src-hash: 72a23087
+            audio_url: "/audio/talking-about-family.mp3"
             transcript: >
               A: Do you have brothers or sisters? — B: Yes, I have one sister.
               She's a teacher. What about you? — A: I don't have any brothers or
@@ -257,7 +257,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/talking-about-family.mp3"  # src-hash: 9aa240aa
+      audio_url: "/audio/talking-about-family.mp3"  # src-hash: 72a23087
       transcript: >
         A: Do you have brothers or sisters? — B: Yes, I have one sister.
         She's a teacher. What about you? — A: I don't have any brothers or

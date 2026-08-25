@@ -203,7 +203,7 @@ blocks:
             # Same file as the lesson's own `listening` block below —
             # generate_audio.py only tracks/regenerates the `listening`
             # block's copy, not this one.
-            audio_url: "/audio/numbers-and-time.mp3"  # src-hash: ba95d70c
+            audio_url: "/audio/numbers-and-time.mp3"
             transcript: >
               A: Excuse me, what time is it? — B: It's quarter past nine. — A:
               Thanks. What time does the shop open? — B: It opens at ten
@@ -256,7 +256,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/numbers-and-time.mp3"  # src-hash: b1304c39
+      audio_url: "/audio/numbers-and-time.mp3"  # src-hash: ba95d70c
       transcript: >
         A: Excuse me, what time is it? — B: It's quarter past nine. — A:
         Thanks. What time does the shop open? — B: It opens at ten

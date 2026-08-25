@@ -204,7 +204,7 @@ blocks:
             # Same file as the lesson's own `listening` block below —
             # generate_audio.py only tracks/regenerates the `listening`
             # block's copy, not this one.
-            audio_url: "/audio/free-time.mp3"  # src-hash: 552e4ccc
+            audio_url: "/audio/free-time.mp3"
             transcript: >
               A: What do you like doing in your free time? — B: I love reading
               and listening to music. What about you? — A: I enjoy cooking, but
@@ -259,7 +259,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/free-time.mp3"  # src-hash: 038134d1
+      audio_url: "/audio/free-time.mp3"  # src-hash: 552e4ccc
       transcript: >
         A: What do you like doing in your free time? — B: I love reading
         and listening to music. What about you? — A: I enjoy cooking, but
