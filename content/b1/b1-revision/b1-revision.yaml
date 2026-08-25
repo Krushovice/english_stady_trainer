@@ -240,7 +240,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/b1-revision.mp3"  # src-hash: 40df566f
+      audio_url: "/audio/b1-revision.mp3"  # src-hash: e674093d
       transcript: >
         A: It's been ages! Have you done anything exciting lately? —
         B: Actually, yes. Although I'd never travelled alone before, I

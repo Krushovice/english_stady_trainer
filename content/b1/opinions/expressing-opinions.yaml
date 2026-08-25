@@ -248,7 +248,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/expressing-opinions.mp3"  # src-hash: 69154519
+      audio_url: "/audio/expressing-opinions.mp3"  # src-hash: 549f260c
       transcript: >
         A: As far as I'm concerned, working from home is much more
         productive. — B: I see your point, but I think people miss out

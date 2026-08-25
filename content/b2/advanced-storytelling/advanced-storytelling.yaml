@@ -231,7 +231,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/advanced-storytelling.mp3"  # src-hash: 47ffe8a9
+      audio_url: "/audio/advanced-storytelling.mp3"  # src-hash: 6373f704
       transcript: >
         A: You won't believe what happened yesterday. Out of the blue,
         my car broke down on the motorway. — B: Oh no! What did you

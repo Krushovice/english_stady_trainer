@@ -237,7 +237,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/society-and-abstract-topics.mp3"  # src-hash: c6d0c384
+      audio_url: "/audio/society-and-abstract-topics.mp3"  # src-hash: aad0762d
       transcript: >
         A: It's widely believed that inequality has gotten worse in
         the last decade. — B: To some extent, yes. It's estimated that

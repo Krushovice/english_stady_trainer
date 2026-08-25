@@ -237,7 +237,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/reported-speech.mp3"  # src-hash: e169cd3c
+      audio_url: "/audio/reported-speech.mp3"  # src-hash: e9723e7c
       transcript: >
         A: What did Anna say about the meeting? — B: She said she
         couldn't make it, and she asked if we could reschedule. — A:

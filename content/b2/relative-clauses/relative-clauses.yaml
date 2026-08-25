@@ -230,7 +230,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/describing-people-and-things.mp3"  # src-hash: fd90990f
+      audio_url: "/audio/describing-people-and-things.mp3"  # src-hash: 18d8bb9a
       transcript: >
         A: Which colleague are you talking about, the one who joined
         last month? — B: No, the one whose office is next to mine —

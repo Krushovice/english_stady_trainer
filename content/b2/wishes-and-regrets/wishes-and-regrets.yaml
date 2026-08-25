@@ -232,7 +232,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/wishes-and-regrets.mp3"  # src-hash: 0c55be6d
+      audio_url: "/audio/wishes-and-regrets.mp3"  # src-hash: ee19df87
       transcript: >
         A: Do you ever look back on your old job and wish you'd stayed?
         — B: Honestly, sometimes. I wish I'd asked more questions

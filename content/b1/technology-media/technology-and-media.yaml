@@ -248,7 +248,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/technology-and-media.mp3"  # src-hash: 7899972d
+      audio_url: "/audio/technology-and-media.mp3"  # src-hash: 6a6fcf34
       transcript: >
         A: Did you see that video? It went viral overnight. — B: Yeah,
         it's been shared millions of times already. — A: Apparently the

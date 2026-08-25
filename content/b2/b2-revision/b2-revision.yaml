@@ -227,7 +227,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/b2-revision.mp3"  # src-hash: b0d7cd48
+      audio_url: "/audio/b2-revision.mp3"  # src-hash: 1dba6674
       transcript: >
         A: Do you remember how stressed we were before the launch? —
         B: Never had I felt so nervous. If we hadn't had the report

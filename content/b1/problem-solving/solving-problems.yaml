@@ -245,7 +245,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/solving-problems.mp3"  # src-hash: 08b1c524
+      audio_url: "/audio/solving-problems.mp3"  # src-hash: 071231b3
       transcript: >
         A: My neighbour keeps playing loud music at night. What would
         you do? — B: If I were you, I'd talk to them directly first. —

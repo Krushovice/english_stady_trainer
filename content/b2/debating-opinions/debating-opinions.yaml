@@ -229,7 +229,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/debating-opinions.mp3"  # src-hash: b61527b3
+      audio_url: "/audio/debating-opinions.mp3"  # src-hash: 3dff0c30
       transcript: >
         A: What worries me most about remote work is the lack of
         collaboration. — B: That's a valid point. However, it's

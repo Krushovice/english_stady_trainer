@@ -230,7 +230,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/talking-naturally.mp3"  # src-hash: 390d807a
+      audio_url: "/audio/talking-naturally.mp3"  # src-hash: b34df382
       transcript: >
         A: So, how's the new job going? You come across as pretty happy
         about it. — B: Well, honestly, it's good. I mean, there are
