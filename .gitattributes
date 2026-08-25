@@ -1,0 +1,4 @@
+# Shell scripts need LF line endings to run at all (a CRLF shebang line
+# fails with "bad interpreter") — this repo's core.autocrlf=true would
+# otherwise rewrite them to CRLF on checkout.
+*.sh text eol=lf

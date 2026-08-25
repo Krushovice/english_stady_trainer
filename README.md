@@ -16,10 +16,10 @@ Frontend: React 19 / TypeScript / Vite, `react-router-dom` for routing, `@tansta
 
 ```bash
 cp .env.example .env   # then edit JWT_SECRET_KEY and POSTGRES_PASSWORD
-docker compose up --build
+./dev.sh                # first run only, or after Dockerfile/deps change: ./dev.sh --build
 ```
 
-This brings up PostgreSQL, Redis, and the API, applies migrations, syncs course content from `content/` into the database, and serves the API at `http://localhost:8000` (docs at `/docs`, health check at `/health`).
+`dev.sh` starts the whole stack — PostgreSQL, Redis, STT, TTS, the API (migrations + content sync included), and the frontend dev server — and prints the URLs once everything is ready (frontend at `http://localhost:5173`, API at `http://localhost:8000`, docs at `/docs`, health check at `/health`). Ctrl+C stops the frontend; the backend containers keep running (`docker compose down` to stop them too). Safe to re-run any time — Docker skips containers that are already up.
 
 ## Development (outside Docker)
 
