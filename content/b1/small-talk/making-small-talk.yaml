@@ -234,7 +234,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/making-small-talk.mp3"  # src-hash: 053ca1ac
+      audio_url: "/audio/making-small-talk.mp3"  # src-hash: 9fd62a1e
       transcript: >
         A: Hey, how's it going? — B: Good, thanks! Busy week, though. How
         about you? — A: Same here. This project isn't getting any easier,

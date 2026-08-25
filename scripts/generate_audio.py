@@ -20,9 +20,11 @@ import asyncio
 import hashlib
 import re
 from dataclasses import dataclass
+from io import BytesIO
 from pathlib import Path
 
 import yaml
+from pydub import AudioSegment
 
 from app.integrations.tts.factory import get_tts_provider
 from app.integrations.tts.provider import TTSProvider
@@ -33,6 +35,15 @@ AUDIO_DIR = CONTENT_DIR / "audio"
 
 NOTE_PLACEHOLDER_MARKERS = ("Audio recording pending", "Аудиозапись появится позже")
 SRC_HASH_RE = re.compile(r"#\s*src-hash:\s*([0-9a-f]+)")
+TURN_RE = re.compile(r"([A-Z]):\s*")
+
+# Every authored lesson dialogue uses exactly two speaker letters, A and B
+# (confirmed by scanning all of content/**/*.yaml) — a fixed two-voice map
+# is enough, no need for a per-lesson or per-speaker-count scheme. See
+# docs/decisions.md, 2026-08-25 live-feedback round.
+DIALOGUE_VOICES = {"A": "af_heart", "B": "am_adam"}
+DEFAULT_DIALOGUE_VOICE = DIALOGUE_VOICES["A"]
+SILENCE_BETWEEN_TURNS_MS = 300
 
 
 @dataclass
@@ -56,6 +67,46 @@ def clean_for_speech(text: str) -> str:
     text = re.sub(r"\b[A-Z]:\s*", "", text)
     text = text.replace(" — ", ". ")
     return re.sub(r"\s+", " ", text).strip()
+
+
+def split_into_turns(text: str) -> list[tuple[str, str]]:
+    """Splits a "A: ... — B: ... — A: ..." transcript into (speaker, text)
+    turns, keeping the speaker labels (unlike `clean_for_speech`) so each
+    turn can be synthesized in that speaker's own voice.
+
+    Splitting on the `X:` label itself, rather than on the " — " turn
+    separator, matters: a turn's own text can contain a literal em dash
+    ("...my friend Mark — he's a doctor") that isn't a speaker change.
+    """
+    text = re.sub(r"^Transcript\s*[—-]\s*", "", text.strip())
+    parts = TURN_RE.split(text)
+    turns: list[tuple[str, str]] = []
+    for i in range(1, len(parts), 2):
+        speaker = parts[i]
+        spoken = re.sub(r"\s*—\s*$", "", parts[i + 1].strip())
+        spoken = re.sub(r"\s+", " ", spoken).strip()
+        if spoken:
+            turns.append((speaker, spoken))
+    return turns
+
+
+async def synthesize_dialogue(provider: TTSProvider, turns: list[tuple[str, str]]) -> bytes:
+    """Synthesizes each turn in its speaker's own voice and splices the
+    results into one mp3, with a short silence between turns."""
+    combined = AudioSegment.empty()
+    silence = AudioSegment.silent(duration=SILENCE_BETWEEN_TURNS_MS)
+    for i, (speaker, text) in enumerate(turns):
+        voice = DIALOGUE_VOICES.get(speaker, DEFAULT_DIALOGUE_VOICE)
+        audio_bytes = await provider.synthesize(text, voice=voice)
+        combined += AudioSegment.from_file(BytesIO(audio_bytes), format="mp3")
+        if i < len(turns) - 1:
+            combined += silence
+
+    buffer = BytesIO()
+    # Match Kokoro's own default mp3 bitrate — pydub's export default (32k)
+    # is a noticeable quality drop from what the user already praised.
+    combined.export(buffer, format="mp3", bitrate="128k")
+    return buffer.getvalue()
 
 
 def _find_index(lines: list[str], predicate, start: int = 0) -> int:
@@ -83,8 +134,8 @@ async def process_lesson_file(provider: TTSProvider, path: Path, stats: Stats) -
 
     slug = data["lesson"]["slug"]
     transcript = listening_blocks[0]["content"]["transcript"]
-    speech_text = clean_for_speech(transcript)
-    current_hash = text_hash(speech_text)
+    turns = split_into_turns(transcript)
+    current_hash = text_hash("|".join(f"{speaker}:{text}" for speaker, text in turns))
     audio_path = AUDIO_DIR / f"{slug}.mp3"
 
     lines = raw_text.splitlines(keepends=True)
@@ -101,7 +152,7 @@ async def process_lesson_file(provider: TTSProvider, path: Path, stats: Stats) -
         stats.skipped += 1
         return
 
-    audio_bytes = await provider.synthesize(speech_text)
+    audio_bytes = await synthesize_dialogue(provider, turns)
     AUDIO_DIR.mkdir(parents=True, exist_ok=True)
     audio_path.write_bytes(audio_bytes)
 

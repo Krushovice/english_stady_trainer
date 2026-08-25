@@ -17,12 +17,12 @@ class KokoroTTSProvider:
         self._client = AsyncOpenAI(base_url=base_url, api_key=api_key, timeout=timeout_seconds)
         self._voice = voice
 
-    async def synthesize(self, text: str) -> bytes:
+    async def synthesize(self, text: str, voice: str | None = None) -> bytes:
         try:
             response = await self._client.audio.speech.create(
                 model="kokoro",
                 input=text,
-                voice=self._voice,
+                voice=voice or self._voice,
                 response_format="mp3",
             )
         except (APIConnectionError, APITimeoutError) as exc:

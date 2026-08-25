@@ -17,6 +17,8 @@ dependencies = [
     "pyyaml>=6.0.3",
     "openai>=3.1.0",
     "python-multipart>=0.0.20",
+    "pydub>=0.25.1",
+    "audioop-lts>=0.2.2",
 ]
 
 [dependency-groups]

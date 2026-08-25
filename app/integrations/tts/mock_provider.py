@@ -7,8 +7,8 @@ class MockTTSProvider:
 
     def __init__(self, audio: bytes = b"mock-audio-bytes") -> None:
         self.audio = audio
-        self.received_calls: list[str] = []
+        self.received_calls: list[tuple[str, str | None]] = []
 
-    async def synthesize(self, text: str) -> bytes:
-        self.received_calls.append(text)
+    async def synthesize(self, text: str, voice: str | None = None) -> bytes:
+        self.received_calls.append((text, voice))
         return self.audio

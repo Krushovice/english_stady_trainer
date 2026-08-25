@@ -212,7 +212,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/introducing-yourself.mp3"  # src-hash: f97a9f73
+      audio_url: "/audio/introducing-yourself.mp3"  # src-hash: d3a2c34d
       transcript: >
         A: Hi! I'm Tom. — B: Hello, Tom. Nice to meet you. My name is
         Anna. — A: Nice to meet you too, Anna. Where are you from? — B:
