@@ -199,6 +199,49 @@ blocks:
             "I usually take the train... because it's faster than the
             bus" (Q1). "My friend takes the bus because it's cheaper" (Q2).
 
+        - slug: getting-around-listening-airport
+          type: listening_comprehension
+          skill: listening
+          difficulty: A1
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/getting-around.mp3"  # src-hash: 71d230c5
+            transcript: >
+              A: How do I get to the airport? — B: You can take a taxi or the
+              train. — A: Which is faster? — B: The train is faster than a
+              taxi, and it's cheaper too. — A: Great, I'll take the train then.
+            questions:
+              - id: q1
+                text: "Which is faster, the taxi or the train?"
+                options:
+                  - id: a
+                    text: "The train"
+                  - id: b
+                    text: "The taxi"
+                  - id: c
+                    text: "They are the same"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "What does A decide to take?"
+                options:
+                  - id: a
+                    text: "The train"
+                  - id: b
+                    text: "The taxi"
+                  - id: c
+                    text: "A bus"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "The train is faster than a taxi" (Q1 — the train); "I'll take the train then" (Q2 — the train).
+
   - type: reading
     order_index: 7
     content:

@@ -198,6 +198,50 @@ blocks:
             "They visited Spain" (Q1). "They didn't buy many souvenirs,
             but they bought a few postcards" (Q2).
 
+        - slug: my-last-trip-listening-italy
+          type: listening_comprehension
+          skill: listening
+          difficulty: A1
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/my-last-trip.mp3"  # src-hash: 1b19b6d9
+            transcript: >
+              A: How was your trip to Italy? — B: It was amazing! We visited
+              Rome and stayed near the beach. — A: Did you buy any souvenirs? —
+              B: Yes, I bought a small painting for my living room. — A: Nice!
+              Did you go abroad by plane or by train?
+            questions:
+              - id: q1
+                text: "What city did B visit?"
+                options:
+                  - id: a
+                    text: "Rome"
+                  - id: b
+                    text: "Milan"
+                  - id: c
+                    text: "Venice"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "What souvenir did B buy?"
+                options:
+                  - id: a
+                    text: "A small painting"
+                  - id: b
+                    text: "A postcard"
+                  - id: c
+                    text: "A T-shirt"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "We visited Rome" (Q1 — Rome); "I bought a small painting" (Q2 — a small painting).
+
   - type: reading
     order_index: 7
     content:

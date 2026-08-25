@@ -201,6 +201,51 @@ blocks:
             "Anna usually wakes up at half past six." (Q1). "She has lunch
             with her colleagues" (Q2), not at home.
 
+        - slug: my-daily-routine-listening-schedule
+          type: listening_comprehension
+          skill: listening
+          difficulty: A1
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/my-daily-routine.mp3"  # src-hash: 264fc496
+            transcript: >
+              A: What's your daily routine like? — B: I usually wake up at seven
+              and have breakfast at half past seven. — A: Does she go to work
+              with you? — B: No, she doesn't. My wife works from home. She
+              starts at nine. — A: And what time do you come home? — B: Usually
+              at six. Then we have dinner together.
+            questions:
+              - id: q1
+                text: "What time does B wake up?"
+                options:
+                  - id: a
+                    text: "Seven"
+                  - id: b
+                    text: "Half past seven"
+                  - id: c
+                    text: "Nine"
+                  - id: d
+                    text: "Six"
+              - id: q2
+                text: "Where does B's wife work?"
+                options:
+                  - id: a
+                    text: "At home"
+                  - id: b
+                    text: "At the office"
+                  - id: c
+                    text: "At a school"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "I usually wake up at seven" (Q1 — seven); "My wife works from home" (Q2 — at home).
+
   - type: reading
     order_index: 7
     content:

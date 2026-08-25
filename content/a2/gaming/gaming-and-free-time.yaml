@@ -228,7 +228,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/gaming-and-free-time.mp3"  # src-hash: 9b262ee6
+      audio_url: "/audio/gaming-and-free-time.mp3"  # src-hash: 41bd8325
       transcript: >
         A: I've been trying to beat this level for an hour. It's so
         addictive, I can't stop. — B: Ha! I know that feeling. I'm not

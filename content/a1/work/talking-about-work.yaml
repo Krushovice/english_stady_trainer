@@ -197,6 +197,50 @@ blocks:
             "Right now, she is writing an email" (Q1). "Her boss is in a
             meeting" (Q2).
 
+        - slug: talking-about-work-listening-busy
+          type: listening_comprehension
+          skill: listening
+          difficulty: A1
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/talking-about-work.mp3"  # src-hash: ad441d90
+            transcript: >
+              A: Hi, are you busy right now? — B: Yes, I'm working on a report
+              at the moment. Can I call you later? — A: Sure. What time do you
+              usually finish work? — B: I usually finish at six, but today I'm
+              working late. — A: OK, talk to you later!
+            questions:
+              - id: q1
+                text: "What is B doing right now?"
+                options:
+                  - id: a
+                    text: "Working on a report"
+                  - id: b
+                    text: "Having lunch"
+                  - id: c
+                    text: "On the phone"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "What time does B usually finish work?"
+                options:
+                  - id: a
+                    text: "Six"
+                  - id: b
+                    text: "Five"
+                  - id: c
+                    text: "Seven"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "I'm working on a report at the moment" (Q1 — working on a report); "I usually finish at six" (Q2 — six).
+
   - type: reading
     order_index: 7
     content:

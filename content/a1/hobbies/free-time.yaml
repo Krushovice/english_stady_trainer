@@ -196,6 +196,51 @@ blocks:
             "His wife prefers reading books" (Q1). "she hates cleaning her
             room" (Q2).
 
+        - slug: free-time-listening-hobbies
+          type: listening_comprehension
+          skill: listening
+          difficulty: A1
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/free-time.mp3"  # src-hash: 552e4ccc
+            transcript: >
+              A: What do you like doing in your free time? — B: I love reading
+              and listening to music. What about you? — A: I enjoy cooking, but
+              I hate cleaning the kitchen after! — B: Ha! Does your sister like
+              cooking too? — A: No, she prefers drawing. She's really good at
+              it.
+            questions:
+              - id: q1
+                text: "What does A enjoy doing?"
+                options:
+                  - id: a
+                    text: "Cooking"
+                  - id: b
+                    text: "Reading"
+                  - id: c
+                    text: "Drawing"
+                  - id: d
+                    text: "Listening to music"
+              - id: q2
+                text: "What does A's sister prefer?"
+                options:
+                  - id: a
+                    text: "Drawing"
+                  - id: b
+                    text: "Cooking"
+                  - id: c
+                    text: "Reading"
+                  - id: d
+                    text: "Music"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "I enjoy cooking" (Q1 — cooking); "she prefers drawing" (Q2 — drawing).
+
   - type: reading
     order_index: 7
     content:

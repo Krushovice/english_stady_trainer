@@ -198,6 +198,50 @@ blocks:
             "There isn't any bread" (Q1 — No). "He makes rice with
             vegetables and cheese." (Q2).
 
+        - slug: food-and-drink-listening-kitchen
+          type: listening_comprehension
+          skill: listening
+          difficulty: A1
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/food-and-drink.mp3"  # src-hash: c3ce02d7
+            transcript: >
+              A: I'm hungry. Is there any bread? — B: Yes, there's some bread and
+              some cheese too. — A: Great. Do we have any fruit? — B: No, we
+              don't have any fruit. Sorry. — A: That's OK. I'd like some tea,
+              please.
+            questions:
+              - id: q1
+                text: "Do they have any fruit?"
+                options:
+                  - id: a
+                    text: "No"
+                  - id: b
+                    text: "Yes"
+                  - id: c
+                    text: "Only apples"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "What does A want to drink?"
+                options:
+                  - id: a
+                    text: "Tea"
+                  - id: b
+                    text: "Coffee"
+                  - id: c
+                    text: "Juice"
+                  - id: d
+                    text: "Water"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "No, we don't have any fruit" (Q1 — no); "I'd like some tea" (Q2 — tea).
+
   - type: reading
     order_index: 7
     content:

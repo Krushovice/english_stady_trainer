@@ -203,6 +203,52 @@ blocks:
             "today I'm working from home" (Q1). "There isn't a train
             station near their house, so we went by car" (Q2).
 
+        - slug: a1-revision-listening-weekend-plans
+          type: listening_comprehension
+          skill: listening
+          difficulty: A1
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/a1-revision.mp3"  # src-hash: 95cc486d
+            transcript: >
+              A: Hi! What are you doing this weekend? — B: I'm going to visit my
+              parents. They live in a small town near the coast. — A: Nice!
+              Last year I went there too. There's a great market with cheap
+              fruit. — B: I know! I love going there. Can you recommend a good
+              restaurant? — A: Yes, there's one next to the train station —
+              it's better than the one in the centre.
+            questions:
+              - id: q1
+                text: "What is B doing this weekend?"
+                options:
+                  - id: a
+                    text: "Visiting parents"
+                  - id: b
+                    text: "Going shopping"
+                  - id: c
+                    text: "Working"
+                  - id: d
+                    text: "Travelling abroad"
+              - id: q2
+                text: "Where is the restaurant A recommends?"
+                options:
+                  - id: a
+                    text: "Next to the train station"
+                  - id: b
+                    text: "In the centre"
+                  - id: c
+                    text: "Near the market"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "I'm going to visit my parents" (Q1 — visiting parents); "there's one next to the train station" (Q2 — next to the train station).
+
   - type: reading
     order_index: 7
     content:

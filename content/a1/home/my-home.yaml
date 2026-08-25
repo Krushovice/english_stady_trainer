@@ -195,6 +195,49 @@ blocks:
             "My apartment is small but tidy." (Q1). "There is a sofa
             between two windows." (Q2).
 
+        - slug: my-home-listening-keys
+          type: listening_comprehension
+          skill: listening
+          difficulty: A1
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/my-home.mp3"  # src-hash: e67e1213
+            transcript: >
+              A: Where are my keys? — B: They're on the table, next to your bag.
+              — A: I don't see them. — B: Look under the newspaper. Ah, there
+              they are! — A: Thanks! My room is so messy today.
+            questions:
+              - id: q1
+                text: "Where does B first say the keys are?"
+                options:
+                  - id: a
+                    text: "On the table"
+                  - id: b
+                    text: "Under the bed"
+                  - id: c
+                    text: "In the bag"
+                  - id: d
+                    text: "In the kitchen"
+              - id: q2
+                text: "Where are the keys really found?"
+                options:
+                  - id: a
+                    text: "Under the newspaper"
+                  - id: b
+                    text: "On the table"
+                  - id: c
+                    text: "In the bag"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "They're on the table" (Q1 — on the table); "Look under the newspaper. Ah, there they are!" (Q2 — under the newspaper).
+
   - type: reading
     order_index: 7
     content:

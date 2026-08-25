@@ -195,6 +195,50 @@ blocks:
             "I don't have brothers" (Q1 — No). "My grandmother lives with
             us too. Her name is Olga." (Q2 — the grandmother).
 
+        - slug: talking-about-family-listening-siblings
+          type: listening_comprehension
+          skill: listening
+          difficulty: A1
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/talking-about-family.mp3"  # src-hash: 72a23087
+            transcript: >
+              A: Do you have brothers or sisters? — B: Yes, I have one sister.
+              She's a teacher. What about you? — A: I don't have any brothers or
+              sisters. But I have two children. — B: Really? How old are they? —
+              A: My son is 5 and my daughter is 3.
+            questions:
+              - id: q1
+                text: "What is B's sister's job?"
+                options:
+                  - id: a
+                    text: "Teacher"
+                  - id: b
+                    text: "Doctor"
+                  - id: c
+                    text: "Student"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "How old is A's son?"
+                options:
+                  - id: a
+                    text: "3"
+                  - id: b
+                    text: "5"
+                  - id: c
+                    text: "8"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: b
+          explanation: >-
+            "She's a teacher" (Q1 — teacher); "My son is 5" (Q2 — 5).
+
   - type: reading
     order_index: 7
     content:

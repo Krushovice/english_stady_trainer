@@ -195,6 +195,51 @@ blocks:
             "Today is sunny and warm" (Q1). "This weekend is going to be
             windy, so it's not a good time for a picnic" (Q2).
 
+        - slug: talking-about-weather-listening-forecast
+          type: listening_comprehension
+          skill: listening
+          difficulty: A1
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/talking-about-weather.mp3"  # src-hash: c2c2da74
+            transcript: >
+              A: Have you seen the weather forecast? Is it going to rain
+              tomorrow? — B: Yes, it's going to be cloudy and rainy all day. —
+              A: Oh no. I'm going to visit my parents tomorrow. — B: Take an
+              umbrella, then! Today is sunny, at least. — A: True. It's twenty
+              degrees — perfect weather.
+            questions:
+              - id: q1
+                text: "What will the weather be like tomorrow?"
+                options:
+                  - id: a
+                    text: "Cloudy and rainy"
+                  - id: b
+                    text: "Sunny"
+                  - id: c
+                    text: "Snowy"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "What is today's weather like?"
+                options:
+                  - id: a
+                    text: "Sunny"
+                  - id: b
+                    text: "Rainy"
+                  - id: c
+                    text: "Cloudy"
+                  - id: d
+                    text: "Snowy"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "it's going to be cloudy and rainy all day" (Q1 — cloudy and rainy); "Today is sunny" (Q2 — sunny).
+
   - type: reading
     order_index: 7
     content:

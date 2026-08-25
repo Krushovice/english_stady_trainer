@@ -195,6 +195,49 @@ blocks:
             "The shop opens at nine o'clock" (Q1). The coffee shop opens
             "at quarter past seven", earlier than nine o'clock (Q2).
 
+        - slug: numbers-and-time-listening-shop-hours
+          type: listening_comprehension
+          skill: listening
+          difficulty: A1
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/numbers-and-time.mp3"  # src-hash: ba95d70c
+            transcript: >
+              A: Excuse me, what time is it? — B: It's quarter past nine. — A:
+              Thanks. What time does the shop open? — B: It opens at ten
+              o'clock. — A: Great, we have time for coffee.
+            questions:
+              - id: q1
+                text: "What time is it now?"
+                options:
+                  - id: a
+                    text: "Quarter past nine"
+                  - id: b
+                    text: "Ten o'clock"
+                  - id: c
+                    text: "Half past nine"
+                  - id: d
+                    text: "Nine o'clock"
+              - id: q2
+                text: "What time does the shop open?"
+                options:
+                  - id: a
+                    text: "Ten o'clock"
+                  - id: b
+                    text: "Nine o'clock"
+                  - id: c
+                    text: "Quarter past ten"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "It's quarter past nine" (Q1 — quarter past nine); "It opens at ten o'clock" (Q2 — ten o'clock).
+
   - type: reading
     order_index: 7
     content:

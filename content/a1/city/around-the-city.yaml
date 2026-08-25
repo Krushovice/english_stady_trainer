@@ -193,6 +193,50 @@ blocks:
             "The library is between the bank and the park." (Q1). "You
             can't park your car in the city centre." (Q2 — No).
 
+        - slug: around-the-city-listening-pharmacy
+          type: listening_comprehension
+          skill: listening
+          difficulty: A1
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/around-the-city.mp3"  # src-hash: 005f35ff
+            transcript: >
+              A: Excuse me, can you help me? I'm looking for a pharmacy. — B:
+              Sure! You can find one near the train station. — A: Is it far
+              from here? — B: No, you can walk there in five minutes. — A:
+              Great, thank you!
+            questions:
+              - id: q1
+                text: "What is A looking for?"
+                options:
+                  - id: a
+                    text: "A pharmacy"
+                  - id: b
+                    text: "A train station"
+                  - id: c
+                    text: "A bank"
+                  - id: d
+                    text: "A restaurant"
+              - id: q2
+                text: "How far is it?"
+                options:
+                  - id: a
+                    text: "Five minutes' walk"
+                  - id: b
+                    text: "Ten minutes' walk"
+                  - id: c
+                    text: "It's very far"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "I'm looking for a pharmacy" (Q1 — a pharmacy); "you can walk there in five minutes" (Q2 — five minutes' walk).
+
   - type: reading
     order_index: 7
     content:
