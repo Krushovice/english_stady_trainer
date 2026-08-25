@@ -205,6 +205,52 @@ blocks:
             closed the office" (Q1). "He has to call the electricity
             company tomorrow" (Q2).
 
+        - slug: everyday-problems-listening-washing-machine
+          type: listening_comprehension
+          skill: listening
+          difficulty: A2
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/everyday-problems.mp3"
+            transcript: >
+              A: The washing machine is broken again. There's water
+              everywhere! — B: Oh no. You should turn off the water first. —
+              A: I already did. Do we have to call a plumber? — B: I think so,
+              yes. It's a leak, we can't fix it ourselves. — A: OK. You don't
+              have to stay, I'll call him and wait. — B: Are you sure? You
+              shouldn't be alone if there's a power cut too.
+            questions:
+              - id: q1
+                text: "What is broken?"
+                options:
+                  - id: a
+                    text: "The washing machine"
+                  - id: b
+                    text: "The oven"
+                  - id: c
+                    text: "The heater"
+                  - id: d
+                    text: "The fridge"
+              - id: q2
+                text: "Who do they decide to call?"
+                options:
+                  - id: a
+                    text: "A plumber"
+                  - id: b
+                    text: "An electrician"
+                  - id: c
+                    text: "A neighbour"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "The washing machine is broken again" (Q1); "Do we have to call a plumber? — I think so, yes" (Q2).
+
   - type: reading
     order_index: 7
     content:
@@ -226,7 +272,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/everyday-problems.mp3"  # src-hash: 0cc55316
+      audio_url: "/audio/everyday-problems.mp3"  # src-hash: dec0b843
       transcript: >
         A: The washing machine is broken again. There's water
         everywhere! — B: Oh no. You should turn off the water first. —

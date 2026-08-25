@@ -203,6 +203,53 @@ blocks:
             (Q1). "It helps him relax and stay connected with friends"
             (Q2).
 
+        - slug: gaming-and-free-time-listening-multiplayer
+          type: listening_comprehension
+          skill: listening
+          difficulty: A2
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/gaming-and-free-time.mp3"
+            transcript: >
+              A: I've been trying to beat this level for an hour. It's so
+              addictive, I can't stop. — B: Ha! I know that feeling. I'm not
+              very good at strategy games, though. — A: Really? I decided to
+              try a new multiplayer game last week — do you want to join? — B:
+              I'd love to, but I usually avoid playing at night. It helps me
+              relax before that, though. — A: Fair enough. Don't give up on
+              the single-player one, by the way.
+            questions:
+              - id: q1
+                text: "What kind of games is B not very good at?"
+                options:
+                  - id: a
+                    text: "Strategy games"
+                  - id: b
+                    text: "Puzzle games"
+                  - id: c
+                    text: "Sports games"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "When does B usually avoid playing?"
+                options:
+                  - id: a
+                    text: "At night"
+                  - id: b
+                    text: "In the morning"
+                  - id: c
+                    text: "At work"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "I'm not very good at strategy games" (Q1); "I usually avoid playing at night" (Q2).
+
   - type: reading
     order_index: 7
     content:

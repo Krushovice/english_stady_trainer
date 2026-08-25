@@ -208,6 +208,53 @@ blocks:
             "The oldest building in town is the cathedral" (Q1). "The
             cheapest tickets are available in winter" (Q2).
 
+        - slug: superlatives-listening-restaurant
+          type: listening_comprehension
+          skill: listening
+          difficulty: A2
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/superlatives.mp3"
+            transcript: >
+              A: Which restaurant do you recommend? There are so many here. —
+              B: In my opinion, this one is the best — it's not the cheapest,
+              but it's the most reliable. — A: Is it the most popular one too?
+              — B: Yes, and honestly, it's the most convenient — it's the
+              closest to the hotel. — A: Sounds worth it. Is it the most
+              expensive option? — B: No, actually it offers the best value for
+              money of all of them.
+            questions:
+              - id: q1
+                text: "According to B, is the restaurant the cheapest?"
+                options:
+                  - id: a
+                    text: "No"
+                  - id: b
+                    text: "Yes"
+                  - id: c
+                    text: "It's the most expensive"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "Why is the restaurant convenient?"
+                options:
+                  - id: a
+                    text: "It's the closest to the hotel"
+                  - id: b
+                    text: "It's open all night"
+                  - id: c
+                    text: "It delivers food"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "it's not the cheapest" (Q1 — no); "it's the most convenient — it's the closest to the hotel" (Q2).
+
   - type: reading
     order_index: 7
     content:
@@ -232,7 +279,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/superlatives.mp3"  # src-hash: 02a2caef
+      audio_url: "/audio/superlatives.mp3"  # src-hash: 4a40a451
       transcript: >
         A: Which restaurant do you recommend? There are so many here. —
         B: In my opinion, this one is the best — it's not the cheapest,

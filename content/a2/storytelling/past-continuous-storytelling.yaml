@@ -211,6 +211,52 @@ blocks:
             "Sarah was walking home from work when she noticed something
             strange" (Q1). "They were watching a meteor shower" (Q2).
 
+        - slug: past-continuous-storytelling-listening-noise
+          type: listening_comprehension
+          skill: listening
+          difficulty: A2
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/past-continuous-storytelling.mp3"
+            transcript: >
+              A: You look tired today. What happened last night? — B: I was
+              sleeping when I suddenly heard a strange noise outside. — A:
+              That sounds scary! What did you do? — B: I got up and looked out
+              the window. A cat had knocked over some bottles. — A: Ha! So
+              while you were panicking, it was just a cat? — B: Exactly.
+              Meanwhile, my brother was still fast asleep the whole time.
+            questions:
+              - id: q1
+                text: "What was B doing when they heard the noise?"
+                options:
+                  - id: a
+                    text: "Sleeping"
+                  - id: b
+                    text: "Cooking"
+                  - id: c
+                    text: "Watching TV"
+                  - id: d
+                    text: "Reading"
+              - id: q2
+                text: "What actually caused the noise?"
+                options:
+                  - id: a
+                    text: "A cat"
+                  - id: b
+                    text: "A burglar"
+                  - id: c
+                    text: "The wind"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "I was sleeping when I suddenly heard a strange noise" (Q1); "A cat had knocked over some bottles" (Q2).
+
   - type: reading
     order_index: 7
     content:
@@ -234,7 +280,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/past-continuous-storytelling.mp3"  # src-hash: da545d2c
+      audio_url: "/audio/past-continuous-storytelling.mp3"  # src-hash: a53e64af
       transcript: >
         A: You look tired today. What happened last night? — B: I was
         sleeping when I suddenly heard a strange noise outside. — A:

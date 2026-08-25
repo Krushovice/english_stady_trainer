@@ -205,6 +205,52 @@ blocks:
             "His flight was delayed" (Q1). "The receptionist has kept his
             room" (Q2).
 
+        - slug: hotel-check-in-listening-reservation
+          type: listening_comprehension
+          skill: listening
+          difficulty: A2
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/hotel-check-in.mp3"
+            transcript: >
+              A: Good afternoon. I've booked a double room for two nights. — B:
+              Can I have your name, please? — A: Yes, it's under Petrova. I
+              haven't checked in online yet. — B: That's fine, I've found your
+              reservation. Is breakfast included — yes, it is. — A: Great. Have
+              you got a room with a sea view, by any chance? — B: Let me
+              check... Yes, we have. Here's your key card, room 305.
+            questions:
+              - id: q1
+                text: "How many nights did A book the room for?"
+                options:
+                  - id: a
+                    text: "Two"
+                  - id: b
+                    text: "One"
+                  - id: c
+                    text: "Three"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "What is A's room number?"
+                options:
+                  - id: a
+                    text: "305"
+                  - id: b
+                    text: "205"
+                  - id: c
+                    text: "350"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "I've booked a double room for two nights" (Q1 — two); "Here's your key card, room 305" (Q2 — 305).
+
   - type: reading
     order_index: 7
     content:
@@ -226,7 +272,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/hotel-check-in.mp3"  # src-hash: ed8cb663
+      audio_url: "/audio/hotel-check-in.mp3"  # src-hash: 5a7569d0
       transcript: >
         A: Good afternoon. I've booked a double room for two nights. — B:
         Can I have your name, please? — A: Yes, it's under Petrova. I

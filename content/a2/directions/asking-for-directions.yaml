@@ -202,6 +202,52 @@ blocks:
             "Turn left at the crossroads" (Q1). "It's about ten minutes on
             foot" (Q2).
 
+        - slug: asking-for-directions-listening-museum
+          type: listening_comprehension
+          skill: listening
+          difficulty: A2
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/asking-for-directions.mp3"
+            transcript: >
+              A: Excuse me, how do I get to the museum? — B: Go straight on and
+              take the second right. — A: Second right, OK. Is it far from
+              here? — B: No, it's close. Walk past the bank, then go along the
+              main street. — A: Past the bank, along the main street... and
+              then? — B: You'll see it on the corner, across from the park. —
+              A: Great, thank you very much!
+            questions:
+              - id: q1
+                text: "Where is the museum?"
+                options:
+                  - id: a
+                    text: "On the corner, across from the park"
+                  - id: b
+                    text: "Next to the bank"
+                  - id: c
+                    text: "Behind the park"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "Is the museum far from where they are?"
+                options:
+                  - id: a
+                    text: "No, it's close"
+                  - id: b
+                    text: "Yes, very far"
+                  - id: c
+                    text: "It's in another town"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "You'll see it on the corner, across from the park" (Q1); "No, it's close" (Q2).
+
   - type: reading
     order_index: 7
     content:
@@ -224,7 +270,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/asking-for-directions.mp3"  # src-hash: 43f6d8ba
+      audio_url: "/audio/asking-for-directions.mp3"  # src-hash: bd9cb700
       transcript: >
         A: Excuse me, how do I get to the museum? — B: Go straight on and
         take the second right. — A: Second right, OK. Is it far from

@@ -214,6 +214,52 @@ blocks:
             cheese because she doesn't eat dairy" (Q2). "The food was for
             here, not to go" (Q3).
 
+        - slug: ordering-food-listening-restaurant
+          type: listening_comprehension
+          skill: listening
+          difficulty: A2
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/ordering-food.mp3"
+            transcript: >
+              A: Hi, could I have the menu, please? — B: Of course. Here you go.
+              Can I get you something to drink? — A: I'd like a lemonade,
+              please. And what do you recommend as a main course? — B: The
+              chicken is very popular. Would you like it with or without rice?
+              — A: With rice, please. And could I have it without onions? — B:
+              No problem. Anything else? — A: Just the bill at the end, thanks.
+            questions:
+              - id: q1
+                text: "What does A want to drink?"
+                options:
+                  - id: a
+                    text: "Lemonade"
+                  - id: b
+                    text: "Water"
+                  - id: c
+                    text: "Coffee"
+                  - id: d
+                    text: "Juice"
+              - id: q2
+                text: "How does A want the chicken?"
+                options:
+                  - id: a
+                    text: "With rice, without onions"
+                  - id: b
+                    text: "Without rice, with onions"
+                  - id: c
+                    text: "With rice and onions"
+                  - id: d
+                    text: "Without rice or onions"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "I'd like a lemonade" (Q1 — lemonade); "With rice, please. And could I have it without onions?" (Q2 — with rice, without onions).
+
   - type: reading
     order_index: 7
     content:
@@ -235,7 +281,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/ordering-food.mp3"  # src-hash: 802406f7
+      audio_url: "/audio/ordering-food.mp3"  # src-hash: 063b1611
       transcript: >
         A: Hi, could I have the menu, please? — B: Of course. Here you go.
         Can I get you something to drink? — A: I'd like a lemonade,

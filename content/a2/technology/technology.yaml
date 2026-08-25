@@ -205,6 +205,53 @@ blocks:
             "They used maps and phone books instead of apps" (Q1). "Most
             devices connect to the internet instantly" (Q2).
 
+        - slug: technology-listening-then-and-now
+          type: listening_comprehension
+          skill: listening
+          difficulty: A2
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/technology.mp3"
+            transcript: >
+              A: Did you use to have a smartphone as a teenager? — B: No, we
+              didn't use to have them. We used to call each other on
+              landlines! — A: That's so different. I used to download music
+              from the computer, very slowly. — B: Now everything is so fast.
+              My battery dies faster than the download used to take, though. —
+              A: True. This phone already feels outdated, and I only bought it
+              last year.
+            questions:
+              - id: q1
+                text: "Did B have a smartphone as a teenager?"
+                options:
+                  - id: a
+                    text: "No"
+                  - id: b
+                    text: "Yes"
+                  - id: c
+                    text: "Only at 18"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "How did B used to talk to friends?"
+                options:
+                  - id: a
+                    text: "On landlines"
+                  - id: b
+                    text: "By email"
+                  - id: c
+                    text: "By letter"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "No, we didn't use to have them" (Q1 — no); "We used to call each other on landlines" (Q2 — landlines).
+
   - type: reading
     order_index: 7
     content:
@@ -228,7 +275,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/technology.mp3"  # src-hash: fee414cb
+      audio_url: "/audio/technology.mp3"  # src-hash: 5a6bb1a2
       transcript: >
         A: Did you use to have a smartphone as a teenager? — B: No, we
         didn't use to have them. We used to call each other on

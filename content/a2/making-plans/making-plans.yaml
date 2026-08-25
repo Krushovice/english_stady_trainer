@@ -208,6 +208,52 @@ blocks:
             relax" (Q2) — this is a spontaneous, undecided plan, so
             "will" is used.
 
+        - slug: making-plans-listening-weekend
+          type: listening_comprehension
+          skill: listening
+          difficulty: A2
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/making-plans.mp3"
+            transcript: >
+              A: What are you going to do this weekend? — B: I'm going to
+              visit my sister — we arranged it last week. — A: Nice! I haven't
+              planned anything yet... actually, I'll come with you, if that's
+              OK? — B: Sure! I'll text her now to confirm. — A: Great, I'm
+              looking forward to it. Is she available on Saturday? — B: I
+              think so, but let me check and I'll let you know.
+            questions:
+              - id: q1
+                text: "What is B going to do this weekend?"
+                options:
+                  - id: a
+                    text: "Visit their sister"
+                  - id: b
+                    text: "Go shopping"
+                  - id: c
+                    text: "Stay home"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "What does A decide to do?"
+                options:
+                  - id: a
+                    text: "Come along too"
+                  - id: b
+                    text: "Stay home"
+                  - id: c
+                    text: "Visit their own sister"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "I'm going to visit my sister" (Q1); "I'll come with you, if that's OK?" (Q2).
+
   - type: reading
     order_index: 7
     content:
@@ -228,7 +274,7 @@ blocks:
   - type: listening
     order_index: 8
     content:
-      audio_url: "/audio/making-plans.mp3"  # src-hash: cd7a55d2
+      audio_url: "/audio/making-plans.mp3"  # src-hash: acbf3257
       transcript: >
         A: What are you going to do this weekend? — B: I'm going to
         visit my sister — we arranged it last week. — A: Nice! I haven't
