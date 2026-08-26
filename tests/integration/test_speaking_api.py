@@ -198,6 +198,63 @@ async def test_get_unknown_speaking_attempt_returns_404(
     assert response.status_code == 404
 
 
+async def test_start_lesson_speaking_attempt_uses_the_lesson_authored_prompt(
+    client: AsyncClient, synced_lesson: Lesson, auth_headers: dict[str, str]
+):
+    response = await client.post(
+        "/api/v1/speaking/lessons/making-small-talk/attempts", headers=auth_headers
+    )
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["lesson_title"] == "Making Small Talk"
+    assert body["prompt"].startswith("Imagine you're at a work event")
+    assert body["transcript"] is None
+    assert body["submitted_at"] is None
+
+
+async def test_start_lesson_speaking_attempt_requires_auth(
+    client: AsyncClient, synced_lesson: Lesson
+):
+    response = await client.post("/api/v1/speaking/lessons/making-small-talk/attempts")
+
+    assert response.status_code == 401
+
+
+async def test_start_lesson_speaking_attempt_for_unknown_lesson_returns_404(
+    client: AsyncClient, auth_headers: dict[str, str]
+):
+    response = await client.post(
+        "/api/v1/speaking/lessons/does-not-exist/attempts", headers=auth_headers
+    )
+
+    assert response.status_code == 404
+
+
+async def test_start_lesson_speaking_attempt_can_then_be_submitted(
+    client: AsyncClient,
+    synced_lesson: Lesson,
+    auth_headers: dict[str, str],
+    override_ai_provider,
+    override_stt_provider,
+):
+    generated = await client.post(
+        "/api/v1/speaking/lessons/making-small-talk/attempts", headers=auth_headers
+    )
+    attempt_id = generated.json()["id"]
+
+    override_stt_provider(MockSTTProvider(transcript="Hi, how's it going tonight?"))
+    override_ai_provider(MockAIProvider(response=_FEEDBACK_RESPONSE))
+    submit = await client.post(
+        f"/api/v1/speaking/attempts/{attempt_id}/submit",
+        files={"audio": ("clip.wav", b"fake-audio-bytes", "audio/wav")},
+        headers=auth_headers,
+    )
+
+    assert submit.status_code == 200
+    assert submit.json()["transcript"] == "Hi, how's it going tonight?"
+
+
 async def test_generate_speaking_prompt_returns_503_when_provider_unavailable(
     client: AsyncClient, synced_lesson: Lesson, auth_headers: dict[str, str], override_ai_provider
 ):

@@ -140,7 +140,7 @@ export function LessonPage() {
         .slice()
         .sort((a, b) => a.order_index - b.order_index)
         .map((block) => (
-          <LessonBlockView key={block.id} block={block} />
+          <LessonBlockView key={block.id} block={block} lessonSlug={lesson.slug} />
         ))}
 
       {lesson.vocabulary.length > 0 && (

@@ -5,6 +5,12 @@ export function generateSpeakingPrompt(): Promise<SpeakingAttempt> {
   return apiRequest<SpeakingAttempt>("/speaking/prompts", { method: "POST" });
 }
 
+export function startLessonSpeakingAttempt(lessonSlug: string): Promise<SpeakingAttempt> {
+  return apiRequest<SpeakingAttempt>(`/speaking/lessons/${lessonSlug}/attempts`, {
+    method: "POST",
+  });
+}
+
 export function getSpeakingAttempt(id: string): Promise<SpeakingAttempt> {
   return apiRequest<SpeakingAttempt>(`/speaking/attempts/${id}`);
 }

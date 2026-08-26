@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { assetUrl } from "../api/client";
 import type { LessonBlock } from "../api/types";
 
@@ -29,7 +30,13 @@ function RuSummary({ text }: { text: string }) {
   );
 }
 
-export function LessonBlockView({ block }: { block: LessonBlock }) {
+export function LessonBlockView({
+  block,
+  lessonSlug,
+}: {
+  block: LessonBlock;
+  lessonSlug: string;
+}) {
   if (SKIPPED_TYPES.has(block.block_type)) return null;
 
   const content = block.content;
@@ -117,6 +124,9 @@ export function LessonBlockView({ block }: { block: LessonBlock }) {
         <section className="lesson-block">
           <h2>Говорение</h2>
           <p>{asString(content.prompt)}</p>
+          <Link to={`/speaking?lessonSlug=${lessonSlug}`} className="btn-primary">
+            Начать
+          </Link>
         </section>
       );
 

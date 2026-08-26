@@ -70,6 +70,20 @@ async def generate_speaking_prompt(
     return _to_response(attempt)
 
 
+@router.post("/lessons/{lesson_slug}/attempts", response_model=SpeakingAttemptResponse)
+async def start_lesson_speaking_attempt(
+    lesson_slug: str,
+    session: AsyncSession = Depends(get_db_session),
+    current_user: User = Depends(get_current_user),
+) -> SpeakingAttemptResponse:
+    try:
+        attempt = await SpeakingService(session).start_lesson_attempt(current_user.id, lesson_slug)
+    except NotFoundError as exc:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
+
+    return _to_response(attempt)
+
+
 @router.get("/attempts/{attempt_id}", response_model=SpeakingAttemptResponse)
 async def get_speaking_attempt(
     attempt_id: uuid.UUID,

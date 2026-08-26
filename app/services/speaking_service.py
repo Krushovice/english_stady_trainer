@@ -11,6 +11,7 @@ from app.core.exceptions import (
 )
 from app.integrations.ai.provider import AIProvider
 from app.integrations.stt.provider import STTProvider
+from app.models.lesson_block import BlockType
 from app.models.speaking import SpeakingAttempt
 from app.repositories.course_repository import CourseRepository
 from app.repositories.exercise_repository import ExerciseRepository
@@ -64,6 +65,30 @@ class SpeakingService:
         await self._session.commit()
         # See HomeworkService.generate() for why: commit() expires the object,
         # and this scalar relationship is provably `lesson` already.
+        set_committed_value(attempt, "lesson", lesson)
+        return attempt
+
+    async def start_lesson_attempt(self, user_id: uuid.UUID, lesson_slug: str) -> SpeakingAttempt:
+        """Starts a Speaking attempt from a lesson's own authored `speaking`
+        block prompt, instead of an AI-generated one — the lesson already
+        wrote the exact task (topic, vocabulary to use), so there's nothing
+        for the AI to add at this step. Evaluation (`submit_attempt`) still
+        goes through STT + AI feedback as normal.
+        """
+        lesson = await self._course.get_lesson_by_slug(lesson_slug)
+        if lesson is None:
+            raise NotFoundError(f"Lesson '{lesson_slug}' not found")
+
+        speaking_block = next(
+            (block for block in lesson.blocks if block.block_type == BlockType.SPEAKING), None
+        )
+        if speaking_block is None:
+            raise NotFoundError(f"Lesson '{lesson_slug}' has no speaking task")
+
+        prompt_text = speaking_block.content.get("prompt", "")
+        attempt = SpeakingAttempt(user_id=user_id, lesson_id=lesson.id, prompt=prompt_text)
+        self._speaking.add(attempt)
+        await self._session.commit()
         set_committed_value(attempt, "lesson", lesson)
         return attempt
 
