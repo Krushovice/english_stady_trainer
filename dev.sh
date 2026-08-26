@@ -62,4 +62,9 @@ echo "  (docker compose down   — to stop everything)"
 echo
 
 cd frontend
-exec npm run dev -- --host 127.0.0.1 --port 5173
+# No --host flag: Vite then prints and binds "localhost", matching the
+# API's CORS_ORIGINS exactly. Passing --host 127.0.0.1 instead makes Vite
+# print that literal address, which the API's CORS then rejects as a
+# different origin — a 400 on every request that looks like "the backend
+# isn't working" but is really a CORS mismatch (see docs/decisions.md).
+exec npm run dev -- --port 5173
