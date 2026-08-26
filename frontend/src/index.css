@@ -1529,6 +1529,15 @@ a.entry-row:hover .chevron {
   gap: var(--space-3);
 }
 
+.flashcard-translate {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.flashcard-translate input {
+  flex: 1;
+}
+
 /* ==========================================================================
    Mini-test / locked
    ========================================================================== */
