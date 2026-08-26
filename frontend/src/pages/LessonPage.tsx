@@ -23,6 +23,14 @@ const SKILL_LABELS: Record<string, string> = {
   speaking: "Говорение",
 };
 
+function pluralizeQuestions(count: number): string {
+  const mod10 = count % 10;
+  const mod100 = count % 100;
+  if (mod10 === 1 && mod100 !== 11) return "вопрос";
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return "вопроса";
+  return "вопросов";
+}
+
 export function LessonPage() {
   const { lessonSlug } = useParams<{ lessonSlug: string }>();
   const queryClient = useQueryClient();
@@ -117,7 +125,10 @@ export function LessonPage() {
         <section className="lesson-block mini-test">
           <h2>Быстрое повторение: {miniTestQuery.data.previous_lesson_title}</h2>
           <p className="status">
-            Пять вопросов по предыдущей теме, прежде чем идти дальше.
+            {miniTestQuery.data.exercises.length}{" "}
+            {pluralizeQuestions(miniTestQuery.data.exercises.length)} по предыдущей теме, прежде чем
+            идти дальше. Это повторение не влияет на прохождение текущего урока — экзаменуются
+            упражнения в конце страницы.
           </p>
           {miniTestQuery.data.exercises.map((exercise) => (
             <ExerciseCard key={exercise.id} exercise={exercise} />
@@ -161,6 +172,13 @@ export function LessonPage() {
 
       <section className="lesson-block">
         <h2>Упражнения</h2>
+
+        {!completion?.passed && (
+          <p className="status">
+            Эти задания определяют, засчитан ли урок — 70% правильных ответов открывает следующий
+            урок.
+          </p>
+        )}
 
         {completion?.attempted && !completion.passed && completion.wrong_exercise_ids.length > 0 && (
           <p className="status status-error">
