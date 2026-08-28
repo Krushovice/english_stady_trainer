@@ -40,8 +40,10 @@ TURN_RE = re.compile(r"([A-Z]):\s*")
 # Every authored lesson dialogue uses exactly two speaker letters, A and B
 # (confirmed by scanning all of content/**/*.yaml) — a fixed two-voice map
 # is enough, no need for a per-lesson or per-speaker-count scheme. See
-# docs/decisions.md, 2026-08-25 live-feedback round.
-DIALOGUE_VOICES = {"A": "af_heart", "B": "am_adam"}
+# docs/decisions.md, 2026-08-25 live-feedback round. Swapped 2026-08-28
+# after the user reported the original A=af_heart/B=am_adam pairing sounded
+# gender-reversed on actual playback.
+DIALOGUE_VOICES = {"A": "am_adam", "B": "af_heart"}
 DEFAULT_DIALOGUE_VOICE = DIALOGUE_VOICES["A"]
 SILENCE_BETWEEN_TURNS_MS = 300
 
@@ -56,23 +58,10 @@ def text_hash(text: str) -> str:
     return hashlib.sha256(text.strip().encode()).hexdigest()[:8]
 
 
-def clean_for_speech(text: str) -> str:
-    """Turns an authored dialogue transcript into plain narration text.
-
-    Kokoro is a single-voice synthesizer, so "A: ... B: ..." speaker labels
-    would just be read aloud as literal letters — stripped instead, with the
-    turn separator ("A: ... — B: ...") replaced by a sentence break.
-    """
-    text = re.sub(r"^Transcript\s*[—-]\s*", "", text.strip())
-    text = re.sub(r"\b[A-Z]:\s*", "", text)
-    text = text.replace(" — ", ". ")
-    return re.sub(r"\s+", " ", text).strip()
-
-
 def split_into_turns(text: str) -> list[tuple[str, str]]:
     """Splits a "A: ... — B: ... — A: ..." transcript into (speaker, text)
-    turns, keeping the speaker labels (unlike `clean_for_speech`) so each
-    turn can be synthesized in that speaker's own voice.
+    turns, keeping the speaker labels so each turn can be synthesized in
+    that speaker's own voice.
 
     Splitting on the `X:` label itself, rather than on the " — " turn
     separator, matters: a turn's own text can contain a literal em dash
@@ -125,7 +114,9 @@ def _existing_hash(line: str) -> str | None:
     return match.group(1) if match else None
 
 
-async def process_lesson_file(provider: TTSProvider, path: Path, stats: Stats) -> None:
+async def process_lesson_file(
+    provider: TTSProvider, path: Path, stats: Stats, *, force: bool = False
+) -> None:
     raw_text = path.read_text()
     data = yaml.safe_load(raw_text)
     listening_blocks = [b for b in data.get("blocks", []) if b.get("type") == "listening"]
@@ -157,7 +148,7 @@ async def process_lesson_file(provider: TTSProvider, path: Path, stats: Stats) -
     existing_hash = (
         _existing_hash(lines[audio_line_index]) if audio_line_index is not None else None
     )
-    if existing_hash == current_hash and audio_path.exists():
+    if not force and existing_hash == current_hash and audio_path.exists():
         stats.skipped += 1
         return
 
@@ -185,14 +176,16 @@ async def process_lesson_file(provider: TTSProvider, path: Path, stats: Stats) -
     print(f"generated: {slug}")
 
 
-async def process_placement_bank(provider: TTSProvider, path: Path, stats: Stats) -> None:
+async def process_placement_bank(
+    provider: TTSProvider, path: Path, stats: Stats, *, force: bool = False
+) -> None:
     data = yaml.safe_load(path.read_text())
     listening_items = [item for item in data["items"] if item.get("skill") == "listening"]
 
     for item in listening_items:
         slug = item["slug"]
-        speech_text = clean_for_speech(item["prompt"]["passage"])
-        current_hash = text_hash(speech_text)
+        turns = split_into_turns(item["prompt"]["passage"])
+        current_hash = text_hash("|".join(f"{speaker}:{text}" for speaker, text in turns))
         audio_path = AUDIO_DIR / f"{slug}.mp3"
 
         # Re-read from disk every iteration: an earlier item in this same
@@ -206,11 +199,11 @@ async def process_placement_bank(provider: TTSProvider, path: Path, stats: Stats
         existing_hash = (
             _existing_hash(lines[audio_line_index]) if audio_line_index is not None else None
         )
-        if existing_hash == current_hash and audio_path.exists():
+        if not force and existing_hash == current_hash and audio_path.exists():
             stats.skipped += 1
             continue
 
-        audio_bytes = await provider.synthesize(speech_text)
+        audio_bytes = await synthesize_dialogue(provider, turns)
         AUDIO_DIR.mkdir(parents=True, exist_ok=True)
         audio_path.write_bytes(audio_bytes)
 
@@ -227,7 +220,7 @@ async def process_placement_bank(provider: TTSProvider, path: Path, stats: Stats
         print(f"generated: {slug}")
 
 
-async def main(only: list[str] | None) -> None:
+async def main(only: list[str] | None, *, force: bool = False) -> None:
     provider = get_tts_provider()
     stats = Stats()
 
@@ -236,11 +229,11 @@ async def main(only: list[str] | None) -> None:
             continue
         if only and not any(slug in content_path.stem for slug in only):
             continue
-        await process_lesson_file(provider, content_path, stats)
+        await process_lesson_file(provider, content_path, stats, force=force)
 
     bank_path = CONTENT_DIR / PLACEMENT_BANK_DIR_NAME / "bank.yaml"
     if bank_path.exists() and not only:
-        await process_placement_bank(provider, bank_path, stats)
+        await process_placement_bank(provider, bank_path, stats, force=force)
 
     print(f"done: {stats.generated} generated, {stats.skipped} already up to date")
 
@@ -252,5 +245,11 @@ if __name__ == "__main__":
         nargs="+",
         help="Only process lesson files whose slug contains one of these substrings",
     )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Regenerate even if the tracked hash already matches (e.g. after a voice-mapping "
+        "change, which doesn't affect the transcript hash)",
+    )
     args = parser.parse_args()
-    asyncio.run(main(args.only))
+    asyncio.run(main(args.only, force=args.force))

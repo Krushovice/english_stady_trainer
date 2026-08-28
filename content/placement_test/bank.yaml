@@ -348,7 +348,7 @@ items:
     skill: listening
     difficulty: A1
     prompt:
-      audio_url: "/audio/placement-listening-a1.mp3"  # src-hash: ca7014f7
+      audio_url: "/audio/placement-listening-a1.mp3"  # src-hash: b3091282
       passage: >-
         Transcript — A: Hi! What's your name? B: Hi, I'm Marco. A: Nice
         to meet you, Marco. Where are you from? B: I'm from Italy.
@@ -376,7 +376,7 @@ items:
     skill: listening
     difficulty: A2
     prompt:
-      audio_url: "/audio/placement-listening-a2.mp3"  # src-hash: b8709395
+      audio_url: "/audio/placement-listening-a2.mp3"  # src-hash: 0569c1d4
       passage: >-
         Transcript — A: Excuse me, how do I get to the train station? B:
         Go straight ahead, then turn left at the bank. It's next to the
@@ -405,7 +405,7 @@ items:
     skill: listening
     difficulty: B1
     prompt:
-      audio_url: "/audio/placement-listening-b1.mp3"  # src-hash: 438b1528
+      audio_url: "/audio/placement-listening-b1.mp3"  # src-hash: 0e2b5165
       passage: >-
         Transcript — A: Did you hear about the new restaurant downtown?
         B: Yes, my sister went last week. She said the food was great
@@ -435,7 +435,7 @@ items:
     skill: listening
     difficulty: B2
     prompt:
-      audio_url: "/audio/placement-listening-b2.mp3"  # src-hash: 24f13004
+      audio_url: "/audio/placement-listening-b2.mp3"  # src-hash: f594a04d
       passage: >-
         Transcript — A: I've been thinking about switching careers, but
         I'm worried it's too risky at this point. B: I understand the
