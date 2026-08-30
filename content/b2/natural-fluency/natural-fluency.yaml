@@ -252,13 +252,39 @@ blocks:
                     text: "He never gives feedback"
                   - id: d
                     text: "We don't know"
+              - id: q3
+                text: "How does B choose to handle the annoying parts of the job?"
+                options:
+                  - id: a
+                    text: "By focusing on the good and tolerating small issues"
+                  - id: b
+                    text: "By complaining to HR"
+                  - id: c
+                    text: "By quitting soon"
+                  - id: d
+                    text: "We don't know"
+              - id: q4
+                text: "What does A imply by saying \"that happens everywhere\"?"
+                options:
+                  - id: a
+                    text: "It's a common problem in most workplaces"
+                  - id: b
+                    text: "It's very rare"
+                  - id: c
+                    text: "It only happens in this company"
+                  - id: d
+                    text: "We don't know"
           answer_key:
             answers:
               q1: a
               q2: a
+              q3: a
+              q4: a
           explanation: >-
-            "it's good... overall, yeah" (Q1); "a manager who always seems to get away
-            with being late himself" (Q2).
+            "it's good... overall, yeah" (Q1); "a manager who always seems to
+            get away with being late himself" (Q2). "I've learnt to put up
+            with the small stuff and focus on the good" (Q3); "that happens
+            everywhere" (Q4).
 
   - type: reading
     order_index: 7

@@ -257,13 +257,38 @@ blocks:
                     text: "In a month"
                   - id: d
                     text: "We don't know"
+              - id: q3
+                text: "Why did Anna say she'd been busy, according to what she pointed out?"
+                options:
+                  - id: a
+                    text: "It had been a hectic month for her"
+                  - id: b
+                    text: "She was on holiday"
+                  - id: c
+                    text: "She was ill"
+                  - id: d
+                    text: "We don't know"
+              - id: q4
+                text: "Did Anna explain in detail why she'd be busy?"
+                options:
+                  - id: a
+                    text: "No, she only made a brief comment about it"
+                  - id: b
+                    text: "Yes, in great detail"
+                  - id: c
+                    text: "She refused to explain at all"
+                  - id: d
+                    text: "We don't know"
           answer_key:
             answers:
               q1: a
               q2: a
+              q3: a
+              q4: a
           explanation: >-
-            "she asked if we could reschedule" (Q1); "she'd be free the following week"
-            (Q2).
+            "she asked if we could reschedule" (Q1); "she'd be free the
+            following week" (Q2). "it had been a hectic month for her" (Q3);
+            "Not really — she just pointed out..." (Q4).
 
   - type: reading
     order_index: 7

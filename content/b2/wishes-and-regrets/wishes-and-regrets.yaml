@@ -254,13 +254,38 @@ blocks:
                     text: "They want their old job back"
                   - id: d
                     text: "We don't know"
+              - id: q3
+                text: "What does B mean by calling it \"water under the bridge\"?"
+                options:
+                  - id: a
+                    text: "It's in the past and no longer worth worrying about"
+                  - id: b
+                    text: "It's still a very painful topic"
+                  - id: c
+                    text: "B wants to undo the decision"
+                  - id: d
+                    text: "We don't know"
+              - id: q4
+                text: "Does B think they should have negotiated a better offer first?"
+                options:
+                  - id: a
+                    text: "Probably, yes"
+                  - id: b
+                    text: "No, not at all"
+                  - id: c
+                    text: "They never considered it"
+                  - id: d
+                    text: "We don't know"
           answer_key:
             answers:
               q1: a
               q2: a
+              q3: a
+              q4: a
           explanation: >-
-            "I wish I'd asked more questions before I quit" (Q1); "I've made peace with
-            it" (Q2).
+            "I wish I'd asked more questions before I quit" (Q1); "I've made
+            peace with it" (Q2). "water under the bridge now — a lesson
+            learned" (Q3); "Probably!" (Q4).
 
   - type: reading
     order_index: 7

@@ -249,13 +249,39 @@ blocks:
                     text: "It was too long"
                   - id: d
                     text: "We don't know"
+              - id: q3
+                text: "What does B say really matters, looking back at the experience?"
+                options:
+                  - id: a
+                    text: "What the team learns from such moments"
+                  - id: b
+                    text: "Winning every project"
+                  - id: c
+                    text: "Avoiding stress completely"
+                  - id: d
+                    text: "We don't know"
+              - id: q4
+                text: "How did the client's feedback affect the team, according to A?"
+                options:
+                  - id: a
+                    text: "It was a real turning point for the whole team"
+                  - id: b
+                    text: "It made no difference"
+                  - id: c
+                    text: "It caused more stress"
+                  - id: d
+                    text: "We don't know"
           answer_key:
             answers:
               q1: a
               q2: a
+              q3: a
+              q4: a
           explanation: >-
-            "If we hadn't had the report reviewed, it might have failed" (Q1); "they
-            said it was the best proposal they'd seen all year" (Q2).
+            "If we hadn't had the report reviewed, it might have failed" (Q1);
+            "they said it was the best proposal they'd seen all year" (Q2).
+            "it's what we learn from moments like that that really matters"
+            (Q3); "a real turning point for the whole team" (Q4).
 
   - type: reading
     order_index: 7

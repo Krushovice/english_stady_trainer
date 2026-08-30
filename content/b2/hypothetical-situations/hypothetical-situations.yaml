@@ -254,13 +254,39 @@ blocks:
                     text: "She's not sure"
                   - id: d
                     text: "We don't know"
+              - id: q3
+                text: "What does B say about her early time abroad?"
+                options:
+                  - id: a
+                    text: "She struggled at first because she hadn't planned well enough"
+                  - id: b
+                    text: "Everything went perfectly from day one"
+                  - id: c
+                    text: "She never had any difficulties"
+                  - id: d
+                    text: "We don't know"
+              - id: q4
+                text: "What would have happened if B hadn't taken the risk of moving?"
+                options:
+                  - id: a
+                    text: "She would have missed a huge opportunity"
+                  - id: b
+                    text: "Nothing would have changed"
+                  - id: c
+                    text: "She would have been happier"
+                  - id: d
+                    text: "We don't know"
           answer_key:
             answers:
               q1: a
               q2: a
+              q3: a
+              q4: a
           explanation: >-
-            "I probably wouldn't have met my husband" (Q1); "Not really" (Q2), followed
-            by "I think I would have missed a huge opportunity."
+            "I probably wouldn't have met my husband" (Q1); "Not really" (Q2),
+            followed by "I think I would have missed a huge opportunity." "if
+            I'd planned it better, I wouldn't have struggled so much" (Q3); "I
+            would have missed a huge opportunity" (Q4).
 
   - type: reading
     order_index: 7

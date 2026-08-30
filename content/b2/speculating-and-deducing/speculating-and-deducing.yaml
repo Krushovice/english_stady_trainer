@@ -253,13 +253,39 @@ blocks:
                     text: "A message from a colleague"
                   - id: d
                     text: "We don't know"
+              - id: q3
+                text: "Why does B say Sarah \"can't have gone far\"?"
+                options:
+                  - id: a
+                    text: "Because her laptop is still open"
+                  - id: b
+                    text: "Because someone saw her nearby"
+                  - id: c
+                    text: "Because her coat is still there"
+                  - id: d
+                    text: "We don't know"
+              - id: q4
+                text: "How is the mystery finally solved?"
+                options:
+                  - id: a
+                    text: "By noticing a meeting room booking on Sarah's calendar"
+                  - id: b
+                    text: "By calling Sarah"
+                  - id: c
+                    text: "By asking a colleague"
+                  - id: d
+                    text: "We don't know"
           answer_key:
             answers:
               q1: a
               q2: a
+              q3: a
+              q4: a
           explanation: >-
-            "They must have gone to lunch" (Q1); "there's a meeting room booking on her
-            calendar" (Q2).
+            "They must have gone to lunch" (Q1); "there's a meeting room
+            booking on her calendar" (Q2). "Sarah's laptop is still open. She
+            can't have gone far" (Q3); "a meeting room booking on her
+            calendar" (Q4).
 
   - type: reading
     order_index: 7

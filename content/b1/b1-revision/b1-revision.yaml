@@ -254,13 +254,38 @@ blocks:
                     text: "A year"
                   - id: d
                     text: "We don't know"
+              - id: q3
+                text: "How did B feel before the trip, according to the conversation?"
+                options:
+                  - id: a
+                    text: "Nervous, almost cancelled"
+                  - id: b
+                    text: "Completely calm"
+                  - id: c
+                    text: "Excited with no doubts"
+                  - id: d
+                    text: "We don't know"
+              - id: q4
+                text: "Had B travelled alone before this trip?"
+                options:
+                  - id: a
+                    text: "No, never"
+                  - id: b
+                    text: "Yes, many times"
+                  - id: c
+                    text: "Once, years ago"
+                  - id: d
+                    text: "We don't know"
           answer_key:
             answers:
               q1: a
               q2: a
+              q3: a
+              q4: a
           explanation: >-
-            "I went to Italy last month" (Q1); "the trip was only two weeks away" when B
-            decided to go (Q2).
+            "I went to Italy last month" (Q1); "the trip was only two weeks
+            away" when B decided to go (Q2). "I nearly cancelled" (Q3); "I'd
+            never travelled alone before" (Q4).
 
   - type: reading
     order_index: 7

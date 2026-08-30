@@ -260,13 +260,38 @@ blocks:
                     text: "Full-time remote work"
                   - id: d
                     text: "We don't know"
+              - id: q3
+                text: "What does B point out at the end of the conversation?"
+                options:
+                  - id: a
+                    text: "Not every job allows a flexible mix"
+                  - id: b
+                    text: "Everyone should work from home"
+                  - id: c
+                    text: "Offices should close entirely"
+                  - id: d
+                    text: "We don't know"
+              - id: q4
+                text: "What is B's main concern about working from home?"
+                options:
+                  - id: a
+                    text: "People miss out on real teamwork"
+                  - id: b
+                    text: "It's too expensive"
+                  - id: c
+                    text: "It's less productive"
+                  - id: d
+                    text: "We don't know"
           answer_key:
             answers:
               q1: a
               q2: a
+              q3: a
+              q4: a
           explanation: >-
-            "working from home is much more productive" (Q1); "a mix of both seems
-            ideal" (Q2).
+            "working from home is much more productive" (Q1); "a mix of both
+            seems ideal" (Q2). "not every job allows that kind of flexibility"
+            (Q3); "people miss out on real teamwork" (Q4).
 
   - type: reading
     order_index: 7

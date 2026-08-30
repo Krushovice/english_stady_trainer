@@ -246,13 +246,39 @@ blocks:
                     text: Take a day off
                   - id: d
                     text: We don't know
+              - id: q3
+                text: "What can we infer about A's week, based on the reply \"Same here\"?"
+                options:
+                  - id: a
+                    text: "It's also been busy"
+                  - id: b
+                    text: "It's been very relaxing"
+                  - id: c
+                    text: "A hasn't worked this week"
+                  - id: d
+                    text: "We don't know"
+              - id: q4
+                text: "Which day does A mention for meeting up?"
+                options:
+                  - id: a
+                    text: "Thursday"
+                  - id: b
+                    text: "Friday"
+                  - id: c
+                    text: "Saturday"
+                  - id: d
+                    text: "We don't know"
           answer_key:
             answers:
               q1: a
               q2: a
+              q3: a
+              q4: a
           explanation: >-
             "Busy week, though" (Q1 — busy); "We should catch up properly
-            sometime — grab lunch?" (Q2 — go for lunch together).
+            sometime — grab lunch?" (Q2 — go for lunch together). "Same here"
+            — A confirms their week has been busy too (Q3); "You're free on
+            Thursday, aren't you?" (Q4).
 
   - type: reading
     order_index: 7

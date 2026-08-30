@@ -255,13 +255,38 @@ blocks:
                     text: "They cancelled the trip"
                   - id: d
                     text: "We don't know"
+              - id: q3
+                text: "How does B feel about the trip in the end?"
+                options:
+                  - id: a
+                    text: "It turned out fine despite the stress"
+                  - id: b
+                    text: "It was completely ruined"
+                  - id: c
+                    text: "They never made it"
+                  - id: d
+                    text: "We don't know"
+              - id: q4
+                text: "What had already happened by the time they got to the airport?"
+                options:
+                  - id: a
+                    text: "Their original flight had already boarded"
+                  - id: b
+                    text: "The taxi had arrived early"
+                  - id: c
+                    text: "The trip had been cancelled"
+                  - id: d
+                    text: "We don't know"
           answer_key:
             answers:
               q1: a
               q2: a
+              q3: a
+              q4: a
           explanation: >-
-            "the taxi hadn't arrived on time" (Q1); "in the end we caught a later
-            flight" (Q2).
+            "the taxi hadn't arrived on time" (Q1); "in the end we caught a
+            later flight" (Q2). "It turned out fine, actually" (Q3); "our
+            flight had already boarded" by the time they arrived (Q4).
 
   - type: reading
     order_index: 7

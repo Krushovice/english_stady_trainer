@@ -251,13 +251,39 @@ blocks:
                     text: "Fully office-based work"
                   - id: d
                     text: "We don't know"
+              - id: q3
+                text: "What does B use to support the argument for remote work?"
+                options:
+                  - id: a
+                    text: "Studies showing productivity often increases"
+                  - id: b
+                    text: "A survey of employees"
+                  - id: c
+                    text: "Personal experience only"
+                  - id: d
+                    text: "We don't know"
+              - id: q4
+                text: "What is B's final position on the debate?"
+                options:
+                  - id: a
+                    text: "It depends on the team"
+                  - id: b
+                    text: "Remote work is always best"
+                  - id: c
+                    text: "Office work is always best"
+                  - id: d
+                    text: "We don't know"
           answer_key:
             answers:
               q1: a
               q2: a
+              q3: a
+              q4: a
           explanation: >-
-            "What worries me most about remote work is the lack of collaboration" (Q1);
-            "I'd put forward a hybrid model instead" (Q2).
+            "What worries me most about remote work is the lack of
+            collaboration" (Q1); "I'd put forward a hybrid model instead"
+            (Q2). "studies show productivity often increases" (Q3); "at the
+            end of the day, it depends on the team" (Q4).
 
   - type: reading
     order_index: 7

@@ -254,12 +254,38 @@ blocks:
                     text: "Since last year"
                   - id: d
                     text: "We don't know"
+              - id: q3
+                text: "What does B mean by \"It's been a life-changing experience so far\"?"
+                options:
+                  - id: a
+                    text: "Moving abroad has significantly affected B's life"
+                  - id: b
+                    text: "B regrets moving"
+                  - id: c
+                    text: "B is unsure how they feel about it"
+                  - id: d
+                    text: "We don't know"
+              - id: q4
+                text: "Has B fully mastered the language yet?"
+                options:
+                  - id: a
+                    text: "No, not yet"
+                  - id: b
+                    text: "Yes, completely"
+                  - id: c
+                    text: "B never tried"
+                  - id: d
+                    text: "We don't know"
           answer_key:
             answers:
               q1: a
               q2: a
+              q3: a
+              q4: a
           explanation: >-
             "I've lived in Portugal for two years" (Q1); "Since 2022" (Q2).
+            Moving was a significant, positive change for B (Q3); "I haven't
+            mastered it yet" (Q4).
 
   - type: reading
     order_index: 7
