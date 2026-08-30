@@ -261,6 +261,95 @@ blocks:
             "Oh, Marco!" identifies him (Q1); "he's the person who designed our whole
             onboarding process" (Q2).
 
+        - slug: describing-people-and-things-listening-monologue
+          type: listening_comprehension
+          skill: listening
+          difficulty: B2
+          prompt:
+            audio_url: "/audio/describing-people-and-things-listening-monologue.mp3"  # src-hash: 6696dff8
+            transcript: >
+              B: Let me describe my mentor, whose advice honestly changed my
+              career. She's the person who taught me how to distinguish
+              between what really matters at work and what doesn't. To be
+              exact, she's a project manager, someone whose calmness under
+              pressure I've always admired. What I find most impressive —
+              namely, her ability to explain complicated ideas simply — is, in
+              other words, a defining feature of a great teacher. She's also
+              someone who never judges people for asking questions, which I
+              think is rare. If I had to describe her in detail, I'd say she's
+              the kind of person whose patience seems endless, and whose
+              feedback, even when critical, always makes you want to improve.
+            questions:
+              - id: q1
+                text: "What is the mentor's job?"
+                options:
+                  - id: a
+                    text: "Teacher"
+                  - id: b
+                    text: "Project manager"
+                  - id: c
+                    text: "Career coach"
+                  - id: d
+                    text: "Not stated"
+              - id: q2
+                text: "According to the speaker, what is a \"defining feature of a great teacher\"?"
+                options:
+                  - id: a
+                    text: "Being strict"
+                  - id: b
+                    text: "The ability to explain complex ideas simply"
+                  - id: c
+                    text: "Never giving feedback"
+                  - id: d
+                    text: "Working under pressure"
+              - id: q3
+                text: "Which quality does the speaker say is rare?"
+                options:
+                  - id: a
+                    text: "Being patient"
+                  - id: b
+                    text: "Never judging people for asking questions"
+                  - id: c
+                    text: "Explaining ideas simply"
+                  - id: d
+                    text: "Working as a project manager"
+              - id: q4
+                text: "How does the speaker feel about the mentor's critical feedback?"
+                options:
+                  - id: a
+                    text: "It's discouraging"
+                  - id: b
+                    text: "It's unwelcome"
+                  - id: c
+                    text: "It motivates them to improve"
+                  - id: d
+                    text: "It's rarely given"
+              - id: q5
+                text: "What is the main purpose of the monologue?"
+                options:
+                  - id: a
+                    text: "To criticise a former colleague"
+                  - id: b
+                    text: "To describe a person's qualities in detail"
+                  - id: c
+                    text: "To explain a company's structure"
+                  - id: d
+                    text: "To compare two mentors"
+          answer_key:
+            answers:
+              q1: b
+              q2: b
+              q3: b
+              q4: c
+              q5: b
+          explanation: >-
+            "she's a project manager" (Q1); "namely, her ability to explain
+            complicated ideas simply... a defining feature of a great teacher"
+            (Q2); "which I think is rare" about never judging people for
+            questions (Q3); "feedback... always makes you want to improve"
+            (Q4); the whole monologue describes the mentor's qualities in
+            detail (Q5).
+
   - type: reading
     order_index: 7
     content:

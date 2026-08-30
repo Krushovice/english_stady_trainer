@@ -268,6 +268,94 @@ blocks:
             "My neighbour keeps playing loud music at night" (Q1); "As a last resort,
             you could file a formal complaint" (Q2).
 
+        - slug: solving-problems-listening-monologue
+          type: listening_comprehension
+          skill: listening
+          difficulty: B1
+          prompt:
+            audio_url: "/audio/solving-problems-listening-monologue.mp3"  # src-hash: fb13dc93
+            transcript: >
+              A: I had a really annoying problem with my neighbour a few
+              months ago — loud music almost every night. At first, I didn't
+              know how to deal with it, so I asked a friend for advice. She
+              said if she were me, she'd talk to him directly, so I did. It
+              helped for a week, then the music started again. I weighed up
+              the options: call the building manager, leave a note, or just
+              accept it. In the end, I decided that if it happened one more
+              time, I would report it officially. As a last resort, I wrote a
+              formal complaint, and that finally worked. Looking back, I
+              should have tried to get to the bottom of the actual problem
+              earlier — it turned out he didn't realise how thin the walls
+              were.
+            questions:
+              - id: q1
+                text: "What was the speaker's original problem?"
+                options:
+                  - id: a
+                    text: "A leaking pipe"
+                  - id: b
+                    text: "Loud music from a neighbour"
+                  - id: c
+                    text: "A broken lift"
+                  - id: d
+                    text: "An unpaid bill"
+              - id: q2
+                text: "What did the speaker's friend suggest?"
+                options:
+                  - id: a
+                    text: "Calling the police"
+                  - id: b
+                    text: "Talking to the neighbour directly"
+                  - id: c
+                    text: "Moving to a new flat"
+                  - id: d
+                    text: "Ignoring the problem"
+              - id: q3
+                text: "What did the speaker do as a last resort?"
+                options:
+                  - id: a
+                    text: "Talked to the neighbour again"
+                  - id: b
+                    text: "Called the building manager"
+                  - id: c
+                    text: "Wrote a formal complaint"
+                  - id: d
+                    text: "Moved out"
+              - id: q4
+                text: "Why had the neighbour been playing loud music, according to the speaker?"
+                options:
+                  - id: a
+                    text: "He didn't like the speaker"
+                  - id: b
+                    text: "He didn't know the walls were thin"
+                  - id: c
+                    text: "He was having a party every night"
+                  - id: d
+                    text: "He was told to by the building manager"
+              - id: q5
+                text: "What does the speaker say they should have done earlier?"
+                options:
+                  - id: a
+                    text: "Called the police immediately"
+                  - id: b
+                    text: "Understood the real cause of the problem sooner"
+                  - id: c
+                    text: "Never talked to their friend"
+                  - id: d
+                    text: "Written the complaint sooner"
+          answer_key:
+            answers:
+              q1: b
+              q2: b
+              q3: c
+              q4: b
+              q5: b
+          explanation: >-
+            "loud music almost every night" (Q1); "she'd talk to him directly"
+            (Q2); "As a last resort, I wrote a formal complaint" (Q3); "he
+            didn't realise how thin the walls were" (Q4); "I should have tried
+            to get to the bottom of the actual problem earlier" (Q5).
+
   - type: reading
     order_index: 7
     content:

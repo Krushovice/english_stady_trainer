@@ -1,9 +1,10 @@
-"""Batch-generates real audio for lesson `listening` blocks and the
-placement-bank and final-exam-bank listening items, via the configured
-TTS provider — writing the resulting `audio_url` back into the source
-YAML content files so it survives the next `sync_content` run (same
-"additive JSON field" pattern already used for `summary_ru`, see
-docs/decisions.md).
+"""Batch-generates real audio for lesson `listening` blocks, any secondary
+listening_comprehension exercise items with their own distinct transcript
+(e.g. an added monologue), and the placement-bank and final-exam-bank
+listening items, via the configured TTS provider — writing the resulting
+`audio_url` back into the source YAML content files so it survives the next
+`sync_content` run (same "additive JSON field" pattern already used for
+`summary_ru`, see docs/decisions.md).
 
 Idempotent: each inserted `audio_url` line carries a `# src-hash: <hash>`
 comment of the transcript it was generated from. A rerun only regenerates
@@ -178,6 +179,70 @@ async def process_lesson_file(
     print(f"generated: {slug}")
 
 
+async def process_lesson_extra_listening_items(
+    provider: TTSProvider, path: Path, stats: Stats, *, force: bool = False
+) -> None:
+    """Handles a lesson's *secondary* listening_comprehension exercise items —
+    ones authored with their own distinct transcript/audio (e.g. an added
+    monologue), as opposed to the lesson's first listening_comprehension item,
+    which conventionally just reuses the primary `listening` block's own
+    audio_url and is tracked by `process_lesson_file` instead.
+    """
+    data = yaml.safe_load(path.read_text())
+    lesson_slug = data["lesson"]["slug"]
+    primary_audio_url = f"/audio/{lesson_slug}.mp3"
+
+    exercises_block = next(
+        (b for b in data.get("blocks", []) if b.get("type") == "exercises"), None
+    )
+    if not exercises_block:
+        return
+    extra_items = [
+        item
+        for item in exercises_block["content"]["items"]
+        if item.get("type") == "listening_comprehension"
+        and item["prompt"].get("audio_url") != primary_audio_url
+    ]
+
+    for item in extra_items:
+        slug = item["slug"]
+        turns = split_into_turns(item["prompt"]["transcript"])
+        current_hash = text_hash("|".join(f"{speaker}:{text}" for speaker, text in turns))
+        audio_path = AUDIO_DIR / f"{slug}.mp3"
+
+        # Re-read from disk every iteration, same reasoning as
+        # `process_flat_bank_file`: an earlier item in this loop may have
+        # shifted line numbers below it.
+        lines = path.read_text().splitlines(keepends=True)
+        item_index = _find_index(lines, lambda line, slug=slug: line.strip() == f"- slug: {slug}")
+        prompt_index = _find_index(lines, lambda line: line.strip() == "prompt:", start=item_index)
+        audio_line_index = (
+            prompt_index + 1 if lines[prompt_index + 1].lstrip().startswith("audio_url:") else None
+        )
+        existing_hash = (
+            _existing_hash(lines[audio_line_index]) if audio_line_index is not None else None
+        )
+        if not force and existing_hash == current_hash and audio_path.exists():
+            stats.skipped += 1
+            continue
+
+        audio_bytes = await synthesize_dialogue(provider, turns)
+        AUDIO_DIR.mkdir(parents=True, exist_ok=True)
+        audio_path.write_bytes(audio_bytes)
+
+        child_indent = _line_indent(lines[prompt_index + 1])
+        new_line = (
+            f'{" " * child_indent}audio_url: "/audio/{slug}.mp3"  # src-hash: {current_hash}\n'
+        )
+        if audio_line_index is not None:
+            lines[audio_line_index] = new_line
+        else:
+            lines.insert(prompt_index + 1, new_line)
+        path.write_text("".join(lines))
+        stats.generated += 1
+        print(f"generated: {slug}")
+
+
 async def process_flat_bank_file(
     provider: TTSProvider,
     path: Path,
@@ -271,6 +336,7 @@ async def main(only: list[str] | None, *, force: bool = False) -> None:
         if only and not any(slug in content_path.stem for slug in only):
             continue
         await process_lesson_file(provider, content_path, stats, force=force)
+        await process_lesson_extra_listening_items(provider, content_path, stats, force=force)
 
     placement_bank_path = CONTENT_DIR / PLACEMENT_BANK_DIR_NAME / "bank.yaml"
     if placement_bank_path.exists() and not only:

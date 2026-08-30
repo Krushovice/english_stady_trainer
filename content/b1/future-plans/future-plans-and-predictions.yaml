@@ -264,6 +264,93 @@ blocks:
             "I'm applying for a job abroad" (Q1); "You're bound to get an interview at
             least" (Q2).
 
+        - slug: future-plans-and-predictions-listening-monologue
+          type: listening_comprehension
+          skill: listening
+          difficulty: B1
+          prompt:
+            audio_url: "/audio/future-plans-and-predictions-listening-monologue.mp3"  # src-hash: da69012d
+            transcript: >
+              A: I've finally decided what I'm doing after this course
+              finishes. I'm going to apply for a marketing job in Berlin —
+              I've already started preparing my CV. I might not get the first
+              job I apply for, but with my experience I'm bound to get a few
+              interviews at least. My plan is to move there in the near
+              future, probably by next spring. Sooner or later I'll have to
+              tell my landlord I'm leaving this flat, but I haven't found the
+              right moment yet. Honestly, I have no idea how my parents will
+              react, but I'm keeping my fingers crossed they'll be supportive.
+              Whatever happens, one thing's for sure — I'm not staying in this
+              job forever.
+            questions:
+              - id: q1
+                text: "What has the speaker already started doing?"
+                options:
+                  - id: a
+                    text: "Preparing a CV"
+                  - id: b
+                    text: "Booking flights"
+                  - id: c
+                    text: "Learning German"
+                  - id: d
+                    text: "Telling the landlord"
+              - id: q2
+                text: "Why does the speaker say they're \"bound to get a few interviews\"?"
+                options:
+                  - id: a
+                    text: "Because they applied to only one job"
+                  - id: b
+                    text: "Because of their work experience"
+                  - id: c
+                    text: "Because a friend works there"
+                  - id: d
+                    text: "Because the job market is small"
+              - id: q3
+                text: "When does the speaker plan to move to Berlin?"
+                options:
+                  - id: a
+                    text: "Right after finishing the course"
+                  - id: b
+                    text: "Probably next spring"
+                  - id: c
+                    text: "In five years"
+                  - id: d
+                    text: "The date isn't decided at all"
+              - id: q4
+                text: "According to the monologue, what hasn't the speaker done yet?"
+                options:
+                  - id: a
+                    text: "Prepared their CV"
+                  - id: b
+                    text: "Told their landlord they are leaving"
+                  - id: c
+                    text: "Decided what to do after the course"
+                  - id: d
+                    text: "Chosen which city to move to"
+              - id: q5
+                text: "How does the speaker feel about their parents' reaction?"
+                options:
+                  - id: a
+                    text: "Confident they'll approve"
+                  - id: b
+                    text: "Certain they'll disapprove"
+                  - id: c
+                    text: "Uncertain, but hopeful"
+                  - id: d
+                    text: "Indifferent"
+          answer_key:
+            answers:
+              q1: a
+              q2: b
+              q3: b
+              q4: b
+              q5: c
+          explanation: >-
+            "I've already started preparing my CV" (Q1); "with my experience
+            I'm bound to get a few interviews" (Q2); "probably by next spring"
+            (Q3); "I haven't found the right moment yet" to tell the landlord
+            (Q4); "I have no idea... but I'm keeping my fingers crossed" (Q5).
+
   - type: reading
     order_index: 7
     content:

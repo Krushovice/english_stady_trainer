@@ -267,6 +267,97 @@ blocks:
             "It's estimated that the gap has doubled in some countries" (Q1); "I had it
             translated last week" (Q2).
 
+        - slug: society-and-abstract-topics-listening-monologue
+          type: listening_comprehension
+          skill: listening
+          difficulty: B2
+          prompt:
+            audio_url: "/audio/society-and-abstract-topics-listening-monologue.mp3"  # src-hash: 15bff134
+            transcript: >
+              B: It's often said that inequality is one of the most widespread
+              problems in modern society, and to some extent, I agree. It's
+              widely believed that the gap between rich and poor has grown
+              over the last decade, though the exact numbers depend on the
+              country. What interests me more, though, is the ongoing debate
+              between tradition and progress — how much should societies
+              change, and how fast? Campaigns that raise awareness about these
+              issues can genuinely shape public opinion, but only if people
+              are willing to listen. It's estimated that younger generations
+              are more open to rapid change, while older generations often
+              value tradition more. Personally, I think real progress happens
+              when both sides are, in other words, willing to compromise
+              rather than simply arguing past each other.
+            questions:
+              - id: q1
+                text: "What does the speaker say is widespread in modern society?"
+                options:
+                  - id: a
+                    text: "Tradition"
+                  - id: b
+                    text: "Progress"
+                  - id: c
+                    text: "Inequality"
+                  - id: d
+                    text: "Compromise"
+              - id: q2
+                text: "How does the speaker qualify their agreement about the growing wealth gap?"
+                options:
+                  - id: a
+                    text: "They completely disagree"
+                  - id: b
+                    text: "They agree only to some extent, since numbers vary by country"
+                  - id: c
+                    text: "They have no opinion"
+                  - id: d
+                    text: "They think it's exaggerated"
+              - id: q3
+                text: "According to the speaker, what can genuinely shape public opinion?"
+                options:
+                  - id: a
+                    text: "Government laws only"
+                  - id: b
+                    text: "Campaigns that raise awareness, if people listen"
+                  - id: c
+                    text: "Tradition alone"
+                  - id: d
+                    text: "Nothing can change public opinion"
+              - id: q4
+                text: "What does the speaker say about older versus younger generations?"
+                options:
+                  - id: a
+                    text: "Older generations are more open to rapid change"
+                  - id: b
+                    text: "Younger generations tend to be more open to rapid change"
+                  - id: c
+                    text: "Both groups think exactly the same way"
+                  - id: d
+                    text: "The text doesn't compare generations"
+              - id: q5
+                text: "What does the speaker believe leads to real progress?"
+                options:
+                  - id: a
+                    text: "Arguing until one side wins"
+                  - id: b
+                    text: "Ignoring tradition completely"
+                  - id: c
+                    text: "Both sides being willing to compromise"
+                  - id: d
+                    text: "Following only what's estimated by statistics"
+          answer_key:
+            answers:
+              q1: c
+              q2: b
+              q3: b
+              q4: b
+              q5: c
+          explanation: >-
+            "inequality is one of the most widespread problems" (Q1); "to some
+            extent, I agree... though the exact numbers depend on the country"
+            (Q2); "campaigns that raise awareness... can genuinely shape
+            public opinion" (Q3); "younger generations are more open to rapid
+            change" (Q4); "real progress happens when both sides are...
+            willing to compromise" (Q5).
+
   - type: reading
     order_index: 7
     content:

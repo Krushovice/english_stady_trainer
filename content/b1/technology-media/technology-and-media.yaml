@@ -269,6 +269,94 @@ blocks:
             "It went viral overnight" (Q1); "Was the story confirmed by a reliable
             source, though?" (Q2).
 
+        - slug: technology-and-media-listening-monologue
+          type: listening_comprehension
+          skill: listening
+          difficulty: B1
+          prompt:
+            audio_url: "/audio/technology-and-media-listening-monologue.mp3"  # src-hash: c1537b6e
+            transcript: >
+              B: I follow way too many news accounts online, and half the
+              stories that go viral turn out to be exaggerated. Just last
+              week, a video was shared millions of times before anyone checked
+              if it was even true. I try to keep up with real news, but it's
+              exhausting — new apps get released every few months, and last
+              year's most widely used app is already old news today. My rule
+              now is simple: before I believe anything, I check if it comes
+              from a reliable source, not just a random account. A friend of
+              mine still shares outdated information she read years ago,
+              thinking it's still accurate. I've stopped arguing with her
+              about it — some people just don't want to keep up.
+            questions:
+              - id: q1
+                text: "What happened to the video mentioned at the start?"
+                options:
+                  - id: a
+                    text: "It was proven false immediately"
+                  - id: b
+                    text: "It was shared widely before being checked"
+                  - id: c
+                    text: "Nobody watched it"
+                  - id: d
+                    text: "It was deleted quickly"
+              - id: q2
+                text: "What does the speaker imply about last year's most popular app?"
+                options:
+                  - id: a
+                    text: "It's still the best option"
+                  - id: b
+                    text: "It has already become outdated"
+                  - id: c
+                    text: "It was never widely used"
+                  - id: d
+                    text: "It was recently released"
+              - id: q3
+                text: "What is the speaker's rule before believing something online?"
+                options:
+                  - id: a
+                    text: "Ask a friend first"
+                  - id: b
+                    text: "Check if it's from a reliable source"
+                  - id: c
+                    text: "Wait a week before trusting it"
+                  - id: d
+                    text: "Only trust official news channels"
+              - id: q4
+                text: "How does the speaker feel about arguing with their friend?"
+                options:
+                  - id: a
+                    text: "They enjoy the debate"
+                  - id: b
+                    text: "They've given up trying to convince her"
+                  - id: c
+                    text: "They agree with her fully"
+                  - id: d
+                    text: "They've never discussed it with her"
+              - id: q5
+                text: "What is the monologue mainly about?"
+                options:
+                  - id: a
+                    text: "How to make a video go viral"
+                  - id: b
+                    text: "The difficulty of keeping up with reliable information online"
+                  - id: c
+                    text: "A friend's outdated phone"
+                  - id: d
+                    text: "How to release a new app"
+          answer_key:
+            answers:
+              q1: b
+              q2: b
+              q3: b
+              q4: b
+              q5: b
+          explanation: >-
+            "shared millions of times before anyone checked if it was even
+            true" (Q1); "last year's most widely used app is already old news"
+            (Q2); "I check if it comes from a reliable source" (Q3); "I've
+            stopped arguing with her about it" (Q4) — the overall theme is
+            keeping up with reliable information (Q5).
+
   - type: reading
     order_index: 7
     content:

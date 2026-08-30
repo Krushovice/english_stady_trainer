@@ -260,6 +260,93 @@ blocks:
             "my car broke down on the motorway" (Q1); "To make matters worse, my phone
             had no battery" (Q2).
 
+        - slug: advanced-storytelling-listening-monologue
+          type: listening_comprehension
+          skill: listening
+          difficulty: B2
+          prompt:
+            audio_url: "/audio/advanced-storytelling-listening-monologue.mp3"  # src-hash: 3a739e8e
+            transcript: >
+              A: I'll never forget what happened during my first solo trip
+              abroad. Out of the blue, halfway through the hike, the weather
+              completely changed and it started pouring with rain. To make
+              matters worse, I realised my phone had died, so I had no map and
+              no way to call anyone. For a moment, I honestly thought I'd have
+              to spend the night out there alone. Then, against all odds, I
+              spotted a small mountain hut through the fog. I reached it in
+              the nick of time, right before the storm got even worse. Inside,
+              there was an old hiker who'd taken shelter too, and — here's the
+              twist — it turned out he knew my uncle back home. I still can't
+              believe how that story managed to unfold the way it did.
+            questions:
+              - id: q1
+                text: "What went wrong first during the hike?"
+                options:
+                  - id: a
+                    text: "The speaker got lost"
+                  - id: b
+                    text: "The weather suddenly changed"
+                  - id: c
+                    text: "The phone was stolen"
+                  - id: d
+                    text: "A storm was predicted in advance"
+              - id: q2
+                text: "What made the situation worse after the weather changed?"
+                options:
+                  - id: a
+                    text: "The phone battery died"
+                  - id: b
+                    text: "The hut was locked"
+                  - id: c
+                    text: "The speaker got injured"
+                  - id: d
+                    text: "It got dark early"
+              - id: q3
+                text: "How did the speaker eventually find shelter?"
+                options:
+                  - id: a
+                    text: "By calling for help"
+                  - id: b
+                    text: "By following another hiker"
+                  - id: c
+                    text: "By spotting a mountain hut through the fog"
+                  - id: d
+                    text: "By waiting for the storm to pass outside"
+              - id: q4
+                text: "What was the surprising twist in the story?"
+                options:
+                  - id: a
+                    text: "The hut was abandoned"
+                  - id: b
+                    text: "The other hiker knew the speaker's uncle"
+                  - id: c
+                    text: "The storm never actually happened"
+                  - id: d
+                    text: "The speaker had been there before"
+              - id: q5
+                text: "How does the speaker feel about the whole experience now, looking back?"
+                options:
+                  - id: a
+                    text: "Amazed that it worked out the way it did"
+                  - id: b
+                    text: "Angry about the bad weather"
+                  - id: c
+                    text: "Embarrassed about getting lost"
+                  - id: d
+                    text: "Indifferent, it wasn't a big deal"
+          answer_key:
+            answers:
+              q1: b
+              q2: a
+              q3: c
+              q4: b
+              q5: a
+          explanation: >-
+            "the weather completely changed" (Q1); "my phone had died" (Q2);
+            "I spotted a small mountain hut through the fog" (Q3); "it turned
+            out he knew my uncle back home" (Q4); "I still can't believe how
+            that story managed to unfold" (Q5).
+
   - type: reading
     order_index: 7
     content:
