@@ -1,0 +1,842 @@
+# Course-wide final exam item bank — not tied to any lesson (lesson_id
+# stays null, is_final_exam_item is set true by the loader). See
+# app/schemas/content.py (FinalExamBankFile) and docs/decisions.md.
+#
+# 44 items, 11 per CEFR tier (A1/A2/B1/B2), ordered easy -> hard by
+# CourseExamService. Deliberately unique content — never a question a
+# learner has already seen in a lesson or the placement test — so passing
+# the final exam can't be a matter of recognising familiar material.
+#
+# Per tier: 3 grammar, 2 vocabulary, 2 reading, 2 listening, 2 translation.
+# Translation items are short phrases (Russian -> English), never full-text
+# translation (that stays a homework task) — deterministic accepted-answer
+# matching, same normalisation approach as fill_blank.
+items:
+  # =====================================================================
+  # A1
+  # =====================================================================
+  - slug: final-exam-a1-grammar-1
+    type: multiple_choice
+    skill: grammar
+    difficulty: A1
+    prompt:
+      question: "___ you a student?"
+      options:
+        - { id: a, text: "Am" }
+        - { id: b, text: "Is" }
+        - { id: c, text: "Are" }
+        - { id: d, text: "Be" }
+    answer_key: { correct_option_id: c }
+    explanation: "\"You\" takes \"are\" in to-be questions."
+
+  - slug: final-exam-a1-grammar-2
+    type: fill_blank
+    skill: grammar
+    difficulty: A1
+    prompt:
+      text: "There ___ (be) a park near my house."
+    answer_key:
+      blanks: [["is"]]
+    explanation: "Singular \"a park\" takes \"there is\", not \"there are\"."
+
+  - slug: final-exam-a1-grammar-3
+    type: multiple_choice
+    skill: grammar
+    difficulty: A1
+    prompt:
+      question: "Look! It ___ raining."
+      options:
+        - { id: a, text: "rain" }
+        - { id: b, text: "rains" }
+        - { id: c, text: "is raining" }
+        - { id: d, text: "raining" }
+    answer_key: { correct_option_id: c }
+    explanation: "An action happening right now uses Present Continuous: \"is raining\"."
+
+  - slug: final-exam-a1-vocabulary-1
+    type: multiple_choice
+    skill: vocabulary
+    difficulty: A1
+    prompt:
+      question: "What do you call a place where you can borrow books?"
+      options:
+        - { id: a, text: "library" }
+        - { id: b, text: "bakery" }
+        - { id: c, text: "hospital" }
+        - { id: d, text: "station" }
+    answer_key: { correct_option_id: a }
+    explanation: "A library lends books to visitors."
+
+  - slug: final-exam-a1-vocabulary-2
+    type: multiple_choice
+    skill: vocabulary
+    difficulty: A1
+    prompt:
+      question: "Which word means the opposite of \"expensive\"?"
+      options:
+        - { id: a, text: "cheap" }
+        - { id: b, text: "heavy" }
+        - { id: c, text: "quiet" }
+        - { id: d, text: "fast" }
+    answer_key: { correct_option_id: a }
+    explanation: "\"Cheap\" means low in price — the opposite of \"expensive\"."
+
+  - slug: final-exam-a1-reading-1
+    type: reading_comprehension
+    skill: reading
+    difficulty: A1
+    prompt:
+      passage: >-
+        Anna lives in a small flat in the city centre. She works in a café
+        near her home, so she walks to work every morning. In the evening,
+        she likes to cook dinner and watch TV.
+      questions:
+        - id: q1
+          text: "Where does Anna work?"
+          options:
+            - { id: a, text: "In a café" }
+            - { id: b, text: "In a library" }
+            - { id: c, text: "In a school" }
+            - { id: d, text: "The text doesn't say" }
+        - id: q2
+          text: "How does she get to work?"
+          options:
+            - { id: a, text: "She walks" }
+            - { id: b, text: "She drives" }
+            - { id: c, text: "She takes the bus" }
+            - { id: d, text: "The text doesn't say" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "\"She works in a café\" (Q1); \"she walks to work every morning\" (Q2)."
+
+  - slug: final-exam-a1-reading-2
+    type: reading_comprehension
+    skill: reading
+    difficulty: A1
+    prompt:
+      passage: >-
+        Tom has a dog called Max. Every weekend, they go to the park
+        together. Max loves to run and play with other dogs there.
+      questions:
+        - id: q1
+          text: "What is the dog's name?"
+          options:
+            - { id: a, text: "Max" }
+            - { id: b, text: "Tom" }
+            - { id: c, text: "Rex" }
+            - { id: d, text: "The text doesn't say" }
+        - id: q2
+          text: "When do they go to the park?"
+          options:
+            - { id: a, text: "Every weekend" }
+            - { id: b, text: "Every morning" }
+            - { id: c, text: "Once a month" }
+            - { id: d, text: "The text doesn't say" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "\"Tom has a dog called Max\" (Q1); \"Every weekend, they go to the park\" (Q2)."
+
+  - slug: final-exam-a1-listening-1
+    type: listening_comprehension
+    skill: listening
+    difficulty: A1
+    prompt:
+      audio_url: "/audio/final-exam-a1-listening-1.mp3"  # src-hash: 2f55bc1a
+      transcript: >
+        A: Excuse me, is this seat free? — B: Yes, please sit down. — A:
+        Thank you. Are you going to the station too? — B: Yes, I am. My
+        train leaves at ten.
+      questions:
+        - id: q1
+          text: "What does A ask about?"
+          options:
+            - { id: a, text: "The seat" }
+            - { id: b, text: "The train time" }
+            - { id: c, text: "The ticket price" }
+            - { id: d, text: "We don't know" }
+        - id: q2
+          text: "When does B's train leave?"
+          options:
+            - { id: a, text: "At ten" }
+            - { id: b, text: "At nine" }
+            - { id: c, text: "At eleven" }
+            - { id: d, text: "We don't know" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "\"Is this seat free?\" (Q1); \"My train leaves at ten\" (Q2)."
+
+  - slug: final-exam-a1-listening-2
+    type: listening_comprehension
+    skill: listening
+    difficulty: A1
+    prompt:
+      audio_url: "/audio/final-exam-a1-listening-2.mp3"  # src-hash: b2d0e2c2
+      transcript: >
+        A: What's your favourite food? — B: I really like pizza. What
+        about you? — A: I prefer pasta, actually. — B: Oh, we should try
+        that new Italian restaurant.
+      questions:
+        - id: q1
+          text: "What food does B like?"
+          options:
+            - { id: a, text: "Pizza" }
+            - { id: b, text: "Pasta" }
+            - { id: c, text: "Salad" }
+            - { id: d, text: "We don't know" }
+        - id: q2
+          text: "What does A prefer?"
+          options:
+            - { id: a, text: "Pasta" }
+            - { id: b, text: "Pizza" }
+            - { id: c, text: "Soup" }
+            - { id: d, text: "We don't know" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "\"I really like pizza\" (Q1); \"I prefer pasta, actually\" (Q2)."
+
+  - slug: final-exam-a1-translation-1
+    type: translation
+    skill: vocabulary
+    difficulty: A1
+    prompt:
+      text: "Переведите на английский: «Сколько это стоит?»"
+    answer_key:
+      accepted: ["how much is it", "how much does it cost"]
+    explanation: "«Сколько это стоит?» — \"How much is it?\" or \"How much does it cost?\"."
+
+  - slug: final-exam-a1-translation-2
+    type: translation
+    skill: vocabulary
+    difficulty: A1
+    prompt:
+      text: "Переведите на английский: «Я не понимаю»"
+    answer_key:
+      accepted: ["i don't understand", "i do not understand"]
+    explanation: "«Я не понимаю» — \"I don't understand\"."
+
+  # =====================================================================
+  # A2
+  # =====================================================================
+  - slug: final-exam-a2-grammar-1
+    type: multiple_choice
+    skill: grammar
+    difficulty: A2
+    prompt:
+      question: "She ___ to Paris last summer."
+      options:
+        - { id: a, text: "go" }
+        - { id: b, text: "goes" }
+        - { id: c, text: "went" }
+        - { id: d, text: "going" }
+    answer_key: { correct_option_id: c }
+    explanation: "\"Last summer\" needs Past Simple: \"went\" (irregular past of \"go\")."
+
+  - slug: final-exam-a2-grammar-2
+    type: fill_blank
+    skill: grammar
+    difficulty: A2
+    prompt:
+      text: "This road is ___ (busy) than that one."
+    answer_key:
+      blanks: [["busier"]]
+    explanation: "Short adjectives form comparatives with \"-er\": \"busy\" -> \"busier\"."
+
+  - slug: final-exam-a2-grammar-3
+    type: multiple_choice
+    skill: grammar
+    difficulty: A2
+    prompt:
+      question: "Look at those clouds! It ___ rain soon."
+      options:
+        - { id: a, text: "is going to" }
+        - { id: b, text: "will" }
+        - { id: c, text: "is" }
+        - { id: d, text: "was" }
+    answer_key: { correct_option_id: a }
+    explanation: "A prediction based on present evidence (dark clouds) uses \"going to\", not \"will\"."
+
+  - slug: final-exam-a2-vocabulary-1
+    type: multiple_choice
+    skill: vocabulary
+    difficulty: A2
+    prompt:
+      question: "What do you call someone who fixes cars?"
+      options:
+        - { id: a, text: "mechanic" }
+        - { id: b, text: "waiter" }
+        - { id: c, text: "dentist" }
+        - { id: d, text: "cashier" }
+    answer_key: { correct_option_id: a }
+    explanation: "A mechanic repairs vehicles."
+
+  - slug: final-exam-a2-vocabulary-2
+    type: multiple_choice
+    skill: vocabulary
+    difficulty: A2
+    prompt:
+      question: "What is another word for \"huge\"?"
+      options:
+        - { id: a, text: "enormous" }
+        - { id: b, text: "tiny" }
+        - { id: c, text: "quiet" }
+        - { id: d, text: "narrow" }
+    answer_key: { correct_option_id: a }
+    explanation: "\"Enormous\" means extremely large, like \"huge\"."
+
+  - slug: final-exam-a2-reading-1
+    type: reading_comprehension
+    skill: reading
+    difficulty: A2
+    prompt:
+      passage: >-
+        Last weekend, Maria went camping with her friends. It rained a
+        lot, so they stayed in their tent and played cards. Even though
+        the weather was bad, everyone had a great time.
+      questions:
+        - id: q1
+          text: "What did they do because of the rain?"
+          options:
+            - { id: a, text: "Stayed in the tent and played cards" }
+            - { id: b, text: "Went home early" }
+            - { id: c, text: "Went swimming instead" }
+            - { id: d, text: "The text doesn't say" }
+        - id: q2
+          text: "Did they enjoy the trip?"
+          options:
+            - { id: a, text: "Yes, they had a great time" }
+            - { id: b, text: "No, it was terrible" }
+            - { id: c, text: "They left early" }
+            - { id: d, text: "The text doesn't say" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "\"They stayed in their tent and played cards\" (Q1); \"everyone had a great time\" (Q2)."
+
+  - slug: final-exam-a2-reading-2
+    type: reading_comprehension
+    skill: reading
+    difficulty: A2
+    prompt:
+      passage: >-
+        David is planning a trip to Japan next spring. He has already
+        booked his flights, but he still needs to find a hotel. He's
+        really excited because he's never been to Asia before.
+      questions:
+        - id: q1
+          text: "What has David already done?"
+          options:
+            - { id: a, text: "Booked his flights" }
+            - { id: b, text: "Booked a hotel" }
+            - { id: c, text: "Bought souvenirs" }
+            - { id: d, text: "The text doesn't say" }
+        - id: q2
+          text: "Has David been to Asia before?"
+          options:
+            - { id: a, text: "No, never" }
+            - { id: b, text: "Yes, many times" }
+            - { id: c, text: "Once, as a child" }
+            - { id: d, text: "The text doesn't say" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "\"He has already booked his flights\" (Q1); \"he's never been to Asia before\" (Q2)."
+
+  - slug: final-exam-a2-listening-1
+    type: listening_comprehension
+    skill: listening
+    difficulty: A2
+    prompt:
+      audio_url: "/audio/final-exam-a2-listening-1.mp3"  # src-hash: 4f4eb8b0
+      transcript: >
+        A: Have you finished packing yet? — B: Almost. I just need to
+        find my passport. — A: It's on the kitchen table, I think. — B:
+        Oh, thank you! I was looking everywhere for it.
+      questions:
+        - id: q1
+          text: "What is B looking for?"
+          options:
+            - { id: a, text: "Passport" }
+            - { id: b, text: "Tickets" }
+            - { id: c, text: "Keys" }
+            - { id: d, text: "We don't know" }
+        - id: q2
+          text: "Where was it?"
+          options:
+            - { id: a, text: "On the kitchen table" }
+            - { id: b, text: "In the bag" }
+            - { id: c, text: "In the car" }
+            - { id: d, text: "We don't know" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "\"I just need to find my passport\" (Q1); \"It's on the kitchen table\" (Q2)."
+
+  - slug: final-exam-a2-listening-2
+    type: listening_comprehension
+    skill: listening
+    difficulty: A2
+    prompt:
+      audio_url: "/audio/final-exam-a2-listening-2.mp3"  # src-hash: 4554ab8b
+      transcript: >
+        A: Why don't we take the bus instead of driving? — B: Good idea,
+        parking in town is always difficult. — A: True, and the bus is
+        cheaper too. — B: Let's check the timetable.
+      questions:
+        - id: q1
+          text: "Why does B like the bus idea?"
+          options:
+            - { id: a, text: "Parking in town is difficult" }
+            - { id: b, text: "Driving is boring" }
+            - { id: c, text: "The car is broken" }
+            - { id: d, text: "We don't know" }
+        - id: q2
+          text: "What will they check?"
+          options:
+            - { id: a, text: "The timetable" }
+            - { id: b, text: "The map" }
+            - { id: c, text: "The price of petrol" }
+            - { id: d, text: "We don't know" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "\"Parking in town is always difficult\" (Q1); \"Let's check the timetable\" (Q2)."
+
+  - slug: final-exam-a2-translation-1
+    type: translation
+    skill: vocabulary
+    difficulty: A2
+    prompt:
+      text: "Переведите на английский: «Я никогда не был в Лондоне»"
+    answer_key:
+      accepted: ["i have never been to london", "i've never been to london"]
+    explanation: "«Я никогда не был в Лондоне» — \"I have never been to London\" (Present Perfect for experience)."
+
+  - slug: final-exam-a2-translation-2
+    type: translation
+    skill: vocabulary
+    difficulty: A2
+    prompt:
+      text: "Переведите на английский: «Мне нужно закончить эту работу к пятнице»"
+    answer_key:
+      accepted:
+        - "i need to finish this work by friday"
+        - "i have to finish this work by friday"
+    explanation: "«Мне нужно закончить эту работу к пятнице» — \"I need to finish this work by Friday\"."
+
+  # =====================================================================
+  # B1
+  # =====================================================================
+  - slug: final-exam-b1-grammar-1
+    type: multiple_choice
+    skill: grammar
+    difficulty: B1
+    prompt:
+      question: "___ you ever tried sushi?"
+      options:
+        - { id: a, text: "Have" }
+        - { id: b, text: "Did" }
+        - { id: c, text: "Do" }
+        - { id: d, text: "Are" }
+    answer_key: { correct_option_id: a }
+    explanation: "Asking about life experience uses Present Perfect: \"Have you ever tried...?\"."
+
+  - slug: final-exam-b1-grammar-2
+    type: fill_blank
+    skill: grammar
+    difficulty: B1
+    prompt:
+      text: "This bridge ___ (build) in 1990."
+    answer_key:
+      blanks: [["was built"]]
+    explanation: "The bridge didn't build itself — passive voice: \"was built\"."
+
+  - slug: final-exam-b1-grammar-3
+    type: multiple_choice
+    skill: grammar
+    difficulty: B1
+    prompt:
+      question: "If I ___ more free time, I would learn to paint."
+      options:
+        - { id: a, text: "have" }
+        - { id: b, text: "had" }
+        - { id: c, text: "will have" }
+        - { id: d, text: "having" }
+    answer_key: { correct_option_id: b }
+    explanation: "Second conditional (hypothetical present): \"If + past simple, would + infinitive\"."
+
+  - slug: final-exam-b1-vocabulary-1
+    type: multiple_choice
+    skill: vocabulary
+    difficulty: B1
+    prompt:
+      question: "What does \"to put up with\" mean?"
+      options:
+        - { id: a, text: "to tolerate" }
+        - { id: b, text: "to build" }
+        - { id: c, text: "to postpone" }
+        - { id: d, text: "to celebrate" }
+    answer_key: { correct_option_id: a }
+    explanation: "\"Put up with\" means to tolerate or endure something unpleasant."
+
+  - slug: final-exam-b1-vocabulary-2
+    type: multiple_choice
+    skill: vocabulary
+    difficulty: B1
+    prompt:
+      question: "What does \"run out of\" mean?"
+      options:
+        - { id: a, text: "to have no more of something" }
+        - { id: b, text: "to run very fast" }
+        - { id: c, text: "to leave a place quickly" }
+        - { id: d, text: "to start a new project" }
+    answer_key: { correct_option_id: a }
+    explanation: "\"Run out of\" means a supply of something has been used up completely."
+
+  - slug: final-exam-b1-reading-1
+    type: reading_comprehension
+    skill: reading
+    difficulty: B1
+    prompt:
+      passage: >-
+        Since moving to a new city, James has struggled to make friends.
+        He's joined a local football club, hoping it will help him meet
+        people. So far, he's only been to two training sessions, but
+        he's already feeling more optimistic.
+      questions:
+        - id: q1
+          text: "Why did James join the football club?"
+          options:
+            - { id: a, text: "To meet people" }
+            - { id: b, text: "To get fit" }
+            - { id: c, text: "His friend asked him to" }
+            - { id: d, text: "The text doesn't say" }
+        - id: q2
+          text: "How does he feel now?"
+          options:
+            - { id: a, text: "More optimistic" }
+            - { id: b, text: "Still very lonely" }
+            - { id: c, text: "Ready to give up" }
+            - { id: d, text: "The text doesn't say" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "\"Hoping it will help him meet people\" (Q1); \"he's already feeling more optimistic\" (Q2)."
+
+  - slug: final-exam-b1-reading-2
+    type: reading_comprehension
+    skill: reading
+    difficulty: B1
+    prompt:
+      passage: >-
+        The company had already lost several major clients before the
+        new manager arrived. Within six months, she had restructured the
+        whole sales team and introduced a new pricing strategy. Profits
+        began to recover soon after.
+      questions:
+        - id: q1
+          text: "What had happened before the new manager arrived?"
+          options:
+            - { id: a, text: "The company had lost clients" }
+            - { id: b, text: "Profits had doubled" }
+            - { id: c, text: "The sales team had grown" }
+            - { id: d, text: "The text doesn't say" }
+        - id: q2
+          text: "What did she introduce?"
+          options:
+            - { id: a, text: "A new pricing strategy" }
+            - { id: b, text: "A new office" }
+            - { id: c, text: "A new logo" }
+            - { id: d, text: "The text doesn't say" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "\"The company had already lost several major clients\" (Q1); \"introduced a new pricing strategy\" (Q2)."
+
+  - slug: final-exam-b1-listening-1
+    type: listening_comprehension
+    skill: listening
+    difficulty: B1
+    prompt:
+      audio_url: "/audio/final-exam-b1-listening-1.mp3"  # src-hash: 59d13656
+      transcript: >
+        A: I heard you're thinking of changing jobs. — B: Yeah, I've
+        been offered a position at a start-up, but I'm still weighing
+        up the pros and cons. — A: What's holding you back? — B: Mainly
+        the job security — start-ups can be risky.
+      questions:
+        - id: q1
+          text: "What has B been offered?"
+          options:
+            - { id: a, text: "A job at a start-up" }
+            - { id: b, text: "A promotion" }
+            - { id: c, text: "A university place" }
+            - { id: d, text: "We don't know" }
+        - id: q2
+          text: "What is B worried about?"
+          options:
+            - { id: a, text: "Job security" }
+            - { id: b, text: "The salary" }
+            - { id: c, text: "The commute" }
+            - { id: d, text: "We don't know" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "\"I've been offered a position at a start-up\" (Q1); \"Mainly the job security\" (Q2)."
+
+  - slug: final-exam-b1-listening-2
+    type: listening_comprehension
+    skill: listening
+    difficulty: B1
+    prompt:
+      audio_url: "/audio/final-exam-b1-listening-2.mp3"  # src-hash: 9d078ad6
+      transcript: >
+        A: Did you manage to fix the printer? — B: Not yet. I've called
+        IT twice already, but nobody's got back to me. — A: That's
+        frustrating. Have you tried restarting it? — B: I have, but it
+        didn't make any difference.
+      questions:
+        - id: q1
+          text: "How many times has B called IT?"
+          options:
+            - { id: a, text: "Twice" }
+            - { id: b, text: "Once" }
+            - { id: c, text: "Three times" }
+            - { id: d, text: "We don't know" }
+        - id: q2
+          text: "Did restarting the printer help?"
+          options:
+            - { id: a, text: "No" }
+            - { id: b, text: "Yes, it's fixed now" }
+            - { id: c, text: "B hasn't tried yet" }
+            - { id: d, text: "We don't know" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "\"I've called IT twice already\" (Q1); \"it didn't make any difference\" (Q2)."
+
+  - slug: final-exam-b1-translation-1
+    type: translation
+    skill: vocabulary
+    difficulty: B1
+    prompt:
+      text: "Переведите на английский: «Я бы хотел, чтобы у меня было больше времени»"
+    answer_key:
+      accepted: ["i wish i had more time"]
+    explanation: "«Я бы хотел, чтобы у меня было больше времени» — \"I wish I had more time\" (wish + past simple)."
+
+  - slug: final-exam-b1-translation-2
+    type: translation
+    skill: vocabulary
+    difficulty: B1
+    prompt:
+      text: "Переведите на английский: «Несмотря на дождь, мы пошли гулять»"
+    answer_key:
+      accepted:
+        - "despite the rain, we went for a walk"
+        - "although it was raining, we went for a walk"
+        - "even though it was raining, we went for a walk"
+    explanation: "«Несмотря на дождь, мы пошли гулять» — \"Despite the rain, we went for a walk\" (or \"Although/Even though it was raining...\")."
+
+  # =====================================================================
+  # B2
+  # =====================================================================
+  - slug: final-exam-b2-grammar-1
+    type: fill_blank
+    skill: grammar
+    difficulty: B2
+    prompt:
+      text: "If she ___ (know) about the meeting, she would have come."
+    answer_key:
+      blanks: [["had known"]]
+    explanation: "Third conditional (hypothetical past): \"If + past perfect, would have + past participle\"."
+
+  - slug: final-exam-b2-grammar-2
+    type: multiple_choice
+    skill: grammar
+    difficulty: B2
+    prompt:
+      question: "He said he ___ tired."
+      options:
+        - { id: a, text: "is" }
+        - { id: b, text: "was" }
+        - { id: c, text: "has been" }
+        - { id: d, text: "will be" }
+    answer_key: { correct_option_id: b }
+    explanation: "Reported speech backshifts present to past: \"is\" -> \"was\"."
+
+  - slug: final-exam-b2-grammar-3
+    type: multiple_choice
+    skill: grammar
+    difficulty: B2
+    prompt:
+      question: "She's not answering her phone — she ___ be in a meeting."
+      options:
+        - { id: a, text: "must" }
+        - { id: b, text: "can" }
+        - { id: c, text: "should" }
+        - { id: d, text: "would" }
+    answer_key: { correct_option_id: a }
+    explanation: "A confident deduction from evidence uses \"must\" — modal of speculation."
+
+  - slug: final-exam-b2-vocabulary-1
+    type: multiple_choice
+    skill: vocabulary
+    difficulty: B2
+    prompt:
+      question: "What does \"overwhelmed\" mean?"
+      options:
+        - { id: a, text: "Feeling like you can't cope" }
+        - { id: b, text: "Feeling extremely calm" }
+        - { id: c, text: "Feeling proud" }
+        - { id: d, text: "Feeling bored" }
+    answer_key: { correct_option_id: a }
+    explanation: "\"Overwhelmed\" describes being unable to cope with too much of something."
+
+  - slug: final-exam-b2-vocabulary-2
+    type: multiple_choice
+    skill: vocabulary
+    difficulty: B2
+    prompt:
+      question: "What does \"a turning point\" mean?"
+      options:
+        - { id: a, text: "A moment when something changes significantly" }
+        - { id: b, text: "A place where roads meet" }
+        - { id: c, text: "A minor detail" }
+        - { id: d, text: "The end of an argument" }
+    answer_key: { correct_option_id: a }
+    explanation: "\"A turning point\" is a decisive moment after which things change significantly."
+
+  - slug: final-exam-b2-reading-1
+    type: reading_comprehension
+    skill: reading
+    difficulty: B2
+    prompt:
+      passage: >-
+        Despite growing public concern about screen time, few companies
+        have taken meaningful steps to address employee burnout linked
+        to constant connectivity. Some argue that flexible hours make
+        the problem worse, not better, since the boundary between work
+        and rest disappears entirely.
+      questions:
+        - id: q1
+          text: "What do some people argue about flexible hours?"
+          options:
+            - { id: a, text: "They make burnout worse" }
+            - { id: b, text: "They reduce burnout" }
+            - { id: c, text: "They have no effect" }
+            - { id: d, text: "The text doesn't say" }
+        - id: q2
+          text: "What has disappeared, according to the text?"
+          options:
+            - { id: a, text: "The boundary between work and rest" }
+            - { id: b, text: "Employee benefits" }
+            - { id: c, text: "Public concern about screen time" }
+            - { id: d, text: "The text doesn't say" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "\"Flexible hours make the problem worse\" (Q1); \"the boundary between work and rest disappears entirely\" (Q2)."
+
+  - slug: final-exam-b2-reading-2
+    type: reading_comprehension
+    skill: reading
+    difficulty: B2
+    prompt:
+      passage: >-
+        It wasn't until she'd read the report twice that she noticed the
+        figures didn't add up. Had she trusted her first instinct, she
+        might have caught the error days earlier and saved the team
+        considerable embarrassment.
+      questions:
+        - id: q1
+          text: "When did she notice the error?"
+          options:
+            - { id: a, text: "After reading the report twice" }
+            - { id: b, text: "Immediately" }
+            - { id: c, text: "After the meeting" }
+            - { id: d, text: "The text doesn't say" }
+        - id: q2
+          text: "What might have happened if she'd trusted her first instinct?"
+          options:
+            - { id: a, text: "She would have caught the error earlier" }
+            - { id: b, text: "She would have made a bigger mistake" }
+            - { id: c, text: "Nothing would have changed" }
+            - { id: d, text: "The text doesn't say" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "\"It wasn't until she'd read the report twice\" (Q1); \"she might have caught the error days earlier\" (Q2)."
+
+  - slug: final-exam-b2-listening-1
+    type: listening_comprehension
+    skill: listening
+    difficulty: B2
+    prompt:
+      audio_url: "/audio/final-exam-b2-listening-1.mp3"  # src-hash: c5bff088
+      transcript: >
+        A: Honestly, I'm starting to regret taking on this project. —
+        B: Why's that? — A: The scope keeps expanding, and nobody seems
+        willing to push back on the client. — B: Have you raised it
+        with your manager? — A: Not yet, I've been putting it off.
+      questions:
+        - id: q1
+          text: "Why does A regret the project?"
+          options:
+            - { id: a, text: "The scope keeps expanding" }
+            - { id: b, text: "The pay is too low" }
+            - { id: c, text: "The deadline was moved" }
+            - { id: d, text: "We don't know" }
+        - id: q2
+          text: "Has A talked to their manager about it?"
+          options:
+            - { id: a, text: "Not yet" }
+            - { id: b, text: "Yes, already" }
+            - { id: c, text: "The manager brought it up first" }
+            - { id: d, text: "We don't know" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "\"The scope keeps expanding\" (Q1); \"Not yet, I've been putting it off\" (Q2)."
+
+  - slug: final-exam-b2-listening-2
+    type: listening_comprehension
+    skill: listening
+    difficulty: B2
+    prompt:
+      audio_url: "/audio/final-exam-b2-listening-2.mp3"  # src-hash: 34b3cedd
+      transcript: >
+        A: What struck me most about the interview was how evasive he
+        was about the numbers. — B: I noticed that too. Whenever he was
+        pressed for specifics, he changed the subject. — A: Exactly. It
+        makes me wonder what he's hiding. — B: We should dig a bit
+        deeper before publishing anything.
+      questions:
+        - id: q1
+          text: "What was unusual about the interview?"
+          options:
+            - { id: a, text: "He was evasive about the numbers" }
+            - { id: b, text: "He refused to answer any questions" }
+            - { id: c, text: "He arrived late" }
+            - { id: d, text: "We don't know" }
+        - id: q2
+          text: "What do they plan to do before publishing?"
+          options:
+            - { id: a, text: "Dig a bit deeper" }
+            - { id: b, text: "Publish immediately" }
+            - { id: c, text: "Cancel the story" }
+            - { id: d, text: "We don't know" }
+    answer_key:
+      answers: { q1: a, q2: a }
+    explanation: "\"How evasive he was about the numbers\" (Q1); \"We should dig a bit deeper before publishing\" (Q2)."
+
+  - slug: final-exam-b2-translation-1
+    type: translation
+    skill: vocabulary
+    difficulty: B2
+    prompt:
+      text: "Переведите на английский: «Если бы я знал об этом раньше, я бы поступил иначе»"
+    answer_key:
+      accepted:
+        - "if i had known about it earlier, i would have acted differently"
+        - "if i'd known about it earlier, i would have done things differently"
+        - "if i had known about it earlier, i would have done things differently"
+    explanation: "Third conditional: «Если бы я знал об этом раньше, я бы поступил иначе» — \"If I had known about it earlier, I would have acted differently\"."
+
+  - slug: final-exam-b2-translation-2
+    type: translation
+    skill: vocabulary
+    difficulty: B2
+    prompt:
+      text: "Переведите на английский: «Мне пришлось признать свою ошибку»"
+    answer_key:
+      accepted: ["i had to admit my mistake", "i had to admit i was wrong"]
+    explanation: "«Мне пришлось признать свою ошибку» — \"I had to admit my mistake\"."
