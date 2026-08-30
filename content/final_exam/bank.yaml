@@ -572,9 +572,23 @@ items:
             - { id: b, text: "The salary" }
             - { id: c, text: "The commute" }
             - { id: d, text: "We don't know" }
+        - id: q3
+          text: "Has B made a final decision about the job?"
+          options:
+            - { id: a, text: "No, B is still weighing the pros and cons" }
+            - { id: b, text: "Yes, B has accepted it" }
+            - { id: c, text: "Yes, B has turned it down" }
+            - { id: d, text: "We don't know" }
+        - id: q4
+          text: "What does B's answer about job security suggest about start-ups?"
+          options:
+            - { id: a, text: "They can be less stable than established companies" }
+            - { id: b, text: "They always pay more" }
+            - { id: c, text: "They never offer promotions" }
+            - { id: d, text: "We don't know" }
     answer_key:
-      answers: { q1: a, q2: a }
-    explanation: "\"I've been offered a position at a start-up\" (Q1); \"Mainly the job security\" (Q2)."
+      answers: { q1: a, q2: a, q3: a, q4: a }
+    explanation: "\"I've been offered a position at a start-up\" (Q1); \"Mainly the job security\" (Q2); \"I'm still weighing up the pros and cons\" (Q3); start-ups \"can be risky\" (Q4)."
 
   - slug: final-exam-b1-listening-2
     type: listening_comprehension
@@ -602,9 +616,23 @@ items:
             - { id: b, text: "Yes, it's fixed now" }
             - { id: c, text: "B hasn't tried yet" }
             - { id: d, text: "We don't know" }
+        - id: q3
+          text: "What does A's comment \"That's frustrating\" suggest?"
+          options:
+            - { id: a, text: "That the situation is annoying" }
+            - { id: b, text: "That A is impressed" }
+            - { id: c, text: "That A doesn't care" }
+            - { id: d, text: "We don't know" }
+        - id: q4
+          text: "Is the printer working now?"
+          options:
+            - { id: a, text: "No, it's still broken" }
+            - { id: b, text: "Yes, it's fixed" }
+            - { id: c, text: "It was never broken" }
+            - { id: d, text: "We don't know" }
     answer_key:
-      answers: { q1: a, q2: a }
-    explanation: "\"I've called IT twice already\" (Q1); \"it didn't make any difference\" (Q2)."
+      answers: { q1: a, q2: a, q3: a, q4: a }
+    explanation: "\"I've called IT twice already\" (Q1); \"it didn't make any difference\" (Q2); A reacts with \"That's frustrating\" (Q3); restarting \"didn't make any difference\" so it's still broken (Q4)."
 
   - slug: final-exam-b1-translation-1
     type: translation
@@ -783,9 +811,23 @@ items:
             - { id: b, text: "Yes, already" }
             - { id: c, text: "The manager brought it up first" }
             - { id: d, text: "We don't know" }
+        - id: q3
+          text: "Why hasn't A spoken to their manager yet?"
+          options:
+            - { id: a, text: "A has been avoiding it" }
+            - { id: b, text: "The manager is unavailable" }
+            - { id: c, text: "A already tried and failed" }
+            - { id: d, text: "We don't know" }
+        - id: q4
+          text: "What does A imply about the team's approach to the client?"
+          options:
+            - { id: a, text: "Nobody is willing to push back on the client's demands" }
+            - { id: b, text: "The team pushes back too often" }
+            - { id: c, text: "The client has no influence" }
+            - { id: d, text: "We don't know" }
     answer_key:
-      answers: { q1: a, q2: a }
-    explanation: "\"The scope keeps expanding\" (Q1); \"Not yet, I've been putting it off\" (Q2)."
+      answers: { q1: a, q2: a, q3: a, q4: a }
+    explanation: "\"The scope keeps expanding\" (Q1); \"Not yet, I've been putting it off\" (Q2); A has been putting off talking to their manager (Q3); \"nobody seems willing to push back on the client\" (Q4)."
 
   - slug: final-exam-b2-listening-2
     type: listening_comprehension
@@ -814,9 +856,23 @@ items:
             - { id: b, text: "Publish immediately" }
             - { id: c, text: "Cancel the story" }
             - { id: d, text: "We don't know" }
+        - id: q3
+          text: "What does A suspect based on the interviewee's behaviour?"
+          options:
+            - { id: a, text: "That he might be hiding something" }
+            - { id: b, text: "That he was simply nervous" }
+            - { id: c, text: "That he was very honest" }
+            - { id: d, text: "We don't know" }
+        - id: q4
+          text: "How did B react when A raised suspicions about the interviewee?"
+          options:
+            - { id: a, text: "B agreed, having noticed the same thing" }
+            - { id: b, text: "B disagreed completely" }
+            - { id: c, text: "B hadn't noticed anything unusual" }
+            - { id: d, text: "We don't know" }
     answer_key:
-      answers: { q1: a, q2: a }
-    explanation: "\"How evasive he was about the numbers\" (Q1); \"We should dig a bit deeper before publishing\" (Q2)."
+      answers: { q1: a, q2: a, q3: a, q4: a }
+    explanation: "\"How evasive he was about the numbers\" (Q1); \"We should dig a bit deeper before publishing\" (Q2); \"it makes me wonder what he's hiding\" (Q3); \"I noticed that too\" (Q4)."
 
   - slug: final-exam-b2-translation-1
     type: translation
