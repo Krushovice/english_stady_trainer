@@ -6,11 +6,19 @@ final exam"): on top of the 4 existing per-level exams, one more exam covering
 the *whole* course — 40-50 questions drawn from all four levels, ordered
 easy → hard — gates the certificate specifically.
 
+Originally drew its pool from ordinary lesson exercises (round-robin by
+lesson, reusing `LevelExamService._pick_round_robin_by_lesson`). Changed
+2026-08-28 (direct user ask): the final exam now has its own dedicated,
+hand-authored item bank (`content/final_exam/bank.yaml`, see
+`FinalExamBankFile`) covering grammar/vocabulary/reading/listening/
+translation — passing it can no longer be a matter of recognising a
+question already seen during regular lesson practice. Since the bank is
+authored to exactly the exam's target size, there's no more sampling to
+do — `_sort_easy_to_hard` just orders what's there by CEFR tier.
+
 Reuses LevelExamService's pass/timer/cooldown parameters as-is (the user's
 own framing: "reuse the existing level-exam parameters unless asked
-otherwise") and its `_pick_round_robin_by_lesson` helper for diversifying
-within a difficulty tier — imported directly rather than duplicated, since
-CLAUDE.md warns against duplicated business logic.
+otherwise").
 """
 
 import uuid
@@ -40,13 +48,12 @@ from app.services.level_exam_service import (
     COOLDOWN_HOURS,
     DURATION_MINUTES,
     PASS_THRESHOLD,
-    _pick_round_robin_by_lesson,
 )
 from app.services.placement_scoring import LEVEL_ORDER
 from app.services.scoring import InvalidSubmissionError, score_attempt
 
-# 40-50 range per the user's spec; divisible by 4 difficulty tiers so each
-# tier's share is exact with no remainder to distribute.
+# 40-50 range per the user's spec; the final-exam content bank is authored
+# to exactly this many items (11 per CEFR tier).
 EXAM_SIZE = 44
 
 
@@ -104,9 +111,7 @@ class CourseExamService:
             earned_at=passed_attempt.submitted_at if passed_attempt else None,
         )
 
-    async def start_attempt(
-        self, user_id: uuid.UUID
-    ) -> tuple[CourseExamAttempt, list[Exercise]]:
+    async def start_attempt(self, user_id: uuid.UUID) -> tuple[CourseExamAttempt, list[Exercise]]:
         status = await self.get_status(user_id)
 
         if not status.exam_available:
@@ -125,11 +130,11 @@ class CourseExamService:
                 retry_at=status.cooldown_until,
             )
 
-        pool = list(await self._exercises.list_all_non_placement())
+        pool = list(await self._exercises.list_final_exam_items())
         if not pool:
             raise NotFoundError("No exam content available yet")
 
-        picked = _pick_easy_to_hard(pool, EXAM_SIZE)
+        picked = _sort_easy_to_hard(pool)
         now = datetime.now(UTC)
         attempt = CourseExamAttempt(
             user_id=user_id,
@@ -205,27 +210,9 @@ class CourseExamService:
         return [by_id[raw_id] for raw_id in exercise_ids if raw_id in by_id]
 
 
-def _pick_easy_to_hard(pool: list[Exercise], size: int) -> list[Exercise]:
-    """Split the pool into 4 buckets by `Exercise.difficulty`, diversify
-    within each bucket by lesson (reusing `_pick_round_robin_by_lesson`),
-    then concatenate the buckets in ascending `LEVEL_ORDER` — A1 → A2 → B1
-    → B2 — with NO shuffle after concatenating. That ordering IS the
-    "easy → hard" requirement; shuffling afterward would destroy it.
-
-    If a bucket has fewer exercises than its even share, whatever's
-    available is taken and the shortfall is not redistributed to other
-    buckets — kept simple since the course currently has ample content
-    across all 4 levels (see docs/roadmap.md).
-    """
-    by_difficulty: dict[CEFRLevel, list[Exercise]] = {level: [] for level in LEVEL_ORDER}
-    for exercise in pool:
-        by_difficulty[exercise.difficulty].append(exercise)
-
-    base = size // len(LEVEL_ORDER)
-    remainder = size % len(LEVEL_ORDER)
-    shares = [base + (1 if i < remainder else 0) for i in range(len(LEVEL_ORDER))]
-
-    picked: list[Exercise] = []
-    for level, share in zip(LEVEL_ORDER, shares, strict=True):
-        picked.extend(_pick_round_robin_by_lesson(by_difficulty[level], share))
-    return picked
+def _sort_easy_to_hard(pool: list[Exercise]) -> list[Exercise]:
+    """Orders the (already hand-curated, fixed-size) final-exam bank by
+    `Exercise.difficulty` in ascending `LEVEL_ORDER` — A1 → A2 → B1 → B2 —
+    stable within each tier. That ordering IS the "easy → hard" requirement;
+    shuffling would destroy it."""
+    return sorted(pool, key=lambda exercise: LEVEL_ORDER.index(exercise.difficulty))

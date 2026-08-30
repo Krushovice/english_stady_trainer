@@ -3,9 +3,11 @@ import { useState } from "react";
 import { submitAttempt } from "../../api/exercises";
 import type { AttemptResult, Exercise, SubmittedAnswer } from "../../api/types";
 import { FillBlankExercise } from "./FillBlankExercise";
+import { ListeningComprehensionExercise } from "./ListeningComprehensionExercise";
 import { MultipleChoiceExercise } from "./MultipleChoiceExercise";
 import { ReadingComprehensionExercise } from "./ReadingComprehensionExercise";
 import { SentenceOrderingExercise } from "./SentenceOrderingExercise";
+import { TranslationExercise } from "./TranslationExercise";
 
 const SKILL_LABELS: Record<string, string> = {
   grammar: "Грамматика",
@@ -95,6 +97,22 @@ export function ExerciseCard({ exercise }: { exercise: Exercise }) {
           prompt={exercise.prompt}
           disabled={!!result}
           onChange={(answers) => setAnswer({ answers })}
+        />
+      )}
+      {exercise.exercise_type === "listening_comprehension" && (
+        <ListeningComprehensionExercise
+          key={attemptKey}
+          prompt={exercise.prompt}
+          disabled={!!result}
+          onChange={(answers) => setAnswer({ answers })}
+        />
+      )}
+      {exercise.exercise_type === "translation" && (
+        <TranslationExercise
+          key={attemptKey}
+          prompt={exercise.prompt}
+          disabled={!!result}
+          onChange={(text) => setAnswer({ text })}
         />
       )}
 

@@ -5,6 +5,7 @@ the learner's submission to the authored `answer_key`. Pure functions,
 no DB access, so this is unit-testable in isolation from everything else.
 """
 
+import re
 from decimal import Decimal
 from typing import NamedTuple
 
@@ -21,6 +22,8 @@ from app.schemas.exercise import (
     ReadingComprehensionSubmission,
     SentenceOrderingAnswerKey,
     SentenceOrderingSubmission,
+    TranslationAnswerKey,
+    TranslationSubmission,
 )
 
 
@@ -101,6 +104,24 @@ def _score_reading_comprehension(answer_key: dict, submitted_answer: dict) -> Sc
     return ScoringResult(is_correct=score == 1, score=score)
 
 
+def _normalize_translation(text: str) -> str:
+    # Unlike a single fill_blank word, a translated phrase/sentence is where
+    # a learner naturally types trailing punctuation ("How much is it?") —
+    # strip it too, on top of the usual case/whitespace normalisation, so
+    # the authored accepted-answer list doesn't need every punctuation
+    # variant spelled out.
+    return re.sub(r"[.!?]+$", "", _normalize(text))
+
+
+def _score_translation(answer_key: dict, submitted_answer: dict) -> ScoringResult:
+    key = TranslationAnswerKey.model_validate(answer_key)
+    submission = TranslationSubmission.model_validate(submitted_answer)
+    is_correct = _normalize_translation(submission.text) in {
+        _normalize_translation(answer) for answer in key.accepted
+    }
+    return ScoringResult(is_correct=is_correct, score=Decimal(1) if is_correct else Decimal(0))
+
+
 _SCORERS = {
     ExerciseType.MULTIPLE_CHOICE: _score_multiple_choice,
     ExerciseType.FILL_BLANK: _score_fill_blank,
@@ -110,4 +131,5 @@ _SCORERS = {
     # chosen option id") — the audio vs. passage distinction only matters to
     # the prompt, not the grading.
     ExerciseType.LISTENING_COMPREHENSION: _score_reading_comprehension,
+    ExerciseType.TRANSLATION: _score_translation,
 }

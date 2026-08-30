@@ -33,6 +33,7 @@ class SupportedExerciseType(StrEnum):
     SENTENCE_ORDERING = "sentence_ordering"
     READING_COMPREHENSION = "reading_comprehension"
     LISTENING_COMPREHENSION = "listening_comprehension"
+    TRANSLATION = "translation"
 
 
 class MultipleChoiceOption(BaseModel):
@@ -105,12 +106,27 @@ class ListeningComprehensionPrompt(BaseModel):
     questions: list[ReadingComprehensionQuestion]
 
 
+class TranslationPrompt(BaseModel):
+    # Russian phrase to translate into English — production practice, not
+    # full-text translation (that stays a homework task, see decisions.md).
+    text: str
+
+
+class TranslationAnswerKey(BaseModel):
+    accepted: list[str]  # acceptable English renderings, normalised-matched
+
+
+class TranslationSubmission(BaseModel):
+    text: str
+
+
 PROMPT_MODELS: dict[SupportedExerciseType, type[BaseModel]] = {
     SupportedExerciseType.MULTIPLE_CHOICE: MultipleChoicePrompt,
     SupportedExerciseType.FILL_BLANK: FillBlankPrompt,
     SupportedExerciseType.SENTENCE_ORDERING: SentenceOrderingPrompt,
     SupportedExerciseType.READING_COMPREHENSION: ReadingComprehensionPrompt,
     SupportedExerciseType.LISTENING_COMPREHENSION: ListeningComprehensionPrompt,
+    SupportedExerciseType.TRANSLATION: TranslationPrompt,
 }
 
 # Listening comprehension is graded identically to reading comprehension —
@@ -122,6 +138,7 @@ ANSWER_KEY_MODELS: dict[SupportedExerciseType, type[BaseModel]] = {
     SupportedExerciseType.SENTENCE_ORDERING: SentenceOrderingAnswerKey,
     SupportedExerciseType.READING_COMPREHENSION: ReadingComprehensionAnswerKey,
     SupportedExerciseType.LISTENING_COMPREHENSION: ReadingComprehensionAnswerKey,
+    SupportedExerciseType.TRANSLATION: TranslationAnswerKey,
 }
 
 SUBMISSION_MODELS: dict[SupportedExerciseType, type[BaseModel]] = {
@@ -130,6 +147,7 @@ SUBMISSION_MODELS: dict[SupportedExerciseType, type[BaseModel]] = {
     SupportedExerciseType.SENTENCE_ORDERING: SentenceOrderingSubmission,
     SupportedExerciseType.READING_COMPREHENSION: ReadingComprehensionSubmission,
     SupportedExerciseType.LISTENING_COMPREHENSION: ReadingComprehensionSubmission,
+    SupportedExerciseType.TRANSLATION: TranslationSubmission,
 }
 
 

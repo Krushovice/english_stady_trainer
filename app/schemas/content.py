@@ -83,3 +83,17 @@ class PlacementBankFile(BaseModel):
     """
 
     items: list[ExerciseContent]
+
+
+class FinalExamBankFile(BaseModel):
+    """A flat bank of exercises with no lesson — the course-wide final exam's
+    own item pool, same shape as `PlacementBankFile` but for a different
+    purpose: unique questions written specifically for the final exam,
+    never reused from lesson content, so passing it can't be a matter of
+    remembering an exercise seen during regular practice.
+
+    The loader persists these with `lesson_id=None` and
+    `is_final_exam_item=True`.
+    """
+
+    items: list[ExerciseContent]

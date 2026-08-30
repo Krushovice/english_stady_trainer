@@ -135,6 +135,28 @@ def test_listening_comprehension_scores_like_reading_comprehension() -> None:
     assert result.score == Decimal(1)
 
 
+def test_translation_normalizes_case_whitespace_and_trailing_punctuation() -> None:
+    exercise = _exercise(
+        ExerciseType.TRANSLATION,
+        prompt={"text": "Сколько это стоит?"},
+        answer_key={"accepted": ["how much is it", "how much does it cost"]},
+    )
+    result = score_attempt(exercise, {"text": "  How much IS it?  "})
+    assert result.is_correct is True
+    assert result.score == Decimal(1)
+
+
+def test_translation_rejects_an_unlisted_answer() -> None:
+    exercise = _exercise(
+        ExerciseType.TRANSLATION,
+        prompt={"text": "Сколько это стоит?"},
+        answer_key={"accepted": ["how much is it"]},
+    )
+    result = score_attempt(exercise, {"text": "what is the price"})
+    assert result.is_correct is False
+    assert result.score == Decimal(0)
+
+
 def test_malformed_submission_raises_invalid_submission_error() -> None:
     exercise = _exercise(
         ExerciseType.MULTIPLE_CHOICE,

@@ -66,6 +66,7 @@ class Exercise(Base):
     )
     is_placement_item: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
     is_mini_test_item: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    is_final_exam_item: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
 
     lesson: Mapped["Lesson | None"] = relationship(back_populates="exercises")  # noqa: F821
     grammar_topic: Mapped["GrammarTopic | None"] = relationship()  # noqa: F821

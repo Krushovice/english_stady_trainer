@@ -1336,6 +1336,16 @@ a.entry-row:hover .chevron {
   box-shadow: none;
 }
 
+.translation-source {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  margin-bottom: var(--space-3);
+}
+
+.translation-input {
+  width: 100%;
+}
+
 .sentence-ordering .word-slot-row {
   min-height: 2.75rem;
   padding: var(--space-3);

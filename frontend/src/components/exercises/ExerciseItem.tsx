@@ -4,6 +4,7 @@ import { ListeningComprehensionExercise } from "./ListeningComprehensionExercise
 import { MultipleChoiceExercise } from "./MultipleChoiceExercise";
 import { ReadingComprehensionExercise } from "./ReadingComprehensionExercise";
 import { SentenceOrderingExercise } from "./SentenceOrderingExercise";
+import { TranslationExercise } from "./TranslationExercise";
 
 // Pure "collect one answer" switch over the scoreable exercise types — no
 // submit button, no result display. Shared by any flow that gathers several
@@ -56,6 +57,14 @@ export function ExerciseItem({
           prompt={exercise.prompt}
           disabled={disabled}
           onChange={(answers) => onAnswer({ answers })}
+        />
+      );
+    case "translation":
+      return (
+        <TranslationExercise
+          prompt={exercise.prompt}
+          disabled={disabled}
+          onChange={(text) => onAnswer({ text })}
         />
       );
   }

@@ -124,6 +124,10 @@ export interface ListeningComprehensionPrompt {
   questions: ReadingComprehensionQuestion[];
 }
 
+export interface TranslationPrompt {
+  text: string;
+}
+
 interface ExerciseBase {
   id: string;
   slug: string;
@@ -142,13 +146,15 @@ export type Exercise =
   | (ExerciseBase & {
       exercise_type: "listening_comprehension";
       prompt: ListeningComprehensionPrompt;
-    });
+    })
+  | (ExerciseBase & { exercise_type: "translation"; prompt: TranslationPrompt });
 
 export type SubmittedAnswer =
   | { option_id: string }
   | { blanks: string[] }
   | { order: string[] }
-  | { answers: Record<string, string> };
+  | { answers: Record<string, string> }
+  | { text: string };
 
 export interface AttemptResult {
   id: string;

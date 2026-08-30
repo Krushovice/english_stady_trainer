@@ -1,8 +1,9 @@
 """Batch-generates real audio for lesson `listening` blocks and the
-placement-bank's listening items, via the configured TTS provider —
-writing the resulting `audio_url` back into the source YAML content files
-so it survives the next `sync_content` run (same "additive JSON field"
-pattern already used for `summary_ru`, see docs/decisions.md).
+placement-bank and final-exam-bank listening items, via the configured
+TTS provider — writing the resulting `audio_url` back into the source
+YAML content files so it survives the next `sync_content` run (same
+"additive JSON field" pattern already used for `summary_ru`, see
+docs/decisions.md).
 
 Idempotent: each inserted `audio_url` line carries a `# src-hash: <hash>`
 comment of the transcript it was generated from. A rerun only regenerates
@@ -19,6 +20,7 @@ import argparse
 import asyncio
 import hashlib
 import re
+from collections.abc import Callable
 from dataclasses import dataclass
 from io import BytesIO
 from pathlib import Path
@@ -28,7 +30,7 @@ from pydub import AudioSegment
 
 from app.integrations.tts.factory import get_tts_provider
 from app.integrations.tts.provider import TTSProvider
-from app.services.content_loader import PLACEMENT_BANK_DIR_NAME
+from app.services.content_loader import FINAL_EXAM_BANK_DIR_NAME, PLACEMENT_BANK_DIR_NAME
 
 CONTENT_DIR = Path("content")
 AUDIO_DIR = CONTENT_DIR / "audio"
@@ -176,15 +178,28 @@ async def process_lesson_file(
     print(f"generated: {slug}")
 
 
-async def process_placement_bank(
-    provider: TTSProvider, path: Path, stats: Stats, *, force: bool = False
+async def process_flat_bank_file(
+    provider: TTSProvider,
+    path: Path,
+    stats: Stats,
+    *,
+    is_listening_item: Callable[[dict], bool],
+    text_field: str,
+    force: bool = False,
 ) -> None:
+    """Shared by `process_placement_bank` and `process_final_exam_bank` — both
+    are a flat `items:` list with no lesson, differing only in which field
+    holds the dialogue text (`passage` for the legacy placement-bank
+    reading_comprehension-typed listening items vs `transcript` for the
+    final exam's real `listening_comprehension` items) and how a listening
+    item is identified.
+    """
     data = yaml.safe_load(path.read_text())
-    listening_items = [item for item in data["items"] if item.get("skill") == "listening"]
+    listening_items = [item for item in data["items"] if is_listening_item(item)]
 
     for item in listening_items:
         slug = item["slug"]
-        turns = split_into_turns(item["prompt"]["passage"])
+        turns = split_into_turns(item["prompt"][text_field])
         current_hash = text_hash("|".join(f"{speaker}:{text}" for speaker, text in turns))
         audio_path = AUDIO_DIR / f"{slug}.mp3"
 
@@ -220,20 +235,50 @@ async def process_placement_bank(
         print(f"generated: {slug}")
 
 
+async def process_placement_bank(
+    provider: TTSProvider, path: Path, stats: Stats, *, force: bool = False
+) -> None:
+    await process_flat_bank_file(
+        provider,
+        path,
+        stats,
+        is_listening_item=lambda item: item.get("skill") == "listening",
+        text_field="passage",
+        force=force,
+    )
+
+
+async def process_final_exam_bank(
+    provider: TTSProvider, path: Path, stats: Stats, *, force: bool = False
+) -> None:
+    await process_flat_bank_file(
+        provider,
+        path,
+        stats,
+        is_listening_item=lambda item: item.get("type") == "listening_comprehension",
+        text_field="transcript",
+        force=force,
+    )
+
+
 async def main(only: list[str] | None, *, force: bool = False) -> None:
     provider = get_tts_provider()
     stats = Stats()
 
     for content_path in sorted(CONTENT_DIR.rglob("*.yaml")):
-        if content_path.parent.name == PLACEMENT_BANK_DIR_NAME:
+        if content_path.parent.name in (PLACEMENT_BANK_DIR_NAME, FINAL_EXAM_BANK_DIR_NAME):
             continue
         if only and not any(slug in content_path.stem for slug in only):
             continue
         await process_lesson_file(provider, content_path, stats, force=force)
 
-    bank_path = CONTENT_DIR / PLACEMENT_BANK_DIR_NAME / "bank.yaml"
-    if bank_path.exists() and not only:
-        await process_placement_bank(provider, bank_path, stats, force=force)
+    placement_bank_path = CONTENT_DIR / PLACEMENT_BANK_DIR_NAME / "bank.yaml"
+    if placement_bank_path.exists() and not only:
+        await process_placement_bank(provider, placement_bank_path, stats, force=force)
+
+    final_exam_bank_path = CONTENT_DIR / FINAL_EXAM_BANK_DIR_NAME / "bank.yaml"
+    if final_exam_bank_path.exists() and not only:
+        await process_final_exam_bank(provider, final_exam_bank_path, stats, force=force)
 
     print(f"done: {stats.generated} generated, {stats.skipped} already up to date")
 

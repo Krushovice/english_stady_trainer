@@ -11,6 +11,7 @@ from app.repositories.course_repository import CourseRepository
 from app.repositories.exercise_repository import ExerciseRepository
 from app.schemas.content import (
     ExerciseContent,
+    FinalExamBankFile,
     GrammarTopicItem,
     LessonFile,
     PlacementBankFile,
@@ -18,6 +19,7 @@ from app.schemas.content import (
 )
 
 PLACEMENT_BANK_DIR_NAME = "placement_test"
+FINAL_EXAM_BANK_DIR_NAME = "final_exam"
 
 
 class ContentLoaderService:
@@ -33,7 +35,9 @@ class ContentLoaderService:
 
     Files under a `placement_test/` directory are the placement-item bank —
     a flat list of exercises with no lesson (see `PlacementBankFile`) —
-    rather than a lesson file, and are synced separately.
+    rather than a lesson file, and are synced separately. Same for
+    `final_exam/` (see `FinalExamBankFile`) — the course-wide final exam's
+    own dedicated item pool.
     """
 
     def __init__(self, session: AsyncSession) -> None:
@@ -51,9 +55,12 @@ class ContentLoaderService:
         # alphabetically but before it pedagogically).
         lesson_files = []
         placement_files = []
+        final_exam_files = []
         for path in sorted(content_dir.rglob("*.yaml")):
             if path.parent.name == PLACEMENT_BANK_DIR_NAME:
                 placement_files.append(path)
+            elif path.parent.name == FINAL_EXAM_BANK_DIR_NAME:
+                final_exam_files.append(path)
             else:
                 lesson_files.append(path)
 
@@ -64,6 +71,8 @@ class ContentLoaderService:
             lessons.append(lesson)
         for path in placement_files:
             await self.sync_placement_bank_file(path)
+        for path in final_exam_files:
+            await self.sync_final_exam_bank_file(path)
 
         await self._session.commit()
         return lessons
@@ -161,6 +170,14 @@ class ContentLoaderService:
         for item in data.items:
             await self._upsert_exercise(item, lesson_id=None, is_placement_item=True)
 
+    async def sync_final_exam_bank_file(self, path: Path) -> None:
+        raw = yaml.safe_load(path.read_text())
+        data = FinalExamBankFile.model_validate(raw)
+        for item in data.items:
+            await self._upsert_exercise(
+                item, lesson_id=None, is_placement_item=False, is_final_exam_item=True
+            )
+
     async def _upsert_exercise(
         self,
         item: ExerciseContent,
@@ -168,6 +185,7 @@ class ContentLoaderService:
         lesson_id: uuid.UUID | None,
         is_placement_item: bool,
         is_mini_test_item: bool = False,
+        is_final_exam_item: bool = False,
     ) -> None:
         grammar_topic_id = None
         if item.grammar_topic_slug is not None:
@@ -202,4 +220,5 @@ class ContentLoaderService:
             vocabulary_id=vocabulary_id,
             is_placement_item=is_placement_item,
             is_mini_test_item=is_mini_test_item,
+            is_final_exam_item=is_final_exam_item,
         )

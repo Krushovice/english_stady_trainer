@@ -41,6 +41,7 @@ class ExerciseRepository:
         vocabulary_id: uuid.UUID | None,
         is_placement_item: bool = False,
         is_mini_test_item: bool = False,
+        is_final_exam_item: bool = False,
     ) -> Exercise:
         exercise = (
             await self._session.execute(select(Exercise).where(Exercise.slug == slug))
@@ -60,6 +61,7 @@ class ExerciseRepository:
         exercise.vocabulary_id = vocabulary_id
         exercise.is_placement_item = is_placement_item
         exercise.is_mini_test_item = is_mini_test_item
+        exercise.is_final_exam_item = is_final_exam_item
         await self._session.flush()
         return exercise
 
@@ -166,6 +168,20 @@ class ExerciseRepository:
     async def list_placement_items(self) -> Sequence[Exercise]:
         result = await self._session.execute(
             select(Exercise).where(Exercise.is_placement_item.is_(True)).order_by(Exercise.slug)
+        )
+        return result.scalars().all()
+
+    async def list_final_exam_items(self) -> Sequence[Exercise]:
+        """The course-wide final exam's own dedicated item pool — unique
+        content, never a lesson's own exercises. Ordering by difficulty then
+        slug is safe here (CEFR codes sort lexically the same as their real
+        order: A1 < A2 < B1 < B2); `CourseExamService` still re-sorts
+        explicitly by `LEVEL_ORDER` rather than relying on that being true
+        forever."""
+        result = await self._session.execute(
+            select(Exercise)
+            .where(Exercise.is_final_exam_item.is_(True))
+            .order_by(Exercise.difficulty, Exercise.slug)
         )
         return result.scalars().all()
 

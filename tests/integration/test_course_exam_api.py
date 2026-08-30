@@ -35,6 +35,8 @@ def _correct_submission(exercise: dict, answer_key: dict) -> dict:
         return {"order": answer_key["correct_order"]}
     if exercise_type in ("reading_comprehension", "listening_comprehension"):
         return {"answers": answer_key["answers"]}
+    if exercise_type == "translation":
+        return {"text": answer_key["accepted"][0]}
     raise ValueError(f"no correct-submission builder for exercise type '{exercise_type}'")
 
 
@@ -49,6 +51,8 @@ def _wrong_submission(exercise: dict) -> dict:
         return {"order": list(reversed(exercise["prompt"]["words"]))}
     if exercise_type in ("reading_comprehension", "listening_comprehension"):
         return {"answers": {q["id"]: "definitely-wrong" for q in exercise["prompt"]["questions"]}}
+    if exercise_type == "translation":
+        return {"text": "definitely wrong"}
     raise ValueError(f"no wrong-submission builder for exercise type '{exercise_type}'")
 
 
