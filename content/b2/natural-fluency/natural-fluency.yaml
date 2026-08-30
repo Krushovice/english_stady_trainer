@@ -213,6 +213,53 @@ blocks:
             "At least nobody looks down on new ideas here — that's the
             main thing I appreciate" (Q2).
 
+        - slug: talking-naturally-listening-2
+          type: listening_comprehension
+          skill: listening
+          difficulty: B2
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/talking-naturally.mp3"
+            transcript: >
+              A: So, how's the new job going? You come across as pretty happy about it.
+              — B: Well, honestly, it's good. I mean, there are some annoying parts, but
+              overall, yeah. — A: What kind of annoying parts? — B: You know, the usual
+              — a manager who always seems to get away with being late himself. — A: Ha,
+              to be fair, that happens everywhere. — B: True. Anyway, basically, I've
+              learnt to put up with the small stuff and focus on the good.
+            questions:
+              - id: q1
+                text: "How does B feel about the new job overall?"
+                options:
+                  - id: a
+                    text: "Good, overall happy"
+                  - id: b
+                    text: "Very unhappy"
+                  - id: c
+                    text: "Neutral, doesn't care"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "What annoys B about the manager?"
+                options:
+                  - id: a
+                    text: "He's often late himself"
+                  - id: b
+                    text: "He's too strict"
+                  - id: c
+                    text: "He never gives feedback"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "it's good... overall, yeah" (Q1); "a manager who always seems to get away
+            with being late himself" (Q2).
+
   - type: reading
     order_index: 7
     content:

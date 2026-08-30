@@ -211,6 +211,54 @@ blocks:
             was the moderator who eventually summarised the debate"
             (Q2).
 
+        - slug: debating-opinions-listening-2
+          type: listening_comprehension
+          skill: listening
+          difficulty: B2
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/debating-opinions.mp3"
+            transcript: >
+              A: What worries me most about remote work is the lack of collaboration. —
+              B: That's a valid point. However, it's flexibility that most employees
+              value. — A: Let me play devil's advocate — is flexibility really worth
+              losing teamwork? — B: Moreover, studies show productivity often increases.
+              Consequently, many companies keep it. — A: On the whole, I agree it has
+              benefits, but I'd put forward a hybrid model instead. — B: That's a fair
+              counterargument. At the end of the day, it depends on the team.
+            questions:
+              - id: q1
+                text: "What worries A most about remote work?"
+                options:
+                  - id: a
+                    text: "The lack of collaboration"
+                  - id: b
+                    text: "The lack of flexibility"
+                  - id: c
+                    text: "Low productivity"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "What model does A propose instead?"
+                options:
+                  - id: a
+                    text: "A hybrid model"
+                  - id: b
+                    text: "Fully remote work"
+                  - id: c
+                    text: "Fully office-based work"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "What worries me most about remote work is the lack of collaboration" (Q1);
+            "I'd put forward a hybrid model instead" (Q2).
+
   - type: reading
     order_index: 7
     content:

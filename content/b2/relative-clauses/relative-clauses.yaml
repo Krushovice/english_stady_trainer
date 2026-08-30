@@ -214,6 +214,53 @@ blocks:
             "The project that she's now leading, namely the redesign of
             the whole app" (Q2).
 
+        - slug: describing-people-and-things-listening-2
+          type: listening_comprehension
+          skill: listening
+          difficulty: B2
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/describing-people-and-things.mp3"
+            transcript: >
+              A: Which colleague are you talking about, the one who joined last month? —
+              B: No, the one whose office is next to mine — the one that always brings
+              coffee. — A: Oh, Marco! My friend, who used to work with him, says he's
+              brilliant. — B: To be exact, he's the person who designed our whole
+              onboarding process. — A: That's a defining feature of a good team member,
+              honestly. — B: In other words, we're lucky to have him.
+            questions:
+              - id: q1
+                text: "Which colleague are they talking about?"
+                options:
+                  - id: a
+                    text: "Marco"
+                  - id: b
+                    text: "The one who joined last month"
+                  - id: c
+                    text: "A's friend"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "What did Marco design?"
+                options:
+                  - id: a
+                    text: "The whole onboarding process"
+                  - id: b
+                    text: "The office layout"
+                  - id: c
+                    text: "The coffee machine"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "Oh, Marco!" identifies him (Q1); "he's the person who designed our whole
+            onboarding process" (Q2).
+
   - type: reading
     order_index: 7
     content:

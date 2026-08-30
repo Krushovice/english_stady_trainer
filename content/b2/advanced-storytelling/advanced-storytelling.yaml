@@ -213,6 +213,53 @@ blocks:
             "Our flight was cancelled just an hour before boarding"
             (Q1). "A kind stranger would offer us a ride" (Q2).
 
+        - slug: advanced-storytelling-listening-2
+          type: listening_comprehension
+          skill: listening
+          difficulty: B2
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/advanced-storytelling.mp3"
+            transcript: >
+              A: You won't believe what happened yesterday. Out of the blue, my car
+              broke down on the motorway. — B: Oh no! What did you do? — A: To make
+              matters worse, my phone had no battery. Never have I felt so stuck. — B:
+              That's rough. How did it end? — A: Against all odds, a mechanic drove past
+              and stopped to help — in the nick of time, too, it started raining right
+              after. — B: Wow, what a twist! I love how these stories always unfold.
+            questions:
+              - id: q1
+                text: "What happened to A's car?"
+                options:
+                  - id: a
+                    text: "It broke down on the motorway"
+                  - id: b
+                    text: "It was stolen"
+                  - id: c
+                    text: "It ran out of fuel"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "What made the situation worse?"
+                options:
+                  - id: a
+                    text: "A's phone had no battery"
+                  - id: b
+                    text: "It started raining first"
+                  - id: c
+                    text: "The mechanic didn't stop"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "my car broke down on the motorway" (Q1); "To make matters worse, my phone
+            had no battery" (Q2).
+
   - type: reading
     order_index: 7
     content:

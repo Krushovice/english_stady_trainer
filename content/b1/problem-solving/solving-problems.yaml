@@ -220,6 +220,54 @@ blocks:
             choose to move — but that would be an extreme solution"
             (Q2).
 
+        - slug: solving-problems-listening-2
+          type: listening_comprehension
+          skill: listening
+          difficulty: B1
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/solving-problems.mp3"
+            transcript: >
+              A: My neighbour keeps playing loud music at night. What would you do? — B:
+              If I were you, I'd talk to them directly first. — A: I've tried that. If
+              it happened again, I might call the building manager. — B: That sounds
+              reasonable. As a last resort, you could file a formal complaint. — A:
+              True. I just want to get to the bottom of it without causing drama. — B:
+              Let's weigh up the options together — I'm sure we can come up with
+              something.
+            questions:
+              - id: q1
+                text: "What is A's problem?"
+                options:
+                  - id: a
+                    text: "A noisy neighbour"
+                  - id: b
+                    text: "A broken appliance"
+                  - id: c
+                    text: "A late package"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "What does B suggest as a last resort?"
+                options:
+                  - id: a
+                    text: "Filing a formal complaint"
+                  - id: b
+                    text: "Moving out"
+                  - id: c
+                    text: "Calling the police"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "My neighbour keeps playing loud music at night" (Q1); "As a last resort,
+            you could file a formal complaint" (Q2).
+
   - type: reading
     order_index: 7
     content:

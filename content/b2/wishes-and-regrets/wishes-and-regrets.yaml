@@ -215,6 +215,53 @@ blocks:
             "She sometimes wishes she'd saved more money during those
             years" (Q2).
 
+        - slug: wishes-and-regrets-listening-2
+          type: listening_comprehension
+          skill: listening
+          difficulty: B2
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/wishes-and-regrets.mp3"
+            transcript: >
+              A: Do you ever look back on your old job and wish you'd stayed? — B:
+              Honestly, sometimes. I wish I'd asked more questions before I quit. — A:
+              Try not to beat yourself up about it, though. — B: I know. It's water
+              under the bridge now — a lesson learned, really. — A: Exactly. Should you
+              have negotiated a better offer first, maybe? — B: Probably! But I've made
+              peace with it. No point second-guessing myself forever.
+            questions:
+              - id: q1
+                text: "What does B wish they'd done before quitting?"
+                options:
+                  - id: a
+                    text: "Asked more questions"
+                  - id: b
+                    text: "Saved more money"
+                  - id: c
+                    text: "Talked to a manager"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "How does B feel about it now?"
+                options:
+                  - id: a
+                    text: "They've made peace with it"
+                  - id: b
+                    text: "They're still very upset"
+                  - id: c
+                    text: "They want their old job back"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "I wish I'd asked more questions before I quit" (Q1); "I've made peace with
+            it" (Q2).
+
   - type: reading
     order_index: 7
     content:

@@ -221,6 +221,53 @@ blocks:
             work week" (Q1). "Although the meeting ended without a
             final decision... a second discussion was planned" (Q2).
 
+        - slug: expressing-opinions-listening-2
+          type: listening_comprehension
+          skill: listening
+          difficulty: B1
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/expressing-opinions.mp3"
+            transcript: >
+              A: As far as I'm concerned, working from home is much more productive. —
+              B: I see your point, but I think people miss out on real teamwork. — A:
+              That's fair. Although I work from home, I do miss the office sometimes. —
+              B: Exactly. Despite the convenience, something's missing. — A: To be
+              honest, I couldn't agree more — a mix of both seems ideal. — B: On the
+              other hand, not every job allows that kind of flexibility.
+            questions:
+              - id: q1
+                text: "What does A think about working from home?"
+                options:
+                  - id: a
+                    text: "It's more productive"
+                  - id: b
+                    text: "It's less productive"
+                  - id: c
+                    text: "It's boring"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "What solution do they agree seems ideal?"
+                options:
+                  - id: a
+                    text: "A mix of both"
+                  - id: b
+                    text: "Full-time office work"
+                  - id: c
+                    text: "Full-time remote work"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "working from home is much more productive" (Q1); "a mix of both seems
+            ideal" (Q2).
+
   - type: reading
     order_index: 7
     content:

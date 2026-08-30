@@ -217,6 +217,52 @@ blocks:
             complete surprise when the airline refunded part of his
             ticket" (Q2).
 
+        - slug: describing-past-events-listening-2
+          type: listening_comprehension
+          skill: listening
+          difficulty: B1
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/describing-past-events.mp3"
+            transcript: >
+              A: How was your trip? You look exhausted. — B: Don't ask. By the time we
+              got to the airport, our flight had already boarded. — A: Oh no, what
+              happened? — B: We'd left home late because the taxi hadn't arrived on
+              time. — A: That's frustrating. Did you miss out on the whole trip? — B:
+              No, in the end we caught a later flight. It turned out fine, actually.
+            questions:
+              - id: q1
+                text: "Why were they late?"
+                options:
+                  - id: a
+                    text: "The taxi hadn't arrived on time"
+                  - id: b
+                    text: "They overslept"
+                  - id: c
+                    text: "The flight was cancelled"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "Did they miss the whole trip?"
+                options:
+                  - id: a
+                    text: "No, they caught a later flight"
+                  - id: b
+                    text: "Yes, they missed it entirely"
+                  - id: c
+                    text: "They cancelled the trip"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "the taxi hadn't arrived on time" (Q1); "in the end we caught a later
+            flight" (Q2).
+
   - type: reading
     order_index: 7
     content:

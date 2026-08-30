@@ -216,6 +216,51 @@ blocks:
             "She hasn't signed up for a race yet" (Q1). "She's been
             training since March" (Q2).
 
+        - slug: talking-about-experiences-listening-2
+          type: listening_comprehension
+          skill: listening
+          difficulty: B1
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/talking-about-experiences.mp3"
+            transcript: >
+              A: Have you ever lived in another country? — B: Yes, actually — I've lived
+              in Portugal for two years now. — A: Wow, since when exactly? — B: Since
+              2022. It's been a life-changing experience so far. — A: Have you got used
+              to the language yet? — B: Almost! I've already learnt the basics, but I
+              haven't mastered it yet.
+            questions:
+              - id: q1
+                text: "Which country has B lived in?"
+                options:
+                  - id: a
+                    text: "Portugal"
+                  - id: b
+                    text: "Italy"
+                  - id: c
+                    text: "Spain"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "Since when has B lived there?"
+                options:
+                  - id: a
+                    text: "Since 2022"
+                  - id: b
+                    text: "Since 2020"
+                  - id: c
+                    text: "Since last year"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "I've lived in Portugal for two years" (Q1); "Since 2022" (Q2).
+
   - type: reading
     order_index: 7
     content:

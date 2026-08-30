@@ -214,6 +214,54 @@ blocks:
             few small issues, the trip turned out to be one of the
             best experiences she's ever had" (Q2).
 
+        - slug: b1-revision-listening-2
+          type: listening_comprehension
+          skill: listening
+          difficulty: B1
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/b1-revision.mp3"
+            transcript: >
+              A: It's been ages! Have you done anything exciting lately? — B: Actually,
+              yes. Although I'd never travelled alone before, I went to Italy last
+              month. — A: Wow, how was it? Had you planned it for long? — B: Not really
+              — by the time I decided to go, the trip was only two weeks away! — A:
+              That's brave. If I were you, I might have been too nervous. — B: To be
+              honest, I nearly cancelled. But in the end, everything was arranged really
+              quickly.
+            questions:
+              - id: q1
+                text: "Where did B go last month?"
+                options:
+                  - id: a
+                    text: "Italy"
+                  - id: b
+                    text: "Spain"
+                  - id: c
+                    text: "Portugal"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "How long before the trip did B decide to go?"
+                options:
+                  - id: a
+                    text: "Two weeks"
+                  - id: b
+                    text: "Two months"
+                  - id: c
+                    text: "A year"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "I went to Italy last month" (Q1); "the trip was only two weeks away" when B
+            decided to go (Q2).
+
   - type: reading
     order_index: 7
     content:

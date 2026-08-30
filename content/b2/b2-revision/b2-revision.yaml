@@ -209,6 +209,54 @@ blocks:
             the difference wasn't luck — it was the willingness to ask
             for outside help" (Q2).
 
+        - slug: b2-revision-listening-2
+          type: listening_comprehension
+          skill: listening
+          difficulty: B2
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/b2-revision.mp3"
+            transcript: >
+              A: Do you remember how stressed we were before the launch? — B: Never had
+              I felt so nervous. If we hadn't had the report reviewed, it might have
+              failed. — A: To be fair, the client who reviewed it gave us some great
+              feedback. — B: Exactly. Out of the blue, they said it was the best
+              proposal they'd seen all year. — A: That was a real turning point for the
+              whole team, honestly. — B: At the end of the day, I think it's what we
+              learn from moments like that that really matters.
+            questions:
+              - id: q1
+                text: "What might have happened if the report hadn't been reviewed?"
+                options:
+                  - id: a
+                    text: "It might have failed"
+                  - id: b
+                    text: "It would have succeeded anyway"
+                  - id: c
+                    text: "Nothing would have changed"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "What did the client say about the proposal?"
+                options:
+                  - id: a
+                    text: "It was the best they'd seen all year"
+                  - id: b
+                    text: "It needed more work"
+                  - id: c
+                    text: "It was too long"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "If we hadn't had the report reviewed, it might have failed" (Q1); "they
+            said it was the best proposal they'd seen all year" (Q2).
+
   - type: reading
     order_index: 7
     content:

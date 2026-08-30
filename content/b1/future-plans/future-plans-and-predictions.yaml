@@ -217,6 +217,53 @@ blocks:
             "A full recovery is bound to take at least two more years"
             (Q2).
 
+        - slug: future-plans-and-predictions-listening-2
+          type: listening_comprehension
+          skill: listening
+          difficulty: B1
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/future-plans-and-predictions.mp3"
+            transcript: >
+              A: What will you be doing this time next year? — B: Honestly, I have no
+              idea. I might be travelling, or I might still be here. — A: Sooner or
+              later you'll have to decide, right? — B: True. I'm applying for a job
+              abroad — keep your fingers crossed for me. — A: Of course! You're bound to
+              get an interview at least, with your experience. — B: Let's hope so.
+              Salaries there are likely to be higher too.
+            questions:
+              - id: q1
+                text: "What is B applying for?"
+                options:
+                  - id: a
+                    text: "A job abroad"
+                  - id: b
+                    text: "A university course"
+                  - id: c
+                    text: "A visa"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "What does A think B is bound to get?"
+                options:
+                  - id: a
+                    text: "An interview"
+                  - id: b
+                    text: "A promotion"
+                  - id: c
+                    text: "A pay rise"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "I'm applying for a job abroad" (Q1); "You're bound to get an interview at
+            least" (Q2).
+
   - type: reading
     order_index: 7
     content:

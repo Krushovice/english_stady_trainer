@@ -219,6 +219,52 @@ blocks:
             that she had, but denied that the company had tried to hide
             it deliberately" (Q2).
 
+        - slug: reported-speech-listening-2
+          type: listening_comprehension
+          skill: listening
+          difficulty: B2
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/reported-speech.mp3"
+            transcript: >
+              A: What did Anna say about the meeting? — B: She said she couldn't make
+              it, and she asked if we could reschedule. — A: Did she mention when she'd
+              be free? — B: She mentioned that she'd be free the following week,
+              actually. — A: OK. And did she explain why she'd be busy? — B: Not really
+              — she just pointed out that it had been a hectic month for her.
+            questions:
+              - id: q1
+                text: "What did Anna ask?"
+                options:
+                  - id: a
+                    text: "If they could reschedule"
+                  - id: b
+                    text: "If they could cancel"
+                  - id: c
+                    text: "If they could meet earlier"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "When did Anna say she'd be free?"
+                options:
+                  - id: a
+                    text: "The following week"
+                  - id: b
+                    text: "The next day"
+                  - id: c
+                    text: "In a month"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "she asked if we could reschedule" (Q1); "she'd be free the following week"
+            (Q2).
+
   - type: reading
     order_index: 7
     content:

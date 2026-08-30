@@ -222,6 +222,53 @@ blocks:
             (Q1). "Some experts warn... a lot of outdated information...
             is still being shared" (Q2).
 
+        - slug: technology-and-media-listening-2
+          type: listening_comprehension
+          skill: listening
+          difficulty: B1
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/technology-and-media.mp3"
+            transcript: >
+              A: Did you see that video? It went viral overnight. — B: Yeah, it's been
+              shared millions of times already. — A: Apparently the app it was made with
+              was only released last month. — B: Wow. It's hard to keep up with how fast
+              this stuff spreads. — A: True. Was the story confirmed by a reliable
+              source, though? — B: Good question. A lot of outdated information gets
+              shared as if it's new.
+            questions:
+              - id: q1
+                text: "How did the video spread?"
+                options:
+                  - id: a
+                    text: "It went viral overnight"
+                  - id: b
+                    text: "It spread slowly over months"
+                  - id: c
+                    text: "It wasn't shared much"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "What does A ask about the story?"
+                options:
+                  - id: a
+                    text: "Whether it was confirmed by a reliable source"
+                  - id: b
+                    text: "Who made the app"
+                  - id: c
+                    text: "When it was posted"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "It went viral overnight" (Q1); "Was the story confirmed by a reliable
+            source, though?" (Q2).
+
   - type: reading
     order_index: 7
     content:

@@ -215,6 +215,53 @@ blocks:
             living with his parents today" (Q1). "Still, he has no
             regrets" (Q2).
 
+        - slug: hypothetical-situations-listening-2
+          type: listening_comprehension
+          skill: listening
+          difficulty: B2
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/hypothetical-situations.mp3"
+            transcript: >
+              A: Do you ever think about what if you hadn't moved abroad? — B: All the
+              time. If I hadn't moved, I probably wouldn't have met my husband. — A:
+              That's a real turning point, then. — B: Definitely. In hindsight, though,
+              if I'd planned it better, I wouldn't have struggled so much at first. — A:
+              Do you have any regrets? — B: Not really. If I hadn't taken that risk, I
+              think I would have missed a huge opportunity.
+            questions:
+              - id: q1
+                text: "What would B probably not have done if she hadn't moved abroad?"
+                options:
+                  - id: a
+                    text: "Met her husband"
+                  - id: b
+                    text: "Learnt a new language"
+                  - id: c
+                    text: "Started a business"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "Does B regret moving abroad?"
+                options:
+                  - id: a
+                    text: "No, not really"
+                  - id: b
+                    text: "Yes, deeply"
+                  - id: c
+                    text: "She's not sure"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "I probably wouldn't have met my husband" (Q1); "Not really" (Q2), followed
+            by "I think I would have missed a huge opportunity."
+
   - type: reading
     order_index: 7
     content:

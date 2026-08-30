@@ -215,6 +215,52 @@ blocks:
             (Q1). "There's no way a burglar would leave without taking
             anything valuable" implies nothing was missing (Q2).
 
+        - slug: speculating-and-deducing-listening-2
+          type: listening_comprehension
+          skill: listening
+          difficulty: B2
+          prompt:
+            # Same file as the lesson's own `listening` block below —
+            # generate_audio.py only tracks/regenerates the `listening`
+            # block's copy, not this one.
+            audio_url: "/audio/speculating-and-deducing.mp3"
+            transcript: >
+              A: The office is empty. Where is everyone? — B: They must have gone to
+              lunch — it's almost 1pm. — A: Hmm, but Sarah's laptop is still open. She
+              can't have gone far. — B: True. She might just be in a meeting somewhere.
+              — A: On second thoughts, there's a meeting room booking on her calendar. —
+              B: That makes sense, then. Mystery solved — we figured it out.
+            questions:
+              - id: q1
+                text: "What does B first think happened to everyone?"
+                options:
+                  - id: a
+                    text: "They must have gone to lunch"
+                  - id: b
+                    text: "They went home early"
+                  - id: c
+                    text: "They're on a break outside"
+                  - id: d
+                    text: "We don't know"
+              - id: q2
+                text: "What clue suggests Sarah is in a meeting?"
+                options:
+                  - id: a
+                    text: "A meeting room booking on her calendar"
+                  - id: b
+                    text: "A note on her desk"
+                  - id: c
+                    text: "A message from a colleague"
+                  - id: d
+                    text: "We don't know"
+          answer_key:
+            answers:
+              q1: a
+              q2: a
+          explanation: >-
+            "They must have gone to lunch" (Q1); "there's a meeting room booking on her
+            calendar" (Q2).
+
   - type: reading
     order_index: 7
     content:
